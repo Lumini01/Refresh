@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/my_blue"
+    tools:context=".Start">
+
+    <TextView
+        android:id="@+id/brandName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="80sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="Refresh" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:layout_margin="@dimen/default_margin"
+        android:src="@drawable/app_logo_no_bg_second"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/continueBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:layout_marginHorizontal="64dp"
+        android:layout_marginVertical="@dimen/default_margin"
+        android:text="Continue" />
+
+    <TextView
+        android:id="@+id/cdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:text="Loading..."
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"/>
+
+</LinearLayout>

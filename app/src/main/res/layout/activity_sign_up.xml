@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/my_blue"
+    tools:context=".SignUp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Journy Starts Here..."
+        android:layout_margin="@dimen/default_margin"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/etNameSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Enter Your Full Name"
+        android:layout_margin="@dimen/minimal_margin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:id="@+id/etPwdSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Enter a Password"
+        android:layout_margin="@dimen/minimal_margin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:id="@+id/etEmailSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="Enter an Email Address"
+        android:layout_margin="@dimen/minimal_margin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:id="@+id/etTelSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="Enter a Phone Number"
+        android:layout_margin="@dimen/minimal_margin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="32sp"/>
+
+    <Button
+        android:id="@+id/btSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_margin="@dimen/minimal_margin"
+        android:textSize="32sp"/>
+
+    <TextView
+        android:id="@+id/btLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Already Have An Account? Log In."
+        android:layout_margin="@dimen/minimal_margin"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="italic"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        app:srcCompat="@drawable/app_logo_no_bg_second"
+        android:layout_margin="@dimen/minimal_margin"
+        android:layout_gravity="center"/>
+</LinearLayout>
