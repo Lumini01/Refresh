@@ -1,6 +1,7 @@
 package com.example.refreshapp;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -25,6 +26,9 @@ public class Login extends AppCompatActivity {
     ImageView logo;
 
     UserInfo user = new UserInfo();
+
+    HelperDB helperDB = new HelperDB(this);
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

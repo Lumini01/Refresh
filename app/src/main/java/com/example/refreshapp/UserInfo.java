@@ -4,22 +4,22 @@ public class UserInfo {
     private String userName;
     private String userPwd;
     private String userEmail;
-    private String userTel;
+    private String userPhone;
 
 
     public UserInfo() {}
-    public UserInfo(String userName, String userPwd, String userEmail, String userTel) {
+    public UserInfo(String userName, String userPwd, String userEmail, String userPhone) {
         setUserName(userName);
         setUserPwd(userPwd);
         setUserEmail(userEmail);
-        setUserTel(userTel);
+        setUserPhone(userPhone);
     }
 
     public UserInfo(String userEmail, String userPwd) {
         setUserName(null);
         setUserPwd(userPwd);
         setUserEmail(userEmail);
-        setUserTel(null);
+        setUserPhone(null);
     }
 
     public String getUserName() {
@@ -34,8 +34,8 @@ public class UserInfo {
         return userEmail;
     }
 
-    public String getUserTel() {
-        return userTel;
+    public String getUserPhone() {
+        return userPhone;
     }
 
     public void setUserName(String userName) {
@@ -47,7 +47,7 @@ public class UserInfo {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-    public void setUserTel(String userTel) {
-        this.userTel = userTel;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 }
