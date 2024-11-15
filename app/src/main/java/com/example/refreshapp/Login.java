@@ -1,6 +1,8 @@
 package com.example.refreshapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
 
@@ -58,8 +62,19 @@ public class Login extends AppCompatActivity {
                 //String pwdLogin = etPwdLogin.getText().toString();
                 user.setUserPwd(etPwdLogin.getText().toString());
 
-                Intent intent = new Intent(Login.this, Home.class);
-                startActivity(intent);
+                ArrayList<UserInfo> list = helperDB.getAllRecords(db);
+
+                for (int i=0 ; i < list.size() ; i++) {
+                    if (list.get(i).getUserEmail().equals(user.getUserEmail())) {
+                        if (list.get(i).getUserPwd().equals(user.getUserPwd())) {
+                            Intent intent = new Intent(Login.this, Home.class);
+                            startActivity(intent);
+                        }
+                        else {
+
+                        }
+                    }
+                }
             }
         });
 
