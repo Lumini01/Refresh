@@ -106,11 +106,11 @@ public class ValidationHelper {
     public static ErrorMessage validateLogin(UserInfo user, HelperDB helperDB, SQLiteDatabase db) {
         String emailError = validateEmail(user.getUserEmail(), helperDB, db);
         if (emailError != null) {
-            return new ErrorMessage(emailError, "email");
+            return new ErrorMessage("email", emailError);
         }
         String pwdError = validatePwd(user.getUserPwd(), user.getUserEmail(), helperDB, db);
         if (pwdError != null) {
-            return new ErrorMessage(pwdError, "pwd");
+            return new ErrorMessage("pwd", pwdError);
         }
         return null;
     }
@@ -118,19 +118,19 @@ public class ValidationHelper {
     public static ErrorMessage validateSignUp(UserInfo user, HelperDB helperDB, SQLiteDatabase db) {
         String nameError = registerName(user.getUserName());
         if (nameError != null) {
-            return new ErrorMessage(nameError, "name");
+            return new ErrorMessage("name", nameError);
         }
         String pwdError = registerPwd(user.getUserPwd());
         if (pwdError != null) {
-            return new ErrorMessage(pwdError, "pwd");
+            return new ErrorMessage("pwd", pwdError);
         }
         String emailError = registerEmail(user.getUserEmail(), helperDB, db);
         if (emailError != null) {
-            return new ErrorMessage(emailError, "email");
+            return new ErrorMessage("email", emailError);
         }
         String phoneError = registerPhone(user.getUserPhone(), helperDB, db);
         if (phoneError != null) {
-            return new ErrorMessage(phoneError, "phone");
+            return new ErrorMessage("phone", phoneError);
         }
         return null;
     }
