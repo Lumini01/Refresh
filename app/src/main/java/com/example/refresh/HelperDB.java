@@ -1,4 +1,4 @@
-package com.example.refreshapp;
+package com.example.refresh;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -66,7 +66,7 @@ public class HelperDB extends SQLiteOpenHelper {
         db = getReadableDatabase();
         ArrayList<UserInfo> list = new ArrayList<>();
 
-        Cursor cursor = db.query(USERS_TABLE, null, null, null, null, null, null);
+      Cursor cursor = db.query(USERS_TABLE, null, null, null, null, null, null);
         cursor.moveToFirst();
 
         while (cursor.moveToNext()) {

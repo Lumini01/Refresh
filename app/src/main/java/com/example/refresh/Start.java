@@ -1,4 +1,4 @@
-package com.example.refreshapp;
+package com.example.refresh;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;

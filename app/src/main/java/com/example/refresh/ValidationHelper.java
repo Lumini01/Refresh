@@ -1,4 +1,4 @@
-package com.example.refreshapp;
+package com.example.refresh;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Patterns;
@@ -45,7 +45,7 @@ public class ValidationHelper {
         else if (pwd.length() < 6) {
             return "Password must be at least 6 characters!";
         }
-        else if (pwd.equals(helperDB.getFromRecord(helperDB.isEmailInUse(email, db), "pwd", db))) {
+        else if (!pwd.equals(helperDB.getFromRecord(helperDB.isEmailInUse(email, db), "pwd", db))) {
             return "Wrong password!";
         }
         return null;
@@ -78,12 +78,10 @@ public class ValidationHelper {
     }
 
     public static String registerPhone(String phone, HelperDB helperDB, SQLiteDatabase db) {
-
-
         if (phone == null || phone.isEmpty()) {
             return "Phone number must be at least 10 digits!";
         }
-        else if (PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
+        else if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
             return "Invalid phone number format";
         }
         else if (helperDB.isPhoneInUse(phone, db) != -1) {

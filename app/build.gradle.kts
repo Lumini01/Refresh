@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.refreshapp"
+    namespace = "com.example.refresh"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.refreshapp"
+        applicationId = "com.example.refresh"
         minSdk = 33
         targetSdk = 34
         versionCode = 1

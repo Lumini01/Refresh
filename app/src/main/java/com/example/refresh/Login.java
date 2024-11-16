@@ -1,11 +1,8 @@
-package com.example.refreshapp;
+package com.example.refresh;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +13,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
 
@@ -67,7 +59,6 @@ public class Login extends AppCompatActivity {
                 ErrorMessage validate = ValidationHelper.validateLogin(user, helperDB, db);
 
                 if ( validate == null) {
-                    db.close();
 
                     Toast toast = Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
@@ -75,6 +66,8 @@ public class Login extends AppCompatActivity {
 
                     etEmailLogin.setError(null);
                     etPwdLogin.setError(null);
+
+                    db.close();
 
                     Intent intent = new Intent(Login.this, Home.class);
                     startActivity(intent);

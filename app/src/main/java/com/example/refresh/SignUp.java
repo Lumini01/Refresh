@@ -1,4 +1,4 @@
-package com.example.refreshapp;
+package com.example.refresh;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -58,7 +58,6 @@ public class SignUp extends AppCompatActivity {
 
                 if ( validate == null) {
                     if (helperDB.registerNewAccount(user, db)) {
-                        db.close();
 
                         Toast toast = Toast.makeText(SignUp.this, "Signup Successful!", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
@@ -69,6 +68,7 @@ public class SignUp extends AppCompatActivity {
                         etEmailSignUp.setError(null);
                         etPhoneSignUp.setError(null);
 
+                        db.close();
                         Intent intent = new Intent(SignUp.this, Login.class);
                         startActivity(intent);
                     }

@@ -1,4 +1,4 @@
-package com.example.refreshapp;
+package com.example.refresh;
 
 public class ErrorMessage {
     private String field;
