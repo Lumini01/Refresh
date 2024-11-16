@@ -6,11 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,18 +64,34 @@ public class Login extends AppCompatActivity {
                 //String pwdLogin = etPwdLogin.getText().toString();
                 user.setUserPwd(etPwdLogin.getText().toString());
 
-                ArrayList<UserInfo> list = helperDB.getAllRecords(db);
+                ErrorMessage validate = ValidationHelper.validateLogin(user, helperDB, db);
 
-                for (int i=0 ; i < list.size() ; i++) {
-                    if (list.get(i).getUserEmail().equals(user.getUserEmail())) {
-                        if (list.get(i).getUserPwd().equals(user.getUserPwd())) {
-                            Intent intent = new Intent(Login.this, Home.class);
-                            startActivity(intent);
-                        }
-                        else {
+                if ( validate == null) {
+                    db.close();
 
-                        }
+                    Toast toast = Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+                    toast.show();
+
+                    etEmailLogin.setError(null);
+                    etPwdLogin.setError(null);
+
+                    Intent intent = new Intent(Login.this, Home.class);
+                    startActivity(intent);
+                }
+                else {
+                    switch (validate.getField()) {
+                        case "email":
+                            etEmailLogin.setError(validate.getMessage());
+                            break;
+                        case "pwd":
+                            etPwdLogin.setError(validate.getMessage());
+                            break;
                     }
+
+                    Toast toast = Toast.makeText(Login.this, "Unable to Log In.", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+                    toast.show();
                 }
             }
         });

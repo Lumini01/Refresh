@@ -1,27 +1,25 @@
 package com.example.refreshapp;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class SignUp extends AppCompatActivity {
     TextView title;
     EditText etNameSignUp;
     EditText etPwdSignUp;
     EditText etEmailSignUp;
-    EditText etTelSignUp;
+    EditText etPhoneSignUp;
     Button btSignUp;
     TextView btLogin;
     ImageView logo;
@@ -44,7 +42,7 @@ public class SignUp extends AppCompatActivity {
         etNameSignUp = findViewById(R.id.etNameSignUp);
         etPwdSignUp = findViewById(R.id.etPwdSignUp);
         etEmailSignUp = findViewById(R.id.etEmailSignUp);
-        etTelSignUp = findViewById(R.id.etPhoneSignUp);
+        etPhoneSignUp = findViewById(R.id.etPhoneSignUp);
         btSignUp = findViewById(R.id.btSignUp);
 
         btSignUp.setOnClickListener(new View.OnClickListener() {
@@ -54,21 +52,52 @@ public class SignUp extends AppCompatActivity {
                 user.setUserName(etNameSignUp.getText().toString());
                 user.setUserPwd(etPwdSignUp.getText().toString());
                 user.setUserEmail(etEmailSignUp.getText().toString());
-                user.setUserPhone(etTelSignUp.getText().toString());
+                user.setUserPhone(etPhoneSignUp.getText().toString());
 
-                ContentValues cv = new ContentValues();
+                ErrorMessage validate = ValidationHelper.validateSignUp(user, helperDB, db);
 
-                cv.put(helperDB.USER_NAME, user.getUserName());
-                cv.put(helperDB.USER_PWD, user.getUserPwd());
-                cv.put(helperDB.USER_EMAIL, user.getUserEmail());
-                cv.put(helperDB.USER_PHONE, user.getUserPhone());
+                if ( validate == null) {
+                    if (helperDB.registerNewAccount(user, db)) {
+                        db.close();
 
-                db = helperDB.getWritableDatabase();
-                db.insert(helperDB.USERS_TABLE, null, cv);
-                db.close();
+                        Toast toast = Toast.makeText(SignUp.this, "Signup Successful!", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+                        toast.show();
 
-                Intent intent = new Intent(SignUp.this, Login.class);
-                startActivity(intent);
+                        etNameSignUp.setError(null);
+                        etPwdSignUp.setError(null);
+                        etEmailSignUp.setError(null);
+                        etPhoneSignUp.setError(null);
+
+                        Intent intent = new Intent(SignUp.this, Login.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast toast = Toast.makeText(SignUp.this, "Unexpected Signup Error.", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+                        toast.show();
+                    }
+                }
+                else {
+                    switch (validate.getField()) {
+                        case "name":
+                            etNameSignUp.setError(validate.getMessage());
+                            break;
+                        case "pwd":
+                            etPwdSignUp.setError(validate.getMessage());
+                            break;
+                        case "email":
+                            etEmailSignUp.setError(validate.getMessage());
+                            break;
+                        case "phone":
+                            etPhoneSignUp.setError(validate.getMessage());
+                            break;
+                    }
+
+                    Toast toast = Toast.makeText(SignUp.this, "Input Error - Signup Not Completed.", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+                    toast.show();
+                }
             }
         });
 
