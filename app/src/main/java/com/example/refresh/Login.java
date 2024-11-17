@@ -69,7 +69,7 @@ public class Login extends AppCompatActivity {
 
                     db.close();
 
-                    Intent intent = new Intent(Login.this, Home.class);
+                    Intent intent = new Intent(Login.this, HomeDashboard.class);
                     startActivity(intent);
                 }
                 else {

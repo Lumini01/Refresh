@@ -13,7 +13,7 @@
         android:theme="@style/Theme.RefreshApp"
         tools:targetApi="31" >
         <activity
-            android:name=".Home"
+            android:name=".HomeDashboard"
             android:exported="false" />
         <activity
             android:name=".Login"

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
     <color name="my_blue">#2196F3</color>
+
+    <!-- Main Color Palette -->
+    <color name="colorPrimary">#1d2d44</color>
+    <color name="colorPrimaryDark">#0d1321</color>
+    <color name="colorAccent">#748cab</color>
+    <color name="background">#f0ebd8</color>
+    <color name="highlight">#3e5c76</color>
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#f0ebd8</color>
+
+    <!-- Additional UI Colors -->
+    <color name="buttonColor">#3e5c76</color>
+    <color name="iconTint">#f0ebd8</color>
+    <color name="cardBackground">#748cab</color>
+    <color name="borderColor">#1d2d44</color>
+    <color name="hintColor">#B0BEC5</color> <!-- Light gray for hints -->
+
+    <!-- Other Common Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#757575</color>
 </resources>

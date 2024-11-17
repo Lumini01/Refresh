@@ -96,7 +96,7 @@ public class Start extends AppCompatActivity {
         }
 
         if (id == R.id.item3) {
-            Intent intent = new Intent(Start.this, Home.class);
+            Intent intent = new Intent(Start.this, HomeDashboard.class);
             startActivity(intent);
             return true;
         }
