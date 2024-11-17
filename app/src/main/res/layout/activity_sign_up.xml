@@ -19,7 +19,8 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        />
 
     <EditText
         android:id="@+id/etNameSignUp"
@@ -29,9 +30,10 @@
         android:inputType="text"
         android:hint="Enter Your Full Name"
         android:layout_margin="@dimen/minimal_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="32sp"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="32sp"
+        android:background="@drawable/edit_text_background"/>
 
     <EditText
         android:id="@+id/etEmailSignUp"
@@ -41,9 +43,10 @@
         android:inputType="textEmailAddress"
         android:hint="Enter an Email Address"
         android:layout_margin="@dimen/minimal_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="32sp"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="32sp"
+        android:background="@drawable/edit_text_background"/>
 
     <EditText
         android:id="@+id/etPhoneSignUp"
@@ -53,9 +56,10 @@
         android:inputType="phone"
         android:hint="Enter a Phone Number"
         android:layout_margin="@dimen/minimal_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="32sp"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="32sp"
+        android:background="@drawable/edit_text_background"/>
 
     <EditText
         android:id="@+id/etPwdSignUp"
@@ -65,9 +69,23 @@
         android:inputType="textPassword"
         android:hint="Enter a Password"
         android:layout_margin="@dimen/minimal_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="32sp"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="32sp"
+        android:background="@drawable/edit_text_background"/>
+
+    <EditText
+        android:id="@+id/etPwdConfSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Confirm Your Password"
+        android:layout_margin="@dimen/minimal_margin"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="32sp"
+        android:background="@drawable/edit_text_background"/>
 
     <Button
         android:id="@+id/btSignUp"

@@ -10,7 +10,7 @@ public class ValidationHelper {
             return "Name is required!";
         }
         else if (name.length() < 2) {
-            return "Invalid Name";
+            return "Invalid Name.";
         }
         return null;
     }
@@ -20,7 +20,7 @@ public class ValidationHelper {
             return "Name is required!";
         }
         else if (name.length() < 2) {
-            return "Invalid Name";
+            return "Invalid Name.";
         }
         else if (helperDB.isNameInUse(name, db) == -1) {
             return "Name not found.";
@@ -59,7 +59,7 @@ public class ValidationHelper {
             return "Phone number must be at least 10 digits!";
         }
         else if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
-            return "Invalid phone number format";
+            return "Invalid phone number format.";
         }
         else if (helperDB.isPhoneInUse(phone, db) != -1) {
             return "Phone number is already in use!";
@@ -72,7 +72,7 @@ public class ValidationHelper {
             return "Phone number must be at least 10 digits!";
         }
         else if (PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
-            return "Invalid phone number format";
+            return "Invalid phone number format.";
         }
         else if (helperDB.isPhoneInUse(phone, db) == -1) {
             return "Phone number not found.";
@@ -80,12 +80,15 @@ public class ValidationHelper {
         return null;
     }
 
-    public static String registerPwd(String pwd) {
+    public static String registerPwd(String pwd, String pwdConf) {
         if (pwd == null || pwd.isEmpty()) {
             return "Password is required!";
         }
         else if (pwd.length() < 6) {
             return "Password must be at least 6 characters!";
+        }
+        else if (!pwd.equals(pwdConf)) {
+            return "Passwords Do Not Match.";
         }
         return null;
     }
@@ -115,7 +118,7 @@ public class ValidationHelper {
         return null;
     }
 
-    public static ErrorMessage validateSignUp(UserInfo user, HelperDB helperDB, SQLiteDatabase db) {
+    public static ErrorMessage validateSignUp(UserInfo user, String pwdConf, HelperDB helperDB, SQLiteDatabase db) {
         String nameError = registerName(user.getUserName());
         if (nameError != null) {
             return new ErrorMessage("name", nameError);
@@ -128,9 +131,12 @@ public class ValidationHelper {
         if (phoneError != null) {
             return new ErrorMessage("phone", phoneError);
         }
-        String pwdError = registerPwd(user.getUserPwd());
+        String pwdError = registerPwd(user.getUserPwd(), pwdConf);
         if (pwdError != null) {
-            return new ErrorMessage("pwd", pwdError);
+            if (!pwdError.equals("Passwords Do Not Match.")) {
+                return new ErrorMessage("pwd", pwdError);
+            }
+            return new ErrorMessage("pwd & conf", pwdError);
         }
         return null;
     }

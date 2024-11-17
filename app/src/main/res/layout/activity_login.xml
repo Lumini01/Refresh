@@ -30,9 +30,10 @@
         android:inputType="textEmailAddress"
         android:hint="Enter Email Address"
         android:layout_margin="@dimen/default_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="32sp"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="32sp"
+        android:background="@drawable/edit_text_background"/>
 
     <EditText
         android:id="@+id/etPwdLogin"
@@ -42,9 +43,10 @@
         android:inputType="textPassword"
         android:hint="Enter Password"
         android:layout_margin="@dimen/default_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="32sp"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="32sp"
+        android:background="@drawable/edit_text_background"/>
 
     <Button
         android:id="@+id/btLogin"

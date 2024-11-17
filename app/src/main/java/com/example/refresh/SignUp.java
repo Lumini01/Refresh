@@ -20,6 +20,7 @@ public class SignUp extends AppCompatActivity {
     EditText etEmailSignUp;
     EditText etPhoneSignUp;
     EditText etPwdSignUp;
+    EditText etPwdConfSignUp;
     Button btSignUp;
     TextView btLogin;
     ImageView logo;
@@ -31,7 +32,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sign_up);
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
 //            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -43,6 +44,7 @@ public class SignUp extends AppCompatActivity {
         etEmailSignUp = findViewById(R.id.etEmailSignUp);
         etPhoneSignUp = findViewById(R.id.etPhoneSignUp);
         etPwdSignUp = findViewById(R.id.etPwdSignUp);
+        etPwdConfSignUp = findViewById(R.id.etPwdConfSignUp);
         btSignUp = findViewById(R.id.btSignUp);
 
         btSignUp.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +55,9 @@ public class SignUp extends AppCompatActivity {
                 user.setUserEmail(etEmailSignUp.getText().toString());
                 user.setUserPhone(etPhoneSignUp.getText().toString());
                 user.setUserPwd(etPwdSignUp.getText().toString());
+                String pwdConf = etPwdConfSignUp.getText().toString();
 
-                ErrorMessage validate = ValidationHelper.validateSignUp(user, helperDB, db);
+                ErrorMessage validate = ValidationHelper.validateSignUp(user, pwdConf, helperDB, db);
 
                 if ( validate == null) {
                     if (helperDB.registerNewAccount(user, db)) {
@@ -91,6 +94,10 @@ public class SignUp extends AppCompatActivity {
                             break;
                         case "pwd":
                             etPwdSignUp.setError(validate.getMessage());
+                            break;
+                        case "pwd & conf":
+                            etPwdSignUp.setError(validate.getMessage());
+                            etPwdConfSignUp.setError(validate.getMessage());
                             break;
                     }
 
