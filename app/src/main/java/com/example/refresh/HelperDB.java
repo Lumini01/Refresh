@@ -15,9 +15,9 @@ public class HelperDB extends SQLiteOpenHelper {
     public static final String DB_FILE = "refresh_database.db";
     public static final String USERS_TABLE = "Users";
     public static final String USER_NAME = "UserName";
-    public static final String USER_PWD = "UserPassword";
     public static final String USER_EMAIL = "UserEmail";
     public static final String USER_PHONE = "UserPhone";
+    public static final String USER_PWD = "UserPassword";
 
     public HelperDB(@Nullable Context context) {
         super(context, DB_FILE, null, 1);
@@ -37,9 +37,9 @@ public class HelperDB extends SQLiteOpenHelper {
     public String buildUserTable() {
         String st = "CREATE TABLE IF NOT EXISTS " + USERS_TABLE;
         st += "(" + USER_NAME + " TEXT, ";
-        st += USER_PWD + " TEXT, ";
         st += USER_EMAIL + " TEXT, ";
-        st += USER_PHONE + " TEXT);";
+        st += USER_PHONE + " TEXT, ";
+        st += USER_PWD + " TEXT);";
 
         return st;
     }
@@ -49,9 +49,9 @@ public class HelperDB extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put(USER_NAME, user.getUserName());
-        cv.put(USER_PWD, user.getUserPwd());
         cv.put(USER_EMAIL, user.getUserEmail());
         cv.put(USER_PHONE, user.getUserPhone());
+        cv.put(USER_PWD, user.getUserPwd());
 
         db = this.getWritableDatabase();
         if (db.insert(USERS_TABLE, null, cv) != -1)
@@ -62,7 +62,7 @@ public class HelperDB extends SQLiteOpenHelper {
 
     public ArrayList<UserInfo> getAllRecords(SQLiteDatabase db) {
         int index;
-        String name, pwd, email, phone;
+        String name, email, phone, pwd;
         db = getReadableDatabase();
         ArrayList<UserInfo> list = new ArrayList<>();
 
@@ -73,13 +73,13 @@ public class HelperDB extends SQLiteOpenHelper {
 
             index = cursor.getColumnIndex(USER_NAME);
             name = cursor.getString(index);
-            index = cursor.getColumnIndex(USER_PWD);
-            pwd = cursor.getString(index);
             index = cursor.getColumnIndex(USER_EMAIL);
             email = cursor.getString(index);
             index = cursor.getColumnIndex(USER_PHONE);
             phone = cursor.getString(index);
-            UserInfo record = new UserInfo(name, pwd, email, phone);
+            index = cursor.getColumnIndex(USER_PWD);
+            pwd = cursor.getString(index);
+            UserInfo record = new UserInfo(name, email, phone, pwd);
             list.add(record);
         }
         cursor.close();
@@ -98,15 +98,35 @@ public class HelperDB extends SQLiteOpenHelper {
          switch(column) {
              case "name":
                  return user.getUserName();
-             case "pwd":
-                 return user.getUserPwd();
              case "email":
                  return user.getUserEmail();
              case "phone":
                  return user.getUserPhone();
+             case "pwd":
+                 return user.getUserPwd();
              default:
                  return "Input Error";
          }
+    }
+
+    public int isNameInUse(String name, SQLiteDatabase db) {
+        db = this.getReadableDatabase();
+        Cursor cursor = db.query(USERS_TABLE, null, USER_NAME + " = ?", new String[]{name}, null, null, null);
+
+        if (cursor.getCount() > 0) {
+
+            cursor.moveToFirst();
+
+            int matchedIndex = cursor.getPosition();
+
+            cursor.close();
+
+            return matchedIndex;
+        }
+
+        cursor.close();
+
+        return -1;
     }
 
     public int isEmailInUse(String email, SQLiteDatabase db) {
@@ -132,26 +152,6 @@ public class HelperDB extends SQLiteOpenHelper {
     public int isPhoneInUse(String phone, SQLiteDatabase db) {
         db = this.getReadableDatabase();
         Cursor cursor = db.query(USERS_TABLE, null, USER_PHONE + " = ?", new String[]{phone}, null, null, null);
-
-        if (cursor.getCount() > 0) {
-
-            cursor.moveToFirst();
-
-            int matchedIndex = cursor.getPosition();
-
-            cursor.close();
-
-            return matchedIndex;
-        }
-
-        cursor.close();
-
-        return -1;
-    }
-
-    public int isNameInUse(String name, SQLiteDatabase db) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.query(USERS_TABLE, null, USER_NAME + " = ?", new String[]{name}, null, null, null);
 
         if (cursor.getCount() > 0) {
 

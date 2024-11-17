@@ -34,18 +34,6 @@
         android:textSize="32sp"/>
 
     <EditText
-        android:id="@+id/etPwdSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Enter a Password"
-        android:layout_margin="@dimen/minimal_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="32sp"/>
-
-    <EditText
         android:id="@+id/etEmailSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,6 +52,18 @@
         android:ems="10"
         android:inputType="phone"
         android:hint="Enter a Phone Number"
+        android:layout_margin="@dimen/minimal_margin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:id="@+id/etPwdSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Enter a Password"
         android:layout_margin="@dimen/minimal_margin"
         android:textColor="@color/white"
         android:textColorHint="@color/white"

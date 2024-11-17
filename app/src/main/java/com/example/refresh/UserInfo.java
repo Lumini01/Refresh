@@ -2,17 +2,17 @@ package com.example.refresh;
 
 public class UserInfo {
     private String userName;
-    private String userPwd;
     private String userEmail;
     private String userPhone;
+    private String userPwd;
 
 
     public UserInfo() {}
-    public UserInfo(String userName, String userPwd, String userEmail, String userPhone) {
+    public UserInfo(String userName, String userEmail, String userPhone, String userPwd) {
         setUserName(userName);
-        setUserPwd(userPwd);
         setUserEmail(userEmail);
         setUserPhone(userPhone);
+        setUserPwd(userPwd);
     }
 
     public UserInfo(String userEmail, String userPwd) {
@@ -26,10 +26,6 @@ public class UserInfo {
         return userName;
     }
 
-    public String getUserPwd() {
-        return userPwd;
-    }
-
     public String getUserEmail() {
         return userEmail;
     }
@@ -38,16 +34,20 @@ public class UserInfo {
         return userPhone;
     }
 
+    public String getUserPwd() {
+        return userPwd;
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
     }
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
+    }
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
     }
 }

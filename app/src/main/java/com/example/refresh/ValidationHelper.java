@@ -28,29 +28,6 @@ public class ValidationHelper {
         return null;
     }
 
-    public static String registerPwd(String pwdInput) {
-        if (pwdInput == null || pwdInput.isEmpty()) {
-            return "Password is required!";
-        }
-        else if (pwdInput.length() < 6) {
-            return "Password must be at least 6 characters!";
-        }
-        return null;
-    }
-
-    public static String validatePwd(String pwd, String email, HelperDB helperDB, SQLiteDatabase db) {
-        if (pwd == null || pwd.isEmpty()) {
-            return "Password is required!";
-        }
-        else if (pwd.length() < 6) {
-            return "Password must be at least 6 characters!";
-        }
-        else if (!pwd.equals(helperDB.getFromRecord(helperDB.isEmailInUse(email, db), "pwd", db))) {
-            return "Wrong password!";
-        }
-        return null;
-    }
-
     public static String registerEmail(String email, HelperDB helperDB, SQLiteDatabase db) {
         if (email == null || email.isEmpty()) {
             return "Email is required!";
@@ -103,6 +80,29 @@ public class ValidationHelper {
         return null;
     }
 
+    public static String registerPwd(String pwd) {
+        if (pwd == null || pwd.isEmpty()) {
+            return "Password is required!";
+        }
+        else if (pwd.length() < 6) {
+            return "Password must be at least 6 characters!";
+        }
+        return null;
+    }
+
+    public static String validatePwd(String pwd, String email, HelperDB helperDB, SQLiteDatabase db) {
+        if (pwd == null || pwd.isEmpty()) {
+            return "Password is required!";
+        }
+        else if (pwd.length() < 6) {
+            return "Password must be at least 6 characters!";
+        }
+        else if (!pwd.equals(helperDB.getFromRecord(helperDB.isEmailInUse(email, db), "pwd", db))) {
+            return "Wrong password!";
+        }
+        return null;
+    }
+
     public static ErrorMessage validateLogin(UserInfo user, HelperDB helperDB, SQLiteDatabase db) {
         String emailError = validateEmail(user.getUserEmail(), helperDB, db);
         if (emailError != null) {
@@ -120,10 +120,6 @@ public class ValidationHelper {
         if (nameError != null) {
             return new ErrorMessage("name", nameError);
         }
-        String pwdError = registerPwd(user.getUserPwd());
-        if (pwdError != null) {
-            return new ErrorMessage("pwd", pwdError);
-        }
         String emailError = registerEmail(user.getUserEmail(), helperDB, db);
         if (emailError != null) {
             return new ErrorMessage("email", emailError);
@@ -131,6 +127,10 @@ public class ValidationHelper {
         String phoneError = registerPhone(user.getUserPhone(), helperDB, db);
         if (phoneError != null) {
             return new ErrorMessage("phone", phoneError);
+        }
+        String pwdError = registerPwd(user.getUserPwd());
+        if (pwdError != null) {
+            return new ErrorMessage("pwd", pwdError);
         }
         return null;
     }

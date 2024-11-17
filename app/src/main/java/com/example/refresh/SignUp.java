@@ -17,9 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SignUp extends AppCompatActivity {
     TextView title;
     EditText etNameSignUp;
-    EditText etPwdSignUp;
     EditText etEmailSignUp;
     EditText etPhoneSignUp;
+    EditText etPwdSignUp;
     Button btSignUp;
     TextView btLogin;
     ImageView logo;
@@ -40,9 +40,9 @@ public class SignUp extends AppCompatActivity {
 //        });
 
         etNameSignUp = findViewById(R.id.etNameSignUp);
-        etPwdSignUp = findViewById(R.id.etPwdSignUp);
         etEmailSignUp = findViewById(R.id.etEmailSignUp);
         etPhoneSignUp = findViewById(R.id.etPhoneSignUp);
+        etPwdSignUp = findViewById(R.id.etPwdSignUp);
         btSignUp = findViewById(R.id.btSignUp);
 
         btSignUp.setOnClickListener(new View.OnClickListener() {
@@ -50,9 +50,9 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 user.setUserName(etNameSignUp.getText().toString());
-                user.setUserPwd(etPwdSignUp.getText().toString());
                 user.setUserEmail(etEmailSignUp.getText().toString());
                 user.setUserPhone(etPhoneSignUp.getText().toString());
+                user.setUserPwd(etPwdSignUp.getText().toString());
 
                 ErrorMessage validate = ValidationHelper.validateSignUp(user, helperDB, db);
 
@@ -64,9 +64,9 @@ public class SignUp extends AppCompatActivity {
                         toast.show();
 
                         etNameSignUp.setError(null);
-                        etPwdSignUp.setError(null);
                         etEmailSignUp.setError(null);
                         etPhoneSignUp.setError(null);
+                        etPwdSignUp.setError(null);
 
                         db.close();
                         Intent intent = new Intent(SignUp.this, Login.class);
@@ -83,14 +83,14 @@ public class SignUp extends AppCompatActivity {
                         case "name":
                             etNameSignUp.setError(validate.getMessage());
                             break;
-                        case "pwd":
-                            etPwdSignUp.setError(validate.getMessage());
-                            break;
                         case "email":
                             etEmailSignUp.setError(validate.getMessage());
                             break;
                         case "phone":
                             etPhoneSignUp.setError(validate.getMessage());
+                            break;
+                        case "pwd":
+                            etPwdSignUp.setError(validate.getMessage());
                             break;
                     }
 
