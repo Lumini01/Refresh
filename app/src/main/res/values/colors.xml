@@ -2,26 +2,49 @@
 <resources>
     <color name="my_blue">#2196F3</color>
 
-    <!-- Main Color Palette -->
+    <!-- Main Color Palette
     <color name="colorPrimary">#1d2d44</color>
     <color name="colorPrimaryDark">#0d1321</color>
     <color name="colorAccent">#748cab</color>
     <color name="background">#f0ebd8</color>
-    <color name="highlight">#3e5c76</color>
+    <color name="highlight">#3e5c76</color> -->
 
-    <!-- Text Colors -->
+    <!-- Text Colors
     <color name="textPrimary">#FFFFFF</color>
-    <color name="textSecondary">#f0ebd8</color>
+    <color name="textSecondary">#f0ebd8</color> -->
 
-    <!-- Additional UI Colors -->
+    <!-- Additional UI Colors
     <color name="buttonColor">#3e5c76</color>
     <color name="iconTint">#f0ebd8</color>
     <color name="cardBackground">#748cab</color>
     <color name="borderColor">#1d2d44</color>
-    <color name="hintColor">#B0BEC5</color> <!-- Light gray for hints -->
+    <color name="hintColor">#B0BEC5</color> --> <!-- Light gray for hints -->
+
+    <!-- Other Common Colors
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#757575</color> -->
+
+    <!-- Main Color Palette -->
+    <color name="colorPrimary">#264653</color> <!-- Deep teal for primary -->
+    <color name="colorPrimaryDark">#1B2024</color> <!-- Dark charcoal for depth -->
+    <color name="colorAccent">#2A9D8F</color> <!-- Light green for a fresh accent -->
+    <color name="background">#F4F4F9</color> <!-- Off-white for a clean background -->
+    <color name="highlight">#E76F51</color> <!-- Soft coral for vibrant highlights -->
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#FFFFFF</color> <!-- White for main text -->
+    <color name="textSecondary">#D3D3D3</color> <!-- Light gray for secondary text -->
+
+    <!-- Additional UI Colors -->
+    <color name="buttonColor">#457B9D</color> <!-- Muted blue for buttons -->
+    <color name="iconTint">#C8C5C5</color> <!-- Warm gray for icons -->
+    <color name="cardBackground">#A8DADC</color> <!-- Pale aqua for card backgrounds -->
+    <color name="borderColor">#264653</color> <!-- Matches primary color -->
+    <color name="hintColor">#B5A68D</color> <!-- Cool beige for hints -->
 
     <!-- Other Common Colors -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="gray">#757575</color>
+    <color name="gray">#757575</color> <!-- Standard gray -->
 </resources>
