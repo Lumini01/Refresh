@@ -4,6 +4,6 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
 
-        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:fontFamily">@font/lato_black</item>
     </style>
 </resources>

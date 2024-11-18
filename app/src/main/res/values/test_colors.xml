@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Color Palette -->
+    <!--color name="colorPrimary">#000000</color--> <!-- Placeholder for primary color -->
+    <!--color name="colorPrimaryDark">#000000</color--> <!-- Placeholder for dark variant of primary color -->
+    <!--color name="colorAccent">#000000</color--> <!-- Placeholder for accent color -->
+    <!--color name="background">#FFFFFF</color--> <!-- Placeholder for main background color -->
+    <!--color name="highlight">#000000</color--> <!-- Placeholder for highlighted elements -->
+
+    <!-- Text Colors -->
+    <!--color name="textPrimary">#000000</color--> <!-- Placeholder for primary text color -->
+    <!--color name="textSecondary">#000000</color--> <!-- Placeholder for secondary text color -->
+    <!--color name="textHighlight">#000000</color--> <!-- Placeholder for highlighted text color -->
+    <!--color name="textHint">#000000</color--> <!-- Placeholder for hint text color -->
+
+    <!-- UI Element Colors -->
+    <!--color name="buttonColor">#000000</color--> <!-- Placeholder for button color -->
+    <!--color name="iconTint">#000000</color--> <!-- Placeholder for icon tint color -->
+    <!--color name="cardBackground">#FFFFFF</color--> <!-- Placeholder for card background color -->
+    <!--color name="borderColor">#000000</color--> <!-- Placeholder for border color -->
+    <!--color name="dividerColor">#000000</color--> <!-- Placeholder for divider line color -->
+    <!--color name="shadowColor">#000000</color--> <!-- Placeholder for shadow color -->
+
+    <!-- Status and Notification Colors -->
+    <!--color name="successColor">#000000</color--> <!-- Placeholder for success message color -->
+    <!--color name="warningColor">#000000</color--> <!-- Placeholder for warning message color -->
+    <!--color name="errorColor">#000000</color--> <!-- Placeholder for error message color -->
+    <!--color name="infoColor">#000000</color--> <!-- Placeholder for informational message color -->
+
+    <!-- Other Common Colors -->
+    <!--color name="white">#FFFFFF</color-->
+    <!--color name="black">#000000</color-->
+    <!--color name="gray">#CCCCCC</color--> <!-- Placeholder for neutral gray -->
+    <!--color name="lightGray">#EEEEEE</color--> <!-- Placeholder for light gray -->
+    <!--color name="darkGray">#666666</color--> <!-- Placeholder for dark gray -->
+
+    <!-- Custom Backgrounds -->
+    <!--color name="backgroundSecondary">#000000</color--> <!-- Placeholder for secondary background -->
+    <!--color name="backgroundTertiary">#000000</color--> <!-- Placeholder for tertiary background -->
+
+    <!-- Custom Accent Variants -->
+    <!--color name="accentLight">#000000</color--> <!-- Placeholder for light variant of the accent color -->
+    <!--color name="accentDark">#000000</color--> <!-- Placeholder for dark variant of the accent color -->
+
+    <!-- Transparent Color -->
+    <!--color name="transparent">#00000000</color--> <!-- Fully transparent color -->
+
+</resources>

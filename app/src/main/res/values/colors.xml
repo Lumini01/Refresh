@@ -20,31 +20,15 @@
     <color name="borderColor">#1d2d44</color>
     <color name="hintColor">#B0BEC5</color> --> <!-- Light gray for hints -->
 
-    <!-- Other Common Colors
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="gray">#757575</color> -->
-
-    <!-- Main Color Palette -->
-    <color name="colorPrimary">#264653</color> <!-- Deep teal for primary -->
-    <color name="colorPrimaryDark">#1B2024</color> <!-- Dark charcoal for depth -->
-    <color name="colorAccent">#2A9D8F</color> <!-- Light green for a fresh accent -->
-    <color name="background">#F4F4F9</color> <!-- Off-white for a clean background -->
-    <color name="highlight">#E76F51</color> <!-- Soft coral for vibrant highlights -->
-
-    <!-- Text Colors -->
-    <color name="textPrimary">#FFFFFF</color> <!-- White for main text -->
-    <color name="textSecondary">#D3D3D3</color> <!-- Light gray for secondary text -->
-
-    <!-- Additional UI Colors -->
-    <color name="buttonColor">#457B9D</color> <!-- Muted blue for buttons -->
-    <color name="iconTint">#C8C5C5</color> <!-- Warm gray for icons -->
-    <color name="cardBackground">#A8DADC</color> <!-- Pale aqua for card backgrounds -->
-    <color name="borderColor">#264653</color> <!-- Matches primary color -->
-    <color name="hintColor">#B5A68D</color> <!-- Cool beige for hints -->
-
     <!-- Other Common Colors -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="gray">#757575</color> <!-- Standard gray -->
+    <color name="gray">#757575</color>
+
+    <color name="colorPrimaryDark">#232531</color>
+    <color name="colorPrimary">#f2ede8</color>
+    <color name="textSecondary">#0f0e0c</color>
+    <color name="iconTint">#0f0e0c</color>
+    <color name="cardBackground">#fcfbf7 </color>
+    <color name="borderColor">#f2efea</color>
 </resources>
