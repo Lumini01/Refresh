@@ -1,5 +1,7 @@
 package com.example.refresh;
 
+import static com.example.refresh.UserCols.*;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Patterns;
 import android.telephony.PhoneNumberUtils;
@@ -22,7 +24,7 @@ public class ValidationHelper {
         else if (name.length() < 2) {
             return "Invalid Name.";
         }
-        else if (helperDB.isNameInUse(name, db) == -1) {
+        else if (helperDB.existsInDB(NAME, name, db) == -1) {
             return "Name not found.";
         }
         return null;
@@ -35,7 +37,7 @@ public class ValidationHelper {
         else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return "Invalid email format!";
         }
-        else if (helperDB.isEmailInUse(email, db) != -1) {
+        else if (helperDB.existsInDB(EMAIL, email, db) != -1) {
             return "Email is already in use!";
         }
         return null;
@@ -48,7 +50,7 @@ public class ValidationHelper {
         else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return "Invalid email format!";
         }
-        else if (helperDB.isEmailInUse(email, db) == -1) {
+        else if (helperDB.existsInDB(EMAIL, email, db) == -1) {
             return "Account not found.";
         }
         return null;
@@ -61,7 +63,7 @@ public class ValidationHelper {
         else if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
             return "Invalid phone number format.";
         }
-        else if (helperDB.isPhoneInUse(phone, db) != -1) {
+        else if (helperDB.existsInDB(PHONE, phone, db) != -1) {
             return "Phone number is already in use!";
         }
         return null;
@@ -74,7 +76,7 @@ public class ValidationHelper {
         else if (PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
             return "Invalid phone number format.";
         }
-        else if (helperDB.isPhoneInUse(phone, db) == -1) {
+        else if (helperDB.existsInDB(PHONE, phone, db) == -1) {
             return "Phone number not found.";
         }
         return null;
@@ -100,7 +102,10 @@ public class ValidationHelper {
         else if (pwd.length() < 6) {
             return "Password must be at least 6 characters!";
         }
-        else if (!pwd.equals(helperDB.getFromRecord(helperDB.isEmailInUse(email, db), "pwd", db))) {
+        else if (helperDB.existsInDB(PWD, pwd, db) == -1) {
+            return "Wrong password!";
+        }
+        else if (!pwd.equals(helperDB.getFromRecord(helperDB.existsInDB(PWD, pwd, db), PWD, db))) {
             return "Wrong password!";
         }
         return null;
@@ -109,11 +114,11 @@ public class ValidationHelper {
     public static ErrorMessage validateLogin(UserInfo user, HelperDB helperDB, SQLiteDatabase db) {
         String emailError = validateEmail(user.getUserEmail(), helperDB, db);
         if (emailError != null) {
-            return new ErrorMessage("email", emailError);
+            return new ErrorMessage(EMAIL, emailError);
         }
         String pwdError = validatePwd(user.getUserPwd(), user.getUserEmail(), helperDB, db);
         if (pwdError != null) {
-            return new ErrorMessage("pwd", pwdError);
+            return new ErrorMessage(PWD, pwdError);
         }
         return null;
     }
@@ -121,22 +126,22 @@ public class ValidationHelper {
     public static ErrorMessage validateSignUp(UserInfo user, String pwdConf, HelperDB helperDB, SQLiteDatabase db) {
         String nameError = registerName(user.getUserName());
         if (nameError != null) {
-            return new ErrorMessage("name", nameError);
+            return new ErrorMessage(NAME, nameError);
         }
         String emailError = registerEmail(user.getUserEmail(), helperDB, db);
         if (emailError != null) {
-            return new ErrorMessage("email", emailError);
+            return new ErrorMessage(EMAIL, emailError);
         }
         String phoneError = registerPhone(user.getUserPhone(), helperDB, db);
         if (phoneError != null) {
-            return new ErrorMessage("phone", phoneError);
+            return new ErrorMessage(PHONE, phoneError);
         }
         String pwdError = registerPwd(user.getUserPwd(), pwdConf);
         if (pwdError != null) {
             if (!pwdError.equals("Passwords Do Not Match.")) {
-                return new ErrorMessage("pwd", pwdError);
+                return new ErrorMessage(PWD, pwdError);
             }
-            return new ErrorMessage("pwd & conf", pwdError);
+            return new ErrorMessage(PWDCONF, pwdError);
         }
         return null;
     }

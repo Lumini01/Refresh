@@ -92,79 +92,48 @@ public class HelperDB extends SQLiteOpenHelper {
 
         return list.get(index);
     }
-    public String getFromRecord(int index, String column, SQLiteDatabase db) {
+    public String getFromRecord(int index, UserCols column, SQLiteDatabase db) {
          UserInfo user = getRecord(index, db);
 
          switch(column) {
-             case "name":
+             case NAME:
                  return user.getUserName();
-             case "email":
+             case EMAIL:
                  return user.getUserEmail();
-             case "phone":
+             case PHONE:
                  return user.getUserPhone();
-             case "pwd":
+             case PWD:
                  return user.getUserPwd();
              default:
                  return "Input Error";
          }
     }
 
-    public int isNameInUse(String name, SQLiteDatabase db) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.query(USERS_TABLE, null, USER_NAME + " = ?", new String[]{name}, null, null, null);
+    public int existsInDB(UserCols column, String value, SQLiteDatabase db) {
+        ArrayList<UserInfo> table = getAllRecords(db);
 
-        if (cursor.getCount() > 0) {
-
-            cursor.moveToFirst();
-
-            int matchedIndex = cursor.getPosition();
-
-            cursor.close();
-
-            return matchedIndex;
+        for (int i=0 ; i<table.size() ; i++) {
+            switch(column) {
+                case NAME:
+                    if (value.equals(table.get(i).getUserName()))
+                        return i;
+                    break;
+                case EMAIL:
+                    if (value.equals(table.get(i).getUserEmail()))
+                        return i;
+                    break;
+                case PHONE:
+                    if (value.equals(table.get(i).getUserPhone()))
+                        return i;
+                    break;
+                case PWD:
+                    if (value.equals(table.get(i).getUserPwd()))
+                        return i;
+                    break;
+                default:
+                    return -1;
+            }
         }
-
-        cursor.close();
-
-        return -1;
-    }
-
-    public int isEmailInUse(String email, SQLiteDatabase db) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.query(USERS_TABLE, null, USER_EMAIL + " = ?", new String[]{email}, null, null, null);
-
-        if (cursor.getCount() > 0) {
-
-            cursor.moveToFirst();
-
-            int matchedIndex = cursor.getPosition();
-
-            cursor.close();
-
-            return matchedIndex;
-        }
-
-        cursor.close();
-
-        return -1;
-    }
-
-    public int isPhoneInUse(String phone, SQLiteDatabase db) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.query(USERS_TABLE, null, USER_PHONE + " = ?", new String[]{phone}, null, null, null);
-
-        if (cursor.getCount() > 0) {
-
-            cursor.moveToFirst();
-
-            int matchedIndex = cursor.getPosition();
-
-            cursor.close();
-
-            return matchedIndex;
-        }
-
-        cursor.close();
 
         return -1;
     }

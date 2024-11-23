@@ -1,15 +1,15 @@
 package com.example.refresh;
 
 public class ErrorMessage {
-    private String field;
+    private UserCols field;
     private String message;
 
-    public ErrorMessage(String field, String message) {
+    public ErrorMessage(UserCols field, String message) {
         this.field = field;
         this.message = message;
     }
 
-    public void setField(String field) {
+    public void setField(UserCols field) {
         this.field = field;
     }
 
@@ -17,7 +17,7 @@ public class ErrorMessage {
         this.message = message;
     }
 
-    public String getField() {
+    public UserCols getField() {
         return field;
     }
 

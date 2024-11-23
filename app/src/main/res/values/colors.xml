@@ -31,4 +31,5 @@
     <color name="iconTint">#0f0e0c</color>
     <color name="cardBackground">#fcfbf7 </color>
     <color name="borderColor">#f2efea</color>
+    <color name="colorAccent">#FF0000</color>
 </resources>

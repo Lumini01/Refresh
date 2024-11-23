@@ -74,10 +74,10 @@ public class Login extends AppCompatActivity {
                 }
                 else {
                     switch (validate.getField()) {
-                        case "email":
+                        case EMAIL:
                             etEmailLogin.setError(validate.getMessage());
                             break;
-                        case "pwd":
+                        case PWD:
                             etPwdLogin.setError(validate.getMessage());
                             break;
                     }

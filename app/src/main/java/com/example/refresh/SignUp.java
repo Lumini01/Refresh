@@ -83,19 +83,19 @@ public class SignUp extends AppCompatActivity {
                 }
                 else {
                     switch (validate.getField()) {
-                        case "name":
+                        case NAME:
                             etNameSignUp.setError(validate.getMessage());
                             break;
-                        case "email":
+                        case EMAIL:
                             etEmailSignUp.setError(validate.getMessage());
                             break;
-                        case "phone":
+                        case PHONE:
                             etPhoneSignUp.setError(validate.getMessage());
                             break;
-                        case "pwd":
+                        case PWD:
                             etPwdSignUp.setError(validate.getMessage());
                             break;
-                        case "pwd & conf":
+                        case PWDCONF:
                             etPwdSignUp.setError(validate.getMessage());
                             etPwdConfSignUp.setError(validate.getMessage());
                             break;
