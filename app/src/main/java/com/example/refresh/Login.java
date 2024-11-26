@@ -13,106 +13,164 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+/**
+ * Login Activity - This screen handles user login by allowing them to enter their email
+ * and password. It validates the credentials, shows appropriate error messages, and
+ * navigates to the HomeDashboard upon successful login. It also includes a sign-up button
+ * to redirect to the registration screen and a logo that leads back to the Start activity.
+ */
 
 public class Login extends AppCompatActivity {
 
-    TextView title;
-    EditText etEmailLogin;
-    EditText etPwdLogin;
-    Button btLogin;
-    TextView btSignUp;
-    ImageView logo;
+    // UI Components
+    private TextView title;
+    private EditText etEmailLogin;
+    private EditText etPwdLogin;
+    private Button btLogin;
+    private TextView btSignUp;
+    private ImageView logo;
 
-    UserInfo user = new UserInfo();
+    // Database Helper
+    private UserInfo user = new UserInfo();
+    private HelperDB helperDB = new HelperDB(this);
+    private SQLiteDatabase db;
 
-    HelperDB helperDB = new HelperDB(this);
-    SQLiteDatabase db;
-
+    /**
+     * Initializes the activity, sets up UI components, and handles login and sign-up button clicks.
+     * @param savedInstanceState Bundle containing the saved instance state for restoring the previous activity state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set up edge-to-edge view and content
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
 
-        etEmailLogin = findViewById(R.id.etEmailLogin);
-        etPwdLogin = findViewById(R.id.etPwdLogin);
-        btLogin = findViewById(R.id.btLogin);
-
-        btLogin.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                //First two lines might not be needed
-                //Editable etEL = etEmailLogin.getText();
-                //String emailLogin = etEmailLogin.getText().toString();
-                user.setUserEmail(etEmailLogin.getText().toString());
-
-                //Editable etPL = etPwdLogin.getText();
-                //String pwdLogin = etPwdLogin.getText().toString();
-                user.setUserPwd(etPwdLogin.getText().toString());
-
-                ErrorMessage validate = ValidationHelper.validateLogin(user, helperDB, db);
-
-                if ( validate == null) {
-
-                    Toast toast = Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
-                    toast.show();
-
-                    etEmailLogin.setError(null);
-                    etPwdLogin.setError(null);
-
-                    db.close();
-
-                    Intent intent = new Intent(Login.this, HomeDashboard.class);
-                    startActivity(intent);
-                }
-                else {
-                    switch (validate.getField()) {
-                        case EMAIL:
-                            etEmailLogin.setError(validate.getMessage());
-                            break;
-                        case PWD:
-                            etPwdLogin.setError(validate.getMessage());
-                            break;
-                    }
-
-                    Toast toast = Toast.makeText(Login.this, "Unable to Log In.", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
-                    toast.show();
-                }
-            }
+        // Handle window insets for proper padding on devices with system bars
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
 
-        btSignUp = findViewById(R.id.btSignUp);
+        // Initialize UI components
+        initUIComponents();
 
-        btSignUp.setOnClickListener(new View.OnClickListener() {
+        // Set up the actions for each button and image view
+        setupListeners();
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, SignUp.class);
-                startActivity(intent);
-            }
-        });
-
-        logo = findViewById(R.id.logo);
-
-        logo.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, Start.class);
-                startActivity(intent);
-            }
-        });
-
+        // Hide the action bar for a clean UI
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+    }
+
+    /**
+     * Initialize all UI components.
+     */
+    private void initUIComponents() {
+        etEmailLogin = findViewById(R.id.etEmailLogin);
+        etPwdLogin = findViewById(R.id.etPwdLogin);
+        btLogin = findViewById(R.id.btLogin);
+        btSignUp = findViewById(R.id.btSignUp);
+        logo = findViewById(R.id.logo);
+    }
+
+    /**
+     * Set up listeners for the login, signup, and logo buttons.
+     */
+    private void setupListeners() {
+        // Login button listener
+        btLogin.setOnClickListener(view -> handleLogin());
+
+        // Sign Up button listener
+        btSignUp.setOnClickListener(view -> navigateToSignUp());
+
+        // Logo click listener
+        logo.setOnClickListener(view -> navigateToStart());
+    }
+
+    /**
+     * Handle the login process.
+     */
+    private void handleLogin() {
+        // Set user credentials from the input fields
+        user.setUserEmail(etEmailLogin.getText().toString());
+        user.setUserPwd(etPwdLogin.getText().toString());
+
+        // Validate login credentials
+        ErrorMessage validationError = ValidationHelper.validateLogin(user, helperDB, db);
+
+        if (validationError == null) {
+            // Successful login
+            showToast("Login Successful!");
+            clearErrors();
+            navigateToHomeDashboard();
+        } else {
+            // Show error messages based on validation failure
+            showValidationError(validationError);
+        }
+    }
+
+    /**
+     * Show a toast message.
+     */
+    private void showToast(String message) {
+        Toast toast = Toast.makeText(Login.this, message, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+        toast.show();
+    }
+
+    /**
+     * Clear error indicators on the input fields.
+     */
+    private void clearErrors() {
+        etEmailLogin.setError(null);
+        etPwdLogin.setError(null);
+    }
+
+    /**
+     * Show error messages on the input fields based on validation failure.
+     */
+    private void showValidationError(ErrorMessage error) {
+        switch (error.getField()) {
+            case EMAIL:
+                etEmailLogin.setError(error.getMessage());
+                break;
+            case PWD:
+                etPwdLogin.setError(error.getMessage());
+                break;
+        }
+
+        showToast("Unable to Log In.");
+    }
+
+    /**
+     * Navigate to the sign-up activity.
+     */
+    private void navigateToSignUp() {
+        Intent intent = new Intent(Login.this, SignUp.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Navigate to the home dashboard.
+     */
+    private void navigateToHomeDashboard() {
+        Intent intent = new Intent(Login.this, HomeDashboard.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Navigate to the start activity.
+     */
+    private void navigateToStart() {
+        Intent intent = new Intent(Login.this, Start.class);
+        startActivity(intent);
     }
 }
