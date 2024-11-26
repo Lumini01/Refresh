@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_brand_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RefreshApp"
+        android:theme="@style/Theme.Refresh"
         tools:targetApi="31" >
         <activity
             android:name=".HomeDashboard"

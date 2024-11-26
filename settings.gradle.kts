@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "RefreshApp"
+rootProject.name = "Refresh"
 include(":app")
  

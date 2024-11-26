@@ -110,7 +110,6 @@ public class ValidationHelper {
         }
         return null;
     }
-
     public static ErrorMessage validateLogin(UserInfo user, HelperDB helperDB, SQLiteDatabase db) {
         String emailError = validateEmail(user.getUserEmail(), helperDB, db);
         if (emailError != null) {
@@ -123,6 +122,7 @@ public class ValidationHelper {
         return null;
     }
 
+    //
     public static ErrorMessage validateSignUp(UserInfo user, String pwdConf, HelperDB helperDB, SQLiteDatabase db) {
         String nameError = registerName(user.getUserName());
         if (nameError != null) {
