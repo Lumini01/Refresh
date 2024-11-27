@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:padding="16dp"
+    tools:context=".UserInfo">
+
+</LinearLayout>
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:padding="16dp"
+        tools:context=".ProfileActivity">
+
+        &lt;!&ndash; Toolbar &ndash;&gt;
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:title="Profile"
+            android:titleTextColor="@color/textSecondary"
+            app:itemIconTint="@color/iconTint">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_profile" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        &lt;!&ndash; Scrollable Content &ndash;&gt;
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                &lt;!&ndash; Profile Section &ndash;&gt;
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_vertical">
+
+                    &lt;!&ndash; Profile Image &ndash;&gt;
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_profile"
+                        android:contentDescription="Profile Picture"
+                        app:tint="@color/iconTint"/>
+
+                    &lt;!&ndash; Profile Details &ndash;&gt;
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User Name"
+                            android:textSize="20sp"
+                            android:textColor="@color/textSecondary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email: user@example.com"
+                            android:textSize="16sp"
+                            android:textColor="@color/textSecondary" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                &lt;!&ndash; Settings Section &ndash;&gt;
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
+
+                    &lt;!&ndash; Notifications Settings &ndash;&gt;
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/card_background"
+                        android:padding="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_notifications"
+                            android:contentDescription="Notifications"
+                            app:tint="@color/iconTint"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Notifications"
+                            android:textSize="18sp"
+                            android:textColor="@color/textSecondary"
+                            android:gravity="center_vertical"/>
+
+                        <Switch
+                            android:id="@+id/notifications_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="auto" />
+
+                    </LinearLayout>
+
+                    &lt;!&ndash; Privacy Settings &ndash;&gt;
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/card_background"
+                        android:padding="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_privacy"
+                            android:contentDescription="Privacy"
+                            app:tint="@color/iconTint"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Privacy Settings"
+                            android:textSize="18sp"
+                            android:textColor="@color/textSecondary"
+                            android:gravity="center_vertical"/>
+
+                    </LinearLayout>
+
+                    &lt;!&ndash; Theme Settings &ndash;&gt;
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/card_background"
+                        android:padding="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_theme"
+                            android:contentDescription="Theme"
+                            app:tint="@color/iconTint"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="App Theme"
+                            android:textSize="18sp"
+                            android:textColor="@color/textSecondary"
+                            android:gravity="center_vertical"/>
+
+                        <Spinner
+                            android:id="@+id/theme_spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:entries="@array/theme_options" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        &lt;!&ndash; Bottom Navigation &ndash;&gt;
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            app:itemIconTint="@color/iconTint"
+            app:itemTextColor="@color/textSecondary"
+            app:menu="@menu/bottom_nav_menu"
+            android:layout_marginTop="@dimen/minimal_margin"/>
+
+    </LinearLayout>
+    -->
