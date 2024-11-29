@@ -1,4 +1,4 @@
-package com.example.refresh;
+package com.example.refresh.Notification;
 
 import android.app.NotificationManager;
 import android.content.Context;

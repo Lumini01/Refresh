@@ -1,10 +1,9 @@
-package com.example.refresh;
+package com.example.refresh.Activity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,6 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.refresh.Database.HelperDB;
+import com.example.refresh.R;
+import com.example.refresh.Start;
+import com.example.refresh.User.UserInfo;
+import com.example.refresh.Utility.ErrorMessage;
+import com.example.refresh.Utility.ValidationHelper;
 
 /**
  * Login Activity - This screen handles user login by allowing them to enter their email

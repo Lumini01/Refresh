@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:padding="16dp"
-    tools:context=".HomeDashboard">
+    tools:context=".Activity.HomeDashboard">
 
   <!-- Toolbar -->
   <androidx.appcompat.widget.Toolbar

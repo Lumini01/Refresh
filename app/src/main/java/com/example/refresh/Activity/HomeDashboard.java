@@ -1,4 +1,4 @@
-package com.example.refresh;
+package com.example.refresh.Activity;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.refresh.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeDashboard extends AppCompatActivity {

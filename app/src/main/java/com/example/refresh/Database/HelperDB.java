@@ -1,4 +1,4 @@
-package com.example.refresh;
+package com.example.refresh.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.example.refresh.User.UserCols;
+import com.example.refresh.User.UserInfo;
 
 import java.util.ArrayList;
 

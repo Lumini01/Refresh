@@ -1,4 +1,6 @@
-package com.example.refresh;
+package com.example.refresh.Utility;
+
+import com.example.refresh.User.UserCols;
 
 /**
  * Represents an error message related to a specific field.

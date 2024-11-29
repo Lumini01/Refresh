@@ -1,4 +1,4 @@
-package com.example.refresh;
+package com.example.refresh.User;
 
 /**
  * UserInfo - This class is used to store and manage user information, including

@@ -1,10 +1,13 @@
-package com.example.refresh;
+package com.example.refresh.Utility;
 
-import static com.example.refresh.UserCols.*;
+import static com.example.refresh.User.UserCols.*;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Patterns;
 import android.telephony.PhoneNumberUtils;
+
+import com.example.refresh.Database.HelperDB;
+import com.example.refresh.User.UserInfo;
 
 /**
  * Utility class to handle validation logic for user signup and login.

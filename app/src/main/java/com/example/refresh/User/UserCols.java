@@ -1,4 +1,4 @@
-package com.example.refresh;
+package com.example.refresh.User;
 
 /**
  * Enum representing the columns used in the user registration process.

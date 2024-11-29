@@ -1,5 +1,7 @@
 package com.example.refresh;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -10,10 +12,17 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.view.View;
+import android.Manifest;
+
+import com.example.refresh.Activity.HomeDashboard;
+import com.example.refresh.Activity.Login;
+import com.example.refresh.Activity.SignUp;
 
 /**
  * Start Activity - This is the initial screen of the app before login,
@@ -63,6 +72,9 @@ public class Start extends AppCompatActivity {
 
         // Start the countdown timer
         startCountdownTimer();
+
+        // Request notification permission
+        requestPostNotificationPermission();
 
         // Hide the action bar temporarily
         if (getSupportActionBar() != null) {
@@ -136,5 +148,18 @@ public class Start extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void requestPostNotificationPermission() {
+        // Check for POST_NOTIFICATIONS permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {  // Android 13 (API 33) and higher
+            // Check if the permission is already granted
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // Request notification permission if not granted
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
+            }
+        }
     }
 }
