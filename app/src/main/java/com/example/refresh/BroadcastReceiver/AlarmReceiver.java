@@ -26,6 +26,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         NotificationHelper.showNotification(context, notificationTitle, notificationMessage, notificationIconLocation, Start.class);
 
         // Call NotificationScheduler to reschedule the notification if needed
-        NotificationScheduler.rescheduleDailyNotification(context, intent);
+        NotificationScheduler.rescheduleDailyNotification(context, intent, notificationTitle, notificationMessage, notificationIconLocation);
     }
 }

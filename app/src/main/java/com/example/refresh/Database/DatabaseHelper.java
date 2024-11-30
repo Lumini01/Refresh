@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Helper class to interact with the SQLite database for storing and retrieving user data.
  */
-public class HelperDB extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database and table names
     public static final String DB_FILE = "refresh_database.db";
@@ -30,7 +30,7 @@ public class HelperDB extends SQLiteOpenHelper {
      * Constructor to initialize the HelperDB class.
      * @param context The context to use for database creation.
      */
-    public HelperDB(@Nullable Context context) {
+    public DatabaseHelper(@Nullable Context context) {
         super(context, DB_FILE, null, 1);
     }
 

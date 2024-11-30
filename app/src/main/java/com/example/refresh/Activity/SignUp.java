@@ -16,7 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.refresh.Database.HelperDB;
+import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.R;
 import com.example.refresh.Start;
 import com.example.refresh.User.UserInfo;
@@ -41,7 +41,7 @@ public class SignUp extends AppCompatActivity {
 
     // User object and DB helper
     private UserInfo user = new UserInfo();
-    private HelperDB helperDB = new HelperDB(this);
+    private DatabaseHelper databaseHelper = new DatabaseHelper(this);
     private SQLiteDatabase db;
 
     /**
@@ -125,14 +125,14 @@ public class SignUp extends AppCompatActivity {
      */
     private ErrorMessage validateInput() {
         String pwdConf = etPwdConfSignUp.getText().toString();
-        return ValidationHelper.validateSignUp(user, pwdConf, helperDB, db);
+        return ValidationHelper.validateSignUp(user, pwdConf, databaseHelper, db);
     }
 
     /**
      * Handle successful sign-up and navigate to the login screen.
      */
     private void handleSuccessfulSignUp() {
-        if (helperDB.registerNewAccount(user, db)) {
+        if (databaseHelper.registerNewAccount(user, db)) {
             showToast("Signup Successful!");
 
             // Clear input errors and navigate to Login activity

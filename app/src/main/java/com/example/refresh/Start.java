@@ -1,10 +1,12 @@
 package com.example.refresh;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -82,6 +84,9 @@ public class Start extends AppCompatActivity {
 
         // Set default notification times
         setDefaultNotificationTimes();
+
+        Context context = getApplicationContext();
+        TestingGrounds.test(context);
 
         // Hide the action bar temporarily
         if (getSupportActionBar() != null) {
@@ -167,6 +172,11 @@ public class Start extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
             }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+            startActivity(intent);
         }
     }
 

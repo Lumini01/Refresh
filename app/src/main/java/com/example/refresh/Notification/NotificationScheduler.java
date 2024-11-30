@@ -9,51 +9,82 @@ import android.content.SharedPreferences;
 import com.example.refresh.BroadcastReceiver.AlarmReceiver;
 import com.example.refresh.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
 public class NotificationScheduler {
-
-    public static void scheduleDailyNotifications(Context context) {
-        // Load notification times from SharedPreferences
+    public static void addNotificationTimes(Context context, ArrayList<String> titles, ArrayList<String> messages, ArrayList<String> icons, ArrayList<String> newTimes) {
         SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        Set<String> notificationTimes = prefs.getStringSet("notification_times", new HashSet<>());
-        Set<String> scheduledTimes = prefs.getStringSet("scheduled_times", new HashSet<>()); // Previously scheduled times
 
-        // Get the AlarmManager
+        // Retrieve the current set of notification times
+        Set<String> notificationTimes = prefs.getStringSet("notification_times", new HashSet<>());
+
+        // Add validated new times to the set
+        for (String newTime : newTimes) {
+            if (newTime != null && newTime.matches("\\d{1,2}:\\d{2}")) { // Validate format
+                notificationTimes.add(newTime);
+            }
+        }
+
+        // Save updated notification times
+        editor.putStringSet("notification_times", notificationTimes);
+        editor.apply();
+
+        // Schedule notifications again
+        NotificationScheduler.scheduleDailyNotifications(context, titles, messages, icons);
+    }
+
+    public static void scheduleDailyNotifications(Context context, ArrayList<String> titles, ArrayList<String> messages, ArrayList<String> icons) {
+        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Load notification times
+        Set<String> notificationTimes = prefs.getStringSet("notification_times", new HashSet<>());
+        Set<String> scheduledTimes = prefs.getStringSet("scheduled_times", new HashSet<>());
+
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        // Cancel alarms for times that were removed
+        // Cancel removed alarms
         for (String time : scheduledTimes) {
             if (!notificationTimes.contains(time)) {
                 cancelExistingAlarm(context, time, alarmManager);
             }
         }
 
-        // Schedule alarms for new times
+        // Validate and align parameters
+        int requiredSize = notificationTimes.size();
+        while (titles.size() < requiredSize) titles.add("Generated Title");
+        while (messages.size() < requiredSize) messages.add("Generated Message");
+        while (icons.size() < requiredSize) icons.add("ic_placeholder");
+
+        // Schedule alarms
+        int index = 0;
         for (String time : notificationTimes) {
             if (!scheduledTimes.contains(time)) {
                 Calendar calendar = getNextAlarmTime(time);
 
-                // Create the Intent and PendingIntent
-                Intent intent = createNotificationIntent(context, time);
+                // Create notification intent
+                Intent intent = createNotificationIntent(context, titles.get(index), messages.get(index), icons.get(index), time);
 
-                // Schedule the alarm
+                // Create PendingIntent
                 PendingIntent pendingIntent = createPendingIntent(context, time, intent);
+
+                // Schedule alarm
                 scheduleAlarm(alarmManager, calendar, pendingIntent);
             }
+            index++;
         }
 
-        // Update scheduled_times to match notification_times
+        // Update scheduled times
         editor.putStringSet("scheduled_times", new HashSet<>(notificationTimes));
         editor.apply();
     }
 
-
     // Method to reschedule the daily notifications
-    public static void rescheduleDailyNotification(Context context, Intent intent) {
+    public static void rescheduleDailyNotification(Context context, Intent intent, String title, String message, String icon) {
         // Get the AlarmManager and the time from the intent
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         String time = intent.getStringExtra("NOTIFICATION_TIME");
@@ -66,7 +97,7 @@ public class NotificationScheduler {
         Calendar calendar = getNextAlarmTime(time);
 
         // Create the Intent and PendingIntent
-        Intent rescheduleIntent = createNotificationIntent(context, time);
+        Intent rescheduleIntent = createNotificationIntent(context, title, message, icon, time);
 
         // Schedule the alarm
         PendingIntent pendingIntent = createPendingIntent(context, time, rescheduleIntent);
@@ -75,7 +106,7 @@ public class NotificationScheduler {
 
     // Method to cancel an existing alarm if needed
     private static void cancelExistingAlarm(Context context, String time, AlarmManager alarmManager) {
-        Intent intent = createNotificationIntent(context, time);
+        Intent intent = createNotificationIntent(context, null, null, null, time);
         PendingIntent pendingIntent = createPendingIntent(context, time, intent);
         if (alarmManager != null) {
             alarmManager.cancel(pendingIntent);
@@ -103,10 +134,18 @@ public class NotificationScheduler {
     }
 
     // Method to create the Intent for the alarm notification
-    private static Intent createNotificationIntent(Context context, String time) {
+    private static Intent createNotificationIntent(Context context, String title, String message, String icon, String time) {
+        // Set default values if extras are not provided
+        if (icon == null) {
+            icon = "ic_placeholder";
+        }
+
+        // Get the resource ID for the icon based on the provided icon
+        int resourceId = context.getResources().getIdentifier(icon, "drawable", context.getPackageName());
+
         Intent intent = new Intent(context, AlarmReceiver.class);
-        intent.putExtra("NOTIFICATION_TITLE", "Meal Reminder");
-        intent.putExtra("NOTIFICATION_MESSAGE", "It's time to log your meal!");
+        intent.putExtra("NOTIFICATION_TITLE", title);
+        intent.putExtra("NOTIFICATION_MESSAGE", message);
         intent.putExtra("NOTIFICATION_ICON", R.drawable.ic_today);
         intent.putExtra("NOTIFICATION_TIME", time);  // Include the time as an extra
 

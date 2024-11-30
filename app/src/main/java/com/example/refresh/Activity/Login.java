@@ -16,7 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.refresh.Database.HelperDB;
+import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.R;
 import com.example.refresh.Start;
 import com.example.refresh.User.UserInfo;
@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity {
 
     // Database Helper
     private UserInfo user = new UserInfo();
-    private HelperDB helperDB = new HelperDB(this);
+    private DatabaseHelper databaseHelper = new DatabaseHelper(this);
     private SQLiteDatabase db;
 
     /**
@@ -110,7 +110,7 @@ public class Login extends AppCompatActivity {
         user.setUserPwd(etPwdLogin.getText().toString());
 
         // Validate login credentials
-        ErrorMessage validationError = ValidationHelper.validateLogin(user, helperDB, db);
+        ErrorMessage validationError = ValidationHelper.validateLogin(user, databaseHelper, db);
 
         if (validationError == null) {
             // Successful login
