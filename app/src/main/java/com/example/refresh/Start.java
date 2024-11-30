@@ -1,5 +1,6 @@
 package com.example.refresh;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,9 @@ import android.Manifest;
 import com.example.refresh.Activity.HomeDashboard;
 import com.example.refresh.Activity.Login;
 import com.example.refresh.Activity.SignUp;
+
+import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * Start Activity - This is the initial screen of the app before login,
@@ -75,6 +79,9 @@ public class Start extends AppCompatActivity {
 
         // Request notification permission
         requestPostNotificationPermission();
+
+        // Set default notification times
+        setDefaultNotificationTimes();
 
         // Hide the action bar temporarily
         if (getSupportActionBar() != null) {
@@ -160,6 +167,16 @@ public class Start extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
             }
+        }
+    }
+
+    private void setDefaultNotificationTimes() {
+        SharedPreferences prefs = getSharedPreferences("NotificationPrefs", MODE_PRIVATE);
+        if (!prefs.contains("notification_times")) {  // Check if defaults are already set
+            SharedPreferences.Editor editor = prefs.edit();
+            // Default times in HH:mm format (24-hour)
+            editor.putStringSet("notification_times", new HashSet<>(Arrays.asList("09:00", "12:00", "18:00")));
+            editor.apply();
         }
     }
 }

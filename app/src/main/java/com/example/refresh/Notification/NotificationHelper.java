@@ -15,7 +15,7 @@ public class NotificationHelper {
     public static final String CHANNEL_ID = "notificationChannel";
 
     // Show the notification
-    public static void showNotification(Context context, String title, String message, Class<?> targetActivity) {
+    public static void showNotification(Context context, String title, String message, String iconLocation, Class<?> targetActivity) {
         // Ensure the notification channel exists
         AppNotificationChannel.createNotificationChannel(context);
 
@@ -23,7 +23,7 @@ public class NotificationHelper {
         PendingIntent pendingIntent = createPendingIntent(context, targetActivity);
 
         // Build the Notification
-        NotificationCompat.Builder notificationBuilder = buildNotification(context, title, message, pendingIntent);
+        NotificationCompat.Builder notificationBuilder = buildNotification(context, title, message, iconLocation, pendingIntent);
 
         // Display the Notification
         displayNotification(context, notificationBuilder);
@@ -36,9 +36,18 @@ public class NotificationHelper {
     }
 
     // Build the notification with content, action, and channel
-    private static NotificationCompat.Builder buildNotification(Context context, String title, String message, PendingIntent pendingIntent) {
+    private static NotificationCompat.Builder buildNotification(Context context, String title, String message, String iconLocation, PendingIntent pendingIntent) {
+
+        // Set the default icon location if not provided
+        if (iconLocation == null) {
+            iconLocation = "ic_placeholder";
+        }
+
+        // Get the resource ID for the icon based on the provided iconLocation
+        int resourceId = context.getResources().getIdentifier(iconLocation, "drawable", context.getPackageName());
+
         return new NotificationCompat.Builder(context, CHANNEL_ID)  // Use the channel ID defined in this class
-                .setSmallIcon(R.drawable.ic_today)  // Replace with your app's icon
+                .setSmallIcon(resourceId)  // Replace with your app's icon
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
