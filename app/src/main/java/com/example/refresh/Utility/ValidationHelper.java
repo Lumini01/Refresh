@@ -1,6 +1,6 @@
 package com.example.refresh.Utility;
 
-import static com.example.refresh.User.UserCols.*;
+import static com.example.refresh.User.UserColsOld.*;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Patterns;

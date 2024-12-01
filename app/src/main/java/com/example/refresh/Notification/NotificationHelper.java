@@ -8,6 +8,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 
 import com.example.refresh.R;
+import com.example.refresh.TestingGrounds;
 
 public class NotificationHelper {
 
@@ -54,6 +55,8 @@ public class NotificationHelper {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
             notificationManager.notify(1, builder.build());  // 1 is the notification ID
+
+            String time = builder.build().extras.getString("NOTIFICATION_TIME");
         }
     }
 }

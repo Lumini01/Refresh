@@ -1,12 +1,14 @@
 package com.example.refresh.User;
 
+import com.example.refresh.DBParent;
+
 /**
  * UserInfo - This class is used to store and manage user information, including
  * their name, email, phone number, and password. It provides methods to access
  * and modify these details, and includes constructors for creating user objects
  * with different combinations of the user data.
  */
-public class UserInfo {
+public class UserInfo extends DBParent<UserInfo> {
 
     private String userName;   // Stores the user's name
     private String userEmail;  // Stores the user's email
