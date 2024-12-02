@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.refresh.Database.Tables.NotificationInstancesTable;
 import com.example.refresh.Database.Tables.NotificationTemplatesTable;
 import com.example.refresh.Database.Tables.UsersTable;
+import com.example.refresh.Model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,31 +69,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.insert(table.getTableName(), null, values);
     }
 
-    public <T> List<T> getAllRecords(Tables table, Function<Cursor, T> mapper) {
+    public <T> List<T> getAllRecords(Tables table) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<T> records = new ArrayList<>();
-        Cursor cursor = db.query(table.getTableName(), null, null, null, null, null, null);
+        Cursor cursor = null;
 
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                records.add(mapper.apply(cursor));
+        try {
+            cursor = db.query(table.getTableName(), null, null, null, null, null, null);
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    T record = createRecord(cursor, table);
+                    if (record != null) {
+                        records.add(record);
+                    }
+                }
             }
-            cursor.close();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
         return records;
     }
 
-    public <T> T getRecord(Tables table, String[] selectionArgs, Function<Cursor, T> mapper) {
+    public <T> T getRecord(Tables table, String selection, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(table.getTableName(), null, null, selectionArgs, null, null, null);
+        Cursor cursor = null;
 
-        if (cursor != null && cursor.moveToFirst()) {
-            T record = mapper.apply(cursor);
-            cursor.close();
-            return record;
+        try {
+            cursor = db.query(table.getTableName(), null, selection, selectionArgs, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                return createRecord(cursor, table);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
-        return null;
+        return null; // Return null if no record is found
     }
+
 
     public <T> T getFromRecord(Tables table, Enum<?> columnEnum, int index) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -145,4 +161,75 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void closeDB() {
         this.close();
     }
+
+    @SuppressWarnings("unchecked")
+    private <T> T createRecord(Cursor cursor, Tables table) {
+        switch (table) {
+            case USERS:
+                // Example: User table mapping
+                return (T) new UserInfo(
+                        cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("email")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("phone")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("pwd"))
+                );
+            case NOTIFICATION_TEMPLATES:
+                // Example: NotificationTemplates table mapping
+                return (T) new NotificationTemplate(
+                        cursor.getInt(cursor.getColumnIndexOrThrow("template_id")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("category")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("title")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("message")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("icon")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("color"))
+                );
+            case NOTIFICATION_INSTANCES:
+                // Example: NotificationInstances table mapping
+                return (T) new NotificationInstance(
+                        cursor.getInt(cursor.getColumnIndexOrThrow("instance_id")),
+                        cursor.getInt(cursor.getColumnIndexOrThrow("template_id")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("time"))
+                );
+            default:
+                throw new IllegalArgumentException("Unsupported table: " + table.name());
+        }
+    }
+
+    /*private ContentValues toContentValues(Object object, Tables table) {
+        ContentValues values = new ContentValues();
+
+        switch (table) {
+            case USERS:
+                UserInfo user = (UserInfo) object;
+                values.put("id", user.getId()); // Assuming UserInfo has an ID
+                values.put("name", user.getName()); // Assuming UserInfo has a name
+                values.put("email", user.getEmail()); // Assuming UserInfo has an email
+                values.put("phone", user.getPhone()); // Assuming UserInfo has a phone
+                values.put("pwd", user.getPwd()); // Assuming UserInfo has a password
+                break;
+
+            case NOTIFICATION_TEMPLATES:
+                NotificationTemplate template = (NotificationTemplate) object;
+                values.put("id", template.getId()); // Assuming NotificationTemplate has an ID
+                values.put("title", template.getTitle()); // Assuming NotificationTemplate has a title
+                values.put("message", template.getMessage()); // Assuming NotificationTemplate has a message
+                values.put("icon", template.getIcon()); // Assuming NotificationTemplate has an icon
+                values.put("color", template.getColor()); // Assuming NotificationTemplate has a color
+                break;
+
+            case NOTIFICATION_INSTANCES:
+                NotificationInstance instance = (NotificationInstance) object;
+                values.put("id", instance.getId()); // Assuming NotificationInstance has an ID
+                values.put("template_id", instance.getTemplateId()); // Assuming NotificationInstance has a template_id
+                values.put("user_id", instance.getUserId()); // Assuming NotificationInstance has a user_id
+                values.put("timestamp", instance.getTimestamp()); // Assuming NotificationInstance has a timestamp
+                break;
+
+            default:
+                throw new IllegalArgumentException("Unsupported table: " + table.name());
+        }
+
+        return values;
+    }
+*/
 }
