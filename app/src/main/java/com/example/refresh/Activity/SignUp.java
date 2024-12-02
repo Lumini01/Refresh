@@ -19,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.R;
 import com.example.refresh.Start;
-import com.example.refresh.User.UserInfo;
+import com.example.refresh.Model.UserInfo;
 import com.example.refresh.Utility.ErrorMessage;
 import com.example.refresh.Utility.ValidationHelper;
 
@@ -112,10 +112,10 @@ public class SignUp extends AppCompatActivity {
      * Collect user input from the form fields.
      */
     private void collectUserInput() {
-        user.setUserName(etNameSignUp.getText().toString());
-        user.setUserEmail(etEmailSignUp.getText().toString());
-        user.setUserPhone(etPhoneSignUp.getText().toString());
-        user.setUserPwd(etPwdSignUp.getText().toString());
+        user.setName(etNameSignUp.getText().toString());
+        user.setEmail(etEmailSignUp.getText().toString());
+        user.setPhone(etPhoneSignUp.getText().toString());
+        user.setPwd(etPwdSignUp.getText().toString());
     }
 
     /**
@@ -125,7 +125,7 @@ public class SignUp extends AppCompatActivity {
      */
     private ErrorMessage validateInput() {
         String pwdConf = etPwdConfSignUp.getText().toString();
-        return ValidationHelper.validateSignUp(user, pwdConf, databaseHelper, db);
+        return ValidationHelper.validateSignUp(user, pwdConf, databaseHelper);
     }
 
     /**
@@ -183,7 +183,7 @@ public class SignUp extends AppCompatActivity {
             case PWD:
                 etPwdSignUp.setError(validate.getMessage());
                 break;
-            case PWDCONF:
+            case PWD_CONFIRM:
                 etPwdSignUp.setError(validate.getMessage());
                 etPwdConfSignUp.setError(validate.getMessage());
                 break;

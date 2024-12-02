@@ -1,13 +1,13 @@
 package com.example.refresh.Utility;
 
-import com.example.refresh.User.UserColsOld;
+import com.example.refresh.Database.Tables.UsersTable.Columns;
 
 /**
  * Represents an error message related to a specific field.
  * Used to store and retrieve field-specific error messages during validation.
  */
 public class ErrorMessage {
-    private UserColsOld field;
+    private Columns field;
     private String message;
 
     /**
@@ -15,7 +15,7 @@ public class ErrorMessage {
      * @param field The field that the error message is associated with.
      * @param message The error message related to the field.
      */
-    public ErrorMessage(UserColsOld field, String message) {
+    public ErrorMessage(Columns field, String message) {
         this.field = field;
         this.message = message;
     }
@@ -24,7 +24,7 @@ public class ErrorMessage {
      * Sets the field for this error message.
      * @param field The field to set.
      */
-    public void setField(UserColsOld field) {
+    public void setField(Columns field) {
         this.field = field;
     }
 
@@ -40,7 +40,7 @@ public class ErrorMessage {
      * Gets the field for this error message.
      * @return The field associated with the error message.
      */
-    public UserColsOld getField() {
+    public Columns getField() {
         return field;
     }
 

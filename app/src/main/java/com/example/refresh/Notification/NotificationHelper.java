@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 
 import androidx.core.app.NotificationCompat;
 
@@ -45,6 +46,8 @@ public class NotificationHelper {
                 .setSmallIcon(resourceId)  // Replace with your app's icon
                 .setContentTitle(title)
                 .setContentText(message)
+                .setColor(Color.BLUE)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);

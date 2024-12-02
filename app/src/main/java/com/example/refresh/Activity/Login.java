@@ -19,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.R;
 import com.example.refresh.Start;
-import com.example.refresh.User.UserInfo;
+import com.example.refresh.Model.UserInfo;
 import com.example.refresh.Utility.ErrorMessage;
 import com.example.refresh.Utility.ValidationHelper;
 
@@ -106,11 +106,11 @@ public class Login extends AppCompatActivity {
      */
     private void handleLogin() {
         // Set user credentials from the input fields
-        user.setUserEmail(etEmailLogin.getText().toString());
-        user.setUserPwd(etPwdLogin.getText().toString());
+        user.setEmail(etEmailLogin.getText().toString());
+        user.setPwd(etPwdLogin.getText().toString());
 
         // Validate login credentials
-        ErrorMessage validationError = ValidationHelper.validateLogin(user, databaseHelper, db);
+        ErrorMessage validationError = ValidationHelper.validateLogin(user, databaseHelper);
 
         if (validationError == null) {
             // Successful login
