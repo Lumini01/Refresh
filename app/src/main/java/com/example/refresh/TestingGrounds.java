@@ -25,7 +25,7 @@ public class TestingGrounds {
 
         ArrayList<String> times = new ArrayList<>();
         times.add(timeNow.toString());
-        NotificationScheduler.addNotificationTimes(context, titles, messages, icons, times);
+        NotificationScheduler.notificationInstances(context, titles, messages, icons, times);
     }
 
     public static void testCleanup(Context context,  String time) {

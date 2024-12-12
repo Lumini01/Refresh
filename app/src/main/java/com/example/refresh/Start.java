@@ -83,7 +83,7 @@ public class Start extends AppCompatActivity {
         requestPostNotificationPermission();
 
         // Set default notification times
-        setDefaultNotificationTimes();
+        setDefaultNotificationInstances();
 
         Context context = getApplicationContext();
         TestingGrounds.test(context);
@@ -180,12 +180,12 @@ public class Start extends AppCompatActivity {
         }
     }
 
-    private void setDefaultNotificationTimes() {
+    private void setDefaultNotificationInstances() {
         SharedPreferences prefs = getSharedPreferences("NotificationPrefs", MODE_PRIVATE);
-        if (!prefs.contains("notification_times")) {  // Check if defaults are already set
+        if (!prefs.contains("notification_instances")) {  // Check if defaults are already set
             SharedPreferences.Editor editor = prefs.edit();
             // Default times in HH:mm format (24-hour)
-            editor.putStringSet("notification_times", new HashSet<>(Arrays.asList("09:00", "12:00", "18:00")));
+            editor.putStringSet("notification_instances", new HashSet<>(Arrays.asList("09:00", "12:00", "18:00")));
             editor.apply();
         }
     }

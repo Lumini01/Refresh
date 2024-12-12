@@ -13,7 +13,6 @@ import com.example.refresh.Model.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -64,9 +63,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createStatement);
     }
 
-    public long insert(Tables table, ContentValues values) {
+    public <T> Integer insert(Tables table, T model) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.insert(table.getTableName(), null, values);
+        ContentValues values = toContentValues(model, table);
+
+        return (int) db.insert(table.getTableName(), null, values);
     }
 
     public <T> List<T> getAllRecords(Tables table) {
@@ -92,12 +93,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return records;
     }
 
-    public <T> T getRecord(Tables table, String selection, String[] selectionArgs) {
+    public <T> T getRecord(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
+        String columnName = columnEnum.name();
+
         Cursor cursor = null;
 
         try {
-            cursor = db.query(table.getTableName(), null, selection, selectionArgs, null, null, null);
+            cursor = db.query(table.getTableName(), new String[]{columnName}, null, selectionArgs, null, null, null);
             if (cursor != null && cursor.moveToFirst()) {
                 return createRecord(cursor, table);
             }
@@ -132,17 +135,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;  // Return the value or null if not found
     }
 
-    public int editRecords(Tables table, ContentValues values, String selection, String[] selectionArgs) {
+    public <T> Integer editRecords(Tables table, T model,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.update(table.getTableName(), values, selection, selectionArgs);
+        String columnName = columnEnum.name();
+        ContentValues values = toContentValues(model, table);
+
+        return db.update(table.getTableName(), values, columnName + "=?", selectionArgs);
     }
 
-    public int removeRecords(Tables table, String selection, String[] selectionArgs) {
+    public int deleteRecords(Tables table,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(table.getTableName(), selection, selectionArgs);
+        String columnName = columnEnum.name();
+
+        return db.delete(table.getTableName(), columnName + "=?", selectionArgs);
     }
 
-    public int existsInDB(Tables table, String[] selectionArgs, Enum<?> columnEnum) {
+    public int existsInDB(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = columnEnum.name();  // Convert the enum to the column name
 
@@ -195,13 +203,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    /*private ContentValues toContentValues(Object object, Tables table) {
+    private <T> ContentValues toContentValues(T model, Tables table) {
         ContentValues values = new ContentValues();
 
         switch (table) {
             case USERS:
-                UserInfo user = (UserInfo) object;
-                values.put("id", user.getId()); // Assuming UserInfo has an ID
+                UserInfo user = (UserInfo) model;
                 values.put("name", user.getName()); // Assuming UserInfo has a name
                 values.put("email", user.getEmail()); // Assuming UserInfo has an email
                 values.put("phone", user.getPhone()); // Assuming UserInfo has a phone
@@ -209,8 +216,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 break;
 
             case NOTIFICATION_TEMPLATES:
-                NotificationTemplate template = (NotificationTemplate) object;
-                values.put("id", template.getId()); // Assuming NotificationTemplate has an ID
+                NotificationTemplate template = (NotificationTemplate) model;
+                values.put("id", template.getTemplateID()); // Assuming NotificationTemplate has an ID
                 values.put("title", template.getTitle()); // Assuming NotificationTemplate has a title
                 values.put("message", template.getMessage()); // Assuming NotificationTemplate has a message
                 values.put("icon", template.getIcon()); // Assuming NotificationTemplate has an icon
@@ -218,11 +225,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 break;
 
             case NOTIFICATION_INSTANCES:
-                NotificationInstance instance = (NotificationInstance) object;
-                values.put("id", instance.getId()); // Assuming NotificationInstance has an ID
-                values.put("template_id", instance.getTemplateId()); // Assuming NotificationInstance has a template_id
-                values.put("user_id", instance.getUserId()); // Assuming NotificationInstance has a user_id
-                values.put("timestamp", instance.getTimestamp()); // Assuming NotificationInstance has a timestamp
+                NotificationInstance instance = (NotificationInstance) model;
+                values.put("instance_id", instance.getInstanceID()); // Assuming NotificationInstance has an ID
+                values.put("template_id", instance.getTemplateID()); // Assuming NotificationInstance has a template_id
+                values.put("timestamp", instance.getTime()); // Assuming NotificationInstance has a timestamp
                 break;
 
             default:
@@ -231,5 +237,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return values;
     }
-*/
 }

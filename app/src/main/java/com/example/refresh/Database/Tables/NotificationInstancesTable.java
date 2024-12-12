@@ -1,8 +1,10 @@
 package com.example.refresh.Database.Tables;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 
+import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Model.NotificationInstance;
 
 public class NotificationInstancesTable {
@@ -51,5 +53,31 @@ public class NotificationInstancesTable {
         String time = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TIME.getColumnName()));
 
         return new NotificationInstance(instanceID, templateID, time);
+    }
+
+    public static int createInstanceID(Context context) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        int id = 0;
+        while (true) {
+            if (dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(id)}) == -1)
+                break;
+
+            id++;
+        }
+
+        return id;
+    }
+
+    public static NotificationInstance getInstanceByID(Context Context, int id) {
+        DatabaseHelper dbHelper = new DatabaseHelper(Context);
+
+        int index = dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(id)});
+
+        if (index == -1)
+            return null;
+
+        NotificationInstance instance = dbHelper.getRecord(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(id)});
+
+        return instance;
     }
 }
