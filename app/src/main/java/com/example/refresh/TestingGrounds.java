@@ -4,6 +4,9 @@ import android.app.AlarmManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Model.NotificationInstance;
+import com.example.refresh.Model.NotificationTemplate;
 import com.example.refresh.Notification.NotificationScheduler;
 
 import java.time.LocalTime;
@@ -13,27 +16,25 @@ import java.util.Set;
 
 public class TestingGrounds {
     public static void test(Context context) {
-        ArrayList<String> titles = new ArrayList<>();
-        ArrayList<String> messages = new ArrayList<>();
-        ArrayList<String> icons = new ArrayList<>();
-
-        titles.add("Test");
-        messages.add("This is a test notification!");
-        icons.add("ic_notifications");
-
-        LocalTime timeNow = LocalTime.now().plusMinutes(2);
-
+        ArrayList<Integer> templateIDs = new ArrayList<>();
         ArrayList<String> times = new ArrayList<>();
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+        // Add a random notification template for testing
+        NotificationTemplate template = dbHelper.getRandomRecord(DatabaseHelper.Tables.NOTIFICATION_TEMPLATES);
+        templateIDs.add(template.getTemplateID());
+
+        // Add the current time for testing
+        LocalTime timeNow = LocalTime.now().plusMinutes(2);
         times.add(timeNow.toString());
-        NotificationScheduler.notificationInstances(context, titles, messages, icons, times);
+
+        NotificationScheduler.addNotificationInstances(context, templateIDs, times);
     }
 
-    public static void testCleanup(Context context,  String time) {
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
+    public static void testCleanup(Context context, NotificationInstance instance) {
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        NotificationScheduler.cancelExistingAlarm(context, time, alarmManager);
+        NotificationScheduler.cancelExistingAlarm(context, instance, alarmManager);
     }
 }

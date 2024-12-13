@@ -1,21 +1,40 @@
 package com.example.refresh.Model;
 
+import android.content.Context;
+
 public class NotificationTemplate {
 
     private int templateID;
     private String category;
     private String title;
     private String message;
-    private String icon;
-    private String color;
+    private int iconID;
+    private Class<?> activityClass;
 
-    public NotificationTemplate(int templateID, String category, String title, String message, String icon, String color) {
+    public NotificationTemplate(int templateID, String category, String title, String message, int iconID, Class<?> activityClass) {
         this.templateID = templateID;
         this.category = category;
         this.title = title;
         this.message = message;
-        this.icon = icon;
-        this.color = color;
+        this.iconID = iconID;
+        this.activityClass = activityClass;
+    }
+
+    public NotificationTemplate(int templateID, String category, String title, String message, String iconID, String activityClassName) {
+        this.templateID = templateID;
+        this.category = category;
+        this.title = title;
+        this.message = message;
+        try {
+            this.iconID = Integer.parseInt(iconID);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.activityClass = Class.forName(activityClassName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     // Getters and Setters
@@ -51,19 +70,43 @@ public class NotificationTemplate {
         this.message = message;
     }
 
-    public String getIcon() {
-        return icon;
+    public int getIconID() {
+        return iconID;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public String getIconIDName(Context context) {
+        return context.getResources().getResourceEntryName(iconID);
     }
 
-    public String getColor() {
-        return color;
+    public void setIconID(int iconID) {
+        this.iconID = iconID;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setIconID(String iconID) {
+        try {
+            this.iconID = Integer.parseInt(iconID);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Class<?> getActivityClass() {
+        return activityClass;
+    }
+
+    public String getActivityClassName() {
+        return activityClass.getName();
+    }
+
+    public void setActivityClass(Class<?> activityClass) {
+        this.activityClass = activityClass;
+    }
+
+    public void setActivityClass(String activityClass) {
+        try {
+            this.activityClass = Class.forName(activityClass);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

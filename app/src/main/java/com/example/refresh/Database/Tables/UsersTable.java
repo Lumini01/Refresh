@@ -13,7 +13,7 @@ public class UsersTable {
         EMAIL("email"),
         PHONE("phone"),
         PWD("pwd"),
-        PWD_CONFIRM("pwdConfirm");
+        PWD_CONFIRM("pwd_confirm");
 
         private final String columnName;
 

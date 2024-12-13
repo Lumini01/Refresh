@@ -1,14 +1,16 @@
 package com.example.refresh.Database;
 
+import static com.example.refresh.Database.Tables.UsersTable.Columns.*;
+import static com.example.refresh.Database.Tables.NotificationTemplatesTable.Columns.*;
+import static com.example.refresh.Database.Tables.NotificationInstancesTable.Columns.*;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.refresh.Database.Tables.NotificationInstancesTable;
-import com.example.refresh.Database.Tables.NotificationTemplatesTable;
-import com.example.refresh.Database.Tables.UsersTable;
+import com.example.refresh.Database.Tables.*;
 import com.example.refresh.Model.*;
 
 import java.util.ArrayList;
@@ -51,9 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + NotificationTemplatesTable.TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + NotificationInstancesTable.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.USERS.name());
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_TEMPLATES.name());
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_INSTANCES.name());
         // Add more table drop logic here
         onCreate(db);
     }
@@ -112,7 +114,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null; // Return null if no record is found
     }
 
-
     public <T> T getFromRecord(Tables table, Enum<?> columnEnum, int index) {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = columnEnum.name();  // Convert the enum to the column name (e.g., "name")
@@ -166,8 +167,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return index;
     }
 
-    public void closeDB() {
-        this.close();
+    public <T> T getRandomRecord(Tables table) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Tables.NOTIFICATION_TEMPLATES.name() + " ORDER BY RANDOM() LIMIT 1", null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            T randomRecord = createRecord(cursor, table);
+            // Populate your NotificationInstance object from the cursor
+            // Example: randomInstance.setId(cursor.getInt(cursor.getColumnIndex("id")));
+            cursor.close();
+            return randomRecord;
+        }
+
+        return null;
     }
 
     @SuppressWarnings("unchecked")
@@ -176,27 +188,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case USERS:
                 // Example: User table mapping
                 return (T) new UserInfo(
-                        cursor.getString(cursor.getColumnIndexOrThrow("name")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("email")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("phone")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("pwd"))
+                        cursor.getString(cursor.getColumnIndexOrThrow(NAME.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(EMAIL.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(PHONE.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(PWD.name()))
                 );
             case NOTIFICATION_TEMPLATES:
                 // Example: NotificationTemplates table mapping
                 return (T) new NotificationTemplate(
-                        cursor.getInt(cursor.getColumnIndexOrThrow("template_id")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("category")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("title")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("message")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("icon")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("color"))
+                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationTemplatesTable.Columns.TEMPLATE_ID.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(CATEGORY.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(TITLE.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(MESSAGE.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(ICON_ID.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(ACTIVITY_CLASS.name()))
                 );
             case NOTIFICATION_INSTANCES:
                 // Example: NotificationInstances table mapping
                 return (T) new NotificationInstance(
-                        cursor.getInt(cursor.getColumnIndexOrThrow("instance_id")),
-                        cursor.getInt(cursor.getColumnIndexOrThrow("template_id")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("time"))
+                        cursor.getInt(cursor.getColumnIndexOrThrow(INSTANCE_ID.name())),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationInstancesTable.Columns.TEMPLATE_ID.name())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(TIME.name()))
                 );
             default:
                 throw new IllegalArgumentException("Unsupported table: " + table.name());
@@ -209,26 +221,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         switch (table) {
             case USERS:
                 UserInfo user = (UserInfo) model;
-                values.put("name", user.getName()); // Assuming UserInfo has a name
-                values.put("email", user.getEmail()); // Assuming UserInfo has an email
-                values.put("phone", user.getPhone()); // Assuming UserInfo has a phone
-                values.put("pwd", user.getPwd()); // Assuming UserInfo has a password
+                values.put(NAME.name(), user.getName()); // Assuming UserInfo has a name
+                values.put(EMAIL.name(), user.getEmail()); // Assuming UserInfo has an email
+                values.put(PHONE.name(), user.getPhone()); // Assuming UserInfo has a phone
+                values.put(PWD.name(), user.getPwd()); // Assuming UserInfo has a password
                 break;
 
             case NOTIFICATION_TEMPLATES:
                 NotificationTemplate template = (NotificationTemplate) model;
-                values.put("id", template.getTemplateID()); // Assuming NotificationTemplate has an ID
-                values.put("title", template.getTitle()); // Assuming NotificationTemplate has a title
-                values.put("message", template.getMessage()); // Assuming NotificationTemplate has a message
-                values.put("icon", template.getIcon()); // Assuming NotificationTemplate has an icon
-                values.put("color", template.getColor()); // Assuming NotificationTemplate has a color
+                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.name(), template.getTemplateID()); // Assuming NotificationTemplate has an ID
+                values.put(TITLE.name(), template.getTitle()); // Assuming NotificationTemplate has a title
+                values.put(MESSAGE.name(), template.getMessage()); // Assuming NotificationTemplate has a message
+                values.put(ICON_ID.name(), template.getIconID()); // Assuming NotificationTemplate has an icon
+                values.put(ACTIVITY_CLASS.name(), template.getActivityClassName());
                 break;
 
             case NOTIFICATION_INSTANCES:
                 NotificationInstance instance = (NotificationInstance) model;
-                values.put("instance_id", instance.getInstanceID()); // Assuming NotificationInstance has an ID
-                values.put("template_id", instance.getTemplateID()); // Assuming NotificationInstance has a template_id
-                values.put("timestamp", instance.getTime()); // Assuming NotificationInstance has a timestamp
+                values.put(INSTANCE_ID.name(), instance.getInstanceID()); // Assuming NotificationInstance has an ID
+                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.name(), instance.getTemplateID()); // Assuming NotificationInstance has a template_id
+                values.put(TIME.name(), instance.getTime()); // Assuming NotificationInstance has a timestamp
                 break;
 
             default:
@@ -236,5 +248,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return values;
+    }
+
+    public static <T> String[] toSelectionArgs(T value) {
+        return new String[] {String.valueOf(value)};
+    }
+
+    public boolean isDatabaseOpen() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.isOpen();
     }
 }

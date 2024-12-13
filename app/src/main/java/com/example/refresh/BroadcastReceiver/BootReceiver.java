@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Notification.NotificationScheduler;
 
 import java.util.ArrayList;
@@ -13,18 +15,19 @@ public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
 
-            //retrieveNotificationDetails(context);
+            //retrieveNotificationInstances(context);
+            ArrayList<NotificationInstance> instances  = retrieveNotificationInstances(context);
 
-            // Temporary values
-            ArrayList<String> titles = new ArrayList<>();
-            ArrayList<String> messages = new ArrayList<>();
-            ArrayList<String> icons = new ArrayList<>();
-
-            titles.add("Test");
-            messages.add("This is a test notification!");
-            icons.add("ic_notifications");
-
-            NotificationScheduler.scheduleDailyNotifications(context, titles, messages, icons);
+            // Schedule daily notifications
+            NotificationScheduler.scheduleDailyNotifications(context, instances);
         }
+    }
+
+    // Retrieve all notification instances from the database
+    private ArrayList<NotificationInstance> retrieveNotificationInstances(Context context) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        ArrayList<NotificationInstance> instances = new ArrayList<>(dbHelper.getAllRecords(DatabaseHelper.Tables.NOTIFICATION_INSTANCES));
+
+        return instances;
     }
 }

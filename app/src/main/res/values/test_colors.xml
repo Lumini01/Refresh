@@ -15,7 +15,7 @@
 
     <!-- UI Element Colors -->
     <!--color name="buttonColor">#000000</color--> <!-- Placeholder for button color -->
-    <!--color name="iconTint">#000000</color--> <!-- Placeholder for icon tint color -->
+    <!--color name="iconTint">#000000</color--> <!-- Placeholder for iconID tint color -->
     <!--color name="cardBackground">#FFFFFF</color--> <!-- Placeholder for card background color -->
     <!--color name="borderColor">#000000</color--> <!-- Placeholder for border color -->
     <!--color name="dividerColor">#000000</color--> <!-- Placeholder for divider line color -->

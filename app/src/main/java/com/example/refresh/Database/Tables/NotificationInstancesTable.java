@@ -6,14 +6,15 @@ import android.database.Cursor;
 
 import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Model.NotificationInstance;
+import com.example.refresh.Model.NotificationTemplate;
 
 public class NotificationInstancesTable {
 
     public static final String TABLE_NAME = "notification_instances";
 
     public enum Columns {
-        INSTANCE_ID("instanceID"),
-        TEMPLATE_ID("templateID"),
+        INSTANCE_ID("instance_id"),
+        TEMPLATE_ID("template_id"),
         TIME("time");
 
         private final String columnName;
@@ -30,27 +31,27 @@ public class NotificationInstancesTable {
     public static final String CREATE_TABLE =
 
             "CREATE TABLE " + TABLE_NAME + " (" +
-            Columns.INSTANCE_ID.getColumnName() + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            Columns.TEMPLATE_ID.getColumnName() + " INTEGER NOT NULL, " +
-            Columns.TIME.getColumnName() + " TEXT NOT NULL, " +
-            "FOREIGN KEY(" + Columns.TEMPLATE_ID.getColumnName() + ") " +
+            Columns.INSTANCE_ID.name() + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            Columns.TEMPLATE_ID.name() + " INTEGER NOT NULL, " +
+            Columns.TIME.name() + " TEXT NOT NULL, " +
+            "FOREIGN KEY(" + Columns.TEMPLATE_ID.name() + ") " +
             "REFERENCES " + NotificationTemplatesTable.TABLE_NAME + " (" +
             NotificationTemplatesTable.Columns.TEMPLATE_ID.getColumnName() + "));";
 
     public static ContentValues toContentValues(NotificationInstance instance) {
 
         ContentValues values = new ContentValues();
-        values.put(Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID());
-        values.put(Columns.TIME.getColumnName(), instance.getTime());
+        values.put(Columns.TEMPLATE_ID.name(), instance.getTemplateID());
+        values.put(Columns.TIME.name(), instance.getTime());
 
         return values;
     }
 
     public static NotificationInstance fromCursor(Cursor cursor) {
 
-        int instanceID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.INSTANCE_ID.getColumnName()));
-        int templateID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.TEMPLATE_ID.getColumnName()));
-        String time = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TIME.getColumnName()));
+        int instanceID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.INSTANCE_ID.name()));
+        int templateID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.TEMPLATE_ID.name()));
+        String time = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TIME.name()));
 
         return new NotificationInstance(instanceID, templateID, time);
     }
@@ -68,16 +69,22 @@ public class NotificationInstancesTable {
         return id;
     }
 
-    public static NotificationInstance getInstanceByID(Context Context, int id) {
-        DatabaseHelper dbHelper = new DatabaseHelper(Context);
+    public static NotificationInstance getInstanceByID(Context context, int instanceID) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        int index = dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(id)});
+        int index = dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(instanceID)});
 
         if (index == -1)
             return null;
 
-        NotificationInstance instance = dbHelper.getRecord(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(id)});
+        NotificationInstance instance = dbHelper.getRecord(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(instanceID)});
 
         return instance;
+    }
+
+    public static NotificationTemplate getNotificationTemplate(Context context, NotificationInstance instance) {
+        int templateID = instance.getTemplateID();
+
+        return NotificationTemplatesTable.getTemplateByID(context, templateID);
     }
 }

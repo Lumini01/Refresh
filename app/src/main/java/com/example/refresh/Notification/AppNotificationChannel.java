@@ -7,9 +7,9 @@ import android.os.Build;
 
 public class AppNotificationChannel {
 
-    public static final String CHANNEL_ID = "notificationChannel";
-    public static final String CHANNEL_NAME = "Main_Channel";
-    public static final String CHANNEL_DESCRIPTION = "channelDescription";
+    public static final String CHANNEL_ID = "notification_channel";
+    public static final String CHANNEL_NAME = "main_notification_channel";
+    public static final String CHANNEL_DESCRIPTION = "channel_description";
 
     public static void createNotificationChannel(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

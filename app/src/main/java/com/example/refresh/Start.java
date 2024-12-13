@@ -26,7 +26,10 @@ import android.Manifest;
 import com.example.refresh.Activity.HomeDashboard;
 import com.example.refresh.Activity.Login;
 import com.example.refresh.Activity.SignUp;
+import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Notification.NotificationScheduler;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -181,12 +184,18 @@ public class Start extends AppCompatActivity {
     }
 
     private void setDefaultNotificationInstances() {
-        SharedPreferences prefs = getSharedPreferences("NotificationPrefs", MODE_PRIVATE);
-        if (!prefs.contains("notification_instances")) {  // Check if defaults are already set
-            SharedPreferences.Editor editor = prefs.edit();
-            // Default times in HH:mm format (24-hour)
-            editor.putStringSet("notification_instances", new HashSet<>(Arrays.asList("09:00", "12:00", "18:00")));
-            editor.apply();
-        }
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        ArrayList<Integer> templateIDs = new ArrayList<>();
+        ArrayList<String> times = new ArrayList<>();
+
+        templateIDs.add(0);
+        templateIDs.add(1);
+        templateIDs.add(2);
+
+        times.add("9:00");
+        times.add("15:00");
+        times.add("19:00");
+
+        NotificationScheduler.addNotificationInstances(this, templateIDs, times);
     }
 }

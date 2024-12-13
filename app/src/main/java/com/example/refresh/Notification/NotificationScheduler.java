@@ -2,7 +2,6 @@ package com.example.refresh.Notification;
 
 import static com.example.refresh.Database.DatabaseHelper.Tables.*;
 import static com.example.refresh.Database.Tables.NotificationInstancesTable.Columns.*;
-import static com.example.refresh.Database.Tables.NotificationTemplatesTable.Columns.*;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -24,12 +23,7 @@ import java.util.Set;
 
 public class NotificationScheduler {
     public static void addNotificationInstances(Context context, ArrayList<Integer> templateIDs, ArrayList<String> times) {
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-
-        // Retrieve the current set of notification times
-        Set<String> notificationInstances = prefs.getStringSet("notification_instances", new HashSet<>());
 
         ArrayList<NotificationInstance> instances = new ArrayList<>();
         int instanceID = 0;
@@ -44,14 +38,10 @@ public class NotificationScheduler {
                     instances.add(new NotificationInstance(instanceID, templateID, time));
 
                     dbHelper.insert(NOTIFICATION_INSTANCES, instances.get(i));
-                    notificationInstances.add(String.valueOf(instanceID));
                 }
             }
 
-
-            // Save updated notification times
-            editor.putStringSet("notification_instances", notificationInstances);
-            editor.apply();
+            dbHelper.close();
 
             // Schedule notifications again
             NotificationScheduler.scheduleDailyNotifications(context, instances);
@@ -60,27 +50,26 @@ public class NotificationScheduler {
     }
 
     public static void scheduleDailyNotifications(Context context, ArrayList<NotificationInstance> instances) {
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        // Load notification times
-        Set<String> notificationInstances = prefs.getStringSet("notification_instances", new HashSet<>());
-        Set<String> scheduledNotifications = prefs.getStringSet("scheduled_notifications", new HashSet<>());
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        ArrayList<Integer> instanceIDs = new ArrayList<>();
+
+        for (NotificationInstance instance : instances)
+            instanceIDs.add(instance.getInstanceID());
 
         // Cancel removed alarms
-        for (String notificationID : scheduledNotifications) {
-            if (!notificationInstances.contains(notificationID)) {
-                cancelExistingAlarm(context, NotificationInstancesTable.getInstanceByID(context, Integer.parseInt(notificationID)), alarmManager);
+        for (int instanceID : instanceIDs) {
+            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toSelectionArgs(instanceID)) == -1) {
+                cancelExistingAlarm(context, NotificationInstancesTable.getInstanceByID(context, instanceID), alarmManager);
             }
         }
 
         // Schedule alarms
         int index = 0;
-        for (String instanceID : notificationInstances) {
-            if (!scheduledNotifications.contains(instanceID)) {
+        for (int instanceID : instanceIDs) {
+            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toSelectionArgs(instanceID)) == -1) {
                 NotificationInstance instance = instances.get(index);
 
                 Calendar calendar = getNextAlarmTime(instance);
@@ -98,9 +87,7 @@ public class NotificationScheduler {
             index++;
         }
 
-        // Update scheduled times
-        editor.putStringSet("scheduled_notifications", new HashSet<>(notificationInstances));
-        editor.apply();
+        dbHelper.close();
     }
 
     // Method to reschedule the daily notifications
@@ -124,6 +111,9 @@ public class NotificationScheduler {
         // Schedule the alarm
         PendingIntent pendingIntent = createPendingIntent(context, instance, rescheduleIntent);
         scheduleAlarm(context, alarmManager, instance, calendar, pendingIntent);
+
+        if (dbHelper.isDatabaseOpen())
+            dbHelper.close();
     }
 
     // Method to cancel an existing alarm if needed
@@ -141,7 +131,7 @@ public class NotificationScheduler {
         String instanceID = String.valueOf(instance.getInstanceID());
 
         dbHelper.deleteRecords(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{instanceID});
-        removeScheduledNotificationFromSP(context, instance);
+        dbHelper.close();
     }
 
     // Method to get the next alarm time based on the time from SharedPreferences
@@ -173,12 +163,10 @@ public class NotificationScheduler {
         String index = String.valueOf(dbHelper.existsInDB(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, new String[]{String.valueOf(instance.getTemplateID())}));
         NotificationTemplate template = dbHelper.getRecord(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, new String[]{index});
 
-        if (template.getIcon() == null)
-            template.setIcon("ic_placeholder");
+        dbHelper.close();
 
-
-        // Get the resource ID for the icon based on the provided icon
-        int resourceId = context.getResources().getIdentifier(template.getIcon(), "drawable", context.getPackageName());
+        if (template.getIconID() == 0)
+            template.setIconID(R.drawable.ic_placeholder);
 
         Intent intent = new Intent(context, AlarmReceiver.class);
         intent.putExtra("NOTIFICATION_INSTANCE_ID", String.valueOf(instance.getInstanceID()));
@@ -206,59 +194,6 @@ public class NotificationScheduler {
         if (alarmManager != null && alarmManager.canScheduleExactAlarms()) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
-            addScheduledNotificationToSP(context, instance);
         }
-    }
-
-    public static void addNotificationInstanceToSP(Context context, NotificationInstance instance) {
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        // Save updated notification times
-        Set<String> notificationInstances = prefs.getStringSet("notification_instances", new HashSet<>());
-        String instanceID = String.valueOf(instance.getInstanceID());
-        notificationInstances.add(instanceID);
-
-        editor.putStringSet("notification_instances", notificationInstances);
-        editor.apply();
-    }
-
-    public static void addScheduledNotificationToSP(Context context, NotificationInstance instance) {
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        // Update the scheduled times
-        Set<String> scheduledNotifications = prefs.getStringSet("scheduled_notifications", new HashSet<>());
-        String instanceID = String.valueOf(instance.getInstanceID());
-        scheduledNotifications.add(instanceID);
-
-        editor.putStringSet("scheduled_notifications", scheduledNotifications);
-        editor.apply();
-    }
-
-    public static void removeNotificationInstanceFromSP(Context context, NotificationInstance instance) {
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        // Save updated notification times
-        Set<String> notificationInstances = prefs.getStringSet("notification_instances", new HashSet<>());
-        String instanceID = String.valueOf(instance.getInstanceID());
-        notificationInstances.remove(instanceID);
-
-        editor.putStringSet("notification_times", notificationInstances);
-        editor.apply();
-    }
-
-    public static void removeScheduledNotificationFromSP(Context context, NotificationInstance instance) {
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        // Update the scheduled times
-        Set<String> scheduledNotifications = prefs.getStringSet("scheduled_notifications", new HashSet<>());
-        String instanceID = String.valueOf(instance.getInstanceID());
-        scheduledNotifications.remove(instanceID);
-
-        editor.putStringSet("scheduled_notifications", scheduledNotifications);
-        editor.apply();
     }
 }
