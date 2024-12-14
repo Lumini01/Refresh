@@ -2,6 +2,11 @@ package com.example.refresh.Model;
 
 import android.content.Context;
 
+import com.example.refresh.R;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class NotificationTemplate {
 
     private int templateID;
@@ -10,6 +15,15 @@ public class NotificationTemplate {
     private String message;
     private int iconID;
     private Class<?> activityClass;
+
+    // Create a map of resource names to resource IDs
+    private static final Map<String, Integer> iconMap = new HashMap<>();
+
+    static {
+        iconMap.put("ic_placeholder", R.drawable.ic_placeholder);
+        iconMap.put("ic_example", R.drawable.ic_today);
+        // Add more mappings as needed
+    }
 
     public NotificationTemplate(int templateID, String category, String title, String message, int iconID, Class<?> activityClass) {
         this.templateID = templateID;
@@ -20,21 +34,14 @@ public class NotificationTemplate {
         this.activityClass = activityClass;
     }
 
-    public NotificationTemplate(int templateID, String category, String title, String message, String iconID, String activityClassName) {
+    public NotificationTemplate(Context context, int templateID, String category, String title, String message, String iconID, String activityClassName) {
         this.templateID = templateID;
         this.category = category;
         this.title = title;
         this.message = message;
-        try {
-            this.iconID = Integer.parseInt(iconID);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        try {
-            this.activityClass = Class.forName(activityClassName);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
+        setIconID(context, iconID);
+        setActivityClass(activityClassName);
     }
 
     // Getters and Setters
@@ -82,11 +89,22 @@ public class NotificationTemplate {
         this.iconID = iconID;
     }
 
-    public void setIconID(String iconID) {
-        try {
-            this.iconID = Integer.parseInt(iconID);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+    public void setIconID(Context context, String iconID) {
+        Integer resId = iconMap.get(iconID);
+        if (resId != null) {
+            this.iconID = resId;  // Set the resource ID
+        }
+        else {
+            try {
+                this.iconID = context.getResources().getIdentifier(iconID, "drawable", context.getPackageName());
+                if (this.iconID == 0) {
+                    // Handle the case where the resource is not found
+                    this.iconID = R.drawable.ic_placeholder; // Or some default icon
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

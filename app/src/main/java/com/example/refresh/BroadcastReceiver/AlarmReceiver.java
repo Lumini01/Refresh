@@ -1,8 +1,11 @@
 package com.example.refresh.BroadcastReceiver;
 
+import static com.example.refresh.TestingGrounds.testCleanup;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.example.refresh.Database.Tables.NotificationInstancesTable;
 import com.example.refresh.Model.NotificationInstance;
@@ -22,9 +25,15 @@ public class AlarmReceiver extends BroadcastReceiver {
             // Call NotificationHelper to display the notification
             NotificationHelper.showNotification(context, instance);
 
-            // Call NotificationScheduler to reschedule the notification if needed
-            NotificationScheduler.rescheduleDailyNotification(context, intent);
-
+            if (intent.getBooleanExtra("TEST_NOTIFICATION", false)) {
+                // If it's a test notification, skip scheduling and remove the notification from the database
+                testCleanup(context, instance);
+                Log.d("NotificationScheduler", "Notification scheduling skipped, and notification removed - test notification");
+            }
+            else {
+                // If not a test notification, reschedule the notification
+                NotificationScheduler.rescheduleDailyNotification(context, intent);
+            }
         }
     }
 }

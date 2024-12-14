@@ -1,0 +1,210 @@
+[
+  {
+    "templateID": 1,
+    "category": "reminder",
+    "title": "Meal Time!",
+    "message": "Don't forget to log your meal!",
+    "iconID": "ic_today",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 2,
+    "category": "reminder",
+    "title": "Breakfast Time!",
+    "message": "It's breakfast time! Log your meal now.",
+    "iconID": "ic_today",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 3,
+    "category": "reminder",
+    "title": "Lunch Time!",
+    "message": "Don't forget to log your lunch!",
+    "iconID": "ic_today",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 4,
+    "category": "reminder",
+    "title": "Dinner Time!",
+    "message": "It's dinner time! Log your meal before it's too late.",
+    "iconID": "ic_today",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 5,
+    "category": "progress",
+    "title": "Daily Goal Reached",
+    "message": "Congratulations! You've reached your daily goal.",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 6,
+    "category": "reminder",
+    "title": "Drink Water",
+    "message": "Go drink some water!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 7,
+    "category": "progress",
+    "title": "Water Goal Reached",
+    "message": "Awesome! You've reached your daily water intake goal.",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 8,
+    "category": "reminder",
+    "title": "Track Steps",
+    "message": "Remember to track your steps!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 9,
+    "category": "progress",
+    "title": "Daily Steps Reached",
+    "message": "Great job! You've reached your daily step goal.",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 10,
+    "category": "reminder",
+    "title": "Log Workout",
+    "message": "Time to log your workout!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 11,
+    "category": "progress",
+    "title": "Weekly Workout Goal Reached",
+    "message": "You've achieved your weekly workout goal. Keep it up!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 12,
+    "category": "progress",
+    "title": "Weight Goal Reached",
+    "message": "Congrats on reaching your weight goal!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 13,
+    "category": "progress",
+    "title": "Progress Notification",
+    "message": "Keep going! You're making great progress!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 14,
+    "category": "reminder",
+    "title": "Keep Going, You’ve Got This!",
+    "message": "Believe in yourself and keep up!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 15,
+    "category": "reminder",
+    "title": "Great Progress – Don't Stop!",
+    "message": "You're doing awesome! stay on track with your goals!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 16,
+    "category": "reminder",
+    "title": "Believe in Yourself – Stay Consistent!",
+    "message": "Don't quit - you're on the right path!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 17,
+    "category": "reminder",
+    "title": "Update Notification",
+    "message": "New updates are available! Check them out.",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 18,
+    "category": "recommendation",
+    "title": "Recipe Suggestion",
+    "message": "How about trying a new recipe for your next meal?",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 19,
+    "category": "recommendation",
+    "title": "Meal Suggestion",
+    "message": "We recommend trying a healthy smoothie today!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 20,
+    "category": "reminder",
+    "title": "Rest Notification",
+    "message": "It's time to rest! Take a break and recharge.",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 21,
+    "category": "reminder",
+    "title": "Good Night Notification",
+    "message": "Good night! Rest well for tomorrow's goals.",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 22,
+    "category": "event",
+    "title": "Special Event!",
+    "message": "A special event is coming up! Don’t miss it.",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 23,
+    "category": "progress",
+    "title": "7 Day Streak",
+    "message": "Congrats on your 7-day streak! Keep it up!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 24,
+    "category": "progress",
+    "title": "30 Day Streak",
+    "message": "Awesome! You've hit the 30-day streak. Keep going!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 25,
+    "category": "progress",
+    "title": "100 Day Streak",
+    "message": "Incredible! You've reached a 100-day streak!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 26,
+    "category": "progress",
+    "title": "One Year Streak",
+    "message": "Amazing! You've reached a one-year streak!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  }
+]

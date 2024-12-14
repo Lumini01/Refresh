@@ -132,7 +132,7 @@ public class SignUp extends AppCompatActivity {
      * Handle successful sign-up and navigate to the login screen.
      */
     private void handleSuccessfulSignUp() {
-        if (databaseHelper.registerNewAccount(user, db)) {
+        if (databaseHelper.insert(DatabaseHelper.Tables.USERS, user) != -1) {
             showToast("Signup Successful!");
 
             // Clear input errors and navigate to Login activity

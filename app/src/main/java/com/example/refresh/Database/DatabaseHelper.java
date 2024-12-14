@@ -36,9 +36,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_FILE = "app_database.db";
     private static final int DATABASE_VERSION = 1;
+    private Context context;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_FILE, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -58,11 +60,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_INSTANCES.name());
         // Add more table drop logic here
         onCreate(db);
-    }
-
-    public void buildTable(String createStatement) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL(createStatement);
     }
 
     public <T> Integer insert(Tables table, T model) {
@@ -127,8 +124,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int columnIndex = cursor.getColumnIndex(columnName);
 
             if (columnIndex != -1) {
-                // If you know the expected type (e.g., String, Integer), cast it accordingly
-                result = (T) cursor.getString(columnIndex);  // Assuming it's a String for this example
+                int columnType = cursor.getType(columnIndex);  // Get the type of the column value
+
+                switch (columnType) {
+                    case Cursor.FIELD_TYPE_STRING:
+                        result = (T) cursor.getString(columnIndex);  // If it's a String
+                        break;
+                    case Cursor.FIELD_TYPE_INTEGER:
+                        result = (T) Integer.valueOf(cursor.getInt(columnIndex));  // If it's an Integer
+                        break;
+                    case Cursor.FIELD_TYPE_NULL:
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unsupported column type");
+                }
             }
             cursor.close();
         }
@@ -196,6 +205,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case NOTIFICATION_TEMPLATES:
                 // Example: NotificationTemplates table mapping
                 return (T) new NotificationTemplate(
+                        context,
                         cursor.getInt(cursor.getColumnIndexOrThrow(NotificationTemplatesTable.Columns.TEMPLATE_ID.name())),
                         cursor.getString(cursor.getColumnIndexOrThrow(CATEGORY.name())),
                         cursor.getString(cursor.getColumnIndexOrThrow(TITLE.name())),
@@ -215,7 +225,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    private <T> ContentValues toContentValues(T model, Tables table) {
+    public <T> ContentValues toContentValues(T model, Tables table) {
         ContentValues values = new ContentValues();
 
         switch (table) {

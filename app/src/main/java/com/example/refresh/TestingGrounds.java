@@ -4,6 +4,8 @@ import android.app.AlarmManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.core.app.NotificationCompat;
+
 import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Model.NotificationTemplate;
@@ -31,10 +33,14 @@ public class TestingGrounds {
         NotificationScheduler.addNotificationInstances(context, templateIDs, times);
     }
 
+    // Test cleanup method
     public static void testCleanup(Context context, NotificationInstance instance) {
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
         NotificationScheduler.cancelExistingAlarm(context, instance, alarmManager);
+    }
+
+    public static void draft() {
+        String str = NotificationCompat.CATEGORY_ALARM;
     }
 }

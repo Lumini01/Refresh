@@ -2,12 +2,14 @@ package com.example.refresh.Notification;
 
 import static com.example.refresh.Database.DatabaseHelper.Tables.*;
 import static com.example.refresh.Database.Tables.NotificationInstancesTable.Columns.*;
+import static com.example.refresh.TestingGrounds.testCleanup;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.refresh.BroadcastReceiver.AlarmReceiver;
 import com.example.refresh.Database.DatabaseHelper;
@@ -120,8 +122,6 @@ public class NotificationScheduler {
     public static void cancelExistingAlarm(Context context, NotificationInstance instance, AlarmManager alarmManager) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        String time = instance.getTime();
-
         Intent intent = createNotificationIntent(context, instance);
         PendingIntent pendingIntent = createPendingIntent(context, instance, intent);
         if (alarmManager != null) {
@@ -165,11 +165,37 @@ public class NotificationScheduler {
 
         dbHelper.close();
 
-        if (template.getIconID() == 0)
+        if (template.getIconID() == 0) {
             template.setIconID(R.drawable.ic_placeholder);
+        }
 
         Intent intent = new Intent(context, AlarmReceiver.class);
         intent.putExtra("NOTIFICATION_INSTANCE_ID", String.valueOf(instance.getInstanceID()));
+
+        // Get the current stack trace
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+
+        // Check if "TestingGrounds.test" is in the call chain
+        boolean calledByTest = false;
+
+        for (StackTraceElement element : stackTrace) {
+            String className = element.getClassName();
+            String methodName = element.getMethodName();
+
+            if (className.equals("com.example.refresh.TestingGrounds") && methodName.equals("test")) {
+                calledByTest = true;
+                break;
+            }
+        }
+
+        // Add extra logic based on the caller
+        if (calledByTest) {
+            intent.putExtra("TEST_NOTIFICATION", true);
+            Log.d("NotificationScheduler", "Notification flagged as test notification - will not be rescheduled");
+        }
+        else {
+            Log.d("NotificationScheduler", "Notification not flagged as a test notification");
+        }
 
         return intent;
     }

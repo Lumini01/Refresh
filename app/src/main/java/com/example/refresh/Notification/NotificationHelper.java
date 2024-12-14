@@ -4,6 +4,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 
 import androidx.core.app.NotificationCompat;
@@ -45,8 +47,11 @@ public class NotificationHelper {
 
         NotificationTemplate template = NotificationInstancesTable.getNotificationTemplate(context, instance);
 
+        Bitmap largeIcon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher_brand);
+
         return new NotificationCompat.Builder(context, CHANNEL_ID)  // Use the channel ID defined in this class
-                .setSmallIcon(template.getIconID())  // Replace with your app's icon
+                .setSmallIcon(template.getIconID())
+                .setLargeIcon(largeIcon)
                 .setContentTitle(template.getTitle())
                 .setContentText(template.getMessage())
                 .setColor(Color.BLUE)

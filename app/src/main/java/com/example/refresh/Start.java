@@ -1,5 +1,7 @@
 package com.example.refresh;
 
+import static com.example.refresh.Database.Tables.NotificationTemplatesTable.populateNotificationTemplatesTable;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -85,10 +87,14 @@ public class Start extends AppCompatActivity {
         // Request notification permission
         requestPostNotificationPermission();
 
+        // Populate the notification templates table if needed
+        Context context = getApplicationContext();
+        populateNotificationTemplatesTable(context);
+
         // Set default notification times
         setDefaultNotificationInstances();
 
-        Context context = getApplicationContext();
+        // Run testing methods
         TestingGrounds.test(context);
 
         // Hide the action bar temporarily
@@ -188,9 +194,9 @@ public class Start extends AppCompatActivity {
         ArrayList<Integer> templateIDs = new ArrayList<>();
         ArrayList<String> times = new ArrayList<>();
 
-        templateIDs.add(0);
         templateIDs.add(1);
         templateIDs.add(2);
+        templateIDs.add(3);
 
         times.add("9:00");
         times.add("15:00");

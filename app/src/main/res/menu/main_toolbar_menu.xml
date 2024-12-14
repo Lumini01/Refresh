@@ -5,7 +5,7 @@
     <!-- Profile Icon -->
     <item
         android:id="@+id/action_profile"
-        android:iconID="@drawable/ic_profile"
+        android:icon="@drawable/ic_profile"
         android:title="Profile"
         android:orderInCategory="100"
         app:showAsAction="ifRoom" />
@@ -13,7 +13,7 @@
     <!-- Notifications Icon -->
     <item
         android:id="@+id/action_notifications"
-        android:iconID="@drawable/ic_notifications"
+        android:icon="@drawable/ic_notifications"
         android:title="Notifications"
         android:orderInCategory="200"
         app:showAsAction="ifRoom" />
@@ -21,7 +21,7 @@
     <!-- Menu Icon for Navigation Drawer -->
     <item
         android:id="@+id/action_menu"
-        android:iconID="@drawable/ic_menu"
+        android:icon="@drawable/ic_menu"
         android:title="Menu"
         android:orderInCategory="300"
         app:showAsAction="ifRoom" />
