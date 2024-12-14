@@ -240,6 +240,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case NOTIFICATION_TEMPLATES:
                 NotificationTemplate template = (NotificationTemplate) model;
                 values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.name(), template.getTemplateID()); // Assuming NotificationTemplate has an ID
+                values.put(CATEGORY.name(), template.getCategory()); // Assuming NotificationTemplate has a category
                 values.put(TITLE.name(), template.getTitle()); // Assuming NotificationTemplate has a title
                 values.put(MESSAGE.name(), template.getMessage()); // Assuming NotificationTemplate has a message
                 values.put(ICON_ID.name(), template.getIconID()); // Assuming NotificationTemplate has an icon
