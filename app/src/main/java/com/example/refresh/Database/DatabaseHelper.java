@@ -94,12 +94,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public <T> T getRecord(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String columnName = columnEnum.name();
+        String selection = columnEnum.name() + " = ?";
 
         Cursor cursor = null;
 
         try {
-            cursor = db.query(table.getTableName(), new String[]{columnName}, null, selectionArgs, null, null, null);
+            cursor = db.query(table.getTableName(), null, selection, selectionArgs, null, null, null);
             if (cursor != null && cursor.moveToFirst()) {
                 return createRecord(cursor, table);
             }
@@ -115,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = columnEnum.name();  // Convert the enum to the column name (e.g., "name")
 
-        Cursor cursor = db.query(table.getTableName(), new String[]{columnName}, null, null, null, null, null);
+        Cursor cursor = db.query(table.getTableName(), toSelectionArgs(columnName), null, null, null, null, null);
 
         T result = null;
 
@@ -150,26 +150,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String columnName = columnEnum.name();
         ContentValues values = toContentValues(model, table);
 
-        return db.update(table.getTableName(), values, columnName + "=?", selectionArgs);
+        return db.update(table.getTableName(), values, columnName + " = ?", selectionArgs);
     }
 
     public int deleteRecords(Tables table,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
         String columnName = columnEnum.name();
 
-        return db.delete(table.getTableName(), columnName + "=?", selectionArgs);
+        return db.delete(table.getTableName(), columnName + " = ?", selectionArgs);
     }
 
     public int existsInDB(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = columnEnum.name();  // Convert the enum to the column name
+        String selection = columnName + " = ?";
 
-        Cursor cursor = db.query(table.getTableName(), new String[]{columnName}, null, selectionArgs, null, null, null);
+        Cursor cursor = db.query(table.getTableName(), toSelectionArgs(columnName), selection, selectionArgs, null, null, null);
 
         int index = -1;  // Default to -1 (not found)
 
-        if (cursor != null && cursor.moveToFirst()) {
-            index = cursor.getPosition();  // Get the index of the first matching record
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                index = cursor.getPosition();  // Get the index of the first matching record
+            }
             cursor.close();
         }
 
