@@ -128,7 +128,7 @@ public class NotificationTemplatesTable {
         for (NotificationTemplate template : templates) {
             ContentValues values = dbHelper.toContentValues(template, DatabaseHelper.Tables.NOTIFICATION_TEMPLATES);
 
-            db.insertWithOnConflict(DatabaseHelper.Tables.NOTIFICATION_TEMPLATES.name(), null, values, SQLiteDatabase.CONFLICT_REPLACE);
+            db.insertWithOnConflict(DatabaseHelper.Tables.NOTIFICATION_TEMPLATES.getTableName(), null, values, SQLiteDatabase.CONFLICT_REPLACE);
         }
     }
 

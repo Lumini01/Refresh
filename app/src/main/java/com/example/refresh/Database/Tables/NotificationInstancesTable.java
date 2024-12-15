@@ -31,27 +31,27 @@ public class NotificationInstancesTable {
     public static final String CREATE_TABLE =
 
             "CREATE TABLE " + TABLE_NAME + " (" +
-            Columns.INSTANCE_ID.name() + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            Columns.TEMPLATE_ID.name() + " INTEGER NOT NULL, " +
-            Columns.TIME.name() + " TEXT NOT NULL, " +
-            "FOREIGN KEY(" + Columns.TEMPLATE_ID.name() + ") " +
+            Columns.INSTANCE_ID.getColumnName() + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            Columns.TEMPLATE_ID.getColumnName() + " INTEGER NOT NULL, " +
+            Columns.TIME.getColumnName() + " TEXT NOT NULL, " +
+            "FOREIGN KEY(" + Columns.TEMPLATE_ID.getColumnName() + ") " +
             "REFERENCES " + NotificationTemplatesTable.TABLE_NAME + " (" +
             NotificationTemplatesTable.Columns.TEMPLATE_ID.getColumnName() + "));";
 
     public static ContentValues toContentValues(NotificationInstance instance) {
 
         ContentValues values = new ContentValues();
-        values.put(Columns.TEMPLATE_ID.name(), instance.getTemplateID());
-        values.put(Columns.TIME.name(), instance.getTime());
+        values.put(Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID());
+        values.put(Columns.TIME.getColumnName(), instance.getTime());
 
         return values;
     }
 
     public static NotificationInstance fromCursor(Cursor cursor) {
 
-        int instanceID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.INSTANCE_ID.name()));
-        int templateID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.TEMPLATE_ID.name()));
-        String time = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TIME.name()));
+        int instanceID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.INSTANCE_ID.getColumnName()));
+        int templateID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.TEMPLATE_ID.getColumnName()));
+        String time = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TIME.getColumnName()));
 
         return new NotificationInstance(instanceID, templateID, time);
     }

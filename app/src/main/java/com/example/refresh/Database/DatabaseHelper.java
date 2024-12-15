@@ -55,9 +55,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS " + Tables.USERS.name());
-        db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_TEMPLATES.name());
-        db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_INSTANCES.name());
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.USERS.getTableName());
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_TEMPLATES.getTableName());
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_INSTANCES.getTableName());
         // Add more table drop logic here
         onCreate(db);
     }
@@ -94,7 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public <T> T getRecord(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = columnEnum.name() + " = ?";
+        String selection = getEnumColumnName(columnEnum) + " = ?";
 
         Cursor cursor = null;
 
@@ -113,9 +113,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public <T> T getFromRecord(Tables table, Enum<?> columnEnum, int index) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String columnName = columnEnum.name();  // Convert the enum to the column name (e.g., "name")
+        String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name (e.g., "name")
 
-        Cursor cursor = db.query(table.getTableName(), toSelectionArgs(columnName), null, null, null, null, null);
+        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), null, null, null, null, null);
 
         T result = null;
 
@@ -147,7 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public <T> Integer editRecords(Tables table, T model,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String columnName = columnEnum.name();
+        String columnName = getEnumColumnName(columnEnum);
         ContentValues values = toContentValues(model, table);
 
         return db.update(table.getTableName(), values, columnName + " = ?", selectionArgs);
@@ -155,17 +155,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public int deleteRecords(Tables table,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String columnName = columnEnum.name();
+        String columnName = getEnumColumnName(columnEnum);
 
         return db.delete(table.getTableName(), columnName + " = ?", selectionArgs);
     }
 
     public int existsInDB(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String columnName = columnEnum.name();  // Convert the enum to the column name
+        String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name
         String selection = columnName + " = ?";
 
-        Cursor cursor = db.query(table.getTableName(), toSelectionArgs(columnName), selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), selection, selectionArgs, null, null, null);
 
         int index = -1;  // Default to -1 (not found)
 
@@ -181,7 +181,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public <T> T getRandomRecord(Tables table) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + Tables.NOTIFICATION_TEMPLATES.name() + " ORDER BY RANDOM() LIMIT 1", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Tables.NOTIFICATION_TEMPLATES.getTableName() + " ORDER BY RANDOM() LIMIT 1", null);
 
         if (cursor != null && cursor.moveToFirst()) {
             T randomRecord = createRecord(cursor, table);
@@ -200,31 +200,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case USERS:
                 // Example: User table mapping
                 return (T) new UserInfo(
-                        cursor.getString(cursor.getColumnIndexOrThrow(NAME.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(EMAIL.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(PHONE.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(PWD.name()))
+                        cursor.getString(cursor.getColumnIndexOrThrow(NAME.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(EMAIL.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(PHONE.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(PWD.getColumnName()))
                 );
             case NOTIFICATION_TEMPLATES:
                 // Example: NotificationTemplates table mapping
                 return (T) new NotificationTemplate(
                         context,
-                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationTemplatesTable.Columns.TEMPLATE_ID.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(CATEGORY.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(TITLE.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(MESSAGE.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(ICON_ID.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(ACTIVITY_CLASS.name()))
+                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationTemplatesTable.Columns.TEMPLATE_ID.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(CATEGORY.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(TITLE.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(MESSAGE.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(ICON_ID.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(ACTIVITY_CLASS.getColumnName()))
                 );
             case NOTIFICATION_INSTANCES:
                 // Example: NotificationInstances table mapping
                 return (T) new NotificationInstance(
-                        cursor.getInt(cursor.getColumnIndexOrThrow(INSTANCE_ID.name())),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationInstancesTable.Columns.TEMPLATE_ID.name())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(TIME.name()))
+                        cursor.getInt(cursor.getColumnIndexOrThrow(INSTANCE_ID.getColumnName())),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName())),
+                        cursor.getString(cursor.getColumnIndexOrThrow(TIME.getColumnName()))
                 );
             default:
-                throw new IllegalArgumentException("Unsupported table: " + table.name());
+                throw new IllegalArgumentException("Unsupported table: " + table.getTableName());
         }
     }
 
@@ -234,37 +234,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         switch (table) {
             case USERS:
                 UserInfo user = (UserInfo) model;
-                values.put(NAME.name(), user.getName()); // Assuming UserInfo has a name
-                values.put(EMAIL.name(), user.getEmail()); // Assuming UserInfo has an email
-                values.put(PHONE.name(), user.getPhone()); // Assuming UserInfo has a phone
-                values.put(PWD.name(), user.getPwd()); // Assuming UserInfo has a password
+                values.put(NAME.getColumnName(), user.getName()); // Assuming UserInfo has a name
+                values.put(EMAIL.getColumnName(), user.getEmail()); // Assuming UserInfo has an email
+                values.put(PHONE.getColumnName(), user.getPhone()); // Assuming UserInfo has a phone
+                values.put(PWD.getColumnName(), user.getPwd()); // Assuming UserInfo has a password
                 break;
 
             case NOTIFICATION_TEMPLATES:
                 NotificationTemplate template = (NotificationTemplate) model;
-                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.name(), template.getTemplateID()); // Assuming NotificationTemplate has an ID
-                values.put(CATEGORY.name(), template.getCategory()); // Assuming NotificationTemplate has a category
-                values.put(TITLE.name(), template.getTitle()); // Assuming NotificationTemplate has a title
-                values.put(MESSAGE.name(), template.getMessage()); // Assuming NotificationTemplate has a message
-                values.put(ICON_ID.name(), template.getIconID()); // Assuming NotificationTemplate has an icon
-                values.put(ACTIVITY_CLASS.name(), template.getActivityClassName());
+                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), template.getTemplateID()); // Assuming NotificationTemplate has an ID
+                values.put(CATEGORY.getColumnName(), template.getCategory()); // Assuming NotificationTemplate has a category
+                values.put(TITLE.getColumnName(), template.getTitle()); // Assuming NotificationTemplate has a title
+                values.put(MESSAGE.getColumnName(), template.getMessage()); // Assuming NotificationTemplate has a message
+                values.put(ICON_ID.getColumnName(), template.getIconID()); // Assuming NotificationTemplate has an icon
+                values.put(ACTIVITY_CLASS.getColumnName(), template.getActivityClassName());
                 break;
 
             case NOTIFICATION_INSTANCES:
                 NotificationInstance instance = (NotificationInstance) model;
-                values.put(INSTANCE_ID.name(), instance.getInstanceID()); // Assuming NotificationInstance has an ID
-                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.name(), instance.getTemplateID()); // Assuming NotificationInstance has a template_id
-                values.put(TIME.name(), instance.getTime()); // Assuming NotificationInstance has a timestamp
+                values.put(INSTANCE_ID.getColumnName(), instance.getInstanceID()); // Assuming NotificationInstance has an ID
+                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID()); // Assuming NotificationInstance has a template_id
+                values.put(TIME.getColumnName(), instance.getTime()); // Assuming NotificationInstance has a timestamp
                 break;
 
             default:
-                throw new IllegalArgumentException("Unsupported table: " + table.name());
+                throw new IllegalArgumentException("Unsupported table: " + table.getTableName());
         }
 
         return values;
     }
 
-    public static <T> String[] toSelectionArgs(T value) {
+    public static <T> String[] toStringArray(T value) {
         return new String[] {String.valueOf(value)};
     }
 
@@ -272,4 +272,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.isOpen();
     }
+
+    public static String getEnumColumnName(Enum<?> columnEnum) {
+        try {
+            // Use reflection to call the `getColumnName` method
+            return (String) columnEnum.getClass()
+                    .getMethod("getColumnName") // Look for the method
+                    .invoke(columnEnum);       // Invoke it on the enum constant
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Enum does not have a getColumnName method", e);
+        }
+    }
+
 }

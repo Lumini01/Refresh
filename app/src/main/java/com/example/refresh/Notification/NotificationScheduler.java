@@ -2,13 +2,11 @@ package com.example.refresh.Notification;
 
 import static com.example.refresh.Database.DatabaseHelper.Tables.*;
 import static com.example.refresh.Database.Tables.NotificationInstancesTable.Columns.*;
-import static com.example.refresh.TestingGrounds.testCleanup;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.refresh.BroadcastReceiver.AlarmReceiver;
@@ -20,8 +18,6 @@ import com.example.refresh.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
 
 public class NotificationScheduler {
     public static void addNotificationInstances(Context context, ArrayList<Integer> templateIDs, ArrayList<String> times) {
@@ -45,9 +41,10 @@ public class NotificationScheduler {
 
             dbHelper.close();
 
-            // Schedule notifications again
-            NotificationScheduler.scheduleDailyNotifications(context, instances);
-
+            if (!instances.isEmpty()) {
+                // Schedule notifications again
+                NotificationScheduler.scheduleDailyNotifications(context, instances);
+            }
         }
     }
 
@@ -63,7 +60,7 @@ public class NotificationScheduler {
 
         // Cancel removed alarms
         for (int instanceID : instanceIDs) {
-            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toSelectionArgs(instanceID)) == -1) {
+            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toStringArray(instanceID)) == -1) {
                 cancelExistingAlarm(context, NotificationInstancesTable.getInstanceByID(context, instanceID), alarmManager);
             }
         }
@@ -71,7 +68,7 @@ public class NotificationScheduler {
         // Schedule alarms
         int index = 0;
         for (int instanceID : instanceIDs) {
-            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toSelectionArgs(instanceID)) == -1) {
+            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toStringArray(instanceID)) == -1) {
                 NotificationInstance instance = instances.get(index);
 
                 Calendar calendar = getNextAlarmTime(instance);

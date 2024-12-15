@@ -2,6 +2,7 @@ package com.example.refresh;
 
 import static com.example.refresh.Database.Tables.NotificationTemplatesTable.populateNotificationTemplatesTable;
 
+import android.app.AlarmManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -9,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -24,6 +26,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.view.View;
 import android.Manifest;
+import android.widget.Toast;
 
 import com.example.refresh.Activity.HomeDashboard;
 import com.example.refresh.Activity.Login;
@@ -174,18 +177,29 @@ public class Start extends AppCompatActivity {
     private void requestPostNotificationPermission() {
         // Check for POST_NOTIFICATIONS permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {  // Android 13 (API 33) and higher
-            // Check if the permission is already granted
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
                     != PackageManager.PERMISSION_GRANTED) {
-                // Request notification permission if not granted
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
+                // Check if the user has denied the permission permanently
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
+                    // Show rationale (optional): You can explain why the permission is needed here
+                    Toast.makeText(this, "Notifications are important for this app. Please allow them.", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    // Request permission
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
+                }
             }
         }
 
+        // Check for SCHEDULE_EXACT_ALARM permission (API 31+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
-            startActivity(intent);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            if (!alarmManager.canScheduleExactAlarms()) {
+                // Only start the intent if the permission is not already granted
+                Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                startActivity(intent);
+            }
         }
     }
 
