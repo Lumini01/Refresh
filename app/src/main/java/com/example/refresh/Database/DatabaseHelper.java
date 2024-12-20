@@ -160,19 +160,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(table.getTableName(), columnName + " = ?", selectionArgs);
     }
 
-    public int existsInDB(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
+    public int existsInDB(Tables table, Enum<?> columnEnum, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name
-        String selection = columnName + " = ?";
 
-        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), null, null, null, null, null);
 
         int index = -1;  // Default to -1 (not found)
 
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                index = cursor.getPosition();  // Get the index of the first matching record
+        if (cursor != null && cursor.moveToFirst()) {
+            while  (cursor.moveToNext()) {
+                if (cursor.getString(cursor.getColumnIndexOrThrow(columnName)).equals(value)) {
+                    index = cursor.getPosition();  // Get the index of the first matching record
+                    break;  // Found a matching record
+                }
             }
+
             cursor.close();
         }
 
@@ -252,7 +255,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             case NOTIFICATION_INSTANCES:
                 NotificationInstance instance = (NotificationInstance) model;
-                values.put(INSTANCE_ID.getColumnName(), instance.getInstanceID()); // Assuming NotificationInstance has an ID
                 values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID()); // Assuming NotificationInstance has a template_id
                 values.put(TIME.getColumnName(), instance.getTime()); // Assuming NotificationInstance has a timestamp
                 break;

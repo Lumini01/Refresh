@@ -60,7 +60,7 @@ public class NotificationInstancesTable {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         int id = 0;
         while (true) {
-            if (dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(id)}) == -1)
+            if (dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, String.valueOf(id)) == -1)
                 break;
 
             id++;
@@ -72,7 +72,7 @@ public class NotificationInstancesTable {
     public static NotificationInstance getInstanceByID(Context context, int instanceID) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        int index = dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+        int index = dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, String.valueOf(instanceID));
 
         if (index == -1)
             return null;

@@ -39,7 +39,7 @@ public class ValidationHelper {
             return "Name is required!";
         } else if (name.length() < 2) {
             return "Invalid Name.";
-        } else if (databaseHelper.existsInDB(USERS, NAME, new String[]{name}) == -1) {
+        } else if (databaseHelper.existsInDB(USERS, NAME, name) == -1) {
             return "Name not found.";
         }
         return null;
@@ -56,7 +56,7 @@ public class ValidationHelper {
             return "Email is required!";
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return "Invalid email format!";
-        } else if (databaseHelper.existsInDB(USERS, EMAIL, new String[]{email}) != -1) {
+        } else if (databaseHelper.existsInDB(USERS, EMAIL, email) != -1) {
             return "Email is already in use!";
         }
         return null;
@@ -73,7 +73,7 @@ public class ValidationHelper {
             return "Email is required!";
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return "Invalid email format!";
-        } else if (databaseHelper.existsInDB(USERS, EMAIL, new String[]{email}) == -1) {
+        } else if (databaseHelper.existsInDB(USERS, EMAIL, email) == -1) {
             return "Account not found.";
         }
         return null;
@@ -90,7 +90,7 @@ public class ValidationHelper {
             return "Phone number must be at least 10 digits!";
         } else if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
             return "Invalid phone number format.";
-        } else if (databaseHelper.existsInDB(USERS, PHONE, new String[]{phone}) != -1) {
+        } else if (databaseHelper.existsInDB(USERS, PHONE, phone) != -1) {
             return "Phone number is already in use!";
         }
         return null;
@@ -107,7 +107,7 @@ public class ValidationHelper {
             return "Phone number must be at least 10 digits!";
         } else if (PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
             return "Invalid phone number format.";
-        } else if (databaseHelper.existsInDB(USERS, PHONE, new String[]{phone}) == -1) {
+        } else if (databaseHelper.existsInDB(USERS, PHONE, phone) == -1) {
             return "Phone number not found.";
         }
         return null;
@@ -138,7 +138,7 @@ public class ValidationHelper {
      * @return Error message if validation fails, null otherwise.
      */
     public static String validatePwd(String pwd, String email, DatabaseHelper databaseHelper) {
-        int index = databaseHelper.existsInDB(USERS, EMAIL, new String[]{email});
+        int index = databaseHelper.existsInDB(USERS, EMAIL, email);
 
         if (pwd == null || pwd.isEmpty()) {
             return "Password is required!";

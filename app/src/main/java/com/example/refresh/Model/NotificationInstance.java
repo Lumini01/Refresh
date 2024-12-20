@@ -12,6 +12,12 @@ public class NotificationInstance {
         this.time = time;
     }
 
+    public NotificationInstance(int templateID, String time) {
+        this.instanceID = -1;
+        this.templateID = templateID;
+        this.time = time;
+    }
+
     // Getters and Setters
     public int getInstanceID() {
         return instanceID;

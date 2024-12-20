@@ -24,18 +24,20 @@ public class NotificationScheduler {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
         ArrayList<NotificationInstance> instances = new ArrayList<>();
-        int instanceID = 0;
         // Add validated new times to the set
         if (templateIDs.size() == times.size()) {
             for (int i=0 ; i<templateIDs.size() ; i++) {
                 int templateID = templateIDs.get(i);
                 String time = times.get(i);
 
-                if (time != null && time.matches("\\d{1,2}:\\d{2}") && dbHelper.existsInDB(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, new String[]{String.valueOf(templateID)}) != -1) {
-                    instanceID = NotificationInstancesTable.createInstanceID(context);
-                    instances.add(new NotificationInstance(instanceID, templateID, time));
+                if (time != null && time.matches("\\d{1,2}:\\d{2}") && dbHelper.existsInDB(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, String.valueOf(templateID)) != -1) {
+                    NotificationInstance instance = new NotificationInstance(templateID, time);
+                    int instanceID = dbHelper.insert(NOTIFICATION_INSTANCES, instance);
 
-                    dbHelper.insert(NOTIFICATION_INSTANCES, instances.get(i));
+                    if (instanceID != -1) {
+                        instance.setInstanceID(instanceID);
+                        instances.add(instance);
+                    }
                 }
             }
 
@@ -60,7 +62,7 @@ public class NotificationScheduler {
 
         // Cancel removed alarms
         for (int instanceID : instanceIDs) {
-            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toStringArray(instanceID)) == -1) {
+            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, String.valueOf(instanceID)) == -1) {
                 cancelExistingAlarm(context, NotificationInstancesTable.getInstanceByID(context, instanceID), alarmManager);
             }
         }
@@ -68,7 +70,7 @@ public class NotificationScheduler {
         // Schedule alarms
         int index = 0;
         for (int instanceID : instanceIDs) {
-            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, DatabaseHelper.toStringArray(instanceID)) == -1) {
+            if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, String.valueOf(instanceID)) != -1) {
                 NotificationInstance instance = instances.get(index);
 
                 Calendar calendar = getNextAlarmTime(instance);
@@ -156,9 +158,12 @@ public class NotificationScheduler {
     // Method to create the Intent for the alarm notification
     private static Intent createNotificationIntent(Context context, NotificationInstance instance) {
         // Set default values if extras are not provided
+        if (instance == null) {
+            throw new IllegalStateException("NotificationInstance is null. Cannot retrieve template.");
+        }
+
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-        String index = String.valueOf(dbHelper.existsInDB(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, new String[]{String.valueOf(instance.getTemplateID())}));
-        NotificationTemplate template = dbHelper.getRecord(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, new String[]{index});
+        NotificationTemplate template = dbHelper.getRecord(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, DatabaseHelper.toStringArray(instance.getTemplateID()));
 
         dbHelper.close();
 
@@ -216,7 +221,6 @@ public class NotificationScheduler {
     private static void scheduleAlarm(Context context, AlarmManager alarmManager, NotificationInstance instance, Calendar calendar, PendingIntent pendingIntent) {
         if (alarmManager != null && alarmManager.canScheduleExactAlarms()) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-
         }
     }
 }

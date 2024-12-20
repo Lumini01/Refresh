@@ -84,7 +84,7 @@ public class NotificationTemplatesTable {
     public static NotificationTemplate getTemplateByID(Context context, int templateID) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        int index = dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_TEMPLATES, Columns.TEMPLATE_ID, new String[]{String.valueOf(templateID)});
+        int index = dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_TEMPLATES, Columns.TEMPLATE_ID, String.valueOf(templateID));
 
         if (index == -1)
             return null;
