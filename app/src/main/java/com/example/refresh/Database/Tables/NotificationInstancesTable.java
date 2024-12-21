@@ -77,9 +77,7 @@ public class NotificationInstancesTable {
         if (index == -1)
             return null;
 
-        NotificationInstance instance = dbHelper.getRecord(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(instanceID)});
-
-        return instance;
+        return dbHelper.getRecord(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(instanceID)});
     }
 
     public static NotificationTemplate getNotificationTemplate(Context context, NotificationInstance instance) {

@@ -28,7 +28,7 @@ public class TestingGrounds {
         templateIDs.add(template.getTemplateID());
 
         // Add the current time for testing
-        LocalTime timeNow = LocalTime.now().plusMinutes(1);
+        LocalTime timeNow = LocalTime.now().plusMinutes(2);
 
         // Format it to 24-hour format (HH:mm)
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");

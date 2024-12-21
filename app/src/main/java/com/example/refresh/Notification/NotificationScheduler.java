@@ -193,7 +193,7 @@ public class NotificationScheduler {
         // Add extra logic based on the caller
         if (calledByTest) {
             intent.putExtra("TEST_NOTIFICATION", true);
-            Log.d("NotificationScheduler", "Notification flagged as test notification - will not be rescheduled");
+            Log.d("NotificationScheduler", "Notification for " + instance.getTime() + " flagged as test notification - will not be rescheduled");
         }
         else {
             Log.d("NotificationScheduler", "Notification not flagged as a test notification");

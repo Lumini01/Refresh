@@ -84,9 +84,6 @@ public class Start extends AppCompatActivity {
             }
         });
 
-        // Start the countdown timer
-        startCountdownTimer();
-
         // Request notification permission
         requestPostNotificationPermission();
 
@@ -99,6 +96,9 @@ public class Start extends AppCompatActivity {
 
         // Run testing methods
         TestingGrounds.test(context);
+
+        // Start the countdown timer
+        startCountdownTimer();
 
         // Hide the action bar temporarily
         if (getSupportActionBar() != null) {

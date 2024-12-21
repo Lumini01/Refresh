@@ -16,7 +16,7 @@ public class AppNotificationChannel {
             android.app.NotificationChannel channel = new android.app.NotificationChannel(
                     CHANNEL_ID,
                     CHANNEL_NAME,
-                    NotificationManager.IMPORTANCE_DEFAULT
+                    NotificationManager.IMPORTANCE_HIGH
             );
             channel.setDescription(CHANNEL_DESCRIPTION);
             channel.enableVibration(true);

@@ -26,8 +26,7 @@ public class BootReceiver extends BroadcastReceiver {
     // Retrieve all notification instances from the database
     private ArrayList<NotificationInstance> retrieveNotificationInstances(Context context) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-        ArrayList<NotificationInstance> instances = new ArrayList<>(dbHelper.getAllRecords(DatabaseHelper.Tables.NOTIFICATION_INSTANCES));
 
-        return instances;
+        return new ArrayList<>(dbHelper.getAllRecords(DatabaseHelper.Tables.NOTIFICATION_INSTANCES));
     }
 }

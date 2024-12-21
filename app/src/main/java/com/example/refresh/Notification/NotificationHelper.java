@@ -1,5 +1,7 @@
 package com.example.refresh.Notification;
 
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -7,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -34,12 +37,15 @@ public class NotificationHelper {
 
         // Display the Notification
         displayNotification(context, notificationBuilder);
+
+        Log.d("NotificationDisplay", "Notification displayed with ID: " + instance.getInstanceID());
+
     }
 
     // Create PendingIntent for launching the target activity
     private static PendingIntent createPendingIntent(Context context, NotificationInstance instance) {
         Intent intent = new Intent(context, NotificationInstancesTable.getNotificationTemplate(context, instance).getActivityClass());
-        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        return PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
     // Build the notification with content, action, and channel
@@ -48,6 +54,10 @@ public class NotificationHelper {
         NotificationTemplate template = NotificationInstancesTable.getNotificationTemplate(context, instance);
 
         Bitmap largeIcon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher_brand);
+
+        if (largeIcon == null) {
+            Log.e("NotificationBuilder", "Failed to decode large icon.");
+        }
 
         return new NotificationCompat.Builder(context, CHANNEL_ID)  // Use the channel ID defined in this class
                 .setSmallIcon(template.getIconID())
