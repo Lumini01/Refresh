@@ -148,9 +148,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public <T> Integer editRecords(Tables table, T model,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
         String columnName = getEnumColumnName(columnEnum);
+        String selection = columnName + " = ?";
         ContentValues values = toContentValues(model, table);
 
-        return db.update(table.getTableName(), values, columnName + " = ?", selectionArgs);
+        return db.update(table.getTableName(), values, selection, selectionArgs);
     }
 
     public int deleteRecords(Tables table,  Enum<?> columnEnum, String[] selectionArgs) {
@@ -255,6 +256,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             case NOTIFICATION_INSTANCES:
                 NotificationInstance instance = (NotificationInstance) model;
+                if (instance.getInstanceID() != -1)
+                    values.put(INSTANCE_ID.getColumnName(), instance.getInstanceID()); // Assuming NotificationInstance has an ID
                 values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID()); // Assuming NotificationInstance has a template_id
                 values.put(TIME.getColumnName(), instance.getTime()); // Assuming NotificationInstance has a timestamp
                 break;

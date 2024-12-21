@@ -35,8 +35,6 @@ import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Notification.NotificationScheduler;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 
 /**
  * Start Activity - This is the initial screen of the app before login,
@@ -84,6 +82,33 @@ public class Start extends AppCompatActivity {
             }
         });
 
+        // Start the MonitorService
+        Intent serviceIntent = new Intent(this, MonitorService.class);
+        startService(serviceIntent);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        boolean isFirstLaunch = sharedPreferences.getBoolean("isFirstLaunch", true);
+
+        if (isFirstLaunch) {
+            // Perform first-time launch functionalities
+            firstLaunchActions();
+
+            // Update the flag so this block doesn't run again
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFirstLaunch", false);
+            editor.apply();
+        }
+
+        // Start the countdown timer
+        startCountdownTimer();
+
+        // Hide the action bar temporarily
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+    }
+
+    private void firstLaunchActions() {
         // Request notification permission
         requestPostNotificationPermission();
 
@@ -96,14 +121,6 @@ public class Start extends AppCompatActivity {
 
         // Run testing methods
         TestingGrounds.test(context);
-
-        // Start the countdown timer
-        startCountdownTimer();
-
-        // Hide the action bar temporarily
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
     }
 
     /**
@@ -216,6 +233,24 @@ public class Start extends AppCompatActivity {
         times.add("15:00");
         times.add("19:00");
 
-        NotificationScheduler.addNotificationInstances(this, templateIDs, times);
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        boolean defaultNotificationsSet = sharedPreferences.getBoolean("defaultNotificationsSet", false);
+
+        if (defaultNotificationsSet) {
+            ArrayList<Integer> instanceIDs = new ArrayList<>();
+
+            instanceIDs.add(0);
+            instanceIDs.add(1);
+            instanceIDs.add(2);
+
+            NotificationScheduler.addDefaultNotifications(this, instanceIDs, templateIDs, times);
+        }
+        else {
+            NotificationScheduler.addNotificationInstances(this, templateIDs, times);
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("defaultNotificationsSet", true);
+            editor.apply();
+        }
     }
 }

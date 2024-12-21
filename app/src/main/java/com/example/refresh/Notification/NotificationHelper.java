@@ -66,7 +66,7 @@ public class NotificationHelper {
                 .setContentText(template.getMessage())
                 .setColor(Color.BLUE)
                 .setCategory(template.getCategory())
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
     }

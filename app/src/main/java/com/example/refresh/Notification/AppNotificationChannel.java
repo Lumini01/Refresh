@@ -1,5 +1,6 @@
 package com.example.refresh.Notification;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
@@ -21,6 +22,7 @@ public class AppNotificationChannel {
             channel.setDescription(CHANNEL_DESCRIPTION);
             channel.enableVibration(true);
             channel.setLightColor(Color.BLUE);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC); // Show on lock screen
 
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);

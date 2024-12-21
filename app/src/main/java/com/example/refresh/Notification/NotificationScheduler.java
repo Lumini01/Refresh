@@ -20,6 +20,42 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class NotificationScheduler {
+    public static void addDefaultNotifications(Context context, ArrayList<Integer> instanceIDs, ArrayList<Integer> templateIDs, ArrayList<String> times) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        ArrayList<NotificationInstance> instances = new ArrayList<>();
+        // Add validated new times to the set
+        if (templateIDs.size() == times.size() && instanceIDs.size() == times.size()) {
+            for (int i=0 ; i<templateIDs.size() ; i++) {
+                int instanceID = instanceIDs.get(i);
+                int templateID = templateIDs.get(i);
+                String time = times.get(i);
+
+                if (time != null && time.matches("\\d{1,2}:\\d{2}") && dbHelper.existsInDB(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, String.valueOf(templateID)) != -1) {
+                    NotificationInstance instance = new NotificationInstance(instanceID, templateID, time);
+                    NotificationInstance oldInstance = dbHelper.getRecord(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+
+                    dbHelper.editRecords(NOTIFICATION_INSTANCES, instance, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+                    instances.add(instance);
+
+                    Intent intent = createNotificationIntent(context, oldInstance);
+                    PendingIntent pendingIntent = createPendingIntent(context, oldInstance, intent);
+                    if (alarmManager != null) {
+                        alarmManager.cancel(pendingIntent);
+                    }
+                }
+            }
+
+            dbHelper.close();
+
+
+            if (!instances.isEmpty()) {
+                // Schedule notifications again
+                NotificationScheduler.scheduleDailyNotifications(context, instances);
+            }
+        }
+    }
     public static void addNotificationInstances(Context context, ArrayList<Integer> templateIDs, ArrayList<String> times) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
