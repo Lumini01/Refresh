@@ -16,7 +16,7 @@ public class BootReceiver extends BroadcastReceiver {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
 
             //retrieveNotificationInstances(context);
-            ArrayList<NotificationInstance> instances  = retrieveNotificationInstances(context);
+            ArrayList<NotificationInstance> instances = retrieveNotificationInstances(context);
 
             // Schedule daily notifications
             NotificationScheduler.scheduleDailyNotifications(context, instances);

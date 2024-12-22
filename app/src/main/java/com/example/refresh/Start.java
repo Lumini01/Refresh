@@ -66,6 +66,7 @@ public class Start extends AppCompatActivity {
             return insets;
         });
 
+
         // Initialize UI components
         mainLayout = findViewById(R.id.main);
         brandName = findViewById(R.id.brandName);
@@ -81,6 +82,16 @@ public class Start extends AppCompatActivity {
                 timer.cancel();  // Stop the countdown timer when the user clicks continue
             }
         });
+
+        if (savedInstanceState == null) {
+            // Activity is being launched for the first time
+            SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFirstLaunch", true);
+            editor.apply();
+
+            Log.d("ActivityTrace", "StartActivity launched for the first time.");
+        }
 
         // Start the MonitorService
         Intent serviceIntent = new Intent(this, MonitorService.class);

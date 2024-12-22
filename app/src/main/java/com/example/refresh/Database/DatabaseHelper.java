@@ -169,7 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int index = -1;  // Default to -1 (not found)
 
-        if (cursor != null && cursor.moveToFirst()) {
+        if (cursor != null) {
             while  (cursor.moveToNext()) {
                 if (cursor.getString(cursor.getColumnIndexOrThrow(columnName)).equals(value)) {
                     index = cursor.getPosition();  // Get the index of the first matching record
