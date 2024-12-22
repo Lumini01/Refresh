@@ -90,12 +90,13 @@ public class Start extends AppCompatActivity {
             editor.putBoolean("isFirstLaunch", true);
             editor.apply();
 
-            Log.d("ActivityTrace", "StartActivity launched for the first time.");
+            Log.d("ActivityTrace", "Start Activity launched for the first time.");
         }
 
+        /*
         // Start the MonitorService
         Intent serviceIntent = new Intent(this, MonitorService.class);
-        startService(serviceIntent);
+        startService(serviceIntent);*/
 
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         boolean isFirstLaunch = sharedPreferences.getBoolean("isFirstLaunch", true);
@@ -241,7 +242,7 @@ public class Start extends AppCompatActivity {
         templateIDs.add(3);
 
         times.add("9:00");
-        times.add("15:00");
+        times.add("14:00");
         times.add("19:00");
 
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
@@ -250,9 +251,9 @@ public class Start extends AppCompatActivity {
         if (defaultNotificationsSet) {
             ArrayList<Integer> instanceIDs = new ArrayList<>();
 
-            instanceIDs.add(0);
             instanceIDs.add(1);
             instanceIDs.add(2);
+            instanceIDs.add(3);
 
             NotificationScheduler.addDefaultNotifications(this, instanceIDs, templateIDs, times);
         }
