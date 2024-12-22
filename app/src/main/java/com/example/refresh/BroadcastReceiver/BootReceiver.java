@@ -21,9 +21,6 @@ public class BootReceiver extends BroadcastReceiver {
 
             // Schedule daily notifications
             NotificationScheduler.scheduleDailyNotifications(context, instances);
-
-            // Create a Toast message
-            Toast.makeText(context, "Your message here", Toast.LENGTH_SHORT).show();
         }
     }
 

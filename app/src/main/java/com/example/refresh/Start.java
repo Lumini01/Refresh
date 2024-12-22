@@ -83,21 +83,6 @@ public class Start extends AppCompatActivity {
             }
         });
 
-        if (savedInstanceState == null) {
-            // Activity is being launched for the first time
-            SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("isFirstLaunch", true);
-            editor.apply();
-
-            Log.d("ActivityTrace", "Start Activity launched for the first time.");
-        }
-
-        /*
-        // Start the MonitorService
-        Intent serviceIntent = new Intent(this, MonitorService.class);
-        startService(serviceIntent);*/
-
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         boolean isFirstLaunch = sharedPreferences.getBoolean("isFirstLaunch", true);
 

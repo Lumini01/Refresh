@@ -4,6 +4,7 @@ import static com.example.refresh.Database.DatabaseHelper.Tables.*;
 import static com.example.refresh.Database.Tables.NotificationInstancesTable.Columns.*;
 
 import android.app.AlarmManager;
+import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
