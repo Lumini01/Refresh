@@ -206,5 +206,42 @@
     "message": "Amazing! You've reached a one-year streak!",
     "iconID": "ic_placeholder",
     "activityClass": "com.example.refresh.Start"
+  },
+
+
+
+
+
+  {
+    "templateID": 27,
+    "category": "progress",
+    "title": "One Year Streak",
+    "message": "Amazing! You've reached a one-year streak!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 28,
+    "category": "progress",
+    "title": "One Year Streak",
+    "message": "Amazing! You've reached a one-year streak!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 29,
+    "category": "progress",
+    "title": "One Year Streak",
+    "message": "Amazing! You've reached a one-year streak!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
+  },
+  {
+    "templateID": 30,
+    "category": "progress",
+    "title": "One Year Streak",
+    "message": "Amazing! You've reached a one-year streak!",
+    "iconID": "ic_placeholder",
+    "activityClass": "com.example.refresh.Start"
   }
 ]
