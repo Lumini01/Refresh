@@ -1,226 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/settings_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    android:padding="16dp"
-    tools:context=".Model.UserInfo">
+    android:padding="@dimen/default_margin"
+    tools:context=".ProfileActivity">
 
-</LinearLayout>
-
-    <!--
-    <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/main"
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:padding="16dp"
-        tools:context=".ProfileActivity">
+        android:elevation="4dp"
+        android:title="Settings"
+        android:titleTextColor="@color/textSecondary"
+        app:itemIconTint="@color/iconTint"
+        android:layout_marginBottom="@dimen/default_margin">
 
-        &lt;!&ndash; Toolbar &ndash;&gt;
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <ImageView
+            android:id="@+id/settingsLogo"
+            android:layout_width="@dimen/icon_size_medium"
+            android:layout_height="@dimen/icon_size_medium"
+            app:srcCompat="@drawable/ic_placeholder" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:elevation="4dp"
-            android:title="Profile"
-            android:titleTextColor="@color/textSecondary"
-            app:itemIconTint="@color/iconTint">
+            android:orientation="vertical"
+            android:paddingStart="@dimen/default_margin"
+            android:paddingEnd="@dimen/default_margin">
 
-            <ImageView
-                android:id="@+id/profileImage"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                app:srcCompat="@drawable/ic_profile" />
+            <!-- Section 1: Account -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Account"
+                android:textSize="@dimen/text_size_xlarge"
+                android:textColor="@color/textSecondary"
+                android:paddingTop="@dimen/default_margin"
+                android:paddingBottom="@dimen/padding_medium"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/default_margin" />
 
-        </androidx.appcompat.widget.Toolbar>
-
-        &lt;!&ndash; Scrollable Content &ndash;&gt;
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true">
-
+            <!-- Account Settings -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:background="@drawable/card_background"
+                android:padding="@dimen/card_view_padding"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_small">
 
-                &lt;!&ndash; Profile Section &ndash;&gt;
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:src="@drawable/ic_placeholder"
+                    app:tint="@color/iconTint" />
+
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center_vertical">
-
-                    &lt;!&ndash; Profile Image &ndash;&gt;
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_profile"
-                        android:contentDescription="Profile Picture"
-                        app:tint="@color/iconTint"/>
-
-                    &lt;!&ndash; Profile Details &ndash;&gt;
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="User Name"
-                            android:textSize="20sp"
-                            android:textColor="@color/textSecondary"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Email: user@example.com"
-                            android:textSize="16sp"
-                            android:textColor="@color/textSecondary" />
-
-                    </LinearLayout>
-
+                        android:text="Account Settings"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manage your account details"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
                 </LinearLayout>
-
-                &lt;!&ndash; Settings Section &ndash;&gt;
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="16dp">
-
-                    &lt;!&ndash; Notifications Settings &ndash;&gt;
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@drawable/card_background"
-                        android:padding="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@drawable/ic_notifications"
-                            android:contentDescription="Notifications"
-                            app:tint="@color/iconTint"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Notifications"
-                            android:textSize="18sp"
-                            android:textColor="@color/textSecondary"
-                            android:gravity="center_vertical"/>
-
-                        <Switch
-                            android:id="@+id/notifications_switch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="auto" />
-
-                    </LinearLayout>
-
-                    &lt;!&ndash; Privacy Settings &ndash;&gt;
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@drawable/card_background"
-                        android:padding="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@drawable/ic_privacy"
-                            android:contentDescription="Privacy"
-                            app:tint="@color/iconTint"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Privacy Settings"
-                            android:textSize="18sp"
-                            android:textColor="@color/textSecondary"
-                            android:gravity="center_vertical"/>
-
-                    </LinearLayout>
-
-                    &lt;!&ndash; Theme Settings &ndash;&gt;
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@drawable/card_background"
-                        android:padding="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@drawable/ic_theme"
-                            android:contentDescription="Theme"
-                            app:tint="@color/iconTint"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="App Theme"
-                            android:textSize="18sp"
-                            android:textColor="@color/textSecondary"
-                            android:gravity="center_vertical"/>
-
-                        <Spinner
-                            android:id="@+id/theme_spinner"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:entries="@array/theme_options" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
             </LinearLayout>
-        </ScrollView>
 
-        &lt;!&ndash; Bottom Navigation &ndash;&gt;
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/card_background"
-            app:itemIconTint="@color/iconTint"
-            app:itemTextColor="@color/textSecondary"
-            app:menu="@menu/bottom_nav_menu"
-            android:layout_marginTop="@dimen/minimal_margin"/>
+            <!-- Change Password -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_background"
+                android:padding="@dimen/card_view_padding"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_small">
 
-    </LinearLayout>
-    -->
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:src="@drawable/ic_placeholder"
+                    app:tint="@color/iconTint" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Change Password"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update your password for security"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Manage Linked Accounts -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_background"
+                android:padding="@dimen/card_view_padding"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_small">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:src="@drawable/ic_placeholder"
+                    app:tint="@color/iconTint" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Linked Accounts"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Connect or disconnect external accounts"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Section 2: Diary and Notifications -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diary and Notifications"
+                android:textSize="@dimen/text_size_xlarge"
+                android:textColor="@color/textSecondary"
+                android:paddingTop="@dimen/default_margin"
+                android:paddingBottom="@dimen/padding_medium"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/default_margin" />
+
+            <!-- Diary Settings -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_background"
+                android:padding="@dimen/card_view_padding"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_small">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@color/iconTint" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diary Settings"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manage your food and activity diary"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Notification Settings -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_background"
+                android:padding="@dimen/card_view_padding"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_small">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:src="@drawable/ic_placeholder"
+                    app:tint="@color/iconTint" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notification Settings"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Customize your notification preferences"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="@dimen/padding_medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
+        app:itemIconTint="@color/iconTint"
+        app:itemTextColor="@color/textSecondary"
+        app:menu="@menu/bottom_nav_menu"
+        android:layout_marginTop="@dimen/minimal_margin" />
+</LinearLayout>

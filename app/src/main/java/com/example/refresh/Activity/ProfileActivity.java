@@ -1,4 +1,3 @@
-/*
 package com.example.refresh;
 
 import android.os.Bundle;
@@ -118,4 +117,3 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 }
-*/

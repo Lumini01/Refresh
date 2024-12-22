@@ -2,25 +2,7 @@
 <resources>
     <color name="my_blue">#2196F3</color>
 
-    <!-- Main Color Palette
-    <color name="colorPrimary">#1d2d44</color>
-    <color name="colorPrimaryDark">#0d1321</color>
-    <color name="colorAccent">#748cab</color>
-    <color name="background">#f0ebd8</color>
-    <color name="highlight">#3e5c76</color> -->
-
-    <!-- Text Colors
-    <color name="textPrimary">#FFFFFF</color>
-    <color name="textSecondary">#f0ebd8</color> -->
-
-    <!-- Additional UI Colors
-    <color name="buttonColor">#3e5c76</color>
-    <color name="iconTint">#f0ebd8</color>
-    <color name="cardBackground">#748cab</color>
-    <color name="borderColor">#1d2d44</color>
-    <color name="hintColor">#B0BEC5</color> --> <!-- Light gray for hints -->
-
-    <!-- Other Common Colors -->
+    <!-- Original Categories -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray">#757575</color>
@@ -29,7 +11,69 @@
     <color name="colorPrimary">#f2ede8</color>
     <color name="textSecondary">#0f0e0c</color>
     <color name="iconTint">#0f0e0c</color>
-    <color name="cardBackground">#fcfbf7 </color>
+    <color name="cardBackground">#fcfbf7</color>
     <color name="borderColor">#f2efea</color>
     <color name="colorAccent">#FF0000</color>
+
+    <!-- Additional Color Categories -->
+
+    <!-- Background Colors -->
+    <color name="backgroundColor">#FFFFFF</color> <!-- General background color -->
+    <color name="cardBackgroundColor">#F9F9F9</color> <!-- Background for cards -->
+    <color name="surfaceBackground">#F5F5F5</color> <!-- Background for surfaces like dialogs or bottom sheets -->
+    <color name="windowBackground">#FFFFFF</color> <!-- Window background color -->
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#0F0E0C</color> <!-- Main text color -->
+    <color name="textSecondary_X">#757575</color> <!-- Secondary text color -->
+    <color name="textTertiary">#B0B0B0</color> <!-- Tertiary text color -->
+    <color name="textDisabled">#A0A0A0</color> <!-- Disabled text color -->
+    <color name="textHint">#D0D0D0</color> <!-- Hint text color -->
+    <color name="textLink">#1A73E8</color> <!-- Link text color -->
+
+    <!-- Icon Colors -->
+    <color name="iconTint_X">#0F0E0C</color> <!-- Default icon color -->
+    <color name="iconTintSecondary">#757575</color> <!-- Secondary icon color -->
+
+    <!-- Button Colors -->
+    <color name="buttonBackground">#FF0000</color> <!-- Button background color -->
+    <color name="buttonText">#FFFFFF</color> <!-- Button text color -->
+    <color name="buttonTextDisabled">#A0A0A0</color> <!-- Disabled button text color -->
+    <color name="buttonBackgroundDisabled">#D0D0D0</color> <!-- Disabled button background -->
+
+    <!-- Border and Divider Colors -->
+    <color name="borderColor_X">#E0E0E0</color> <!-- Border color for input fields or other UI components -->
+    <color name="dividerColor">#D0D0D0</color> <!-- Divider line color -->
+
+    <!-- Error Colors -->
+    <color name="errorColor">#F44336</color> <!-- Error color for text, buttons, or input fields -->
+    <color name="errorBackgroundColor">#FFEBEE</color> <!-- Error background color -->
+    <color name="errorTextColor">#D32F2F</color> <!-- Error text color -->
+
+    <!-- Status Bar Colors -->
+    <color name="statusBarColor">#232531</color> <!-- Status bar background color -->
+    <color name="statusBarTextColor">#FFFFFF</color> <!-- Status bar text color -->
+
+    <!-- Snackbar Colors -->
+    <color name="snackbarBackground">#323232</color> <!-- Snackbar background color -->
+    <color name="snackbarText">#FFFFFF</color> <!-- Snackbar text color -->
+
+    <!-- Chip Colors -->
+    <color name="chipBackground">#E0E0E0</color> <!-- Chip background color -->
+    <color name="chipText">#0F0E0C</color> <!-- Chip text color -->
+
+    <!-- Dialog Colors -->
+    <color name="dialogBackground">#FFFFFF</color> <!-- Dialog background color -->
+    <color name="dialogText">#0F0E0C</color> <!-- Dialog text color -->
+    <color name="dialogButtonText">#FF0000</color> <!-- Dialog button text color -->
+
+    <!-- States -->
+    <color name="stateSelected">#FFD700</color> <!-- Selected state color -->
+    <color name="stateFocused">#1A73E8</color> <!-- Focused state color -->
+    <color name="stateDisabled">#D0D0D0</color> <!-- Disabled state color -->
+    <color name="statePressed">#FF5722</color> <!-- Pressed state color -->
+
+    <!-- Light/Dark Mode Specific Colors -->
+    <color name="lightModeBackground">#FFFFFF</color> <!-- Background for light mode -->
+    <color name="darkModeBackground">#121212</color> <!-- Background for dark mode -->
 </resources>
