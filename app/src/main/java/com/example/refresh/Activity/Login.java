@@ -1,10 +1,12 @@
 package com.example.refresh.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +39,7 @@ public class Login extends AppCompatActivity {
     private EditText etEmailLogin;
     private EditText etPwdLogin;
     private Button btLogin;
+    private CheckBox rememberMeCheckbox;
     private TextView btSignUp;
     private ImageView logo;
 
@@ -83,6 +86,7 @@ public class Login extends AppCompatActivity {
         etEmailLogin = findViewById(R.id.etEmailLogin);
         etPwdLogin = findViewById(R.id.etPwdLogin);
         btLogin = findViewById(R.id.btLogin);
+        rememberMeCheckbox = findViewById(R.id.rememberMeCheckbox);
         btSignUp = findViewById(R.id.btSignUp);
         logo = findViewById(R.id.logo);
     }
@@ -108,12 +112,21 @@ public class Login extends AppCompatActivity {
         // Set user credentials from the input fields
         user.setEmail(etEmailLogin.getText().toString());
         user.setPwd(etPwdLogin.getText().toString());
+        boolean rememberMe = rememberMeCheckbox.isChecked();
 
         // Validate login credentials
         ErrorMessage validationError = ValidationHelper.validateLogin(user, databaseHelper);
 
         if (validationError == null) {
             // Successful login
+            // Save user email to SharedPreferences
+            if (rememberMe) {
+                SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("loggedUser", user.getEmail());
+                editor.apply();
+            }
+
             showToast("Login Successful!");
             clearErrors();
             navigateToHomeDashboard();

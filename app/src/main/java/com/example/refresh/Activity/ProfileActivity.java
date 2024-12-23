@@ -1,119 +1,104 @@
-package com.example.refresh;
+package com.example.refresh.Activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.Spinner;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.refresh.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    // Declare UI components
-    private Toolbar toolbar;
-    private ImageView profileImageView;
-    private TextView userNameTextView;
-    private TextView emailTextView;
-    private Switch notificationsSwitch;
-    private Spinner themeSpinner;
-    private BottomNavigationView bottomNavigationView;
+    // Toolbar components
+    private ImageView backArrow;
+    private TextView toolbarTitle;
+    private ImageButton settingsButton;
+
+    // Profile Section components
+    private ImageView profilePicture;
+    private TextView profileName, profileAge, currentWeight, weightGoal, dietType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile); // Link to XML layout file
+        setContentView(R.layout.activity_profile);
 
-        // Initialize the UI components
-        toolbar = findViewById(R.id.toolbar);
-        profileImageView = findViewById(R.id.profileImage);
-        userNameTextView = findViewById(R.id.userNameTextView);
-        emailTextView = findViewById(R.id.emailTextView);
-        notificationsSwitch = findViewById(R.id.notifications_switch);
-        themeSpinner = findViewById(R.id.theme_spinner);
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        // Initialize Views
+        initViews();
 
-        // Set up the toolbar (you can add a back button or other menu items here if needed)
+        // Set up Toolbar
+        setupToolbar();
+
+        // Set up Bottom Navigation
+        setupBottomNavigation();
+    }
+
+    private void initViews() {
+        // Toolbar components
+        backArrow = findViewById(R.id.backArrow);
+        toolbarTitle = findViewById(R.id.toolbarTitle);
+        settingsButton = findViewById(R.id.settingsButton);
+
+        // Profile Section components
+        profilePicture = findViewById(R.id.profilePicture);
+        profileName = findViewById(R.id.profileName);
+        profileAge = findViewById(R.id.profileAge);
+        currentWeight = findViewById(R.id.currentWeight);
+        weightGoal = findViewById(R.id.weightGoal);
+        dietType = findViewById(R.id.dietType);
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // toolbar.setNavigationIcon(R.drawable.ic_back); // Uncomment if you want a back button
 
-        // Set the profile details
-        loadProfileData();
+        // Handle back arrow click
+        backArrow.setOnClickListener(v -> onBackPressed());
 
-        // Set up the event listeners for settings
-        setUpEventListeners();
+        // Handle settings button click
+        settingsButton.setOnClickListener(v -> {
+            // TODO: Navigate to Settings screen or perform settings-related actions
+        });
     }
 
-    private void loadProfileData() {
-        // Placeholder: Load user data here (you could fetch from SharedPreferences or a database)
-        // Example:
-        userNameTextView.setText("User Name");
-        emailTextView.setText("user@example.com");
-        profileImageView.setImageResource(R.drawable.ic_profile); // Replace with actual image if needed
-    }
-
-    private void setUpEventListeners() {
-        // 1. Notifications Switch: Toggle notifications settings
-        notificationsSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Handle notifications toggle (store in SharedPreferences or adjust app behavior)
-            if (isChecked) {
-                // Enable notifications
-            } else {
-                // Disable notifications
-            }
-        });
-
-        // 2. Theme Spinner: Handle theme selection (Light/Dark mode)
-        themeSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(android.widget.AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Handle theme selection (apply Light/Dark theme based on position)
-                switch (position) {
-                    case 0:
-                        // Set Light Theme
-                        // You can use AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        break;
-                    case 1:
-                        // Set Dark Theme
-                        // You can use AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(android.widget.AdapterView<?> parentView) {
-                // Do nothing if no item is selected
-            }
-        });
-
-        // 3. Bottom Navigation: Handle item clicks (if needed)
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home_menu:
-                    // Navigate to Home activity
-                    // startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
-                    return true;
-                case R.id.profile_menu:
-                    // Stay in profile activity
-                    return true;
-                // Add other menu items here if necessary
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_today) {
+                // TODO: Navigate to Today screen
+                return true;
+            } else if (itemId == R.id.nav_progress) {
+                // TODO: Navigate to Progress screen
+                return true;
+            } else if (itemId == R.id.nav_log) {
+                // TODO: Navigate to Log screen
+                return true;
+            } else if (itemId == R.id.nav_suggestions) {
+                // TODO: Navigate to Suggestions screen
+                return true;
+            } else if (itemId == R.id.nav_recipes) {
+                // TODO: Navigate to Recipes screen
+                return true;
             }
             return false;
         });
     }
 
-    // Optional: Handle toolbar actions (e.g., back button, settings options)
-    @Override
-    public boolean onOptionsItemSelected(android.view.MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Handle back button press if added to toolbar
-                finish(); // Finish activity
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    private void populateProfileData() {
+        // Simulated data fetching and updating views
+        profileName.setText("John Doe");
+        profileAge.setText("Age: 30");
+        currentWeight.setText("Current Weight: 75kg");
+        weightGoal.setText("Goal: Maintain Weight");
+        dietType.setText("Diet: Vegetarian");
+
+        // Optionally load profile picture with a library like Glide or Picasso
+        // Glide.with(this).load(profilePictureUrl).into(profilePicture);
     }
 }

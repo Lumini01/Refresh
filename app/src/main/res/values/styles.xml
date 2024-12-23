@@ -1,171 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <resources>
 
-        <!-- General Theme -->
-        <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-            <!-- Primary Colors -->
-            <item name="colorPrimary">@color/colorPrimary</item>
-            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-            <item name="colorAccent">@color/colorAccent</item>
+    <!-- General Theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
 
-            <!-- Text Colors -->
-            <item name="android:textColorPrimary">@color/textPrimary</item>
-            <item name="android:textColorSecondary">@color/textSecondary</item>
-            <item name="android:textColorHint">@color/textHint</item>
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:textColorHint">@color/textHint</item>
 
-            <!-- Background Color -->
-            <item name="android:windowBackground">@color/backgroundColor</item>
-            <item name="android:statusBarColor">@color/statusBarColor</item>
-        </style>
+        <!-- Background Color -->
+        <item name="android:windowBackground">@color/backgroundColor</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+    </style>
 
-        <!-- TextView Styles -->
-        <style name="TextViewStyleDefault">
-            <item name="android:textSize">@dimen/text_size_medium</item>
-            <item name="android:textColor">@color/textPrimary</item>
-            <item name="android:layout_margin">@dimen/margin_small</item>
-        </style>
+    <!-- TextView Styles -->
+    <style name="TextViewStyleDefault">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:layout_margin">@dimen/margin_small</item>
+    </style>
 
-        <style name="TextViewStyleSecondary">
-            <item name="android:textSize">@dimen/text_size_small</item>
-            <item name="android:textColor">@color/textSecondary</item>
-        </style>
+    <style name="TextViewStyleSecondary">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
 
-        <style name="TextViewStyleTitle">
-            <item name="android:textSize">@dimen/text_size_xlarge</item>
-            <item name="android:textColor">@color/textPrimary</item>
-            <item name="android:textStyle">bold</item>
-            <item name="android:layout_marginBottom">@dimen/margin_medium</item>
-        </style>
+    <style name="TextViewStyleTitle">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">@dimen/margin_medium</item>
+    </style>
 
-        <!-- EditText Styles -->
-        <style name="EditTextStyleDefault">
-            <item name="android:background">@android:color/white</item>
-            <item name="android:padding">@dimen/padding_medium</item>
-            <item name="android:textColor">@color/textPrimary</item>
-            <item name="android:textSize">@dimen/text_size_medium</item>
-            <item name="android:layout_margin">@dimen/margin_medium</item>
-        </style>
+    <!-- EditText Styles -->
+    <style name="EditTextStyleDefault">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:layout_margin">@dimen/margin_medium</item>
+    </style>
 
-        <style name="EditTextStyleError">
-            <item name="android:background">@android:color/white</item>
-            <item name="android:padding">@dimen/padding_medium</item>
-            <item name="android:textColor">@color/errorTextColor</item>
-            <item name="android:textSize">@dimen/text_size_medium</item>
-            <item name="android:layout_margin">@dimen/margin_medium</item>
-            <item name="android:hint">@color/errorColor</item>
-        </style>
+    <style name="EditTextStyleError">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+        <item name="android:textColor">@color/errorTextColor</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:layout_margin">@dimen/margin_medium</item>
+        <item name="android:hint">@color/errorColor</item>
+    </style>
 
-        <!-- ImageView Styles -->
-        <style name="ImageViewStyleDefault">
-            <item name="android:layout_width">wrap_content</item>
-            <item name="android:layout_height">wrap_content</item>
-            <item name="android:layout_margin">@dimen/margin_small</item>
-        </style>
+    <!-- ImageView Styles -->
+    <style name="ImageViewStyleDefault">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_small</item>
+    </style>
 
-        <style name="ImageViewStyleRounded">
-            <item name="android:layout_width">wrap_content</item>
-            <item name="android:layout_height">wrap_content</item>
-            <item name="android:layout_margin">@dimen/margin_small</item>
-            <item name="android:scaleType">centerCrop</item>
-            <item name="android:src">@drawable/round_image</item>
-        </style>
+    <style name="ImageViewStyleRounded">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_small</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/ic_placeholder</item>
+    </style>
 
-        <!-- LinearLayout Styles -->
-        <style name="LinearLayoutStyleDefault">
-            <item name="android:orientation">vertical</item>
-            <item name="android:padding">@dimen/padding_medium</item>
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">wrap_content</item>
-        </style>
+    <!-- LinearLayout Styles -->
+    <style name="LinearLayoutStyleDefault">
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
-        <style name="LinearLayoutStyleHorizontal">
-            <item name="android:orientation">horizontal</item>
-            <item name="android:padding">@dimen/padding_medium</item>
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">wrap_content</item>
-        </style>
+    <style name="LinearLayoutStyleHorizontal">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
-        <!-- RecyclerView Styles (for lists) -->
-        <style name="RecyclerViewStyleDefault">
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">wrap_content</item>
-            <item name="android:padding">@dimen/padding_medium</item>
-        </style>
+    <!-- RecyclerView Styles (for lists) -->
+    <style name="RecyclerViewStyleDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+    </style>
 
-        <!-- ScrollView Styles -->
-        <style name="ScrollViewStyleDefault">
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">wrap_content</item>
-            <item name="android:padding">@dimen/padding_medium</item>
-        </style>
+    <!-- ScrollView Styles -->
+    <style name="ScrollViewStyleDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+    </style>
 
-        <!-- Divider Styles -->
-        <style name="DividerStyleDefault">
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">1dp</item>
-            <item name="android:background">@color/dividerColor</item>
-        </style>
+    <!-- Divider Styles -->
+    <style name="DividerStyleDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerColor</item>
+    </style>
 
-        <!-- Toolbar Styles -->
-        <style name="ToolbarStyleDefault">
-            <item name="android:background">@color/colorPrimary</item>
-            <item name="android:titleTextColor">@color/white</item>
-            <item name="android:layout_height">56dp</item>
-            <item name="android:elevation">4dp</item>
-        </style>
+    <!-- Toolbar Styles -->
+    <style name="ToolbarStyleDefault">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:titleTextColor">@color/white</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
 
-        <!-- Menu Item Style (for items in toolbar menus) -->
-        <style name="MenuItemStyleDefault">
-            <item name="android:textColor">@color/white</item>
-            <item name="android:textSize">@dimen/text_size_medium</item>
-        </style>
+    <!-- Menu Item Style (for items in toolbar menus) -->
+    <style name="MenuItemStyleDefault">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
 
-        <!-- Button Styles -->
-        <style name="ButtonStylePrimary">
-            <item name="android:backgroundTint">@color/colorAccent</item>
-            <item name="android:textColor">@color/white</item>
-            <item name="android:textSize">@dimen/button_text_size</item>
-            <item name="android:layout_height">@dimen/button_height</item>
-        </style>
+    <!-- Button Styles -->
+    <style name="ButtonStylePrimary">
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
 
-        <style name="ButtonStyleSecondary">
-            <item name="android:backgroundTint">@color/colorPrimaryDark</item>
-            <item name="android:textColor">@color/white</item>
-            <item name="android:textSize">@dimen/button_text_size</item>
-            <item name="android:layout_height">@dimen/button_height</item>
-        </style>
+    <style name="ButtonStyleSecondary">
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
 
-        <style name="ButtonStyleDisabled">
-            <item name="android:backgroundTint">@color/buttonBackgroundDisabled</item>
-            <item name="android:textColor">@color/buttonTextDisabled</item>
-            <item name="android:textSize">@dimen/button_text_size</item>
-            <item name="android:layout_height">@dimen/button_height</item>
-        </style>
+    <style name="ButtonStyleDisabled">
+        <item name="android:backgroundTint">@color/buttonBackgroundDisabled</item>
+        <item name="android:textColor">@color/buttonTextDisabled</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
 
-        <!-- Card Styles -->
-        <style name="CardStyleDefault">
-            <item name="android:background">@color/cardBackground</item>
-            <item name="android:layout_margin">@dimen/margin_medium</item>
-            <item name="android:padding">@dimen/card_view_padding</item>
-            <item name="android:cornerRadius">@dimen/border_radius_medium</item>
-        </style>
+    <!-- Card Styles -->
+    <style name="CardStyleDefault">
+        <item name="android:background">@color/cardBackground</item>
+        <item name="android:layout_margin">@dimen/margin_medium</item>
+        <item name="android:padding">@dimen/card_view_padding</item>
+        <item name="android:dialogCornerRadius">@dimen/border_radius_medium</item>
+    </style>
 
-        <style name="CardStyleElevated">
-            <item name="android:background">@color/cardBackground</item>
-            <item name="android:layout_margin">@dimen/margin_medium</item>
-            <item name="android:padding">@dimen/card_view_padding</item>
-            <item name="android:elevation">4dp</item>
-            <item name="android:cornerRadius">@dimen/border_radius_medium</item>
-        </style>
+    <style name="CardStyleElevated">
+        <item name="android:background">@color/cardBackground</item>
+        <item name="android:layout_margin">@dimen/margin_medium</item>
+        <item name="android:padding">@dimen/card_view_padding</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:dialogCornerRadius">@dimen/border_radius_medium</item>
+    </style>
 
-        <!-- FAB (Floating Action Button) Style -->
-        <style name="FABStyle">
-            <item name="android:backgroundTint">@color/colorAccent</item>
-            <item name="android:layout_margin">@dimen/margin_large</item>
-            <item name="android:elevation">6dp</item>
-        </style>
-
-    </resources>
+    <!-- FAB (Floating Action Button) Style -->
+    <style name="FABStyle">
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:layout_margin">@dimen/margin_large</item>
+        <item name="android:elevation">6dp</item>
+    </style>
 
 </resources>

@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -96,8 +95,14 @@ public class Start extends AppCompatActivity {
             editor.apply();
         }
 
-        // Start the countdown timer
-        startCountdownTimer();
+        // Navigate to the home screen if the user is already logged in
+        String loggedUserEmail = sharedPreferences.getString("loggedUser", null );
+        if (loggedUserEmail != null)
+            navigateToHome();
+        else {
+            // Start the countdown timer
+            startCountdownTimer();
+        }
 
         // Hide the action bar temporarily
         if (getSupportActionBar() != null) {
@@ -141,6 +146,10 @@ public class Start extends AppCompatActivity {
         }.start();  // Start the timer
     }
 
+    private void navigateToHome() {
+        Intent intent = new Intent(Start.this, HomeDashboard.class);
+        startActivity(intent);
+    }
     /**
      * Helper method to start the Login activity.
      */

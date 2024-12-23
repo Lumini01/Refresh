@@ -1,5 +1,6 @@
 package com.example.refresh.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.refresh.R;
+import com.example.refresh.Start;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeDashboard extends AppCompatActivity {
@@ -18,7 +20,7 @@ public class HomeDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
 
         // Handle system bars insets
@@ -69,6 +71,8 @@ public class HomeDashboard extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.action_profile) {
             // Handle profile action click
+            Intent intent = new Intent(HomeDashboard.this, ProfileActivity.class);
+            startActivity(intent);
             return true;
         } else if (itemId == R.id.action_notifications) {
             // Handle notifications action click

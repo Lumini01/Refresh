@@ -8,25 +8,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    android:padding="16dp"
+    android:padding="@dimen/padding_medium"
     tools:context=".Activity.HomeDashboard">
 
-  <!-- Toolbar -->
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@color/colorPrimary"
+      android:background="@drawable/card_background"
       android:elevation="4dp"
       android:title="Dashboard"
       android:titleTextColor="@color/textSecondary"
-      app:itemIconTint="@color/iconTint">
+      app:itemIconTint="@color/iconTint"
+      app:menu="@menu/main_toolbar_menu"
+      android:layout_marginBottom="@dimen/minimal_margin">
 
-    <!-- Scrollable Content -->
+    <!-- Scrollable Content (Logo or Image) -->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical|start"
         app:srcCompat="@mipmap/ic_launcher_brand_foreground" />
 
   </androidx.appcompat.widget.Toolbar>
@@ -332,6 +334,7 @@
       app:itemIconTint="@color/iconTint"
       app:itemTextColor="@color/textSecondary"
       app:menu="@menu/bottom_nav_menu"
+      android:layout_gravity="bottom"
       android:layout_marginTop="@dimen/minimal_margin"/>
 
 </LinearLayout>
