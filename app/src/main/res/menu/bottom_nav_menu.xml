@@ -4,22 +4,22 @@
     <item
         android:id="@+id/nav_today"
         android:icon="@drawable/ic_today"
-        android:title="Today" />
+        android:title="" />
     <item
         android:id="@+id/nav_progress"
         android:icon="@drawable/ic_progress"
-        android:title="Progress" />
+        android:title="" />
     <item
         android:id="@+id/nav_log"
         android:icon="@drawable/ic_log_meal"
-        android:title="log" />
+        android:title="" />
     <item
         android:id="@+id/nav_suggestions"
         android:icon="@drawable/ic_tips"
-        android:title="Suggestions" />
+        android:title="" />
     <item
         android:id="@+id/nav_recipes"
         android:icon="@drawable/ic_recipe_book"
-        android:title="Recipes" />
+        android:title="" />
 
 </menu>

@@ -77,8 +77,18 @@ public class Start extends AppCompatActivity {
         continueBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateToLogin();
-                timer.cancel();  // Stop the countdown timer when the user clicks continue
+                SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+                String loggedUserEmail = sharedPreferences.getString("loggedUser", null );
+                if (loggedUserEmail != null)
+                    navigateToHome();
+                else {
+                    navigateToLogin();
+                }
+
+                cdtView.setText("");
+
+                if (timer != null)
+                    timer.cancel();  // Stop the countdown timer when the user clicks continue
             }
         });
 
@@ -96,17 +106,22 @@ public class Start extends AppCompatActivity {
         }
 
         // Navigate to the home screen if the user is already logged in
+        checkUserStatus();
+
+        // Hide the action bar temporarily
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+    }
+
+    private void checkUserStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         String loggedUserEmail = sharedPreferences.getString("loggedUser", null );
         if (loggedUserEmail != null)
             navigateToHome();
         else {
             // Start the countdown timer
             startCountdownTimer();
-        }
-
-        // Hide the action bar temporarily
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
         }
     }
 
@@ -140,7 +155,7 @@ public class Start extends AppCompatActivity {
             @Override
             public void onFinish() {
                 // When the timer finishes, update text and navigate to the login screen
-                cdtView.setText("Continuing...");
+                cdtView.setText("Loading...");
                 navigateToLogin();
             }
         }.start();  // Start the timer
@@ -156,6 +171,7 @@ public class Start extends AppCompatActivity {
     private void navigateToLogin() {
         Intent intent = new Intent(Start.this, Login.class);
         startActivity(intent);
+        cdtView.setText("");
     }
 
     /**
@@ -259,4 +275,12 @@ public class Start extends AppCompatActivity {
             editor.apply();
         }
     }
+    protected void onResume() {
+        super.onResume();
+
+        /*Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);*/
+    } 
 }

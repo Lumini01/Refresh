@@ -8,8 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentContainerView;
 
 import com.example.refresh.R;
+import com.example.refresh.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     // Profile Section components
     private ImageView profilePicture;
     private TextView profileName, profileAge, currentWeight, weightGoal, dietType;
+    private FragmentContainerView fragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +36,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Set up Toolbar
         setupToolbar();
-
-        // Set up Bottom Navigation
-        setupBottomNavigation();
     }
 
     private void initViews() {
         // Toolbar components
         backArrow = findViewById(R.id.backArrow);
         toolbarTitle = findViewById(R.id.toolbarTitle);
-        settingsButton = findViewById(R.id.settingsButton);
+        settingsButton = findViewById(R.id.settings_button);
 
         // Profile Section components
         profilePicture = findViewById(R.id.profilePicture);
@@ -51,6 +51,8 @@ public class ProfileActivity extends AppCompatActivity {
         currentWeight = findViewById(R.id.currentWeight);
         weightGoal = findViewById(R.id.weightGoal);
         dietType = findViewById(R.id.dietType);
+
+        fragmentContainer = findViewById(R.id.fragment_container);
     }
 
     private void setupToolbar() {
@@ -58,35 +60,15 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Handle back arrow click
-        backArrow.setOnClickListener(v -> onBackPressed());
+        backArrow.setOnClickListener(v -> finish());
 
         // Handle settings button click
         settingsButton.setOnClickListener(v -> {
-            // TODO: Navigate to Settings screen or perform settings-related actions
-        });
-    }
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new SettingsFragment())
+                    .commit();
 
-    private void setupBottomNavigation() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.nav_today) {
-                // TODO: Navigate to Today screen
-                return true;
-            } else if (itemId == R.id.nav_progress) {
-                // TODO: Navigate to Progress screen
-                return true;
-            } else if (itemId == R.id.nav_log) {
-                // TODO: Navigate to Log screen
-                return true;
-            } else if (itemId == R.id.nav_suggestions) {
-                // TODO: Navigate to Suggestions screen
-                return true;
-            } else if (itemId == R.id.nav_recipes) {
-                // TODO: Navigate to Recipes screen
-                return true;
-            }
-            return false;
+            fragmentContainer.setVisibility(View.VISIBLE); // Ensure visibility
         });
     }
 

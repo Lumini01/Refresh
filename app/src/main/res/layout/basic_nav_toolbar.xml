@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar"
+    android:background="@color/colorPrimary"
+    android:elevation="4dp"
+    android:layout_marginBottom="@dimen/margin_small">
+
+    <!-- Back Arrow -->
+    <ImageButton
+        android:id="@+id/backArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_arrow"
+        android:background="@null"
+        android:contentDescription="Back Arrow"
+        android:padding="@dimen/padding_small"
+        android:layout_gravity="start" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:textColor="@color/textSecondary"
+        android:textSize="@dimen/text_size_large"
+        android:layout_gravity="center" />
+
+    <!-- Gear Icon -->
+    <ImageButton
+        android:id="@+id/extra_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:contentDescription="Settings"
+        android:padding="@dimen/padding_small"
+        android:src="@drawable/ic_placeholder" />
+</androidx.appcompat.widget.Toolbar>

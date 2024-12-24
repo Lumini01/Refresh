@@ -7,8 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    android:padding="@dimen/default_margin"
+    android:padding="@dimen/padding_medium"
     tools:context=".Activity.ProfileActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
     <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
@@ -17,14 +24,15 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
-        android:layout_marginBottom="@dimen/default_margin">
+        android:layout_marginBottom="@dimen/margin_small">
 
         <!-- Back Arrow -->
-        <ImageView
+        <ImageButton
             android:id="@+id/backArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back_arrow"
+            android:background="@null"
             android:contentDescription="Back Arrow"
             android:padding="@dimen/padding_small"
             android:layout_gravity="start" />
@@ -41,7 +49,7 @@
 
         <!-- Gear Icon -->
         <ImageButton
-            android:id="@+id/settingsButton"
+            android:id="@+id/settings_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_settings"
@@ -69,8 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin">
+                android:layout_marginBottom="@dimen/padding_medium">
 
                 <!-- Profile Picture Card -->
                 <LinearLayout
@@ -172,13 +179,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Account"
+                android:text="Customization"
                 android:textSize="@dimen/text_size_xlarge"
                 android:textColor="@color/textSecondary"
-                android:paddingTop="@dimen/default_margin"
-                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:paddingBottom="@dimen/padding_small"
                 android:textStyle="bold"
-                android:layout_marginBottom="@dimen/default_margin" />
+                android:layout_marginBottom="@dimen/margin_small" />
 
             <!-- Account Settings -->
             <LinearLayout
@@ -204,14 +211,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Account Settings"
+                        android:text="Personal Info"
                         android:textSize="@dimen/text_size_large"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Manage your account details"
+                        android:text="Manage your personal details"
                         android:textSize="@dimen/text_size_small"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
@@ -242,14 +249,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Change Password"
+                        android:text="Diet Recommendations"
                         android:textSize="@dimen/text_size_large"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Update your password for security"
+                        android:text="Manage your diet recommendations"
                         android:textSize="@dimen/text_size_small"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
@@ -280,33 +287,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linked Accounts"
+                        android:text="Dietary Preferences"
                         android:textSize="@dimen/text_size_large"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Connect or disconnect external accounts"
+                        android:text="Set your preferences"
                         android:textSize="@dimen/text_size_small"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Section 2: Diary and Notifications -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Diary and Notifications"
-                android:textSize="@dimen/text_size_xlarge"
-                android:textColor="@color/textSecondary"
-                android:paddingTop="@dimen/default_margin"
-                android:paddingBottom="@dimen/padding_medium"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/default_margin" />
-
-            <!-- Diary Settings -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -330,52 +324,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diary Settings"
+                        android:text="Water Habits"
                         android:textSize="@dimen/text_size_large"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Manage your food and activity diary"
-                        android:textSize="@dimen/text_size_small"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="@dimen/padding_medium" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Notification Settings -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/card_background"
-                android:padding="@dimen/card_view_padding"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="@dimen/padding_small">
-
-                <ImageView
-                    android:layout_width="@dimen/icon_size_small"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:src="@drawable/ic_placeholder"
-                    app:tint="@color/iconTint" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Notification Settings"
-                        android:textSize="@dimen/text_size_large"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="@dimen/padding_medium" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Customize your notification preferences"
+                        android:text="Set your daily water goals"
                         android:textSize="@dimen/text_size_small"
                         android:textColor="@color/textSecondary"
                         android:layout_marginStart="@dimen/padding_medium" />
