@@ -9,7 +9,7 @@
         android:title="Profile"
         android:orderInCategory="100"
         app:showAsAction="ifRoom"
-        android:iconTint="@color/iconTint"/>
+        android:iconTint="@color/iconTint" />
 
     <!-- Notifications Icon -->
     <item

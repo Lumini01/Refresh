@@ -19,7 +19,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/basic_nav_toolbar"/>
+        layout="@layout/basic_nav_toolbar" />
 
     <!-- Scrollable Content -->
     <ScrollView

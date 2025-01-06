@@ -23,9 +23,9 @@
         android:id="@+id/toolbarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
+        android:text="Title"
         android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_size_large"
+        android:textSize="@dimen/text_size_xlarge"
         android:layout_gravity="center" />
 
     <!-- Gear Icon -->

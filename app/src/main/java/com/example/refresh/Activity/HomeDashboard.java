@@ -45,7 +45,8 @@ public class HomeDashboard extends AppCompatActivity {
                 // Handle progress click
                 return true;
             } else if (itemId == R.id.nav_log) {
-                // Handle log click
+                Intent intent = new Intent(HomeDashboard.this, MealLogActivity.class);
+                startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_suggestions) {
                 // Handle suggestions click

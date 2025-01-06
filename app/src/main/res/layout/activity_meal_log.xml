@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:padding="@dimen/padding_medium">
+    <!--tools:context=".Activity.LogMeal"-->
+
+    <include
+        layout="@layout/basic_nav_toolbar"
+        android:id="@+id/toolbar" />
+
+    <!-- Search Bar -->
+    <include
+        layout="@layout/search_bar"
+        android:id="@+id/search_bar" />
+
+    <!-- Macronutrient Fragment -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/macronutrient_fragment"
+        android:name="com.example.refresh.Fragments.MacronutrientFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
+        android:padding="@dimen/padding_large"
+        android:layout_marginBottom="@dimen/margin_medium"
+        />
+
+    <!-- Selection Bar -->
+    <LinearLayout
+        android:id="@+id/selection_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/card_background"
+        android:padding="@dimen/padding_small"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/btn_meal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Meal"
+            android:background="@drawable/card_background"
+            android:backgroundTint="@color/buttonBackground"
+            android:textColor="@color/buttonText"/>
+
+        <Button
+            android:id="@+id/btn_favorites"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Favorites"
+            android:background="@drawable/card_background"
+            android:backgroundTint="@color/buttonBackground"
+            android:textColor="@color/buttonText"/>
+
+        <Button
+            android:id="@+id/btn_history"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="History"
+            android:background="@drawable/card_background"
+            android:backgroundTint="@color/buttonBackground"
+            android:textColor="@color/buttonText"/>
+    </LinearLayout>
+
+    <!-- Fragment Container -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/cardBackground"/>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
+        app:itemIconTint="@color/iconTint"
+        app:itemTextColor="@color/textSecondary"
+        app:menu="@menu/bottom_nav_menu"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/minimal_margin"/>
+
+</LinearLayout>

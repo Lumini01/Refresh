@@ -20,6 +20,7 @@
       android:title="Dashboard"
       android:titleTextColor="@color/textSecondary"
       app:itemIconTint="@color/iconTint"
+      android:drawableTint="@color/iconTint"
       app:menu="@menu/main_toolbar_menu"
       android:layout_marginBottom="@dimen/minimal_margin">
 
