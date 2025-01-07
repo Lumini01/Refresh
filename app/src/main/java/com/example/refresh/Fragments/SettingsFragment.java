@@ -1,9 +1,7 @@
-package com.example.refresh;
+package com.example.refresh.Fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import com.example.refresh.Activity.Login;
+import com.example.refresh.AccountSettingsFragment;
+import com.example.refresh.R;
 
 public class SettingsFragment extends Fragment {
     private LinearLayout accountSettingsField;

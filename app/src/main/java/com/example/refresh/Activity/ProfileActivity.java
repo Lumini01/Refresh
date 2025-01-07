@@ -5,14 +5,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentContainerView;
 
 import com.example.refresh.R;
-import com.example.refresh.SettingsFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.refresh.Fragments.SettingsFragment;
 
 public class ProfileActivity extends AppCompatActivity {
 

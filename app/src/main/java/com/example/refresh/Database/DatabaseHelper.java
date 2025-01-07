@@ -21,7 +21,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public enum Tables {
         USERS(UsersTable.TABLE_NAME),
         NOTIFICATION_TEMPLATES(NotificationTemplatesTable.TABLE_NAME),
-        NOTIFICATION_INSTANCES(NotificationInstancesTable.TABLE_NAME);
+        NOTIFICATION_INSTANCES(NotificationInstancesTable.TABLE_NAME),
+        FOODS(FoodsTable.TABLE_NAME),
+        MEALS(MealsTable.TABLE_NAME);
 
         private final String tableName;
 
@@ -49,6 +51,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(UsersTable.CREATE_TABLE);
         db.execSQL(NotificationTemplatesTable.CREATE_TABLE);
         db.execSQL(NotificationInstancesTable.CREATE_TABLE);
+        db.execSQL(FoodsTable.CREATE_TABLE);
+        db.execSQL(MealsTable.CREATE_TABLE);
         // Add more table creation logic here
     }
 
@@ -58,8 +62,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Tables.USERS.getTableName());
         db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_TEMPLATES.getTableName());
         db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_INSTANCES.getTableName());
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.FOODS.getTableName());
+        db.execSQL("DROP TABLE IF EXISTS " + Tables.MEALS.getTableName());
         // Add more table drop logic here
         onCreate(db);
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     public <T> Integer insert(Tables table, T model) {
@@ -227,6 +237,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getInt(cursor.getColumnIndexOrThrow(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName())),
                         cursor.getString(cursor.getColumnIndexOrThrow(TIME.getColumnName()))
                 );
+
+            case FOODS:
+                // Example: Foods table mapping
+                return (T) FoodsTable.fromCursor(cursor);
+
+            case MEALS:
+                // Example: Meals table mapping
+                return (T) MealsTable.fromCursor(cursor);
+
             default:
                 throw new IllegalArgumentException("Unsupported table: " + table.getTableName());
         }
@@ -260,6 +279,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     values.put(INSTANCE_ID.getColumnName(), instance.getInstanceID()); // Assuming NotificationInstance has an ID
                 values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID()); // Assuming NotificationInstance has a template_id
                 values.put(TIME.getColumnName(), instance.getTime()); // Assuming NotificationInstance has a timestamp
+                break;
+
+            case FOODS:
+                values = FoodsTable.toContentValues((Food) model);
+                break;
+
+            case MEALS:
+                values = MealsTable.toContentValues((Meal) model);
                 break;
 
             default:

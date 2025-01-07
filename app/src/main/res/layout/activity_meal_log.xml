@@ -15,21 +15,22 @@
         layout="@layout/basic_nav_toolbar"
         android:id="@+id/toolbar" />
 
+
     <!-- Search Bar -->
     <include
         layout="@layout/search_bar"
         android:id="@+id/search_bar" />
 
-    <!-- Macronutrient Fragment -->
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/macronutrient_fragment"
-        android:name="com.example.refresh.Fragments.MacronutrientFragment"
+        android:id="@+id/search_results_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        android:padding="@dimen/padding_large"
-        android:layout_marginBottom="@dimen/margin_medium"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/fragment_macronutrient"
+        android:id="@+id/macronutrient_fragment" />
 
     <!-- Selection Bar -->
     <LinearLayout
@@ -73,7 +74,7 @@
     </LinearLayout>
 
     <!-- Fragment Container -->
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
