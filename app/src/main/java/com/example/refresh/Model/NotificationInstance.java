@@ -1,11 +1,14 @@
 package com.example.refresh.Model;
 
+// Notification Instance Model Class which represents a notification instance
 public class NotificationInstance {
 
+    // Attributes
     private int instanceID;
     private int templateID;
     private String time;
 
+    // Constructors
     public NotificationInstance(int instanceID, int templateID, String time) {
         this.instanceID = instanceID;
         this.templateID = templateID;

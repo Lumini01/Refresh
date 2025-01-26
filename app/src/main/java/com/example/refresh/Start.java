@@ -1,5 +1,6 @@
 package com.example.refresh;
 
+import static com.example.refresh.Database.Tables.FoodsTable.populateFoodsTable;
 import static com.example.refresh.Database.Tables.NotificationTemplatesTable.populateNotificationTemplatesTable;
 
 import android.app.AlarmManager;
@@ -129,12 +130,14 @@ public class Start extends AppCompatActivity {
         // Request notification permission
         requestPostNotificationPermission();
 
-        // Populate the notification templates table if needed
+        // Populate the notification templates table and the foods table if needed
         Context context = getApplicationContext();
         populateNotificationTemplatesTable(context);
 
         // Set default notification times
         setDefaultNotificationInstances();
+
+        //populateFoodsTable(context);
 
         // Run testing methods
         TestingGrounds.test(context);

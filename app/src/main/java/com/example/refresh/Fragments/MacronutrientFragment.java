@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.refresh.R;
 
+// Macronutrient Fragment which displays the macronutrients in the meal log activity
 public class MacronutrientFragment extends Fragment {
 
     private ProgressBar caloriesProgress, carbsProgress, proteinProgress, fatProgress;
@@ -47,6 +48,7 @@ public class MacronutrientFragment extends Fragment {
         return view;
     }
 
+    // Update the progress bars and text
     public void updateMacros(int calories, int carbs, int protein, int fat) {
         caloriesProgress.setProgress(calories);
         carbsProgress.setProgress(carbs);

@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.example.refresh.AccountSettingsFragment;
 import com.example.refresh.R;
 
+// Settings Fragment which displays the settings in the main activity
 public class SettingsFragment extends Fragment {
     private LinearLayout accountSettingsField;
     private ImageButton backArrow;

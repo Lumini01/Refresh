@@ -8,6 +8,7 @@ import com.example.refresh.Model.UserInfo;
 public class UsersTable {
     public static final String TABLE_NAME = "users";
 
+    // Enum for table columns
     public enum Columns {
         NAME("name"),
         EMAIL("email"),
@@ -26,6 +27,7 @@ public class UsersTable {
         }
     }
 
+    // Create table query
     public static final String CREATE_TABLE =
 
             "CREATE TABLE " + TABLE_NAME + " (" +
@@ -34,6 +36,7 @@ public class UsersTable {
             Columns.PHONE.getColumnName() + " TEXT UNIQUE NOT NULL, " +
             Columns.PWD.getColumnName() + " TEXT NOT NULL);";
 
+    // Convert UserInfo to ContentValues
     public static ContentValues toContentValues(UserInfo user) {
         ContentValues values = new ContentValues();
         values.put(Columns.NAME.getColumnName(), user.getName());
@@ -44,6 +47,7 @@ public class UsersTable {
         return values;
     }
 
+    // Convert Cursor to UserInfo
     public static UserInfo fromCursor(Cursor cursor) {
         String name = cursor.getString(cursor.getColumnIndexOrThrow(Columns.NAME.getColumnName()));
         String email = cursor.getString(cursor.getColumnIndexOrThrow(Columns.EMAIL.getColumnName()));

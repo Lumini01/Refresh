@@ -12,6 +12,7 @@ public class NotificationInstancesTable {
 
     public static final String TABLE_NAME = "notification_instances";
 
+    // Enum for table columns
     public enum Columns {
         INSTANCE_ID("instance_id"),
         TEMPLATE_ID("template_id"),
@@ -28,6 +29,7 @@ public class NotificationInstancesTable {
         }
     }
 
+    // Create table query
     public static final String CREATE_TABLE =
 
             "CREATE TABLE " + TABLE_NAME + " (" +
@@ -38,6 +40,7 @@ public class NotificationInstancesTable {
             "REFERENCES " + NotificationTemplatesTable.TABLE_NAME + " (" +
             NotificationTemplatesTable.Columns.TEMPLATE_ID.getColumnName() + "));";
 
+    // Convert NotificationInstance to ContentValues
     public static ContentValues toContentValues(NotificationInstance instance) {
 
         ContentValues values = new ContentValues();
@@ -47,6 +50,7 @@ public class NotificationInstancesTable {
         return values;
     }
 
+    // Convert Cursor to NotificationInstance
     public static NotificationInstance fromCursor(Cursor cursor) {
 
         int instanceID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.INSTANCE_ID.getColumnName()));
@@ -56,6 +60,7 @@ public class NotificationInstancesTable {
         return new NotificationInstance(instanceID, templateID, time);
     }
 
+    // Create a new notification instance ID
     public static int createInstanceID(Context context) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         int id = 0;
@@ -69,6 +74,7 @@ public class NotificationInstancesTable {
         return id;
     }
 
+    // Get a notification instance by its ID
     public static NotificationInstance getInstanceByID(Context context, int instanceID) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
@@ -80,6 +86,7 @@ public class NotificationInstancesTable {
         return dbHelper.getRecord(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, new String[]{String.valueOf(instanceID)});
     }
 
+    // Get the notification template associated with a notification instance
     public static NotificationTemplate getNotificationTemplate(Context context, NotificationInstance instance) {
         int templateID = instance.getTemplateID();
 

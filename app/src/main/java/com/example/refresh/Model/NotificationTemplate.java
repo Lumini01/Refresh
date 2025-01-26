@@ -6,7 +6,7 @@ import com.example.refresh.R;
 
 import java.util.HashMap;
 import java.util.Map;
-
+// Notification Template Model Class which represents a notification template
 public class NotificationTemplate {
 
     private int templateID;

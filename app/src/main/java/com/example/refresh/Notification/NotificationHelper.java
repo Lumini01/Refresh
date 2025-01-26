@@ -19,6 +19,7 @@ import com.example.refresh.Model.NotificationTemplate;
 import com.example.refresh.R;
 import com.example.refresh.TestingGrounds;
 
+// Notification Helper Class which provides methods for displaying notifications
 public class NotificationHelper {
 
     // Declare CHANNEL_ID as a static final variable

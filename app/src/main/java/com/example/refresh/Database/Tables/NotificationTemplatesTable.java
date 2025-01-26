@@ -27,6 +27,7 @@ public class NotificationTemplatesTable {
 
     public static final String TABLE_NAME = "notification_templates";
 
+    // Enum for table columns
     public enum Columns {
         TEMPLATE_ID("template_id"),
         CATEGORY("category"),
@@ -47,6 +48,8 @@ public class NotificationTemplatesTable {
     }
 
     public static final String JSON_FILE_NAME = "notification_templates.json";
+
+    // Create table query
     public static final String CREATE_TABLE =
 
             "CREATE TABLE " + TABLE_NAME + " (" +
@@ -57,6 +60,7 @@ public class NotificationTemplatesTable {
             Columns.ICON_ID.getColumnName() + " INTEGER, " +
             Columns.ACTIVITY_CLASS.getColumnName() + " TEXT);";
 
+    // Convert NotificationTemplate to ContentValues
     public static ContentValues toContentValues(NotificationTemplate template) {
 
         ContentValues values = new ContentValues();
@@ -69,6 +73,7 @@ public class NotificationTemplatesTable {
         return values;
     }
 
+    // Convert Cursor to NotificationTemplate
     public static NotificationTemplate fromCursor(Context context, Cursor cursor) {
 
         int templateID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.TEMPLATE_ID.getColumnName()));
@@ -81,6 +86,7 @@ public class NotificationTemplatesTable {
         return new NotificationTemplate(context, templateID, category, title, message, iconIDName, activityClassName);
     }
 
+    // Get a notification template by its ID
     public static NotificationTemplate getTemplateByID(Context context, int templateID) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
@@ -110,6 +116,8 @@ public class NotificationTemplatesTable {
         // Close the database helper
         dbHelper.close();
     }
+
+    // Check if the table already has data
     private static boolean isDatabasePopulated(DatabaseHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // Check if the table already has data
@@ -122,6 +130,7 @@ public class NotificationTemplatesTable {
         return false;
     }
 
+    // Seed the table with data from the JSON file
     public static void seedNotificationTemplates(DatabaseHelper dbHelper, ArrayList<NotificationTemplate> templates) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -132,6 +141,7 @@ public class NotificationTemplatesTable {
         }
     }
 
+    // Parse the notification templates JSON data
     public static ArrayList<NotificationTemplate> parseTemplates(Context context, String json) {
         ArrayList<NotificationTemplate> templates = new ArrayList<>();
         try {
@@ -155,6 +165,7 @@ public class NotificationTemplatesTable {
         return templates;
     }
 
+    // Load JSON data from an asset file
     public static String loadJSONFromAsset(Context context, String fileName) {
         String json = null;
         try {
@@ -173,5 +184,4 @@ public class NotificationTemplatesTable {
         }
         return json;
     }
-
 }

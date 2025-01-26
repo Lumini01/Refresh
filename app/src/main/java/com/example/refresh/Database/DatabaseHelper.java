@@ -18,6 +18,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    // Enum for database table names
     public enum Tables {
         USERS(UsersTable.TABLE_NAME),
         NOTIFICATION_TEMPLATES(NotificationTemplatesTable.TABLE_NAME),
@@ -72,6 +73,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return context;
     }
 
+    // CRUD Operations
+
+    // Insert a record into the database
     public <T> Integer insert(Tables table, T model) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = toContentValues(model, table);
@@ -79,6 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (int) db.insert(table.getTableName(), null, values);
     }
 
+    // Retrieve all records from the database
     public <T> List<T> getAllRecords(Tables table) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<T> records = new ArrayList<>();
@@ -102,6 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return records;
     }
 
+    // Retrieve a single record from the database
     public <T> T getRecord(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = getEnumColumnName(columnEnum) + " = ?";
@@ -121,6 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null; // Return null if no record is found
     }
 
+    // Retrieve a single column value from a record in the database
     public <T> T getFromRecord(Tables table, Enum<?> columnEnum, int index) {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name (e.g., "name")
@@ -155,6 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;  // Return the value or null if not found
     }
 
+    // Edit a record in the database
     public <T> Integer editRecords(Tables table, T model,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
         String columnName = getEnumColumnName(columnEnum);
@@ -164,6 +172,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.update(table.getTableName(), values, selection, selectionArgs);
     }
 
+    // Delete a record from the database
     public int deleteRecords(Tables table,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
         String columnName = getEnumColumnName(columnEnum);
@@ -171,6 +180,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(table.getTableName(), columnName + " = ?", selectionArgs);
     }
 
+    // Check if a value in the given column exists in a record of the database, if it does - return the record's index
     public int existsInDB(Tables table, Enum<?> columnEnum, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name
@@ -193,6 +203,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return index;
     }
 
+    // Retrieve a random record from the database - for testing purposes
     public <T> T getRandomRecord(Tables table) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Tables.NOTIFICATION_TEMPLATES.getTableName() + " ORDER BY RANDOM() LIMIT 1", null);
@@ -208,6 +219,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    // Create a record from a cursor
     @SuppressWarnings("unchecked")
     private <T> T createRecord(Cursor cursor, Tables table) {
         switch (table) {
@@ -251,6 +263,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Convert a model to ContentValues
     public <T> ContentValues toContentValues(T model, Tables table) {
         ContentValues values = new ContentValues();
 
@@ -296,15 +309,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return values;
     }
 
+    // Helper method to convert a value to a String array
     public static <T> String[] toStringArray(T value) {
         return new String[] {String.valueOf(value)};
     }
 
+    // Checks if the database is open
     public boolean isDatabaseOpen() {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.isOpen();
     }
 
+    // Helper method to get the column name from an enum
     public static String getEnumColumnName(Enum<?> columnEnum) {
         try {
             // Use reflection to call the `getColumnName` method

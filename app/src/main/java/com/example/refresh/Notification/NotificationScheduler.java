@@ -20,7 +20,9 @@ import com.example.refresh.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+// Notification Scheduler Class which provides methods for scheduling notifications
 public class NotificationScheduler {
+    // Declare the table names as constants
     public static void addDefaultNotifications(Context context, ArrayList<Integer> instanceIDs, ArrayList<Integer> templateIDs, ArrayList<String> times) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
@@ -57,6 +59,8 @@ public class NotificationScheduler {
             }
         }
     }
+
+    // Method to add new notifications
     public static void addNotificationInstances(Context context, ArrayList<Integer> templateIDs, ArrayList<String> times) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
@@ -87,6 +91,7 @@ public class NotificationScheduler {
         }
     }
 
+    // Schedule daily notifications
     public static void scheduleDailyNotifications(Context context, ArrayList<NotificationInstance> instances) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 

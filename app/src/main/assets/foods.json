@@ -1,0 +1,2512 @@
+[
+  {
+    "id": -1,
+    "name": "",
+    "category": "",
+    "labels": [""],
+    "calories": -1,
+    "carbs": -1,
+    "protein": -1,
+    "fat": -1
+  },
+  {
+    "id": 1,
+    "name": "Apple",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","healthy"],
+    "calories": 52,
+    "carbs": 14,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 2,
+    "name": "Banana",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","sweet"],
+    "calories": 89,
+    "carbs": 23,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 3,
+    "name": "Cherry",
+    "category": "Fruit",
+    "labels": ["fresh","vegan"],
+    "calories": 63,
+    "carbs": 16,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 4,
+    "name": "Strawberry",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","summer"],
+    "calories": 33,
+    "carbs": 8,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 5,
+    "name": "Raspberry",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","berry"],
+    "calories": 52,
+    "carbs": 12,
+    "protein": 1,
+    "fat": 1
+  },
+  {
+    "id": 6,
+    "name": "Blueberry",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","antioxidant"],
+    "calories": 57,
+    "carbs": 14,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 7,
+    "name": "Blackberry",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","berry"],
+    "calories": 43,
+    "carbs": 10,
+    "protein": 1,
+    "fat": 1
+  },
+  {
+    "id": 8,
+    "name": "Watermelon",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","hydrating"],
+    "calories": 30,
+    "carbs": 8,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 9,
+    "name": "Cantaloupe",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","summer"],
+    "calories": 34,
+    "carbs": 8,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 10,
+    "name": "Honeydew",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","light"],
+    "calories": 36,
+    "carbs": 9,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 11,
+    "name": "Grapes",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","sweet"],
+    "calories": 69,
+    "carbs": 18,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 12,
+    "name": "Orange",
+    "category": "Fruit",
+    "labels": ["fresh","citrus","vegan"],
+    "calories": 47,
+    "carbs": 12,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 13,
+    "name": "Mandarin",
+    "category": "Fruit",
+    "labels": ["fresh","citrus","vegan"],
+    "calories": 53,
+    "carbs": 13,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 14,
+    "name": "Grapefruit",
+    "category": "Fruit",
+    "labels": ["fresh","citrus","vegan"],
+    "calories": 42,
+    "carbs": 11,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 15,
+    "name": "Lemon",
+    "category": "Fruit",
+    "labels": ["fresh","citrus","vegan"],
+    "calories": 29,
+    "carbs": 9,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 16,
+    "name": "Lime",
+    "category": "Fruit",
+    "labels": ["fresh","citrus","vegan"],
+    "calories": 30,
+    "carbs": 11,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 17,
+    "name": "Pineapple",
+    "category": "Fruit",
+    "labels": ["tropical","vegan","juicy"],
+    "calories": 50,
+    "carbs": 13,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 18,
+    "name": "Mango",
+    "category": "Fruit",
+    "labels": ["tropical","vegan","sweet"],
+    "calories": 60,
+    "carbs": 15,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 19,
+    "name": "Papaya",
+    "category": "Fruit",
+    "labels": ["tropical","vegan","fresh"],
+    "calories": 43,
+    "carbs": 11,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 20,
+    "name": "Kiwi",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","tart"],
+    "calories": 61,
+    "carbs": 15,
+    "protein": 1,
+    "fat": 1
+  },
+  {
+    "id": 21,
+    "name": "Peach",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","stone fruit"],
+    "calories": 39,
+    "carbs": 10,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 22,
+    "name": "Plum",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","stone fruit"],
+    "calories": 46,
+    "carbs": 11,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 23,
+    "name": "Apricot",
+    "category": "Fruit",
+    "labels": ["fresh","vegan","stone fruit"],
+    "calories": 48,
+    "carbs": 11,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 24,
+    "name": "Fig",
+    "category": "Fruit",
+    "labels": ["fresh","vegan"],
+    "calories": 74,
+    "carbs": 19,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 25,
+    "name": "Date",
+    "category": "Fruit",
+    "labels": ["vegan","sweet","dried"],
+    "calories": 282,
+    "carbs": 75,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 26,
+    "name": "Coconut",
+    "category": "Fruit",
+    "labels": ["tropical","vegan","fresh"],
+    "calories": 354,
+    "carbs": 15,
+    "protein": 3,
+    "fat": 33
+  },
+  {
+    "id": 27,
+    "name": "Avocado",
+    "category": "Fruit",
+    "labels": ["creamy","vegan","healthy fats"],
+    "calories": 160,
+    "carbs": 9,
+    "protein": 2,
+    "fat": 15
+  },
+  {
+    "id": 28,
+    "name": "Tomato",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","salad"],
+    "calories": 18,
+    "carbs": 4,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 29,
+    "name": "Cucumber",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","hydrating"],
+    "calories": 15,
+    "carbs": 4,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 30,
+    "name": "Bell Pepper",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","colorful"],
+    "calories": 31,
+    "carbs": 6,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 31,
+    "name": "Lettuce",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","salad"],
+    "calories": 15,
+    "carbs": 3,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 32,
+    "name": "Spinach",
+    "category": "Vegetable",
+    "labels": ["leafy green","vegan","healthy"],
+    "calories": 23,
+    "carbs": 4,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 33,
+    "name": "Kale",
+    "category": "Vegetable",
+    "labels": ["leafy green","vegan","superfood"],
+    "calories": 35,
+    "carbs": 5,
+    "protein": 3,
+    "fat": 1
+  },
+  {
+    "id": 34,
+    "name": "Broccoli",
+    "category": "Vegetable",
+    "labels": ["cruciferous","vegan","healthy"],
+    "calories": 34,
+    "carbs": 7,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 35,
+    "name": "Cauliflower",
+    "category": "Vegetable",
+    "labels": ["cruciferous","vegan","low-carb"],
+    "calories": 25,
+    "carbs": 5,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 36,
+    "name": "Carrot",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","root"],
+    "calories": 41,
+    "carbs": 10,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 37,
+    "name": "Potato",
+    "category": "Vegetable",
+    "labels": ["root","vegan","starchy"],
+    "calories": 77,
+    "carbs": 17,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 38,
+    "name": "Sweet Potato",
+    "category": "Vegetable",
+    "labels": ["root","vegan","starchy"],
+    "calories": 86,
+    "carbs": 20,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 39,
+    "name": "Onion",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","flavorful"],
+    "calories": 40,
+    "carbs": 9,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 40,
+    "name": "Garlic",
+    "category": "Vegetable",
+    "labels": ["aromatic","vegan","flavorful"],
+    "calories": 149,
+    "carbs": 33,
+    "protein": 6,
+    "fat": 0
+  },
+  {
+    "id": 41,
+    "name": "Ginger",
+    "category": "Vegetable",
+    "labels": ["aromatic","vegan","spicy"],
+    "calories": 80,
+    "carbs": 18,
+    "protein": 2,
+    "fat": 1
+  },
+  {
+    "id": 42,
+    "name": "Eggplant",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","purple"],
+    "calories": 25,
+    "carbs": 6,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 43,
+    "name": "Zucchini",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","summer squash"],
+    "calories": 17,
+    "carbs": 3,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 44,
+    "name": "Pumpkin",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","fall"],
+    "calories": 26,
+    "carbs": 7,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 45,
+    "name": "Green Beans",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","fiber"],
+    "calories": 31,
+    "carbs": 7,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 46,
+    "name": "Peas",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","fiber"],
+    "calories": 81,
+    "carbs": 14,
+    "protein": 5,
+    "fat": 0
+  },
+  {
+    "id": 47,
+    "name": "Corn",
+    "category": "Vegetable",
+    "labels": ["starchy","vegan","grain-like"],
+    "calories": 86,
+    "carbs": 19,
+    "protein": 3,
+    "fat": 1
+  },
+  {
+    "id": 48,
+    "name": "Mushrooms",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","earthy"],
+    "calories": 22,
+    "carbs": 3,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 49,
+    "name": "Asparagus",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","spring"],
+    "calories": 20,
+    "carbs": 4,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 50,
+    "name": "Celery",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","crunchy"],
+    "calories": 14,
+    "carbs": 3,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 51,
+    "name": "Beetroot",
+    "category": "Vegetable",
+    "labels": ["root","vegan","colorful"],
+    "calories": 43,
+    "carbs": 10,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 52,
+    "name": "Radish",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","spicy"],
+    "calories": 16,
+    "carbs": 3,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 53,
+    "name": "Turnip",
+    "category": "Vegetable",
+    "labels": ["root","vegan"],
+    "calories": 28,
+    "carbs": 6,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 54,
+    "name": "Parsnip",
+    "category": "Vegetable",
+    "labels": ["root","vegan","sweet"],
+    "calories": 75,
+    "carbs": 18,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 55,
+    "name": "Brussels Sprouts",
+    "category": "Vegetable",
+    "labels": ["cruciferous","vegan","mini cabbage"],
+    "calories": 43,
+    "carbs": 9,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 56,
+    "name": "Cabbage",
+    "category": "Vegetable",
+    "labels": ["cruciferous","vegan","fresh"],
+    "calories": 25,
+    "carbs": 6,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 57,
+    "name": "Seaweed",
+    "category": "Vegetable",
+    "labels": ["marine","vegan","mineral-rich"],
+    "calories": 45,
+    "carbs": 9,
+    "protein": 2,
+    "fat": 1
+  },
+  {
+    "id": 58,
+    "name": "Rice (White)",
+    "category": "Grain",
+    "labels": ["staple","grain","vegan"],
+    "calories": 130,
+    "carbs": 28,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 59,
+    "name": "Rice (Brown)",
+    "category": "Grain",
+    "labels": ["whole grain","vegan","healthy"],
+    "calories": 111,
+    "carbs": 23,
+    "protein": 3,
+    "fat": 1
+  },
+  {
+    "id": 60,
+    "name": "Quinoa",
+    "category": "Grain",
+    "labels": ["pseudo-grain","vegan","high protein"],
+    "calories": 120,
+    "carbs": 21,
+    "protein": 4,
+    "fat": 2
+  },
+  {
+    "id": 61,
+    "name": "Oats",
+    "category": "Grain",
+    "labels": ["whole grain","vegan","breakfast"],
+    "calories": 389,
+    "carbs": 66,
+    "protein": 17,
+    "fat": 7
+  },
+  {
+    "id": 62,
+    "name": "Wheat Bread",
+    "category": "Grain",
+    "labels": ["baked","whole wheat","vegan"],
+    "calories": 247,
+    "carbs": 41,
+    "protein": 8,
+    "fat": 4
+  },
+  {
+    "id": 63,
+    "name": "Rye Bread",
+    "category": "Grain",
+    "labels": ["baked","vegan","whole grain"],
+    "calories": 259,
+    "carbs": 48,
+    "protein": 8,
+    "fat": 3
+  },
+  {
+    "id": 64,
+    "name": "Pasta",
+    "category": "Grain",
+    "labels": ["wheat","italian","vegan"],
+    "calories": 131,
+    "carbs": 25,
+    "protein": 5,
+    "fat": 1
+  },
+  {
+    "id": 65,
+    "name": "Noodles (Egg)",
+    "category": "Grain",
+    "labels": ["wheat","egg-based"],
+    "calories": 138,
+    "carbs": 25,
+    "protein": 4,
+    "fat": 2
+  },
+  {
+    "id": 66,
+    "name": "Tortilla",
+    "category": "Grain",
+    "labels": ["flatbread","vegan"],
+    "calories": 218,
+    "carbs": 45,
+    "protein": 6,
+    "fat": 2
+  },
+  {
+    "id": 67,
+    "name": "Chicken Breast",
+    "category": "Poultry",
+    "labels": ["lean protein","homemade","healthy"],
+    "calories": 165,
+    "carbs": 0,
+    "protein": 31,
+    "fat": 4
+  },
+  {
+    "id": 68,
+    "name": "Chicken Thigh",
+    "category": "Poultry",
+    "labels": ["protein","homemade"],
+    "calories": 209,
+    "carbs": 0,
+    "protein": 26,
+    "fat": 10
+  },
+  {
+    "id": 69,
+    "name": "Turkey Breast",
+    "category": "Poultry",
+    "labels": ["lean protein","healthy"],
+    "calories": 104,
+    "carbs": 0,
+    "protein": 17,
+    "fat": 2
+  },
+  {
+    "id": 70,
+    "name": "Turkey Thigh",
+    "category": "Poultry",
+    "labels": ["protein","homemade"],
+    "calories": 130,
+    "carbs": 0,
+    "protein": 17,
+    "fat": 6
+  },
+  {
+    "id": 71,
+    "name": "Duck",
+    "category": "Poultry",
+    "labels": ["rich","protein"],
+    "calories": 337,
+    "carbs": 0,
+    "protein": 19,
+    "fat": 28
+  },
+  {
+    "id": 72,
+    "name": "Goose",
+    "category": "Poultry",
+    "labels": ["rich","protein"],
+    "calories": 305,
+    "carbs": 0,
+    "protein": 24,
+    "fat": 22
+  },
+  {
+    "id": 73,
+    "name": "Pork Chop",
+    "category": "Meat",
+    "labels": ["protein","homemade"],
+    "calories": 231,
+    "carbs": 0,
+    "protein": 26,
+    "fat": 13
+  },
+  {
+    "id": 74,
+    "name": "Pork Loin",
+    "category": "Meat",
+    "labels": ["protein","lean"],
+    "calories": 205,
+    "carbs": 0,
+    "protein": 29,
+    "fat": 9
+  },
+  {
+    "id": 75,
+    "name": "Bacon",
+    "category": "Meat",
+    "labels": ["salty","fast food","breakfast"],
+    "calories": 541,
+    "carbs": 1,
+    "protein": 37,
+    "fat": 42
+  },
+  {
+    "id": 76,
+    "name": "Ham",
+    "category": "Meat",
+    "labels": ["salty","processed"],
+    "calories": 145,
+    "carbs": 1,
+    "protein": 20,
+    "fat": 6
+  },
+  {
+    "id": 77,
+    "name": "Beef Steak",
+    "category": "Meat",
+    "labels": ["protein","grill"],
+    "calories": 271,
+    "carbs": 0,
+    "protein": 25,
+    "fat": 18
+  },
+  {
+    "id": 78,
+    "name": "Ground Beef",
+    "category": "Meat",
+    "labels": ["protein","fast food","burger"],
+    "calories": 254,
+    "carbs": 0,
+    "protein": 17,
+    "fat": 20
+  },
+  {
+    "id": 79,
+    "name": "Lamb Chop",
+    "category": "Meat",
+    "labels": ["protein","rich"],
+    "calories": 282,
+    "carbs": 0,
+    "protein": 25,
+    "fat": 19
+  },
+  {
+    "id": 80,
+    "name": "Lamb Leg",
+    "category": "Meat",
+    "labels": ["protein","rich"],
+    "calories": 206,
+    "carbs": 0,
+    "protein": 30,
+    "fat": 8
+  },
+  {
+    "id": 81,
+    "name": "Salmon",
+    "category": "Seafood",
+    "labels": ["oily fish","healthy","protein"],
+    "calories": 208,
+    "carbs": 0,
+    "protein": 20,
+    "fat": 13
+  },
+  {
+    "id": 82,
+    "name": "Tuna",
+    "category": "Seafood",
+    "labels": ["lean fish","protein","healthy"],
+    "calories": 132,
+    "carbs": 0,
+    "protein": 28,
+    "fat": 1
+  },
+  {
+    "id": 83,
+    "name": "Cod",
+    "category": "Seafood",
+    "labels": ["lean fish","protein"],
+    "calories": 105,
+    "carbs": 0,
+    "protein": 23,
+    "fat": 1
+  },
+  {
+    "id": 84,
+    "name": "Trout",
+    "category": "Seafood",
+    "labels": ["freshwater fish","protein"],
+    "calories": 141,
+    "carbs": 0,
+    "protein": 20,
+    "fat": 6
+  },
+  {
+    "id": 85,
+    "name": "Sardines",
+    "category": "Seafood",
+    "labels": ["oily fish","protein"],
+    "calories": 208,
+    "carbs": 0,
+    "protein": 25,
+    "fat": 11
+  },
+  {
+    "id": 86,
+    "name": "Shrimp",
+    "category": "Seafood",
+    "labels": ["shellfish","protein","low fat"],
+    "calories": 99,
+    "carbs": 0,
+    "protein": 24,
+    "fat": 0
+  },
+  {
+    "id": 87,
+    "name": "Crab",
+    "category": "Seafood",
+    "labels": ["shellfish","protein"],
+    "calories": 97,
+    "carbs": 0,
+    "protein": 21,
+    "fat": 1
+  },
+  {
+    "id": 88,
+    "name": "Lobster",
+    "category": "Seafood",
+    "labels": ["shellfish","protein","luxury"],
+    "calories": 89,
+    "carbs": 1,
+    "protein": 19,
+    "fat": 1
+  },
+  {
+    "id": 89,
+    "name": "Clams",
+    "category": "Seafood",
+    "labels": ["shellfish","protein"],
+    "calories": 74,
+    "carbs": 5,
+    "protein": 12,
+    "fat": 1
+  },
+  {
+    "id": 90,
+    "name": "Scallops",
+    "category": "Seafood",
+    "labels": ["shellfish","protein"],
+    "calories": 111,
+    "carbs": 5,
+    "protein": 20,
+    "fat": 1
+  },
+  {
+    "id": 91,
+    "name": "Milk (Whole)",
+    "category": "Dairy",
+    "labels": ["dairy","creamy"],
+    "calories": 61,
+    "carbs": 5,
+    "protein": 3,
+    "fat": 3
+  },
+  {
+    "id": 92,
+    "name": "Milk (Skim)",
+    "category": "Dairy",
+    "labels": ["dairy","low-fat","healthy"],
+    "calories": 34,
+    "carbs": 5,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 93,
+    "name": "Cheddar Cheese",
+    "category": "Dairy",
+    "labels": ["cheese","rich","flavorful"],
+    "calories": 403,
+    "carbs": 1,
+    "protein": 25,
+    "fat": 33
+  },
+  {
+    "id": 94,
+    "name": "Mozzarella Cheese",
+    "category": "Dairy",
+    "labels": ["cheese","italian"],
+    "calories": 280,
+    "carbs": 3,
+    "protein": 28,
+    "fat": 17
+  },
+  {
+    "id": 95,
+    "name": "Cottage Cheese",
+    "category": "Dairy",
+    "labels": ["fresh","low-fat"],
+    "calories": 98,
+    "carbs": 3,
+    "protein": 11,
+    "fat": 4
+  },
+  {
+    "id": 96,
+    "name": "Yogurt",
+    "category": "Dairy",
+    "labels": ["probiotic","creamy"],
+    "calories": 59,
+    "carbs": 4,
+    "protein": 10,
+    "fat": 1
+  },
+  {
+    "id": 97,
+    "name": "Butter",
+    "category": "Dairy",
+    "labels": ["spread","rich"],
+    "calories": 717,
+    "carbs": 1,
+    "protein": 1,
+    "fat": 81
+  },
+  {
+    "id": 98,
+    "name": "Cream",
+    "category": "Dairy",
+    "labels": ["rich","whipping"],
+    "calories": 340,
+    "carbs": 3,
+    "protein": 2,
+    "fat": 36
+  },
+  {
+    "id": 99,
+    "name": "Sour Cream",
+    "category": "Dairy",
+    "labels": ["tangy","creamy"],
+    "calories": 193,
+    "carbs": 4,
+    "protein": 2,
+    "fat": 20
+  },
+  {
+    "id": 100,
+    "name": "Ice Cream",
+    "category": "Dairy",
+    "labels": ["sweet","dessert"],
+    "calories": 207,
+    "carbs": 24,
+    "protein": 4,
+    "fat": 11
+  },
+  {
+    "id": 101,
+    "name": "Almond",
+    "category": "Nuts/Seeds",
+    "labels": ["healthy fat","vegan","snack"],
+    "calories": 579,
+    "carbs": 22,
+    "protein": 21,
+    "fat": 50
+  },
+  {
+    "id": 102,
+    "name": "Walnut",
+    "category": "Nuts/Seeds",
+    "labels": ["healthy fat","vegan","snack"],
+    "calories": 654,
+    "carbs": 14,
+    "protein": 15,
+    "fat": 65
+  },
+  {
+    "id": 103,
+    "name": "Peanuts",
+    "category": "Nuts/Seeds",
+    "labels": ["legume","vegan","snack"],
+    "calories": 567,
+    "carbs": 16,
+    "protein": 26,
+    "fat": 49
+  },
+  {
+    "id": 104,
+    "name": "Peanut Butter",
+    "category": "Nuts/Seeds",
+    "labels": ["spread","vegan","snack"],
+    "calories": 588,
+    "carbs": 20,
+    "protein": 25,
+    "fat": 50
+  },
+  {
+    "id": 105,
+    "name": "Cashew",
+    "category": "Nuts/Seeds",
+    "labels": ["creamy","vegan","snack"],
+    "calories": 553,
+    "carbs": 30,
+    "protein": 18,
+    "fat": 44
+  },
+  {
+    "id": 106,
+    "name": "Pecan",
+    "category": "Nuts/Seeds",
+    "labels": ["buttery","vegan","snack"],
+    "calories": 691,
+    "carbs": 14,
+    "protein": 9,
+    "fat": 72
+  },
+  {
+    "id": 107,
+    "name": "Hazelnut",
+    "category": "Nuts/Seeds",
+    "labels": ["nutty","vegan","snack"],
+    "calories": 628,
+    "carbs": 17,
+    "protein": 15,
+    "fat": 61
+  },
+  {
+    "id": 108,
+    "name": "Pumpkin Seeds",
+    "category": "Nuts/Seeds",
+    "labels": ["snack","vegan","roasted"],
+    "calories": 559,
+    "carbs": 11,
+    "protein": 30,
+    "fat": 49
+  },
+  {
+    "id": 109,
+    "name": "Sunflower Seeds",
+    "category": "Nuts/Seeds",
+    "labels": ["snack","vegan","roasted"],
+    "calories": 584,
+    "carbs": 20,
+    "protein": 20,
+    "fat": 51
+  },
+  {
+    "id": 110,
+    "name": "Flax Seeds",
+    "category": "Nuts/Seeds",
+    "labels": ["omega-3","vegan","healthy"],
+    "calories": 534,
+    "carbs": 29,
+    "protein": 18,
+    "fat": 42
+  },
+  {
+    "id": 111,
+    "name": "Lentils",
+    "category": "Legumes",
+    "labels": ["vegan","protein","fiber"],
+    "calories": 116,
+    "carbs": 20,
+    "protein": 9,
+    "fat": 0
+  },
+  {
+    "id": 112,
+    "name": "Chickpeas",
+    "category": "Legumes",
+    "labels": ["vegan","protein","fiber"],
+    "calories": 164,
+    "carbs": 27,
+    "protein": 9,
+    "fat": 3
+  },
+  {
+    "id": 113,
+    "name": "Black Beans",
+    "category": "Legumes",
+    "labels": ["vegan","protein","fiber"],
+    "calories": 132,
+    "carbs": 24,
+    "protein": 9,
+    "fat": 1
+  },
+  {
+    "id": 114,
+    "name": "Kidney Beans",
+    "category": "Legumes",
+    "labels": ["vegan","protein","fiber"],
+    "calories": 127,
+    "carbs": 22,
+    "protein": 9,
+    "fat": 0
+  },
+  {
+    "id": 115,
+    "name": "Soybeans",
+    "category": "Legumes",
+    "labels": ["vegan","protein","soy"],
+    "calories": 173,
+    "carbs": 9,
+    "protein": 16,
+    "fat": 9
+  },
+  {
+    "id": 116,
+    "name": "Tofu",
+    "category": "Alternative Protein",
+    "labels": ["vegan","soy","protein"],
+    "calories": 76,
+    "carbs": 2,
+    "protein": 8,
+    "fat": 4
+  },
+  {
+    "id": 117,
+    "name": "Tempeh",
+    "category": "Alternative Protein",
+    "labels": ["vegan","soy","fermented"],
+    "calories": 195,
+    "carbs": 9,
+    "protein": 19,
+    "fat": 11
+  },
+  {
+    "id": 118,
+    "name": "Edamame",
+    "category": "Legumes",
+    "labels": ["vegan","soy","green"],
+    "calories": 121,
+    "carbs": 9,
+    "protein": 11,
+    "fat": 5
+  },
+  {
+    "id": 119,
+    "name": "Brownie",
+    "category": "Sweets",
+    "labels": ["chocolate","dessert"],
+    "calories": 466,
+    "carbs": 58,
+    "protein": 5,
+    "fat": 23
+  },
+  {
+    "id": 120,
+    "name": "Chocolate Chip Cookie",
+    "category": "Sweets",
+    "labels": ["dessert","sweet"],
+    "calories": 488,
+    "carbs": 64,
+    "protein": 6,
+    "fat": 22
+  },
+  {
+    "id": 121,
+    "name": "Donut",
+    "category": "Sweets",
+    "labels": ["fried","dessert"],
+    "calories": 452,
+    "carbs": 51,
+    "protein": 5,
+    "fat": 25
+  },
+  {
+    "id": 122,
+    "name": "Cupcake",
+    "category": "Sweets",
+    "labels": ["baked","dessert","sweet"],
+    "calories": 305,
+    "carbs": 45,
+    "protein": 4,
+    "fat": 12
+  },
+  {
+    "id": 123,
+    "name": "Muffin",
+    "category": "Sweets",
+    "labels": ["baked","sweet","breakfast"],
+    "calories": 377,
+    "carbs": 50,
+    "protein": 6,
+    "fat": 16
+  },
+  {
+    "id": 124,
+    "name": "Croissant",
+    "category": "Baked Goods",
+    "labels": ["buttery","french"],
+    "calories": 406,
+    "carbs": 45,
+    "protein": 8,
+    "fat": 20
+  },
+  {
+    "id": 125,
+    "name": "Bagel",
+    "category": "Baked Goods",
+    "labels": ["bread","breakfast"],
+    "calories": 250,
+    "carbs": 49,
+    "protein": 9,
+    "fat": 1
+  },
+  {
+    "id": 126,
+    "name": "Pita Bread",
+    "category": "Baked Goods",
+    "labels": ["flatbread","mediterranean"],
+    "calories": 275,
+    "carbs": 55,
+    "protein": 9,
+    "fat": 1
+  },
+  {
+    "id": 127,
+    "name": "Tortilla Chips",
+    "category": "Snacks",
+    "labels": ["crunchy","fast food"],
+    "calories": 488,
+    "carbs": 65,
+    "protein": 6,
+    "fat": 23
+  },
+  {
+    "id": 128,
+    "name": "Potato Chips",
+    "category": "Snacks",
+    "labels": ["crunchy","fast food","salty"],
+    "calories": 536,
+    "carbs": 52,
+    "protein": 7,
+    "fat": 34
+  },
+  {
+    "id": 129,
+    "name": "Popcorn",
+    "category": "Snacks",
+    "labels": ["corn","light","vegan"],
+    "calories": 375,
+    "carbs": 74,
+    "protein": 13,
+    "fat": 5
+  },
+  {
+    "id": 130,
+    "name": "Candy Bar",
+    "category": "Sweets",
+    "labels": ["chocolate","sweet","processed"],
+    "calories": 500,
+    "carbs": 58,
+    "protein": 6,
+    "fat": 27
+  },
+  {
+    "id": 131,
+    "name": "Chocolate Bar",
+    "category": "Sweets",
+    "labels": ["chocolate","dessert"],
+    "calories": 546,
+    "carbs": 61,
+    "protein": 4,
+    "fat": 31
+  },
+  {
+    "id": 132,
+    "name": "Gummy Bears",
+    "category": "Sweets",
+    "labels": ["candy","chewy","sweet"],
+    "calories": 343,
+    "carbs": 78,
+    "protein": 6,
+    "fat": 0
+  },
+  {
+    "id": 133,
+    "name": "Marshmallow",
+    "category": "Sweets",
+    "labels": ["candy","sweet","soft"],
+    "calories": 318,
+    "carbs": 81,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 134,
+    "name": "Gelatin",
+    "category": "Sweets",
+    "labels": ["dessert","jiggly"],
+    "calories": 62,
+    "carbs": 14,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 135,
+    "name": "Soda (Cola)",
+    "category": "Beverages",
+    "labels": ["soft drink","sweet","processed"],
+    "calories": 42,
+    "carbs": 11,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 136,
+    "name": "Soda (Lemon-Lime)",
+    "category": "Beverages",
+    "labels": ["soft drink","sweet","processed"],
+    "calories": 40,
+    "carbs": 11,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 137,
+    "name": "Juice (Apple)",
+    "category": "Beverages",
+    "labels": ["fruit juice","sweet","vegan"],
+    "calories": 46,
+    "carbs": 11,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 138,
+    "name": "Juice (Orange)",
+    "category": "Beverages",
+    "labels": ["fruit juice","citrus","vegan"],
+    "calories": 45,
+    "carbs": 10,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 139,
+    "name": "Smoothie (Mixed Berry)",
+    "category": "Beverages",
+    "labels": ["vegan","fruity","healthy"],
+    "calories": 50,
+    "carbs": 12,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 140,
+    "name": "Coffee (Black)",
+    "category": "Beverages",
+    "labels": ["caffeinated","zero carb"],
+    "calories": 2,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 141,
+    "name": "Latte",
+    "category": "Beverages",
+    "labels": ["coffee","milk"],
+    "calories": 54,
+    "carbs": 5,
+    "protein": 3,
+    "fat": 3
+  },
+  {
+    "id": 142,
+    "name": "Tea (Green)",
+    "category": "Beverages",
+    "labels": ["caffeinated","light","healthy"],
+    "calories": 0,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 143,
+    "name": "Tea (Black)",
+    "category": "Beverages",
+    "labels": ["caffeinated","classic"],
+    "calories": 1,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 144,
+    "name": "Water",
+    "category": "Beverages",
+    "labels": ["hydrating","zero calorie"],
+    "calories": 0,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 145,
+    "name": "Ketchup",
+    "category": "Condiments",
+    "labels": ["sauce","tomato","processed"],
+    "calories": 112,
+    "carbs": 26,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 146,
+    "name": "Mustard",
+    "category": "Condiments",
+    "labels": ["sauce","spicy"],
+    "calories": 66,
+    "carbs": 5,
+    "protein": 4,
+    "fat": 4
+  },
+  {
+    "id": 147,
+    "name": "Mayonnaise",
+    "category": "Condiments",
+    "labels": ["emulsion","creamy","processed"],
+    "calories": 680,
+    "carbs": 1,
+    "protein": 1,
+    "fat": 74
+  },
+  {
+    "id": 148,
+    "name": "Barbecue Sauce",
+    "category": "Condiments",
+    "labels": ["sauce","sweet","processed"],
+    "calories": 129,
+    "carbs": 29,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 149,
+    "name": "Soy Sauce",
+    "category": "Condiments",
+    "labels": ["asian","salty","vegan"],
+    "calories": 53,
+    "carbs": 4,
+    "protein": 8,
+    "fat": 0
+  },
+  {
+    "id": 150,
+    "name": "Hot Sauce",
+    "category": "Condiments",
+    "labels": ["spicy","vegan","processed"],
+    "calories": 29,
+    "carbs": 5,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 151,
+    "name": "Vinegar (White)",
+    "category": "Condiments",
+    "labels": ["acidic","zero calorie","vegan"],
+    "calories": 18,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 152,
+    "name": "Olive Oil",
+    "category": "Condiments",
+    "labels": ["oil","healthy fats","mediterranean"],
+    "calories": 884,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 100
+  },
+  {
+    "id": 153,
+    "name": "Canola Oil",
+    "category": "Condiments",
+    "labels": ["oil","neutral"],
+    "calories": 884,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 100
+  },
+  {
+    "id": 154,
+    "name": "Vegetable Oil",
+    "category": "Condiments",
+    "labels": ["oil","generic"],
+    "calories": 884,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 100
+  },
+  {
+    "id": 155,
+    "name": "Avocado Oil",
+    "category": "Condiments",
+    "labels": ["oil","healthy fats"],
+    "calories": 884,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 100
+  },
+  {
+    "id": 156,
+    "name": "Sesame Oil",
+    "category": "Condiments",
+    "labels": ["oil","asian","flavorful"],
+    "calories": 884,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 100
+  },
+  {
+    "id": 157,
+    "name": "Salt",
+    "category": "Herbs/Spices",
+    "labels": ["seasoning","mineral"],
+    "calories": 0,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 158,
+    "name": "Pepper (Black)",
+    "category": "Herbs/Spices",
+    "labels": ["spice","common"],
+    "calories": 255,
+    "carbs": 64,
+    "protein": 10,
+    "fat": 3
+  },
+  {
+    "id": 159,
+    "name": "Cinnamon",
+    "category": "Herbs/Spices",
+    "labels": ["spice","sweet"],
+    "calories": 247,
+    "carbs": 81,
+    "protein": 4,
+    "fat": 1
+  },
+  {
+    "id": 160,
+    "name": "Cumin",
+    "category": "Herbs/Spices",
+    "labels": ["spice","aromatic"],
+    "calories": 375,
+    "carbs": 44,
+    "protein": 18,
+    "fat": 22
+  },
+  {
+    "id": 161,
+    "name": "Paprika",
+    "category": "Herbs/Spices",
+    "labels": ["spice","red","smoky"],
+    "calories": 282,
+    "carbs": 54,
+    "protein": 14,
+    "fat": 13
+  },
+  {
+    "id": 162,
+    "name": "Basil",
+    "category": "Herbs/Spices",
+    "labels": ["herb","italian","fresh"],
+    "calories": 23,
+    "carbs": 4,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 163,
+    "name": "Oregano",
+    "category": "Herbs/Spices",
+    "labels": ["herb","mediterranean","aromatic"],
+    "calories": 265,
+    "carbs": 69,
+    "protein": 9,
+    "fat": 4
+  },
+  {
+    "id": 164,
+    "name": "Thyme",
+    "category": "Herbs/Spices",
+    "labels": ["herb","aromatic"],
+    "calories": 101,
+    "carbs": 24,
+    "protein": 6,
+    "fat": 1
+  },
+  {
+    "id": 165,
+    "name": "Rosemary",
+    "category": "Herbs/Spices",
+    "labels": ["herb","aromatic"],
+    "calories": 131,
+    "carbs": 21,
+    "protein": 3,
+    "fat": 6
+  },
+  {
+    "id": 166,
+    "name": "Parsley",
+    "category": "Herbs/Spices",
+    "labels": ["herb","fresh"],
+    "calories": 36,
+    "carbs": 6,
+    "protein": 3,
+    "fat": 1
+  },
+  {
+    "id": 167,
+    "name": "Sage",
+    "category": "Herbs/Spices",
+    "labels": ["herb","aromatic"],
+    "calories": 315,
+    "carbs": 61,
+    "protein": 11,
+    "fat": 13
+  },
+  {
+    "id": 168,
+    "name": "Coriander",
+    "category": "Herbs/Spices",
+    "labels": ["herb","fresh","citrus note"],
+    "calories": 23,
+    "carbs": 4,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 169,
+    "name": "Turmeric",
+    "category": "Herbs/Spices",
+    "labels": ["spice","yellow","anti-inflammatory"],
+    "calories": 354,
+    "carbs": 65,
+    "protein": 8,
+    "fat": 10
+  },
+  {
+    "id": 170,
+    "name": "Curry Powder",
+    "category": "Herbs/Spices",
+    "labels": ["spice mix","indian"],
+    "calories": 325,
+    "carbs": 58,
+    "protein": 14,
+    "fat": 14
+  },
+  {
+    "id": 171,
+    "name": "Bread Crumbs",
+    "category": "Baked Goods",
+    "labels": ["dry","breading"],
+    "calories": 395,
+    "carbs": 72,
+    "protein": 13,
+    "fat": 5
+  },
+  {
+    "id": 172,
+    "name": "Pancake",
+    "category": "Baked Goods",
+    "labels": ["breakfast","sweet"],
+    "calories": 227,
+    "carbs": 37,
+    "protein": 6,
+    "fat": 5
+  },
+  {
+    "id": 173,
+    "name": "Waffle",
+    "category": "Baked Goods",
+    "labels": ["breakfast","sweet"],
+    "calories": 291,
+    "carbs": 33,
+    "protein": 8,
+    "fat": 14
+  },
+  {
+    "id": 174,
+    "name": "French Fries",
+    "category": "Snacks",
+    "labels": ["fast food","fried","salty"],
+    "calories": 312,
+    "carbs": 41,
+    "protein": 3,
+    "fat": 15
+  },
+  {
+    "id": 175,
+    "name": "Pizza",
+    "category": "Mixed Dish",
+    "labels": ["italian","fast food","cheesy"],
+    "calories": 266,
+    "carbs": 33,
+    "protein": 11,
+    "fat": 10
+  },
+  {
+    "id": 176,
+    "name": "Burger",
+    "category": "Mixed Dish",
+    "labels": ["fast food","american","meat"],
+    "calories": 295,
+    "carbs": 30,
+    "protein": 17,
+    "fat": 12
+  },
+  {
+    "id": 177,
+    "name": "Hot Dog",
+    "category": "Fast Food",
+    "labels": ["processed","american"],
+    "calories": 290,
+    "carbs": 23,
+    "protein": 11,
+    "fat": 17
+  },
+  {
+    "id": 178,
+    "name": "Fried Chicken",
+    "category": "Fast Food",
+    "labels": ["crispy","meat"],
+    "calories": 320,
+    "carbs": 11,
+    "protein": 23,
+    "fat": 20
+  },
+  {
+    "id": 179,
+    "name": "Fish Sticks",
+    "category": "Fast Food",
+    "labels": ["processed","seafood","fried"],
+    "calories": 277,
+    "carbs": 17,
+    "protein": 15,
+    "fat": 16
+  },
+  {
+    "id": 180,
+    "name": "Nuggets",
+    "category": "Fast Food",
+    "labels": ["processed","chicken","fried"],
+    "calories": 296,
+    "carbs": 18,
+    "protein": 16,
+    "fat": 17
+  },
+  {
+    "id": 181,
+    "name": "Tacos",
+    "category": "Mixed Dish",
+    "labels": ["mexican","fast food","spicy"],
+    "calories": 226,
+    "carbs": 20,
+    "protein": 12,
+    "fat": 11
+  },
+  {
+    "id": 182,
+    "name": "Burrito",
+    "category": "Mixed Dish",
+    "labels": ["mexican","fast food"],
+    "calories": 206,
+    "carbs": 27,
+    "protein": 8,
+    "fat": 6
+  },
+  {
+    "id": 183,
+    "name": "Falafel",
+    "category": "Mixed Dish",
+    "labels": ["mediterranean","vegan","fried"],
+    "calories": 333,
+    "carbs": 31,
+    "protein": 13,
+    "fat": 18
+  },
+  {
+    "id": 184,
+    "name": "Hummus",
+    "category": "Mixed Dish",
+    "labels": ["mediterranean","vegan","dip"],
+    "calories": 166,
+    "carbs": 14,
+    "protein": 8,
+    "fat": 10
+  },
+  {
+    "id": 185,
+    "name": "Guacamole",
+    "category": "Mixed Dish",
+    "labels": ["dip","vegan","mexican"],
+    "calories": 160,
+    "carbs": 9,
+    "protein": 2,
+    "fat": 14
+  },
+  {
+    "id": 186,
+    "name": "Sushi",
+    "category": "Ethnic Dish",
+    "labels": ["japanese","seafood","rice"],
+    "calories": 143,
+    "carbs": 30,
+    "protein": 3,
+    "fat": 2
+  },
+  {
+    "id": 187,
+    "name": "Fried Rice",
+    "category": "Ethnic Dish",
+    "labels": ["asian","rice","fast food"],
+    "calories": 168,
+    "carbs": 25,
+    "protein": 4,
+    "fat": 5
+  },
+  {
+    "id": 188,
+    "name": "Stir-Fry Vegetables",
+    "category": "Ethnic Dish",
+    "labels": ["asian","vegan","healthy"],
+    "calories": 80,
+    "carbs": 10,
+    "protein": 3,
+    "fat": 3
+  },
+  {
+    "id": 189,
+    "name": "Dumplings",
+    "category": "Ethnic Dish",
+    "labels": ["asian","fast food","filled"],
+    "calories": 170,
+    "carbs": 25,
+    "protein": 6,
+    "fat": 4
+  },
+  {
+    "id": 190,
+    "name": "Ramen",
+    "category": "Ethnic Dish",
+    "labels": ["japanese","noodles","broth"],
+    "calories": 436,
+    "carbs": 63,
+    "protein": 10,
+    "fat": 16
+  },
+  {
+    "id": 191,
+    "name": "Pho",
+    "category": "Ethnic Dish",
+    "labels": ["vietnamese","noodles","broth"],
+    "calories": 40,
+    "carbs": 5,
+    "protein": 3,
+    "fat": 1
+  },
+  {
+    "id": 192,
+    "name": "Pad Thai",
+    "category": "Ethnic Dish",
+    "labels": ["thai","noodles","fast food"],
+    "calories": 200,
+    "carbs": 25,
+    "protein": 7,
+    "fat": 8
+  },
+  {
+    "id": 193,
+    "name": "Fried Eggs",
+    "category": "Eggs",
+    "labels": ["breakfast","protein","homemade"],
+    "calories": 196,
+    "carbs": 1,
+    "protein": 13,
+    "fat": 15
+  },
+  {
+    "id": 194,
+    "name": "Scrambled Eggs",
+    "category": "Eggs",
+    "labels": ["breakfast","protein","homemade"],
+    "calories": 148,
+    "carbs": 2,
+    "protein": 10,
+    "fat": 11
+  },
+  {
+    "id": 195,
+    "name": "Hard Boiled Eggs",
+    "category": "Eggs",
+    "labels": ["breakfast","protein"],
+    "calories": 155,
+    "carbs": 1,
+    "protein": 13,
+    "fat": 11
+  },
+  {
+    "id": 196,
+    "name": "Omelet",
+    "category": "Eggs",
+    "labels": ["breakfast","protein","cheesy"],
+    "calories": 154,
+    "carbs": 1,
+    "protein": 10,
+    "fat": 12
+  },
+  {
+    "id": 197,
+    "name": "Macaroni and Cheese",
+    "category": "Mixed Dish",
+    "labels": ["cheesy","comfort food"],
+    "calories": 164,
+    "carbs": 24,
+    "protein": 7,
+    "fat": 5
+  },
+  {
+    "id": 198,
+    "name": "Lasagna",
+    "category": "Mixed Dish",
+    "labels": ["italian","cheesy","baked"],
+    "calories": 135,
+    "carbs": 16,
+    "protein": 9,
+    "fat": 5
+  },
+  {
+    "id": 199,
+    "name": "Spaghetti Bolognese",
+    "category": "Pasta",
+    "labels": ["italian","meat sauce"],
+    "calories": 140,
+    "carbs": 19,
+    "protein": 7,
+    "fat": 4
+  },
+  {
+    "id": 200,
+    "name": "Alfredo Pasta",
+    "category": "Pasta",
+    "labels": ["italian","creamy","cheesy"],
+    "calories": 197,
+    "carbs": 25,
+    "protein": 6,
+    "fat": 7
+  },
+  {
+    "id": 201,
+    "name": "Tahini",
+    "category": "Condiments",
+    "labels": ["middle eastern","sesame","vegan"],
+    "calories": 595,
+    "carbs": 21,
+    "protein": 17,
+    "fat": 53
+  },
+  {
+    "id": 202,
+    "name": "Feta Cheese",
+    "category": "Dairy",
+    "labels": ["cheese","greek","salty"],
+    "calories": 265,
+    "carbs": 4,
+    "protein": 14,
+    "fat": 21
+  },
+  {
+    "id": 203,
+    "name": "Brown Sugar",
+    "category": "Sweeteners",
+    "labels": ["sweet","processed"],
+    "calories": 380,
+    "carbs": 98,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 204,
+    "name": "White Sugar",
+    "category": "Sweeteners",
+    "labels": ["sweet","processed"],
+    "calories": 387,
+    "carbs": 100,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 205,
+    "name": "Honey",
+    "category": "Sweeteners",
+    "labels": ["bee product","sweet"],
+    "calories": 304,
+    "carbs": 82,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 206,
+    "name": "Maple Syrup",
+    "category": "Sweeteners",
+    "labels": ["sweet","breakfast","vegan"],
+    "calories": 260,
+    "carbs": 67,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 207,
+    "name": "Jam",
+    "category": "Sweeteners",
+    "labels": ["fruit-based","sweet","spread"],
+    "calories": 250,
+    "carbs": 63,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 208,
+    "name": "Blue Cheese",
+    "category": "Dairy",
+    "labels": ["cheese","strong flavor"],
+    "calories": 353,
+    "carbs": 2,
+    "protein": 21,
+    "fat": 28
+  },
+  {
+    "id": 209,
+    "name": "White Bread",
+    "category": "Grain",
+    "labels": ["baked","refined","fast food"],
+    "calories": 265,
+    "carbs": 49,
+    "protein": 9,
+    "fat": 3
+  },
+  {
+    "id": 210,
+    "name": "Bagged Lettuce",
+    "category": "Vegetable",
+    "labels": ["fresh","convenient","salad"],
+    "calories": 15,
+    "carbs": 3,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 211,
+    "name": "Rotisserie Chicken",
+    "category": "Meat",
+    "labels": ["convenient","protein","homemade"],
+    "calories": 229,
+    "carbs": 0,
+    "protein": 27,
+    "fat": 13
+  },
+  {
+    "id": 212,
+    "name": "Frozen Pizza",
+    "category": "Mixed Dish",
+    "labels": ["convenient","processed","fast food"],
+    "calories": 270,
+    "carbs": 34,
+    "protein": 11,
+    "fat": 10
+  },
+  {
+    "id": 213,
+    "name": "Frozen Vegetables",
+    "category": "Vegetable",
+    "labels": ["convenient","vegan","healthy"],
+    "calories": 40,
+    "carbs": 8,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 214,
+    "name": "Dried Cranberries",
+    "category": "Fruit",
+    "labels": ["sweet","dried","snack"],
+    "calories": 308,
+    "carbs": 82,
+    "protein": 0,
+    "fat": 1
+  },
+  {
+    "id": 215,
+    "name": "Raisins",
+    "category": "Fruit",
+    "labels": ["dried","vegan","snack"],
+    "calories": 299,
+    "carbs": 79,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 216,
+    "name": "Granola",
+    "category": "Grain",
+    "labels": ["breakfast","sweet","crunchy"],
+    "calories": 471,
+    "carbs": 64,
+    "protein": 10,
+    "fat": 20
+  },
+  {
+    "id": 217,
+    "name": "Greek Yogurt",
+    "category": "Dairy",
+    "labels": ["creamy","high protein"],
+    "calories": 120,
+    "carbs": 4,
+    "protein": 15,
+    "fat": 5
+  },
+  {
+    "id": 218,
+    "name": "Instant Oatmeal",
+    "category": "Grain",
+    "labels": ["breakfast","quick","vegan"],
+    "calories": 367,
+    "carbs": 68,
+    "protein": 11,
+    "fat": 7
+  },
+  {
+    "id": 219,
+    "name": "Protein Bar",
+    "category": "Snacks",
+    "labels": ["processed","protein","convenient"],
+    "calories": 350,
+    "carbs": 30,
+    "protein": 20,
+    "fat": 15
+  },
+  {
+    "id": 220,
+    "name": "Chicken Soup",
+    "category": "Soup",
+    "labels": ["comfort food","homemade"],
+    "calories": 72,
+    "carbs": 8,
+    "protein": 5,
+    "fat": 2
+  },
+  {
+    "id": 221,
+    "name": "Tomato Soup",
+    "category": "Soup",
+    "labels": ["comfort food","vegan option"],
+    "calories": 74,
+    "carbs": 14,
+    "protein": 2,
+    "fat": 1
+  },
+  {
+    "id": 222,
+    "name": "Miso Soup",
+    "category": "Soup",
+    "labels": ["japanese","fermented","light"],
+    "calories": 40,
+    "carbs": 5,
+    "protein": 3,
+    "fat": 1
+  },
+  {
+    "id": 223,
+    "name": "Corn Flakes",
+    "category": "Grain",
+    "labels": ["breakfast","processed","cereal"],
+    "calories": 357,
+    "carbs": 84,
+    "protein": 8,
+    "fat": 0
+  },
+  {
+    "id": 224,
+    "name": "Whey Protein Powder",
+    "category": "Supplement",
+    "labels": ["protein","fitness","processed"],
+    "calories": 400,
+    "carbs": 15,
+    "protein": 70,
+    "fat": 5
+  },
+  {
+    "id": 225,
+    "name": "Almond Milk",
+    "category": "Beverages",
+    "labels": ["vegan","dairy alternative","healthy"],
+    "calories": 15,
+    "carbs": 1,
+    "protein": 1,
+    "fat": 1
+  },
+  {
+    "id": 226,
+    "name": "Coconut Milk",
+    "category": "Beverages",
+    "labels": ["dairy alternative","vegan","tropical"],
+    "calories": 230,
+    "carbs": 6,
+    "protein": 2,
+    "fat": 24
+  },
+  {
+    "id": 227,
+    "name": "Sparkling Water",
+    "category": "Beverages",
+    "labels": ["carbonated","zero calorie"],
+    "calories": 0,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 228,
+    "name": "Gatorade",
+    "category": "Beverages",
+    "labels": ["sports drink","processed"],
+    "calories": 50,
+    "carbs": 14,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 229,
+    "name": "Energy Drink",
+    "category": "Beverages",
+    "labels": ["caffeinated","processed","sweet"],
+    "calories": 45,
+    "carbs": 11,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 230,
+    "name": "Iced Tea",
+    "category": "Beverages",
+    "labels": ["sweet","tea","processed"],
+    "calories": 27,
+    "carbs": 7,
+    "protein": 0,
+    "fat": 0
+  },
+  {
+    "id": 231,
+    "name": "Fried Plantains",
+    "category": "Snacks",
+    "labels": ["caribbean","fried","sweet"],
+    "calories": 250,
+    "carbs": 36,
+    "protein": 1,
+    "fat": 10
+  },
+  {
+    "id": 232,
+    "name": "Baked Beans",
+    "category": "Legumes",
+    "labels": ["canned","sweet","processed"],
+    "calories": 155,
+    "carbs": 29,
+    "protein": 6,
+    "fat": 1
+  },
+  {
+    "id": 233,
+    "name": "Tabbouleh",
+    "category": "Mixed Dish",
+    "labels": ["mediterranean","vegan","fresh"],
+    "calories": 110,
+    "carbs": 18,
+    "protein": 3,
+    "fat": 3
+  },
+  {
+    "id": 234,
+    "name": "Couscous",
+    "category": "Grain",
+    "labels": ["middle eastern","vegan","quick"],
+    "calories": 112,
+    "carbs": 23,
+    "protein": 3,
+    "fat": 0
+  },
+  {
+    "id": 235,
+    "name": "Pomegranate",
+    "category": "Fruit",
+    "labels": ["fresh","antioxidants","vegan"],
+    "calories": 83,
+    "carbs": 19,
+    "protein": 1,
+    "fat": 1
+  },
+  {
+    "id": 236,
+    "name": "Grapeseed Oil",
+    "category": "Condiments",
+    "labels": ["oil","neutral","healthy fats"],
+    "calories": 884,
+    "carbs": 0,
+    "protein": 0,
+    "fat": 100
+  },
+  {
+    "id": 237,
+    "name": "Whole Wheat Pasta",
+    "category": "Grain",
+    "labels": ["pasta","whole grain","healthy"],
+    "calories": 124,
+    "carbs": 27,
+    "protein": 5,
+    "fat": 1
+  },
+  {
+    "id": 238,
+    "name": "Biryani",
+    "category": "Mixed Dish",
+    "labels": ["indian","spiced","rice"],
+    "calories": 290,
+    "carbs": 45,
+    "protein": 12,
+    "fat": 6
+  },
+  {
+    "id": 239,
+    "name": "Chicken Curry",
+    "category": "Mixed Dish",
+    "labels": ["indian","spicy","meat"],
+    "calories": 220,
+    "carbs": 5,
+    "protein": 17,
+    "fat": 15
+  },
+  {
+    "id": 240,
+    "name": "Rice Cake (Brown)",
+    "category": "Snacks",
+    "labels": ["light","whole grain","vegan"],
+    "calories": 35,
+    "carbs": 8,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 241,
+    "name": "Pilaf",
+    "category": "Mixed Dish",
+    "labels": ["grain","flavored","healthy"],
+    "calories": 160,
+    "carbs": 28,
+    "protein": 4,
+    "fat": 3
+  },
+  {
+    "id": 242,
+    "name": "Kimchi",
+    "category": "Vegetable",
+    "labels": ["fermented","korean","spicy"],
+    "calories": 15,
+    "carbs": 3,
+    "protein": 1,
+    "fat": 0
+  },
+  {
+    "id": 243,
+    "name": "Tzatziki",
+    "category": "Condiments",
+    "labels": ["greek","yogurt-based","dip"],
+    "calories": 54,
+    "carbs": 3,
+    "protein": 3,
+    "fat": 3
+  },
+  {
+    "id": 244,
+    "name": "Cottage Pie",
+    "category": "Mixed Dish",
+    "labels": ["british","meat","baked"],
+    "calories": 120,
+    "carbs": 12,
+    "protein": 8,
+    "fat": 5
+  },
+  {
+    "id": 245,
+    "name": "Meatballs",
+    "category": "Meat",
+    "labels": ["protein","italian","baked"],
+    "calories": 230,
+    "carbs": 5,
+    "protein": 15,
+    "fat": 17
+  },
+  {
+    "id": 246,
+    "name": "Brie Cheese",
+    "category": "Dairy",
+    "labels": ["cheese","french","creamy"],
+    "calories": 334,
+    "carbs": 0,
+    "protein": 21,
+    "fat": 28
+  },
+  {
+    "id": 247,
+    "name": "Black-Eyed Peas",
+    "category": "Legumes",
+    "labels": ["vegan","protein","fiber"],
+    "calories": 128,
+    "carbs": 23,
+    "protein": 8,
+    "fat": 0
+  },
+  {
+    "id": 248,
+    "name": "Okra",
+    "category": "Vegetable",
+    "labels": ["fresh","vegan","gumbo"],
+    "calories": 33,
+    "carbs": 7,
+    "protein": 2,
+    "fat": 0
+  },
+  {
+    "id": 249,
+    "name": "Collard Greens",
+    "category": "Vegetable",
+    "labels": ["leafy green","vegan","southern"],
+    "calories": 32,
+    "carbs": 6,
+    "protein": 3,
+    "fat": 1
+  },
+  {
+    "id": 250,
+    "name": "Swiss Cheese",
+    "category": "Dairy",
+    "labels": ["cheese","mild","sandwich"],
+    "calories": 380,
+    "carbs": 5,
+    "protein": 27,
+    "fat": 28
+  }
+]

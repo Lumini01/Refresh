@@ -16,6 +16,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.FoodViewHold
 
     private final List<String> foods;
 
+    // Constructor
     public FoodsAdapter(List<String> foods) {
         this.foods = foods;
     }

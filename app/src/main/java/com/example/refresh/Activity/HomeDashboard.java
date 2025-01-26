@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.refresh.R;
 import com.example.refresh.Start;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+// Home Dashboard activity which is the main activity of the app
 public class HomeDashboard extends AppCompatActivity {
 
     @Override
@@ -59,6 +59,7 @@ public class HomeDashboard extends AppCompatActivity {
         });
     }
 
+    // Toolbar menu setup
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the toolbar if present
@@ -66,6 +67,7 @@ public class HomeDashboard extends AppCompatActivity {
         return true;
     }
 
+    // Handle menu item clicks
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle menu item clicks

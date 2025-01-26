@@ -20,6 +20,7 @@ import com.example.refresh.R;
 import java.util.ArrayList;
 import java.util.List;
 
+// Search Results Fragment which displays the search results in the search activity
 public class SearchResultsFragment extends Fragment {
 
     private RecyclerView recyclerViewResults;
@@ -63,7 +64,7 @@ public class SearchResultsFragment extends Fragment {
 
         // Initialize Search Results List
         if (getArguments() != null) {
-            searchResults = (List<SearchResult>) getArguments().getSerializable("search_results");
+            searchResults = (ArrayList<SearchResult>) getArguments().getSerializable("search_results");
         } else {
             searchResults = new ArrayList<>();
         }

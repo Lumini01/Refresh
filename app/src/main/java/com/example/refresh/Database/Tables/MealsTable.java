@@ -14,6 +14,7 @@ public class MealsTable {
 
     public static final String TABLE_NAME = "meals";
 
+    // Enum for table columns
     public enum Columns {
         MEAL_ID("meal_id"),
         DATE("date"),
@@ -33,6 +34,7 @@ public class MealsTable {
         }
     }
 
+    // Create table query
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     Columns.MEAL_ID.getColumnName() + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -45,6 +47,7 @@ public class MealsTable {
                     "REFERENCES " + FoodsTable.TABLE_NAME + " (" +
                     FoodsTable.Columns.FOOD_ID.getColumnName() + "));"; // Stores food IDs as CSV
 
+    // Convert Meal to ContentValues
     public static ContentValues toContentValues(Meal meal) {
         ContentValues values = new ContentValues();
         values.put(Columns.MEAL_ID.getColumnName(), meal.getId());
@@ -59,6 +62,7 @@ public class MealsTable {
         return values;
     }
 
+    // Convert Cursor to Meal
     public static Meal fromCursor(Cursor cursor) {
         int id = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.MEAL_ID.getColumnName()));
         long dateMillis = cursor.getLong(cursor.getColumnIndexOrThrow(Columns.DATE.getColumnName()));

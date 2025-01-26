@@ -1,16 +1,23 @@
 package com.example.refresh.Model;
 
-public class SearchResult {
+import java.io.Serializable;
+
+// Search Result Model Class which represents a search result
+public class SearchResult implements Serializable {
     private String title;
-    private String description; // Optional: Add more fields as needed
+    private String description;
+    private String type;
+    private String modelReference; // Optional: Add more fields as needed
 
     public SearchResult(String title) {
         this.title = title;
     }
 
-    public SearchResult(String title, String description) {
+    public SearchResult(String title, String description, String type, String modelReference) {
         this.title = title;
         this.description = description;
+        this.type = type;
+        this.modelReference = modelReference;
     }
 
     // Getter and Setter for Title
@@ -29,5 +36,21 @@ public class SearchResult {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getModelReference() {
+        return modelReference;
+    }
+
+    public void setModelReference(String modelReference) {
+        this.modelReference = modelReference;
     }
 }

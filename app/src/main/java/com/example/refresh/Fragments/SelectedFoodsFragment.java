@@ -17,6 +17,7 @@ import com.example.refresh.Adapters.FoodsAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+// Selected Foods Fragment which displays the selected foods in the meal log activity
 public class SelectedFoodsFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -43,6 +44,7 @@ public class SelectedFoodsFragment extends Fragment {
         return view;
     }
 
+    // Setup RecyclerView
     private void setupRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new FoodsAdapter(selectedFoodsList);

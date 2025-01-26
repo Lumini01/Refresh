@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         setupToolbar();
     }
 
+    // Initialize Views
     private void initViews() {
         // Toolbar components
         backArrow = findViewById(R.id.backArrow);
@@ -54,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         fragmentContainer = findViewById(R.id.fragment_container);
     }
 
+    // Set up Toolbar
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    // Populate Profile Data
     private void populateProfileData() {
         // Simulated data fetching and updating views
         profileName.setText("John Doe");

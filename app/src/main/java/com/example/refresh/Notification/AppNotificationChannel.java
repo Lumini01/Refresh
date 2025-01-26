@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 
+// Notification Channel Model Class which represents a notification channel
 public class AppNotificationChannel {
 
     public static final String CHANNEL_ID = "notification_channel";

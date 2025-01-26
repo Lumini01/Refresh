@@ -3,6 +3,7 @@ package com.example.refresh.Model;
 import java.util.ArrayList;
 import java.util.Date;
 
+// Meal Model Class which represents a meal
 public class Meal {
     private int id; // Unique identifier for the meal
     private Date date;
@@ -47,6 +48,12 @@ public class Meal {
     public ArrayList<Integer> getFoodIDs() { return foodIDs; }
     public void addFood(int foodID) { this.foodIDs.add(foodID); }
     public void removeFood(int foodID) { this.foodIDs.remove((Integer) foodID); }
+    public void editFood(int oldFoodID, int newFoodID) {
+        int index = this.foodIDs.indexOf(oldFoodID);
+        if (index != -1) {
+            this.foodIDs.set(index, newFoodID);
+        }
+    }
 
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = (notes != null) ? notes : ""; }
