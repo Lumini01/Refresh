@@ -16,6 +16,6 @@
         android:clipToPadding="false"
         android:padding="@dimen/padding_medium"
         android:scrollbars="vertical"
-        tools:itemCount="7"/>
+        tools:itemCount="6"/>
 
 </LinearLayout>

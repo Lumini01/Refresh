@@ -26,7 +26,7 @@ public class SearchResultsFragment extends Fragment {
     private RecyclerView recyclerViewResults;
     private TextView textViewNoResults;
     private ResultsAdapter resultsAdapter;
-    private List<SearchResult> searchResults;
+    private ArrayList<SearchResult> searchResults;
 
     public SearchResultsFragment() {
         // Required empty public constructor
@@ -48,8 +48,7 @@ public class SearchResultsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search_results, container, false);
     }
@@ -64,8 +63,21 @@ public class SearchResultsFragment extends Fragment {
 
         // Initialize Search Results List
         if (getArguments() != null) {
-            searchResults = (ArrayList<SearchResult>) getArguments().getSerializable("search_results");
-        } else {
+            Object obj = getArguments().getSerializable("search_results");
+
+            if (obj instanceof ArrayList<?>) {
+                try {
+                    searchResults = (ArrayList<SearchResult>) obj;
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                    searchResults = new ArrayList<>();  // Fallback to empty list
+                }
+            }
+            else {
+                searchResults = new ArrayList<>();  // Fallback if not an ArrayList
+            }
+        }
+        else {
             searchResults = new ArrayList<>();
         }
 

@@ -110,13 +110,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Retrieve multiple records from the database using LIKE (all records containing the argument)
     public <T> ArrayList<T> getRecords(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = getEnumColumnName(columnEnum) + " LIKE ?";
 
-        for (int i = 0 ; i < selectionArgs.length ; i++) {
-            String arg = selectionArgs[i];
-            selectionArgs[i] = "%" + arg + "%";
+        // Construct WHERE clause dynamically based on the number of arguments
+        StringBuilder selectionBuilder = new StringBuilder();
+        String columnName = getEnumColumnName(columnEnum);
+
+        for (int i = 0; i < selectionArgs.length; i++) {
+            selectionArgs[i] = "%" + selectionArgs[i] + "%"; // Add wildcards
+            selectionBuilder.append(columnName).append(" LIKE ?");
+            if (i < selectionArgs.length - 1) {
+                selectionBuilder.append(" OR "); // If multiple arguments, combine them with OR
+            }
         }
 
+        String selection = selectionBuilder.toString();
         Cursor cursor = null;
         ArrayList<T> records = new ArrayList<>();
 

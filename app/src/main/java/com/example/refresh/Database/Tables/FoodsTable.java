@@ -71,6 +71,7 @@ public class FoodsTable {
     // Convert Food to ContentValues
     public static ContentValues toContentValues(Food food) {
         ContentValues values = new ContentValues();
+        values.put(Columns.FOOD_ID.getColumnName(), food.getId());
         values.put(Columns.NAME.getColumnName(), food.getName());
         values.put(Columns.DESCRIPTION.getColumnName(), food.getDescription());
         values.put(Columns.CATEGORY.getColumnName(), food.getCategory());
@@ -139,7 +140,7 @@ public class FoodsTable {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // Check if the table already has data
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + DatabaseHelper.Tables.FOODS, null);
-        if (cursor.moveToFirst() && cursor.moveToNext() && cursor.getInt(0) > 0) {
+        if (cursor.moveToFirst() && cursor.getInt(0) > 0) {
             cursor.close();
             return true;
         }
@@ -166,12 +167,10 @@ public class FoodsTable {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         for (int i = 0; i < foods.size(); i++) {
-            if (i != 0) {
-                Food food = foods.get(i);
-                ContentValues values = dbHelper.toContentValues(food, DatabaseHelper.Tables.FOODS);
+            Food food = foods.get(i);
+            ContentValues values = dbHelper.toContentValues(food, DatabaseHelper.Tables.FOODS);
 
-                db.insertWithOnConflict(DatabaseHelper.Tables.FOODS.getTableName(), null, values, SQLiteDatabase.CONFLICT_REPLACE);
-            }
+            db.insertWithOnConflict(DatabaseHelper.Tables.FOODS.getTableName(), null, values, SQLiteDatabase.CONFLICT_REPLACE);
         }
     }
 

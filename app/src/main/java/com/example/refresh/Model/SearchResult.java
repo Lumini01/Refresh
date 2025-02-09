@@ -6,17 +6,17 @@ import java.io.Serializable;
 public class SearchResult implements Serializable {
     private String title;
     private String description;
-    private String type;
-    private String modelReference; // Optional: Add more fields as needed
+    private String model;
+    private int modelReference; // Optional: Add more fields as needed
 
     public SearchResult(String title) {
         this.title = title;
     }
 
-    public SearchResult(String title, String description, String type, String modelReference) {
+    public SearchResult(String title, String description, String model, int modelReference) {
         this.title = title;
         this.description = description;
-        this.type = type;
+        this.model = model;
         this.modelReference = modelReference;
     }
 
@@ -38,19 +38,19 @@ public class SearchResult implements Serializable {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
+    public String getModel() {
+        return model;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public String getModelReference() {
+    public int getModelReference() {
         return modelReference;
     }
 
-    public void setModelReference(String modelReference) {
+    public void setModelReference(int modelReference) {
         this.modelReference = modelReference;
     }
 }

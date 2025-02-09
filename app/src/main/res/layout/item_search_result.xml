@@ -41,15 +41,17 @@
 
     <!-- Delete Button -->
     <ImageButton
-        android:id="@+id/buttonDelete"
+        android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add"
         android:scaleX="1.25"
         android:scaleY="1.25"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/delete"
+        android:contentDescription="@string/add"
         android:padding="8dp"
-        app:tint="@color/iconTint" />
+        app:tint="@color/iconTint"
+        android:focusable="false"
+        android:clickable="true"/>
 
 </LinearLayout>
