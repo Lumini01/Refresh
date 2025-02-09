@@ -133,11 +133,11 @@ public class Start extends AppCompatActivity {
         // Populate the notification templates table and the foods table if needed
         Context context = getApplicationContext();
         populateNotificationTemplatesTable(context);
+        populateFoodsTable(context);
 
         // Set default notification times
         setDefaultNotificationInstances();
 
-        //populateFoodsTable(context);
 
         // Run testing methods
         TestingGrounds.test(context);

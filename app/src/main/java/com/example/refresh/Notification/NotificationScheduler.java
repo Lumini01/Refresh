@@ -37,15 +37,22 @@ public class NotificationScheduler {
 
                 if (time != null && time.matches("\\d{1,2}:\\d{2}") && dbHelper.existsInDB(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, String.valueOf(templateID)) != -1) {
                     NotificationInstance instance = new NotificationInstance(instanceID, templateID, time);
-                    NotificationInstance oldInstance = dbHelper.getRecord(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
-
-                    dbHelper.editRecords(NOTIFICATION_INSTANCES, instance, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
                     instances.add(instance);
 
-                    Intent intent = createNotificationIntent(context, oldInstance);
-                    PendingIntent pendingIntent = createPendingIntent(context, oldInstance, intent);
-                    if (alarmManager != null) {
-                        alarmManager.cancel(pendingIntent);
+                    if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, String.valueOf(instanceID)) != -1) {
+                        NotificationInstance oldInstance = dbHelper.getRecord(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+
+
+                        dbHelper.editRecords(NOTIFICATION_INSTANCES, instance, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+
+                        Intent intent = createNotificationIntent(context, oldInstance);
+                        PendingIntent pendingIntent = createPendingIntent(context, oldInstance, intent);
+                        if (alarmManager != null) {
+                            alarmManager.cancel(pendingIntent);
+                        }
+                    }
+                    else {
+                        dbHelper.insert(NOTIFICATION_INSTANCES, instance);
                     }
                 }
             }

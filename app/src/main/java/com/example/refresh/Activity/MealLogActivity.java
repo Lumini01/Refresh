@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Database.Tables.FoodsTable;
 import com.example.refresh.Fragments.SearchResultsFragment;
 import com.example.refresh.Fragments.SelectedFoodsFragment;
 import com.example.refresh.Model.SearchResult;
@@ -97,14 +99,16 @@ public class MealLogActivity extends AppCompatActivity {
      * TODO: Implement search logic.
      */
     private void performSearch() {
-        String query = searchBarET.getText().toString().trim();
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        String[] query = searchBarET.getText().toString().split("\\s*,\\s*");
 
-        if (query.isEmpty()) {
+        if (query.length == 0) {
             Toast.makeText(this, "You didn't search for anything", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // placeholder arraylist
+        ArrayList<SearchResult> foodResults = dbHelper.getRecords(DatabaseHelper.Tables.FOODS, FoodsTable.Columns.NAME, query);
+
         ArrayList<SearchResult> searchResults = new ArrayList<>();
 
         if (searchResults.isEmpty()) {

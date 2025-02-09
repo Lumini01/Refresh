@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private static final String DATABASE_FILE = "app_database.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private Context context;
 
     public DatabaseHelper(Context context) {
@@ -105,6 +105,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return records;
+    }
+
+    // Retrieve multiple records from the database using LIKE (all records containing the argument)
+    public <T> ArrayList<T> getRecords(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = getEnumColumnName(columnEnum) + " LIKE ?";
+
+        for (int i = 0 ; i < selectionArgs.length ; i++) {
+            String arg = selectionArgs[i];
+            selectionArgs[i] = "%" + arg + "%";
+        }
+
+        Cursor cursor = null;
+        ArrayList<T> records = new ArrayList<>();
+
+        try {
+            cursor = db.query(table.getTableName(), null, selection, selectionArgs, null, null, null);
+                while (cursor.moveToNext()) {
+                    records.add(createRecord(cursor, table));
+                }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        if (!records.isEmpty())
+            return records;
+
+        return null; // Return null if no record is found
     }
 
     // Retrieve a single record from the database
@@ -206,7 +236,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Retrieve a random record from the database - for testing purposes
     public <T> T getRandomRecord(Tables table) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + Tables.NOTIFICATION_TEMPLATES.getTableName() + " ORDER BY RANDOM() LIMIT 1", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + table.getTableName() + " ORDER BY RANDOM() LIMIT 1", null);
 
         if (cursor != null && cursor.moveToFirst()) {
             T randomRecord = createRecord(cursor, table);

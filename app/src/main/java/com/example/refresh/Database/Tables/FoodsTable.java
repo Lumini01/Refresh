@@ -131,7 +131,7 @@ public class FoodsTable {
         // Close the database helper
         dbHelper.close();
 
-        editJson(json);
+        //editJson(json);
     }
 
     // Check if the database is populated
@@ -180,7 +180,7 @@ public class FoodsTable {
         ArrayList<Food> foods = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(json);
-            for (int i = 0; i < jsonArray.length(); i++) {
+            for (int i = 1; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 JSONArray labelsArray = jsonObject.getJSONArray("labels");
@@ -197,7 +197,7 @@ public class FoodsTable {
                         labelsList,
                         100,
                         jsonObject.getInt("calories"),
-                        jsonObject.getInt("crabs"),
+                        jsonObject.getInt("carbs"),
                         jsonObject.getInt("protein"),
                         jsonObject.getInt("fat"),
                         ""
@@ -246,7 +246,7 @@ public class FoodsTable {
             if (jsonArray.length() > 0) {
                 JSONObject firstObject = jsonArray.getJSONObject(0);
                 if (firstObject.optInt("id", 0) == -1) {
-                    // 4. Change -1 to 0
+                    // 4. Change -1 to -2
                     firstObject.put("id", -2);
 
                     // 5. Write the updated array back to the file
