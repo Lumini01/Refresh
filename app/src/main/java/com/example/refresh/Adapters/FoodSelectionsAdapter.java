@@ -14,19 +14,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.refresh.Model.SearchResult;
+import com.example.refresh.Fragments.SelectedFoodsFragment;
+import com.example.refresh.Model.Food;
+import com.example.refresh.Model.ListItem;
 import com.example.refresh.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAdapter.FoodSelectionViewHolder> {
 
-    private List<SearchResult> foodSelectionsList;
+    private ArrayList<ListItem<Food>> foodSelections;
+    private SelectedFoodsFragment fragment;
 
     // Constructor
-    public FoodSelectionsAdapter(List<SearchResult> foodSelectionsList) {
-        this.foodSelectionsList = (foodSelectionsList != null) ? foodSelectionsList : new ArrayList<>();
+    public FoodSelectionsAdapter(ArrayList<ListItem<Food>> foodSelectionsList, SelectedFoodsFragment fragment) {
+        this.foodSelections = (foodSelectionsList != null) ? foodSelectionsList : new ArrayList<>();
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -40,41 +43,34 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(@NonNull FoodSelectionViewHolder holder, int position) {
-        SearchResult foodSelection = foodSelectionsList.get(position);
+        ListItem<Food> foodSelection = foodSelections.get(position);
         holder.bind(foodSelection);
 
         // Add click listener to navigate to the correct screen
         holder.removeButton.setOnClickListener(v -> {
-            //TODO: Remove the food from the selected foods list.
-
-            Toast.makeText(v.getContext(), foodSelection.getTitle() + "Removed from the List", Toast.LENGTH_SHORT).show();
+            int currentPosition = holder.getAdapterPosition();
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                fragment.removeFoodFromSelectedFoods(currentPosition);
+                Toast.makeText(v.getContext(), foodSelection.getTitle() + "Removed from the List", Toast.LENGTH_SHORT).show();
+            }
         });
 
         holder.itemContainer.setOnClickListener(v -> {
             //TODO: Navigate to the food fragment.
         });
-
-        // Prevent ImageButton click from triggering LinearLayout click
-        holder.removeButton.setOnTouchListener((v, event) -> {
-            v.getParent().requestDisallowInterceptTouchEvent(true);
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                v.performClick(); // Call performClick() to satisfy accessibility requirements
-            }
-            return false; // Allow normal click behavior
-        });
     }
 
     @Override
     public int getItemCount() {
-        return foodSelectionsList != null ? foodSelectionsList.size() : 0;
+        return foodSelections != null ? foodSelections.size() : 0;
     }
 
     // Method to update data efficiently
-    public void updateFoodSelections(List<SearchResult> newFoodSelections) {
+    public void updateFoodSelections(ArrayList<ListItem<Food>> newFoodSelections) {
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback() {
             @Override
             public int getOldListSize() {
-                return foodSelectionsList.size();
+                return foodSelections.size();
             }
 
             @Override
@@ -84,8 +80,8 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
 
             @Override
             public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                SearchResult oldItem = foodSelectionsList.get(oldItemPosition);
-                SearchResult newItem = newFoodSelections.get(newItemPosition);
+                ListItem<Food> oldItem = foodSelections.get(oldItemPosition);
+                ListItem<Food> newItem = newFoodSelections.get(newItemPosition);
 
                 if (oldItem == null || newItem == null) {
                     return false;
@@ -96,12 +92,28 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
 
             @Override
             public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                return foodSelectionsList.get(oldItemPosition).equals(newFoodSelections.get(newItemPosition));
+                return foodSelections.get(oldItemPosition).equals(newFoodSelections.get(newItemPosition));
             }
         });
 
-        foodSelectionsList = new ArrayList<>(newFoodSelections);
+        foodSelections = new ArrayList<>(newFoodSelections);
         diffResult.dispatchUpdatesTo(this);
+    }
+
+    // **Add an item at a specific position**
+    public void addItem(ListItem<Food> newItem, int position) {
+        notifyItemInserted(position); // Notify RecyclerView about the new item
+    }
+
+    // **Remove an item from a specific position**
+    public void removeItem(int position) {
+        if (foodSelections.isEmpty()) {
+            // When the list is empty, do a full refresh.
+            notifyDataSetChanged();
+        } else if (position >= 0 && position < foodSelections.size()) {
+            // Otherwise, notify that an item was removed.
+            notifyItemRemoved(position);
+        }
     }
 
     // ViewHolder (placed at the bottom, following best practices)
@@ -115,12 +127,12 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.textViewSelectionTitle);
             textViewDescription = itemView.findViewById(R.id.textViewSelectionDescription);
-            removeButton = itemView.findViewById(R.id.buttonAdd);
+            removeButton = itemView.findViewById(R.id.buttonRemove);
             itemContainer = itemView.findViewById(R.id.item_container);
 
         }
 
-        public void bind(SearchResult foodSelection) {
+        public void bind(ListItem<Food> foodSelection) {
             textViewTitle.setText(foodSelection.getTitle() != null ? foodSelection.getTitle() : "No Title");
 
             if (foodSelection.getDescription() != null && !foodSelection.getDescription().isEmpty()) {

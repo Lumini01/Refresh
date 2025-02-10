@@ -1,10 +1,10 @@
 package com.example.refresh.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.refresh.Adapters.ResultsAdapter;
-import com.example.refresh.Model.SearchResult;
+import com.example.refresh.Adapters.SearchResultsAdapter;
+import com.example.refresh.Model.Food;
+import com.example.refresh.Model.ListItem;
 import com.example.refresh.R;
 
 import java.util.ArrayList;
@@ -24,10 +25,27 @@ import java.util.List;
 // Search Results Fragment which displays the search results in the search activity
 public class SearchResultsFragment extends Fragment {
 
+    public interface OnSearchResultsFragmentListener {
+        void onAddingToSelectedFoods(ListItem<Food> addedFood);
+    }
+
+    private OnSearchResultsFragmentListener fragmentListener;
     private RecyclerView recyclerViewResults;
     private TextView textViewNoResults;
-    private ResultsAdapter resultsAdapter;
-    private ArrayList<SearchResult> searchResults;
+    private SearchResultsAdapter searchResultsAdapter;
+    private ArrayList<ListItem<Food>> searchResults;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        // Make sure the hosting activity implements the interface.
+        if (context instanceof OnSearchResultsFragmentListener) {
+            fragmentListener = (OnSearchResultsFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnSearchResultsFragmentListener");
+        }
+    }
 
     public SearchResultsFragment() {
         // Required empty public constructor
@@ -40,7 +58,7 @@ public class SearchResultsFragment extends Fragment {
      * @param results List of search results.
      * @return A new instance of fragment SearchResultsFragment.
      */
-    public static SearchResultsFragment newInstance(ArrayList<SearchResult> results) {
+    public static SearchResultsFragment newInstance(ArrayList<ListItem<Food>> results) {
         SearchResultsFragment fragment = new SearchResultsFragment();
         Bundle args = new Bundle();
         args.putSerializable("search_results", results);
@@ -59,6 +77,7 @@ public class SearchResultsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Initialize Views
+
         recyclerViewResults = view.findViewById(R.id.recyclerViewResults);
         textViewNoResults = view.findViewById(R.id.textViewNoResults);
 
@@ -68,7 +87,7 @@ public class SearchResultsFragment extends Fragment {
 
             if (obj instanceof ArrayList<?>) {
                 try {
-                    searchResults = (ArrayList<SearchResult>) obj;
+                    searchResults = (ArrayList<ListItem<Food>>) obj;
                 } catch (ClassCastException e) {
                     e.printStackTrace();
                     searchResults = new ArrayList<>();  // Fallback to empty list
@@ -83,10 +102,10 @@ public class SearchResultsFragment extends Fragment {
         }
 
         // Setup RecyclerView
-        resultsAdapter = new ResultsAdapter(searchResults);
+        searchResultsAdapter = new SearchResultsAdapter(searchResults, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerViewResults.setLayoutManager(layoutManager);
-        recyclerViewResults.setAdapter(resultsAdapter);
+        recyclerViewResults.setAdapter(searchResultsAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewResults.getContext(),
                 layoutManager.getOrientation()
         );
@@ -101,10 +120,10 @@ public class SearchResultsFragment extends Fragment {
      *
      * @param newResults List of new search results.
      */
-    public void updateResults(List<SearchResult> newResults) {
+    public void updateResults(List<ListItem<Food>> newResults) {
         searchResults.clear();
         searchResults.addAll(newResults);
-        resultsAdapter.notifyDataSetChanged();
+        searchResultsAdapter.notifyDataSetChanged();
         updateUI();
     }
 
@@ -119,5 +138,9 @@ public class SearchResultsFragment extends Fragment {
             recyclerViewResults.setVisibility(View.VISIBLE);
             textViewNoResults.setVisibility(View.GONE);
         }
+    }
+
+    public void addFoodToSelectedFoods(ListItem<Food> food) {
+        fragmentListener.onAddingToSelectedFoods(food);
     }
 }

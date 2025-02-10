@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="Result Title"
             android:textSize="16sp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textSecondary"
             android:textStyle="bold" />
 
         <!-- Optional: Description TextView -->
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Result Description"
             android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/gray"
             android:layout_marginTop="4dp" />
     </LinearLayout>
 

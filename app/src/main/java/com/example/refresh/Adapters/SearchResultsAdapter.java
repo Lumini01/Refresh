@@ -14,19 +14,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.refresh.Model.SearchResult;
+import com.example.refresh.Fragments.SearchResultsFragment;
+import com.example.refresh.Model.Food;
+import com.example.refresh.Model.ListItem;
 import com.example.refresh.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultViewHolder> {
+public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ResultViewHolder> {
 
-    private List<SearchResult> resultsList;
+    private ArrayList<ListItem<Food>> resultsList;
+    private SearchResultsFragment fragment;
 
     // Constructor
-    public ResultsAdapter(List<SearchResult> resultsList) {
+    public SearchResultsAdapter(ArrayList<ListItem<Food>> resultsList, SearchResultsFragment fragment) {
         this.resultsList = (resultsList != null) ? resultsList : new ArrayList<>();
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -40,13 +44,12 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultVi
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
-        SearchResult result = resultsList.get(position);
+        ListItem<Food> result = resultsList.get(position);
         holder.bind(result);
 
         // Add click listener to navigate to the correct screen
         holder.addButton.setOnClickListener(v -> {
-            //TODO: Add the food to the list of the selected foods.
-
+            fragment.addFoodToSelectedFoods(result);
             Toast.makeText(v.getContext(), result.getTitle() + "Added to the List", Toast.LENGTH_SHORT).show();
         });
 
@@ -54,14 +57,6 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultVi
              //TODO: Navigate to the food fragment.
         });
 
-        // Prevent ImageButton click from triggering LinearLayout click
-        holder.addButton.setOnTouchListener((v, event) -> {
-            v.getParent().requestDisallowInterceptTouchEvent(true);
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                v.performClick(); // Call performClick() to satisfy accessibility requirements
-            }
-            return false; // Allow normal click behavior
-        });
     }
 
     @Override
@@ -70,7 +65,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultVi
     }
 
     // Method to update data efficiently
-    public void updateResults(List<SearchResult> newResults) {
+    public void updateResults(List<ListItem<Food>> newResults) {
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback() {
             @Override
             public int getOldListSize() {
@@ -84,8 +79,8 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultVi
 
             @Override
             public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                SearchResult oldItem = resultsList.get(oldItemPosition);
-                SearchResult newItem = newResults.get(newItemPosition);
+                ListItem<Food> oldItem = resultsList.get(oldItemPosition);
+                ListItem<Food> newItem = newResults.get(newItemPosition);
 
                 if (oldItem == null || newItem == null) {
                     return false;
@@ -120,7 +115,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultVi
 
         }
 
-        public void bind(SearchResult result) {
+        public void bind(ListItem<Food> result) {
             textViewTitle.setText(result.getTitle() != null ? result.getTitle() : "No Title");
 
             if (result.getDescription() != null && !result.getDescription().isEmpty()) {

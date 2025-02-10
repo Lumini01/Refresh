@@ -41,20 +41,19 @@ public class HomeDashboard extends AppCompatActivity {
             if (itemId == R.id.nav_today) {
                 // Handle home click
                 return true;
-            } else if (itemId == R.id.nav_progress) {
-                // Handle progress click
-                return true;
             } else if (itemId == R.id.nav_log) {
                 Intent intent = new Intent(HomeDashboard.this, MealLogActivity.class);
                 startActivity(intent);
                 return true;
-            } else if (itemId == R.id.nav_suggestions) {
-                // Handle suggestions click
-                return true;
-            } else if (itemId == R.id.nav_recipes) {
-                // Handle recipes click
+            } else if (itemId == R.id.nav_progress) {
+                // Handle progress click
                 return true;
             }
+//            else if (itemId == R.id.nav_recipes) {
+//                // Handle recipes click
+//                return true;
+//            }
+
             return false;
         });
     }

@@ -77,5 +77,6 @@
 
     <!-- Light/Dark Mode Specific Colors -->
     <color name="lightModeBackground">#FFFFFF</color> <!-- Background for light mode -->
-    <color name="darkModeBackground">#121212</color> <!-- Background for dark mode -->
+    <color name="darkModeBackground">#121212</color>
+    <color name="my_draker_blue">#016FBF</color> <!-- Background for dark mode -->
 </resources>

@@ -8,46 +8,89 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.refresh.Adapters.FoodSelectionsAdapter;
+import com.example.refresh.Adapters.SearchResultsAdapter;
+import com.example.refresh.Model.Food;
+import com.example.refresh.Model.ListItem;
 import com.example.refresh.R;
-import com.example.refresh.Adapters.FoodsAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 // Selected Foods Fragment which displays the selected foods in the meal log activity
 public class SelectedFoodsFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private FoodsAdapter adapter;
-    private List<String> selectedFoodsList;
+    private FoodSelectionsAdapter adapter;
+    private ArrayList<ListItem<Food>> selectedFoods;
+
+    public SelectedFoodsFragment() {}
+
+    public static SelectedFoodsFragment newInstance(ArrayList<ListItem<Food>> selectedFoods) {
+        SelectedFoodsFragment fragment = new SelectedFoodsFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("selected_foods", selectedFoods);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_selected_foods, container, false);
-
-        recyclerView = view.findViewById(R.id.rv_foods);
-
-        // Sample data
-        selectedFoodsList = new ArrayList<>();
-        selectedFoodsList.add("Apple");
-        selectedFoodsList.add("Banana");
-        selectedFoodsList.add("Carrot");
-        selectedFoodsList.add("Avocado");
-
-        setupRecyclerView();
-
-        return view;
+        return inflater.inflate(R.layout.fragment_selected_foods, container, false);
     }
 
-    // Setup RecyclerView
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.rv_foods);
+
+        // Initialize the list and adapter
+        if (getArguments() != null) {
+            Object obj = getArguments().getSerializable("selected_foods");
+
+            if (obj instanceof ArrayList<?>) {
+                try {
+                    selectedFoods = (ArrayList<ListItem<Food>>) obj;
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                    selectedFoods = new ArrayList<>();  // Fallback to empty list
+                }
+            } else {
+                selectedFoods = new ArrayList<>();  // Fallback if not an ArrayList
+            }
+        } else {
+            selectedFoods = new ArrayList<>();
+        }
+
+        setupRecyclerView();
+    }
+
     private void setupRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new FoodsAdapter(selectedFoodsList);
+        adapter = new FoodSelectionsAdapter(selectedFoods, this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                layoutManager.getOrientation()
+        );
+        recyclerView.addItemDecoration(dividerItemDecoration);
+    }
+
+    // Add food to the selected foods list
+    public void addFoodToSelectedFoods(ListItem<Food> food) {
+        selectedFoods.add(food);  // Update the list in fragment
+        adapter.addItem(food, selectedFoods.size());  // Notify adapter
+    }
+
+    // Remove food from the selected foods list
+    public void removeFoodFromSelectedFoods(int position) {
+        if (position >= 0 && position < selectedFoods.size()) {
+            selectedFoods.remove(position);  // Update the list in fragment
+            adapter.removeItem(position);  // Notify adapter to remove item
+        }
     }
 }

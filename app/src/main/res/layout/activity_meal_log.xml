@@ -25,7 +25,7 @@
         android:layout_height="match_parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/search_results_fragment"
+            android:id="@+id/search_results_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="10dp"
@@ -49,7 +49,8 @@
                 android:orientation="horizontal"
                 android:background="@drawable/card_background"
                 android:padding="@dimen/padding_small"
-                android:weightSum="3">
+                android:weightSum="3"
+                android:layout_marginBottom="@dimen/margin_small">
 
                 <Button
                     android:id="@+id/btn_meal"
@@ -57,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Meal"
+                    android:textSize="@dimen/text_size_xlarge"
                     android:background="@drawable/card_background"
                     android:backgroundTint="@color/buttonBackground"
                     android:textColor="@color/buttonText"/>
@@ -67,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Favorites"
+                    android:textSize="@dimen/text_size_xlarge"
                     android:background="@drawable/card_background"
                     android:backgroundTint="@color/buttonBackground"
                     android:textColor="@color/buttonText"/>
@@ -77,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="History"
+                    android:textSize="@dimen/text_size_xlarge"
                     android:background="@drawable/card_background"
                     android:backgroundTint="@color/buttonBackground"
                     android:textColor="@color/buttonText"/>
@@ -84,11 +88,24 @@
 
             <!-- Fragment Container -->
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment_container"
+                android:id="@+id/selected_foods_fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@color/cardBackground" />
+                android:background="@drawable/card_background" />
+
+            <Button
+                android:id="@+id/btn_log"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Log"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_medium_large"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_size_xxlarge"
+                android:layout_marginVertical="@dimen/margin_large"
+                android:backgroundTint="@color/my_draker_blue"
+                android:textColor="@color/buttonText"/>
 
             <!-- Bottom Navigation -->
             <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -100,7 +117,7 @@
                 app:itemTextColor="@color/textSecondary"
                 app:menu="@menu/bottom_nav_menu"
                 android:layout_gravity="bottom"
-                android:layout_marginTop="@dimen/minimal_margin"/>
+                android:layout_marginTop="@dimen/margin_small"/>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

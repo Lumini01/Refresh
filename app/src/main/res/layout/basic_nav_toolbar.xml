@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back_arrow"
         android:background="@null"
-        android:contentDescription="Back Arrow"
+        android:contentDescription="@string/back_arrow"
         android:padding="@dimen/padding_small"
         android:layout_gravity="start" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/toolbarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="@string/title"
         android:textColor="@color/textSecondary"
         android:textSize="@dimen/text_size_xlarge"
         android:layout_gravity="center" />
@@ -36,7 +36,7 @@
         android:layout_gravity="end"
         android:layout_marginEnd="16dp"
         android:background="@null"
-        android:contentDescription="Settings"
+        android:contentDescription="Button"
         android:padding="@dimen/padding_small"
         android:src="@drawable/ic_placeholder" />
 </androidx.appcompat.widget.Toolbar>

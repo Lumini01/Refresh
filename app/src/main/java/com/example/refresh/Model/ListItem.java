@@ -3,24 +3,21 @@ package com.example.refresh.Model;
 import java.io.Serializable;
 
 // Search Result Model Class which represents a search result
-public class SearchResult implements Serializable {
+public class ListItem<T> implements Serializable {
     private String title;
     private String description;
-    private String model;
 
     // Means - an actual object saved
-    // TODO: make the refernce model general
-    private int modelReference; // Optional: Add more fields as needed
+    private T model; // Optional: Add more fields as needed
 
-    public SearchResult(String title) {
+    public ListItem(String title) {
         this.title = title;
     }
 
-    public SearchResult(String title, String description, String model, int modelReference) {
+    public ListItem(String title, String description, T model) {
         this.title = title;
         this.description = description;
         this.model = model;
-        this.modelReference = modelReference;
     }
 
     // Getter and Setter for Title
@@ -41,19 +38,11 @@ public class SearchResult implements Serializable {
         this.description = description;
     }
 
-    public String getModel() {
+    public T getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(T model) {
         this.model = model;
-    }
-
-    public int getModelReference() {
-        return modelReference;
-    }
-
-    public void setModelReference(int modelReference) {
-        this.modelReference = modelReference;
     }
 }

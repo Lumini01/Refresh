@@ -30,4 +30,7 @@
     <string name="x_total">x/total</string>
     <string name="delete">delete</string>
     <string name="add" />
+    <string name="meal_log">Meal Log</string>
+    <string name="title">Title</string>
+    <string name="back_arrow">Back Arrow</string>
 </resources>
