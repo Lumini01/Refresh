@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="@dimen/padding_medium"
-    android:background="@drawable/card_background"
+    android:background="@color/cardBackground"
     android:layout_marginBottom="@dimen/margin_small"
     android:gravity="center_vertical">
 
@@ -20,7 +20,7 @@
         android:layout_marginEnd="8dp"> <!-- Added margin to separate from delete button -->
 
         <TextView
-            android:id="@+id/textViewResultTitle"
+            android:id="@+id/textViewSelectionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Result Title"
@@ -30,7 +30,7 @@
 
         <!-- Optional: Description TextView -->
         <TextView
-            android:id="@+id/textViewResultDescription"
+            android:id="@+id/textViewSelectionDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Result Description"

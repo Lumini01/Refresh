@@ -15,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Database.Tables.FoodsTable;
@@ -34,6 +36,7 @@ public class MealLogActivity extends AppCompatActivity {
     private EditText searchBarET;
     private ImageButton clearButton;
     private FragmentContainerView searchResultsContainer;
+    private RecyclerView searchResultsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -43,7 +43,9 @@
 
     <!-- Border and Divider Colors -->
     <color name="borderColor_X">#E0E0E0</color> <!-- Border color for input fields or other UI components -->
-    <color name="dividerColor">#D0D0D0</color> <!-- Divider line color -->
+    <color name="dividerColorLight">#D0D0D0</color> <!-- Divider line color -->
+    <color name="dividerColorDark">#0F0E0C</color> <!-- Divider line color -->
+
 
     <!-- Error Colors -->
     <color name="errorColor">#F44336</color> <!-- Error color for text, buttons, or input fields -->

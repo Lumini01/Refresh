@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,8 +84,13 @@ public class SearchResultsFragment extends Fragment {
 
         // Setup RecyclerView
         resultsAdapter = new ResultsAdapter(searchResults);
-        recyclerViewResults.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerViewResults.setLayoutManager(layoutManager);
         recyclerViewResults.setAdapter(resultsAdapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewResults.getContext(),
+                layoutManager.getOrientation()
+        );
+        recyclerViewResults.addItemDecoration(dividerItemDecoration);
 
         // Update UI based on initial data
         updateUI();

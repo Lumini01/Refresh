@@ -7,6 +7,9 @@ public class SearchResult implements Serializable {
     private String title;
     private String description;
     private String model;
+
+    // Means - an actual object saved
+    // TODO: make the refernce model general
     private int modelReference; // Optional: Add more fields as needed
 
     public SearchResult(String title) {

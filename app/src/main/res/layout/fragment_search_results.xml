@@ -4,6 +4,7 @@
     android:id="@+id/search_results_fragment_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/card_background"
     android:orientation="vertical">
 
     <!-- RecyclerView for Search Results -->
