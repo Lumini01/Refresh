@@ -57,6 +57,7 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
 
         holder.itemContainer.setOnClickListener(v -> {
             //TODO: Navigate to the food fragment.
+            fragment.navigateToFoodInfo(foodSelection.getModel());
         });
     }
 

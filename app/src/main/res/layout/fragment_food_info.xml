@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Root LinearLayout with a ScrollView inside -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:weightSum="0.9">
+
+    <include
+        layout="@layout/basic_nav_toolbar"
+        android:id="@+id/toolbar" />
+
+    <!-- ScrollView ensures content is scrollable on smaller devices -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_medium"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <!-- Container for your food info content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Food Name Title -->
+                <TextView
+                    android:id="@+id/tv_food_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Food Name"
+                    android:textColor="@color/textPrimary"
+                    android:padding="@dimen/padding_medium"
+                    android:textSize="@dimen/text_size_title"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/favorite_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_favorite_bold"
+                    android:background="@null"
+                    android:contentDescription="favorite"
+                    android:padding="@dimen/padding_small"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:layout_weight="5"
+                    app:tint="@color/iconTint" />
+
+
+            </LinearLayout>
+
+            <!-- Food Image Could Go Here -->
+
+            <!-- Food Description -->
+            <TextView
+                android:id="@+id/tv_food_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Food description goes here."
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_xlarge"
+                android:layout_margin="@dimen/margin_small"
+                android:padding="@dimen/padding_medium"
+                android:layout_marginBottom="@dimen/margin_medium" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                app:dividerColor="@color/dividerColorLight"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Left View: Portion Amount Input -->
+                    <EditText
+                        android:id="@+id/etServingCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:text="1"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:background="@drawable/card_background"
+                        android:layout_weight="4"
+                        android:padding="@dimen/padding_small"
+                        android:layout_margin="@dimen/margin_small"/>
+
+                    <!-- Right View: Dropdown for Serving Options -->
+                    <Spinner
+                        android:id="@+id/spinnerServingOptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:spinnerMode="dialog"
+                        android:background="@drawable/card_background"
+                        android:layout_weight="1"
+                        android:padding="@dimen/padding_small"
+                        android:layout_margin="@dimen/margin_small"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    android:layout_marginVertical="@dimen/margin_medium">
+
+                    <!-- First Column (e.g. Carbs) -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:background="@drawable/card_background">
+
+                        <!-- Progress Bar with overlay percentage -->
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/margin_small">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/progressBarCrabs"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                app:cpb_background_progressbar_color="@color/borderColor"
+                                app:cpb_background_progressbar_width="7dp"
+                                app:cpb_progress="50"
+                                app:cpb_progressbar_color="@color/carbs_progress_color"
+                                app:cpb_progressbar_width="10dp"
+                                app:cpb_round_border="true"
+                                app:cpb_progress_direction="to_right"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                android:id="@+id/progressTextCarbs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50%"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:textSize="@dimen/text_size_xlarge"
+                                android:textColor="@color/textSecondary" />
+                        </FrameLayout>
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            app:dividerColor="@color/dividerColorLight"
+                            android:layout_marginVertical="@dimen/margin_medium_large"
+                            android:layout_marginHorizontal="@dimen/margin_medium"
+                            />
+
+                        <!-- Nutritional Info Text -->
+                        <TextView
+                            android:id="@+id/tv_carbs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carbs: Xg"
+                            android:padding="@dimen/padding_xsmall"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xlarge"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <!-- Second Column (e.g. Protein) -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:background="@drawable/card_background">
+
+                        <!-- Progress Bar with overlay percentage -->
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/margin_small">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/progressBarProtein"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                app:cpb_background_progressbar_color="@color/borderColor"
+                                app:cpb_background_progressbar_width="7dp"
+                                app:cpb_progress="50"
+                                app:cpb_progressbar_color="@color/protein_progress_color"
+                                app:cpb_progressbar_width="10dp"
+                                app:cpb_round_border="true"
+                                app:cpb_progress_direction="to_right"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                android:id="@+id/progressTextProtein"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50%"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:textSize="@dimen/text_size_xlarge"
+                                android:textColor="@color/textSecondary" />
+                        </FrameLayout>
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            app:dividerColor="@color/dividerColorLight"
+                            android:layout_marginVertical="@dimen/margin_medium_large"
+                            android:layout_marginHorizontal="@dimen/margin_medium"
+                            />
+
+                        <!-- Nutritional Info Text -->
+                        <TextView
+                            android:id="@+id/tv_protein"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Protein: Xg"
+                            android:padding="@dimen/padding_xsmall"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xlarge"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <!-- Third Column (e.g. Carbs or Fat) -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:background="@drawable/card_background">
+
+                        <!-- Progress Bar with overlay percentage -->
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/margin_small">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/progressBarFat"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                app:cpb_background_progressbar_color="@color/borderColor"
+                                app:cpb_background_progressbar_width="7dp"
+                                app:cpb_progress="50"
+                                app:cpb_progressbar_color="@color/fat_progress_color"
+                                app:cpb_progressbar_width="10dp"
+                                app:cpb_round_border="true"
+                                app:cpb_progress_direction="to_right"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                android:id="@+id/progressTextFat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50%"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:textSize="@dimen/text_size_xlarge"
+                                android:textColor="@color/textSecondary" />
+                        </FrameLayout>
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            app:dividerColor="@color/dividerColorLight"
+                            android:layout_marginVertical="@dimen/margin_medium_large"
+                            android:layout_marginHorizontal="@dimen/margin_medium"
+                            />
+
+                        <!-- Nutritional Info Text -->
+                        <TextView
+                            android:id="@+id/tv_fat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fat: Xg"
+                            android:padding="@dimen/padding_xsmall"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xlarge"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_background">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/margin_medium"
+                            android:layout_marginBottom="@dimen/margin_small"
+                            android:padding="@dimen/padding_medium_large"
+                            android:text="Calories:"
+                            android:textSize="22dp"
+                            android:textColor="@color/textPrimary"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tv_calories"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/margin_medium"
+                            android:layout_marginBottom="@dimen/margin_small"
+                            android:padding="@dimen/padding_medium_large"
+                            android:text="X kcal"
+                            android:textSize="22dp"
+                            android:textColor="@color/textPrimary"
+                            android:layout_weight="2"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+
+
+                    <SeekBar
+                        android:id="@+id/calorie_seek_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="3900"
+                        android:progress="2300"
+                        android:thumb="@drawable/custom_thumb"
+                        android:progressDrawable="@drawable/segmented_progress_drawable"
+                        android:enabled="false"
+                        android:clickable="false"
+                        android:splitTrack="false" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nutrition Labels"
+                android:textSize="@dimen/text_size_xxlarge"
+                android:layout_margin="@dimen/margin_small"
+                android:paddingVertical="@dimen/padding_small"
+                android:textColor="@color/textPrimary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_background" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Action Button -->
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textStyle="bold"
+        android:padding="@dimen/padding_medium_large"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textSize="@dimen/text_size_xxlarge"
+        android:layout_marginVertical="@dimen/margin_large"
+        android:backgroundTint="@color/my_draker_blue"
+        android:textColor="@color/buttonText"/>
+
+</LinearLayout>

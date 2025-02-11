@@ -27,6 +27,7 @@ public class SearchResultsFragment extends Fragment {
 
     public interface OnSearchResultsFragmentListener {
         void onAddingToSelectedFoods(ListItem<Food> addedFood);
+        void onNavigateToFoodInfo(Food food);
     }
 
     private OnSearchResultsFragmentListener fragmentListener;
@@ -142,5 +143,9 @@ public class SearchResultsFragment extends Fragment {
 
     public void addFoodToSelectedFoods(ListItem<Food> food) {
         fragmentListener.onAddingToSelectedFoods(food);
+    }
+
+    public void navigateToFoodInfo(Food food) {
+        fragmentListener.onNavigateToFoodInfo(food);
     }
 }

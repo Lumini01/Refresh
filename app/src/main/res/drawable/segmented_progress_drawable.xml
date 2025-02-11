@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/segmented_progress_drawable.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background track -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="4dp" />
+            <solid android:color="@null" />
+        </shape>
+    </item>
+
+    <!-- Progress portion with a gradient (you can adjust colors to simulate segments) -->
+    <item android:id="@android:id/progress">
+            <shape>
+                <size android:height="24dp" />
+                <corners android:radius="16dp" />
+                <gradient
+                    android:startColor="#4CAF50"
+                    android:centerColor="#FFC107"
+                    android:endColor="#F44336"
+                    android:angle="0" />
+            </shape>
+    </item>
+
+</layer-list>

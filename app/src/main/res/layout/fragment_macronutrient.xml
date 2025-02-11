@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Calories"
             android:layout_weight="1"
-            android:textSize="@dimen/text_size_large"
+            android:textSize="@dimen/text_size_xlarge"
             android:textColor="@color/textPrimary"
             android:paddingStart="2dp"/>
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/x_total"
-            android:textSize="@dimen/text_size_large"
+            android:textSize="@dimen/text_size_xlarge"
             android:textColor="@color/textPrimary"
             android:paddingEnd="2dp"/>
     </LinearLayout>
@@ -47,7 +47,7 @@
             android:max="2000"
             android:progress="850"
             android:progressDrawable="@drawable/progress_bar_style"
-            android:progressTint="#4CB944"/>
+            android:progressTint="@color/calorie_progress_color"/>
     </LinearLayout>
 
     <!-- Macronutrient Labels -->
@@ -65,7 +65,7 @@
             android:text="Carbs"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:textColor="@color/textPrimary" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:text="Protein"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:textColor="@color/textPrimary" />
 
         <TextView
@@ -83,7 +83,7 @@
             android:text="Fat"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:textColor="@color/textPrimary" />
     </LinearLayout>
 
@@ -106,7 +106,7 @@
                 android:max="400"
                 android:progress="150"
                 android:progressDrawable="@drawable/progress_bar_style"
-                android:progressTint="#FF5722"/>
+                android:progressTint="@color/carbs_progress_color"/>
         </LinearLayout>
 
         <View android:layout_width="@dimen/minimal_margin" android:layout_height="8dp" />
@@ -122,7 +122,7 @@
                 android:layout_height="8dp"
                 android:max="400"
                 android:progress="220"
-                android:progressTint="#a87afa"
+                android:progressTint="@color/protein_progress_color"
                 android:progressDrawable="@drawable/progress_bar_style" />
         </LinearLayout>
 
@@ -140,7 +140,7 @@
                 android:max="400"
                 android:progress="260"
                 android:progressDrawable="@drawable/progress_bar_style"
-                android:progressTint="#FFC107"/>
+                android:progressTint="@color/fat_progress_color"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -159,7 +159,7 @@
             android:text="@string/x_total"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:textColor="@color/textPrimary" />
 
         <TextView
@@ -169,7 +169,7 @@
             android:text="@string/x_total"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:textColor="@color/textPrimary" />
 
         <TextView
@@ -179,7 +179,7 @@
             android:text="@string/x_total"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:textColor="@color/textPrimary" />
     </LinearLayout>
 

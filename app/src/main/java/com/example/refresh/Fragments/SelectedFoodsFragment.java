@@ -1,5 +1,6 @@
 package com.example.refresh.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +24,26 @@ import java.util.ArrayList;
 // Selected Foods Fragment which displays the selected foods in the meal log activity
 public class SelectedFoodsFragment extends Fragment {
 
+    public interface OnSelectedFoodsFragmentListener {
+        void onNavigateToFoodInfo(Food food);
+    }
+
+    private SelectedFoodsFragment.OnSelectedFoodsFragmentListener fragmentListener;
     private RecyclerView recyclerView;
     private FoodSelectionsAdapter adapter;
     private ArrayList<ListItem<Food>> selectedFoods;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        // Make sure the hosting activity implements the interface.
+        if (context instanceof SearchResultsFragment.OnSearchResultsFragmentListener) {
+            fragmentListener = (SelectedFoodsFragment.OnSelectedFoodsFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnSearchResultsFragmentListener");
+        }
+    }
 
     public SelectedFoodsFragment() {}
 
@@ -92,5 +110,9 @@ public class SelectedFoodsFragment extends Fragment {
             selectedFoods.remove(position);  // Update the list in fragment
             adapter.removeItem(position);  // Notify adapter to remove item
         }
+    }
+
+    public void navigateToFoodInfo(Food food) {
+        fragmentListener.onNavigateToFoodInfo(food);
     }
 }

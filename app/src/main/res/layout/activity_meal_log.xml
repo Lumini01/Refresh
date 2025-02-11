@@ -11,6 +11,12 @@
     android:padding="@dimen/padding_medium"
     tools:context=".Activity.MealLogActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/food_info_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
     <include
         layout="@layout/basic_nav_toolbar"
         android:id="@+id/toolbar" />
@@ -95,7 +101,7 @@
                 android:background="@drawable/card_background" />
 
             <Button
-                android:id="@+id/btn_log"
+                android:id="@+id/btn_add"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="Log"

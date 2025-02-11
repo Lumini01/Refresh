@@ -2,9 +2,11 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:background="@color/colorPrimary"
     android:elevation="4dp"
+    app:titleTextColor="@color/textPrimary"
     android:layout_marginBottom="@dimen/margin_small">
 
     <!-- Back Arrow -->
@@ -15,7 +17,8 @@
         android:src="@drawable/ic_back_arrow"
         android:background="@null"
         android:contentDescription="@string/back_arrow"
-        android:padding="@dimen/padding_small"
+        android:padding="@dimen/padding_medium"
+        app:tint="@color/iconTint"
         android:layout_gravity="start" />
 
     <!-- Title -->
@@ -25,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_size_xlarge"
+        android:textSize="22sp"
         android:layout_gravity="center" />
 
     <!-- Gear Icon -->
@@ -37,6 +40,7 @@
         android:layout_marginEnd="16dp"
         android:background="@null"
         android:contentDescription="Button"
-        android:padding="@dimen/padding_small"
-        android:src="@drawable/ic_placeholder" />
+        android:padding="@dimen/padding_medium"
+        android:src="@drawable/ic_placeholder"
+        app:tint="@color/iconTint" />
 </androidx.appcompat.widget.Toolbar>

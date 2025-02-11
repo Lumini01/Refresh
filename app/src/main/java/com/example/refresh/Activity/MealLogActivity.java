@@ -2,6 +2,8 @@ package com.example.refresh.Activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Database.Tables.FoodsTable;
+import com.example.refresh.Fragments.FoodInfoFragment;
 import com.example.refresh.Fragments.SearchResultsFragment;
 import com.example.refresh.Fragments.SelectedFoodsFragment;
 import com.example.refresh.Model.Food;
@@ -27,7 +30,7 @@ import com.example.refresh.R;
 
 import java.util.ArrayList;
 
-public class MealLogActivity extends AppCompatActivity implements SearchResultsFragment.OnSearchResultsFragmentListener {
+public class MealLogActivity extends AppCompatActivity implements SearchResultsFragment.OnSearchResultsFragmentListener, SelectedFoodsFragment.OnSelectedFoodsFragmentListener, FoodInfoFragment.OnFoodInfoFragmentListener {
 
     // UI Elements
     private TextView title;
@@ -39,6 +42,8 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     private FragmentContainerView selectedFoodsContainer;
     private RecyclerView searchResultsRecycler;
     private SelectedFoodsFragment selectedFoodsFragment;
+    private FragmentContainerView foodInfoFragmentContainer;
+    private FoodInfoFragment foodInfoFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,21 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         cancelSearchInteraction();
         addFoodToSelectedFoods(addedFood);
         
+    }
+
+    public void onNavigateToFoodInfo(Food food) {
+        foodInfoFragment = FoodInfoFragment.newInstance(food);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.food_info_fragment_container, foodInfoFragment)
+                .commit();
+        foodInfoFragmentContainer.setVisibility(View.VISIBLE);
+    }
+
+    public void onExitFoodInfoFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .remove(foodInfoFragment)
+                .commit();
+        foodInfoFragmentContainer.setVisibility(View.GONE);
     }
 
     /**
@@ -90,14 +110,21 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
                 .replace(R.id.selected_foods_fragment_container, selectedFoodsFragment)
                 .commit();
 
+        foodInfoFragmentContainer = findViewById(R.id.food_info_fragment_container);
+
         searchBarET.setOnClickListener(v -> clearButton.setVisibility(View.VISIBLE));
 
-        searchBarET.setOnKeyListener((v, keyCode, event) -> {
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+        searchBarET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 performSearch();
-                return true;
             }
-            return false;
         });
 
         clearButton.setOnClickListener(v -> {

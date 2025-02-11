@@ -33,4 +33,6 @@
     <string name="meal_log">Meal Log</string>
     <string name="title">Title</string>
     <string name="back_arrow">Back Arrow</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

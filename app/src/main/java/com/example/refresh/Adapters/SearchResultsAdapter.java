@@ -54,7 +54,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         });
 
         holder.itemContainer.setOnClickListener(v -> {
-             //TODO: Navigate to the food fragment.
+            fragment.navigateToFoodInfo(result.getModel());
         });
 
     }

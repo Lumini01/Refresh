@@ -22,7 +22,7 @@
         android:paddingEnd="@dimen/padding_large"
         android:textColor="@color/textPrimary"
         android:textColorHint="@color/textPrimary"
-        android:textSize="@dimen/text_size_medium" />
+        android:textSize="@dimen/text_size_xlarge" />
 
     <ImageButton
         android:id="@+id/clearButton"

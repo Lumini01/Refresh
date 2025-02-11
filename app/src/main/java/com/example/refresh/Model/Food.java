@@ -1,10 +1,11 @@
 package com.example.refresh.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 // Food Model Class which represents a food item
-public class Food {
+public class Food implements Serializable {
     // Attributes
     private int id;
     private String name;
@@ -33,6 +34,8 @@ public class Food {
         this.notes = (notes != null) ? notes : "";
     }
 
+    public Food() {}
+
     public Food(int id, String name, String description, String category, ArrayList<String> labels, int calories, int carbs, int protein, int fat, String notes) {
         this.id = id;
         this.name = name;
@@ -59,7 +62,6 @@ public class Food {
         this.fat = fat;
         this.notes = (notes != null) ? notes : "";
     }
-
 
 
     // Getters and Setters
@@ -135,5 +137,9 @@ public class Food {
     // Method to calculate actual fat based on serving size
     public int getActualFat() {
         return (fat * servingSize) / 100;
+    }
+
+    public boolean isLiquid() {
+        return (category == "Beverages" || labels.contains("oil"));
     }
 }
