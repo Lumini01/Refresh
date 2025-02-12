@@ -121,16 +121,16 @@ public class Login extends AppCompatActivity {
             // Successful login
             // Save user email to SharedPreferences
             if (rememberMe) {
-                SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("loggedUser", user.getEmail());
-                editor.apply();
+                updateActiveUser();
             }
+
+            updateUserSP();
 
             showToast("Login Successful!");
             clearErrors();
             navigateToHomeDashboard();
-        } else {
+        }
+        else {
             // Show error messages based on validation failure
             showValidationError(validationError);
         }
@@ -191,5 +191,29 @@ public class Login extends AppCompatActivity {
     private void navigateToStart() {
         Intent intent = new Intent(Login.this, Start.class);
         startActivity(intent);
+    }
+
+    private void updateActiveUser() {
+        SharedPreferences appPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = appPreferences.edit();
+
+        editor.putInt("loggedUserID", user.getID());
+        editor.apply();
+    }
+
+    private void updateUserSP() {
+        SharedPreferences appPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = appPreferences.edit();
+
+        String loggedUserSPName = "User" + user.getID() + "Preferences";
+        editor.putString("loggedUserSPName", loggedUserSPName);
+        editor.apply();
+
+        // Create a new SharedPreferences file for the logged-in user
+        SharedPreferences userPreferences = getSharedPreferences(loggedUserSPName, MODE_PRIVATE);
+
+        SharedPreferences.Editor userEditor = userPreferences.edit();
+        userEditor.putInt("userID", user.getID());
+        userEditor.apply();
     }
 }

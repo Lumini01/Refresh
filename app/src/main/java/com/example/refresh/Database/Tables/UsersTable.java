@@ -10,6 +10,7 @@ public class UsersTable {
 
     // Enum for table columns
     public enum Columns {
+        ID("id"),
         NAME("name"),
         EMAIL("email"),
         PHONE("phone"),
@@ -31,10 +32,11 @@ public class UsersTable {
     public static final String CREATE_TABLE =
 
             "CREATE TABLE " + TABLE_NAME + " (" +
-            Columns.NAME.getColumnName() + " TEXT NOT NULL, " +
-            Columns.EMAIL.getColumnName() + " TEXT UNIQUE NOT NULL, " +
-            Columns.PHONE.getColumnName() + " TEXT UNIQUE NOT NULL, " +
-            Columns.PWD.getColumnName() + " TEXT NOT NULL);";
+                    Columns.ID.getColumnName() + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Columns.NAME.getColumnName() + " TEXT NOT NULL, " +
+                    Columns.EMAIL.getColumnName() + " TEXT UNIQUE NOT NULL, " +
+                    Columns.PHONE.getColumnName() + " TEXT UNIQUE NOT NULL, " +
+                    Columns.PWD.getColumnName() + " TEXT NOT NULL);";
 
     // Convert UserInfo to ContentValues
     public static ContentValues toContentValues(UserInfo user) {
@@ -49,11 +51,12 @@ public class UsersTable {
 
     // Convert Cursor to UserInfo
     public static UserInfo fromCursor(Cursor cursor) {
+        int id = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.ID.getColumnName()));
         String name = cursor.getString(cursor.getColumnIndexOrThrow(Columns.NAME.getColumnName()));
         String email = cursor.getString(cursor.getColumnIndexOrThrow(Columns.EMAIL.getColumnName()));
         String phone = cursor.getString(cursor.getColumnIndexOrThrow(Columns.PHONE.getColumnName()));
         String password = cursor.getString(cursor.getColumnIndexOrThrow(Columns.PWD.getColumnName()));
 
-        return new UserInfo(name, email, phone, password);
+        return new UserInfo(id, name, email, phone, password);
     }
 }

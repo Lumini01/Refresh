@@ -13,6 +13,5 @@ public class ApplicationClass extends Application {
         // Initialize global state or resources here
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         sharedPreferences.edit().putBoolean("isFirstLaunch", true).apply();
-        sharedPreferences.edit().remove("foodSearchResultIDs").apply();
     }
 }

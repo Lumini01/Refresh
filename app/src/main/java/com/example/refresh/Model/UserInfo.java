@@ -1,5 +1,9 @@
 package com.example.refresh.Model;
 
+import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Database.DatabaseHelper.Tables;
+import com.example.refresh.Database.Tables.UsersTable.Columns;
+
 /**
  * UserInfo - This class is used to store and manage user information, including
  * their name, email, phone number, and password. It provides methods to access
@@ -8,6 +12,7 @@ package com.example.refresh.Model;
  */
 public class UserInfo {
 
+    private int id;        // Stores the user's unique identifier
     private String name;   // Stores the user's name
     private String email;  // Stores the user's email
     private String phone;  // Stores the user's phone number
@@ -26,7 +31,16 @@ public class UserInfo {
      * @param phone The user's phone number
      * @param pwd The user's password
      */
-    public UserInfo(String name, String email, String phone, String pwd) {
+    public UserInfo(int id, String name, String email, String phone, String pwd) {
+        setID(id);
+        setName(name);
+        setEmail(email);
+        setPhone(phone);
+        setPwd(pwd);
+    }
+
+    public UserInfo( String name, String email, String phone, String pwd) {
+        id = -1;
         setName(name);
         setEmail(email);
         setPhone(phone);
@@ -39,11 +53,22 @@ public class UserInfo {
      * @param email The user's email
      * @param pwd The user's password
      */
-    public UserInfo(String email, String pwd) {
-        setName(null);  // User's name is optional
+    public UserInfo(int id,String email, String pwd) {
+        DatabaseHelper dbHelper = new DatabaseHelper(null);
+
+        setID(id);
+        setName(dbHelper.getFromRecordByValue(Tables.USERS, Columns.NAME, Columns.ID, String.valueOf(id)));  // User's name is optional
         setPwd(pwd);
         setEmail(email);
-        setPhone(null);  // User's phone is optional
+        setPhone(dbHelper.getFromRecordByValue(Tables.USERS, Columns.PHONE, Columns.ID, String.valueOf(id)));  // User's phone is optional
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
     }
 
     /**

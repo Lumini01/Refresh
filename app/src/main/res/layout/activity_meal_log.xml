@@ -101,7 +101,7 @@
                 android:background="@drawable/card_background" />
 
             <Button
-                android:id="@+id/btn_add"
+                android:id="@+id/btn_log_meal"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="Log"

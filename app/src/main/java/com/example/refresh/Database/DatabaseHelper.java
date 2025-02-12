@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private static final String DATABASE_FILE = "app_database.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private Context context;
 
     public DatabaseHelper(Context context) {
@@ -165,7 +165,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Retrieve a single column value from a record in the database
-    public <T> T getFromRecord(Tables table, Enum<?> columnEnum, int index) {
+    public <T> T getFromRecordByIndex(Tables table, Enum<?> columnEnum, int index) {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name (e.g., "name")
 
@@ -174,6 +174,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         T result = null;
 
         if (cursor != null && cursor.moveToPosition(index)) {
+            // Retrieve the value from the specified column
+            int columnIndex = cursor.getColumnIndex(columnName);
+
+            if (columnIndex != -1) {
+                int columnType = cursor.getType(columnIndex);  // Get the type of the column value
+
+                switch (columnType) {
+                    case Cursor.FIELD_TYPE_STRING:
+                        result = (T) cursor.getString(columnIndex);  // If it's a String
+                        break;
+                    case Cursor.FIELD_TYPE_INTEGER:
+                        result = (T) Integer.valueOf(cursor.getInt(columnIndex));  // If it's an Integer
+                        break;
+                    case Cursor.FIELD_TYPE_NULL:
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unsupported column type");
+                }
+            }
+            cursor.close();
+        }
+
+        return result;  // Return the value or null if not found
+    }
+
+    // Retrieve a single column value from a record in the database
+    public <T> T getFromRecordByValue(Tables table, Enum<?> column, Enum<?> valueColumn, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String columnName = getEnumColumnName(column);  // Convert the enum to the column name (e.g., "name")
+        String selection = getEnumColumnName(valueColumn) + " = ?";  // Convert the enum to the column name (e.g., "name")
+
+        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), selection, toStringArray(value), null, null, null);
+
+        T result = null;
+
+        if (cursor != null && cursor.moveToFirst()) {
             // Retrieve the value from the specified column
             int columnIndex = cursor.getColumnIndex(columnName);
 
@@ -263,6 +299,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case USERS:
                 // Example: User table mapping
                 return (T) new UserInfo(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(ID.getColumnName())),
                         cursor.getString(cursor.getColumnIndexOrThrow(NAME.getColumnName())),
                         cursor.getString(cursor.getColumnIndexOrThrow(EMAIL.getColumnName())),
                         cursor.getString(cursor.getColumnIndexOrThrow(PHONE.getColumnName())),

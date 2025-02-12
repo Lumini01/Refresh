@@ -117,8 +117,8 @@ public class Start extends AppCompatActivity {
 
     private void checkUserStatus() {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-        String loggedUserEmail = sharedPreferences.getString("loggedUser", null );
-        if (loggedUserEmail != null)
+        int loggedUserID = sharedPreferences.getInt("loggedUserID", -1 );
+        if (loggedUserID != -1)
             navigateToHome();
         else {
             // Start the countdown timer

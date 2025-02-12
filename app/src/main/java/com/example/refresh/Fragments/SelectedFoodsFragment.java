@@ -87,6 +87,10 @@ public class SelectedFoodsFragment extends Fragment {
         setupRecyclerView();
     }
 
+    public ArrayList<ListItem<Food>> getSelectedFoods() {
+        return selectedFoods;
+    }
+
     private void setupRecyclerView() {
         adapter = new FoodSelectionsAdapter(selectedFoods, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

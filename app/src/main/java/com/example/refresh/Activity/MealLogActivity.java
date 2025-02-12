@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -26,11 +26,16 @@ import com.example.refresh.Fragments.SearchResultsFragment;
 import com.example.refresh.Fragments.SelectedFoodsFragment;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
+import com.example.refresh.Model.Meal;
 import com.example.refresh.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MealLogActivity extends AppCompatActivity implements SearchResultsFragment.OnSearchResultsFragmentListener, SelectedFoodsFragment.OnSelectedFoodsFragmentListener, FoodInfoFragment.OnFoodInfoFragmentListener {
+
+    private Meal meal;
+    private ArrayList<Food> mealFoods = new ArrayList<>();
 
     // UI Elements
     private TextView title;
@@ -44,6 +49,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     private SelectedFoodsFragment selectedFoodsFragment;
     private FragmentContainerView foodInfoFragmentContainer;
     private FoodInfoFragment foodInfoFragment;
+    private Button logMealBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +107,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         searchBarET = findViewById(R.id.searchEditText);
         clearButton = findViewById(R.id.clearButton);
+        logMealBtn = findViewById(R.id.btn_log_meal);
         searchResultsContainer = findViewById(R.id.search_results_fragment_container);
 
         // Initialize the SelectedFoodsFragment of the Meal Log Activity
@@ -131,7 +138,9 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             cancelSearchInteraction();
         });
 
-
+        logMealBtn.setOnClickListener(v -> {
+            logMeal();
+        });
     }
 
     private void cancelSearchInteraction() {
@@ -170,7 +179,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         String rawQuery = searchBarET.getText().toString();
         String[] query = rawQuery.split("\\s*,\\s*");
-        
+
         searchResultsContainer.setVisibility(View.GONE);
 
         if (query.length == 0 || rawQuery.isEmpty()) {
@@ -222,12 +231,29 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     public void removeFoodFromSelectedFoods(int position) {
         selectedFoodsFragment.removeFoodFromSelectedFoods(position);
     }
-    
+
     private void hideKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
         view.clearFocus(); // Remove focus from EditText
+    }
+
+    private void logMeal() {
+
+        ArrayList<ListItem<Food>> foodItemsList = selectedFoodsFragment.getSelectedFoods();
+        for (ListItem<Food> foodItem : foodItemsList) {
+            Food food = foodItem.getModel();
+            mealFoods.add(food);
+        }
+
+        Date date =
+
+
+        meal = new Meal(date, time, mealType, notes, mealFoods);
+
+        Toast.makeText(this, "Meal logged!", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

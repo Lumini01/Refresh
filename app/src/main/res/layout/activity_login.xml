@@ -66,7 +66,8 @@
         android:layout_marginHorizontal="@dimen/default_margin"
         android:gravity="center_vertical"
         android:buttonTint="@color/white"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:checked="true"/>
 
 
     <TextView

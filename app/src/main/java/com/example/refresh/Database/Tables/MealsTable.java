@@ -7,6 +7,8 @@ import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.Model.Food; // Ensure you have this import
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,7 +23,8 @@ public class MealsTable {
         TIME("time"),
         TYPE("type"),
         NOTES("notes"),
-        FOOD_IDS("food_ids"); // Stores food IDs as a comma-separated string
+        FOOD_IDS("food_ids"), // Stores food IDs as a comma-separated string
+        USER_ID("user_id");
 
         private final String columnName;
 
@@ -42,22 +45,34 @@ public class MealsTable {
                     Columns.TIME.getColumnName() + " TEXT NOT NULL, " +
                     Columns.TYPE.getColumnName() + " TEXT NOT NULL, " +
                     Columns.NOTES.getColumnName() + " TEXT, " +
-                    Columns.FOOD_IDS.getColumnName() + " TEXT);" +
+                    Columns.FOOD_IDS.getColumnName() + " TEXT, " +
+                    Columns.USER_ID.getColumnName() + " TEXT);" +
+
                     "FOREIGN KEY(" + Columns.FOOD_IDS.getColumnName() + ") " +
                     "REFERENCES " + FoodsTable.TABLE_NAME + " (" +
-                    FoodsTable.Columns.FOOD_ID.getColumnName() + "));"; // Stores food IDs as CSV
+                    FoodsTable.Columns.FOOD_ID.getColumnName() + "));" + // Stores food IDs as CSV
+
+                    "FOREIGN KEY(" + Columns.USER_ID.getColumnName() + ") " +
+                    "REFERENCES " + UsersTable.TABLE_NAME + " (" +
+                    UsersTable.Columns.ID.getColumnName() + "));"; // Stores user ID
 
     // Convert Meal to ContentValues
     public static ContentValues toContentValues(Meal meal) {
         ContentValues values = new ContentValues();
         values.put(Columns.MEAL_ID.getColumnName(), meal.getId());
-        values.put(Columns.DATE.getColumnName(), meal.getDate().getTime()); // Store date as timestamp
-        values.put(Columns.TIME.getColumnName(), meal.getTime());
+
+        LocalDate localDate = meal.getDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = localDate.format(formatter);
+
+        values.put(Columns.DATE.getColumnName(), formattedDate); // Store date as timestamp
+        values.put(Columns.TIME.getColumnName(), meal.getTime().toString());
         values.put(Columns.TYPE.getColumnName(), meal.getType());
         values.put(Columns.NOTES.getColumnName(), meal.getNotes());
 
         // Convert food ID ArrayList to a comma-separated string
         values.put(Columns.FOOD_IDS.getColumnName(), foodIdsToString(meal.getFoodIDs()));
+        values.put(Columns.USER_ID.getColumnName(), meal.getUserID);
 
         return values;
     }
@@ -65,16 +80,18 @@ public class MealsTable {
     // Convert Cursor to Meal
     public static Meal fromCursor(Cursor cursor) {
         int id = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.MEAL_ID.getColumnName()));
-        long dateMillis = cursor.getLong(cursor.getColumnIndexOrThrow(Columns.DATE.getColumnName()));
+        String date = cursor.getString(cursor.getColumnIndexOrThrow(Columns.DATE.getColumnName()));
         String time = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TIME.getColumnName()));
         String type = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TYPE.getColumnName()));
         String notes = cursor.getString(cursor.getColumnIndexOrThrow(Columns.NOTES.getColumnName()));
         String foodIdsString = cursor.getString(cursor.getColumnIndexOrThrow(Columns.FOOD_IDS.getColumnName()));
+        String userID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.USER_ID.getColumnName()));
+
 
         // Convert comma-separated string back to an ArrayList of integers
         ArrayList<Integer> foodIds = stringToFoodIds(foodIdsString);
 
-        return new Meal(id, new Date(dateMillis), time, type, notes, foodIds);
+        return new Meal(id, date, time, type, notes, foodIds);
     }
 
     // Converts an ArrayList of food IDs to a comma-separated string

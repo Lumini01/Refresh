@@ -146,7 +146,7 @@ public class ValidationHelper {
             return "Password must be at least 6 characters!";
         } else if (index == -1) {
             return "Wrong password!";
-        } else if (!pwd.equals(databaseHelper.getFromRecord(USERS, PWD, index))) {
+        } else if (!pwd.equals(databaseHelper.getFromRecordByIndex(USERS, PWD, index))) {
             return "Wrong password!";
         }
         return null;
