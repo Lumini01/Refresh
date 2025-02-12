@@ -1,5 +1,7 @@
 package com.example.refresh.Model;
 
+import com.example.refresh.MyApplication;
+
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,7 +19,7 @@ public class Meal {
     private int userID;
     private String notes; // Can be empty
 
-    // Constructor without food IDs
+    // Constructor without food ids, meal id, and user id.
     public Meal(LocalDate date, LocalTime time, String type, String notes) {
         id = -1;
         this.date = date;
@@ -25,11 +27,10 @@ public class Meal {
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = new ArrayList<>();
-
-        // TODO: Set userID, in all constructors, also add set and get methods.
-        // TODO: FIx meal table, add user ID as parameter to constructors who need it.
+        userID = MyApplication.getInstance().getLoggedUserID();
     }
 
+    // Constructor without meal id, and user id.
     public Meal(LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs) {
         id = -1;
         this.date = date;
@@ -37,8 +38,10 @@ public class Meal {
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        userID = MyApplication.getInstance().getLoggedUserID();
     }
 
+    // Constructor without meal id, and user id. receives date and time as strings.
     public Meal(String stringDate, String stringTime, String type, String notes, ArrayList<Integer> foodIDs) {
         id = -1;
         setDate(stringDate);
@@ -46,26 +49,30 @@ public class Meal {
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        userID = MyApplication.getInstance().getLoggedUserID();
     }
 
 
-    // Constructor with food IDs
-    public Meal(int id, LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs) {
+    // Constructor with food ids, meal id, and user id.
+    public Meal(int id, LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs, int userID) {
         this.id = id;
         this.date = date;
         this.time = time;
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        this.userID = userID;
     }
 
-    public Meal(int id, String stringDate, String stringTime, String type, String notes, ArrayList<Integer> foodIDs) {
+    // Constructor with food ids, meal id, and user id. Receives date and time as strings.
+    public Meal(int id, String stringDate, String stringTime, String type, String notes, ArrayList<Integer> foodIDs, int userID) {
         this.id = id;
         setDate(stringDate);
         setTime(stringTime);
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        this.userID = userID;
     }
 
     // Getters and Setters
@@ -114,6 +121,10 @@ public class Meal {
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = (notes != null) ? notes : ""; }
 
+    public int getUserID() { return userID; }
+    public void setUserID(int userID) { this.userID = userID; }
+    public void setUserIDToActiveUser() { this.userID = MyApplication.getInstance().getLoggedUserID(); }
+
     @Override
     public String toString() {
         return "Meal{" +
@@ -124,5 +135,19 @@ public class Meal {
                 ", foodIDs=" + foodIDs +
                 ", notes='" + notes + '\'' +
                 '}';
+    }
+
+    public static String determineMealType(LocalTime time) {
+        if (time.isAfter(LocalTime.of(5, 0)) && time.isBefore(LocalTime.of(12, 0))) {
+            return "Breakfast";
+        }
+        if (time.isAfter(LocalTime.of(12, 0)) && time.isBefore(LocalTime.of(17, 0))) {
+            return "Lunch";
+        }
+        if (time.isAfter(LocalTime.of(17, 0)) && time.isBefore(LocalTime.of(23, 59))) {
+            return "Dinner";
+        }
+
+        return "Snack";
     }
 }

@@ -72,7 +72,7 @@ public class MealsTable {
 
         // Convert food ID ArrayList to a comma-separated string
         values.put(Columns.FOOD_IDS.getColumnName(), foodIdsToString(meal.getFoodIDs()));
-        values.put(Columns.USER_ID.getColumnName(), meal.getUserID);
+        values.put(Columns.USER_ID.getColumnName(), meal.getUserID());
 
         return values;
     }
@@ -85,13 +85,13 @@ public class MealsTable {
         String type = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TYPE.getColumnName()));
         String notes = cursor.getString(cursor.getColumnIndexOrThrow(Columns.NOTES.getColumnName()));
         String foodIdsString = cursor.getString(cursor.getColumnIndexOrThrow(Columns.FOOD_IDS.getColumnName()));
-        String userID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.USER_ID.getColumnName()));
+        int userID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.USER_ID.getColumnName()));
 
 
         // Convert comma-separated string back to an ArrayList of integers
         ArrayList<Integer> foodIds = stringToFoodIds(foodIdsString);
 
-        return new Meal(id, date, time, type, notes, foodIds);
+        return new Meal(id, date, time, type, notes, foodIds, userID);
     }
 
     // Converts an ArrayList of food IDs to a comma-separated string

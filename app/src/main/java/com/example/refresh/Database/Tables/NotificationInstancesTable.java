@@ -10,6 +10,7 @@ import com.example.refresh.Model.NotificationTemplate;
 
 public class NotificationInstancesTable {
 
+    // TODO: Add user id to table. to enable multiple users feature - else, no notification.
     public static final String TABLE_NAME = "notification_instances";
 
     // Enum for table columns

@@ -27,8 +27,11 @@ import com.example.refresh.Fragments.SelectedFoodsFragment;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
+import com.example.refresh.MyApplication;
 import com.example.refresh.R;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -194,6 +197,8 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         } else {
             showSearchResultsFragment(foodResults);
         }
+
+        dbHelper.close();
     }
 
     public ArrayList<ListItem<Food>> parseSearchResults(ArrayList<Food> results) {
@@ -241,19 +246,32 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     }
 
     private void logMeal() {
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
 
+        setMealFoods();
+        ArrayList<Integer> mealFoodIDs = new ArrayList<>();
+        for (Food food : mealFoods) {
+            mealFoodIDs.add(food.getId());
+        }
+
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        String mealType = Meal.determineMealType(time);
+        String notes = "";
+
+        meal = new Meal(date, time, mealType, notes, mealFoodIDs);
+        dbHelper.insert(DatabaseHelper.Tables.MEALS, meal);
+        dbHelper.close();
+
+        Toast.makeText(this, "Meal logged!", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    public void setMealFoods() {
         ArrayList<ListItem<Food>> foodItemsList = selectedFoodsFragment.getSelectedFoods();
         for (ListItem<Food> foodItem : foodItemsList) {
             Food food = foodItem.getModel();
             mealFoods.add(food);
         }
-
-        Date date =
-
-
-        meal = new Meal(date, time, mealType, notes, mealFoods);
-
-        Toast.makeText(this, "Meal logged!", Toast.LENGTH_SHORT).show();
-        finish();
     }
 }
