@@ -24,6 +24,7 @@ public class MealsTable {
         TYPE("type"),
         NOTES("notes"),
         FOOD_IDS("food_ids"), // Stores food IDs as a comma-separated string
+        SERVING_SIZES("serving_sizes"), // Stores serving sizes as a comma-separated string
         USER_ID("user_id");
 
         private final String columnName;
@@ -46,6 +47,7 @@ public class MealsTable {
                     Columns.TYPE.getColumnName() + " TEXT NOT NULL, " +
                     Columns.NOTES.getColumnName() + " TEXT, " +
                     Columns.FOOD_IDS.getColumnName() + " TEXT, " +
+                    Columns.SERVING_SIZES.getColumnName() + " TEXT, " +
                     Columns.USER_ID.getColumnName() + " TEXT);" +
 
                     "FOREIGN KEY(" + Columns.FOOD_IDS.getColumnName() + ") " +
@@ -72,6 +74,7 @@ public class MealsTable {
 
         // Convert food ID ArrayList to a comma-separated string
         values.put(Columns.FOOD_IDS.getColumnName(), foodIdsToString(meal.getFoodIDs()));
+        values.put(Columns.SERVING_SIZES.getColumnName(), servingSizesToString(meal.getServingSizes()));
         values.put(Columns.USER_ID.getColumnName(), meal.getUserID());
 
         return values;
@@ -85,13 +88,16 @@ public class MealsTable {
         String type = cursor.getString(cursor.getColumnIndexOrThrow(Columns.TYPE.getColumnName()));
         String notes = cursor.getString(cursor.getColumnIndexOrThrow(Columns.NOTES.getColumnName()));
         String foodIdsString = cursor.getString(cursor.getColumnIndexOrThrow(Columns.FOOD_IDS.getColumnName()));
+        String servingSizesString = cursor.getString(cursor.getColumnIndexOrThrow(Columns.SERVING_SIZES.getColumnName()));
+
         int userID = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.USER_ID.getColumnName()));
 
 
         // Convert comma-separated string back to an ArrayList of integers
         ArrayList<Integer> foodIds = stringToFoodIds(foodIdsString);
+        ArrayList<Integer> servingSizes = stringToServingSizes(servingSizesString);
 
-        return new Meal(id, date, time, type, notes, foodIds, userID);
+        return new Meal(id, date, time, type, notes, foodIds, servingSizes, userID);
     }
 
     // Converts an ArrayList of food IDs to a comma-separated string
@@ -104,11 +110,35 @@ public class MealsTable {
         return sb.deleteCharAt(sb.length() - 1).toString(); // Remove last comma
     }
 
+    private static String servingSizesToString(ArrayList<Integer> servingSizes) {
+        if (servingSizes == null || servingSizes.isEmpty()) return "";
+        StringBuilder sb = new StringBuilder();
+        for (int id : servingSizes) {
+            sb.append(id).append(",");
+        }
+        return sb.deleteCharAt(sb.length() - 1).toString(); // Remove last comma
+    }
+
     // Converts a comma-separated string back to an ArrayList of integers
     private static ArrayList<Integer> stringToFoodIds(String foodIdsString) {
         ArrayList<Integer> foodIds = new ArrayList<>();
         if (foodIdsString == null || foodIdsString.isEmpty()) return foodIds;
         String[] split = foodIdsString.split(",");
+        for (String s : split) {
+            try {
+                foodIds.add(Integer.parseInt(s.trim()));
+            } catch (NumberFormatException e) {
+                // Handle invalid number format if necessary
+                e.printStackTrace();
+            }
+        }
+        return foodIds;
+    }
+
+    private static ArrayList<Integer> stringToServingSizes(String servingSizesString) {
+        ArrayList<Integer> foodIds = new ArrayList<>();
+        if (servingSizesString == null || servingSizesString.isEmpty()) return foodIds;
+        String[] split = servingSizesString.split(",");
         for (String s : split) {
             try {
                 foodIds.add(Integer.parseInt(s.trim()));

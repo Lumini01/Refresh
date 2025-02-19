@@ -56,7 +56,6 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
         });
 
         holder.itemContainer.setOnClickListener(v -> {
-            //TODO: Navigate to the food fragment.
             fragment.navigateToFoodInfo(foodSelection.getModel());
         });
     }
@@ -108,12 +107,13 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
 
     // **Remove an item from a specific position**
     public void removeItem(int position) {
-        if (foodSelections.isEmpty()) {
-            // When the list is empty, do a full refresh.
-            notifyDataSetChanged();
-        } else if (position >= 0 && position < foodSelections.size()) {
-            // Otherwise, notify that an item was removed.
+        if (position >= 0 && position < foodSelections.size() + 1) {
             notifyItemRemoved(position);
+            notifyItemRangeChanged(position, foodSelections.size()); // Ensure indices update
+        }
+
+        if (foodSelections.isEmpty()) {
+            notifyDataSetChanged(); // If list becomes empty, full refresh
         }
     }
 

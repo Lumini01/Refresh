@@ -245,13 +245,16 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         view.clearFocus(); // Remove focus from EditText
     }
 
+    // TODO: fix serving sizes not being saved - making the entire saving mechanisem useless.
     private void logMeal() {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
 
         setMealFoods();
         ArrayList<Integer> mealFoodIDs = new ArrayList<>();
+        ArrayList<Integer> mealServingSizes = new ArrayList<>();
         for (Food food : mealFoods) {
             mealFoodIDs.add(food.getId());
+            mealServingSizes.add(food.getServingSize());
         }
 
         LocalDate date = LocalDate.now();
@@ -259,7 +262,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         String mealType = Meal.determineMealType(time);
         String notes = "";
 
-        meal = new Meal(date, time, mealType, notes, mealFoodIDs);
+        meal = new Meal(date, time, mealType, notes, mealFoodIDs, mealServingSizes);
         dbHelper.insert(DatabaseHelper.Tables.MEALS, meal);
         dbHelper.close();
 

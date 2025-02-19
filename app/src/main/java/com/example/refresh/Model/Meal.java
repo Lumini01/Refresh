@@ -1,13 +1,15 @@
 package com.example.refresh.Model;
 
+import android.content.Context;
+
+import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Database.Tables.FoodsTable;
 import com.example.refresh.MyApplication;
 
-import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 // Meal Model Class which represents a meal
 public class Meal {
@@ -16,6 +18,7 @@ public class Meal {
     private LocalTime time; // 15-minute accuracy
     private String type; // breakfast, lunch, dinner, snack, etc.
     private ArrayList<Integer> foodIDs; // List of food IDs (not Food objects)
+    private ArrayList<Integer> servingSizes; // List of food quantities in grams
     private int userID;
     private String notes; // Can be empty
 
@@ -27,51 +30,56 @@ public class Meal {
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = new ArrayList<>();
+        this.servingSizes = new ArrayList<>();
         userID = MyApplication.getInstance().getLoggedUserID();
     }
 
     // Constructor without meal id, and user id.
-    public Meal(LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs) {
+    public Meal(LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs, ArrayList<Integer> servingSizes) {
         id = -1;
         this.date = date;
         this.time = time;
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        this.servingSizes = (servingSizes != null) ? servingSizes : new ArrayList<>();
         userID = MyApplication.getInstance().getLoggedUserID();
     }
 
     // Constructor without meal id, and user id. receives date and time as strings.
-    public Meal(String stringDate, String stringTime, String type, String notes, ArrayList<Integer> foodIDs) {
+    public Meal(String stringDate, String stringTime, String type, String notes, ArrayList<Integer> foodIDs, ArrayList<Integer> servingSizes) {
         id = -1;
         setDate(stringDate);
         setTime(stringTime);
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        this.servingSizes = (servingSizes != null) ? servingSizes : new ArrayList<>();
         userID = MyApplication.getInstance().getLoggedUserID();
     }
 
 
     // Constructor with food ids, meal id, and user id.
-    public Meal(int id, LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs, int userID) {
+    public Meal(int id, LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs, ArrayList<Integer> servingSizes, int userID) {
         this.id = id;
         this.date = date;
         this.time = time;
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        this.servingSizes = (servingSizes != null) ? servingSizes : new ArrayList<>();
         this.userID = userID;
     }
 
     // Constructor with food ids, meal id, and user id. Receives date and time as strings.
-    public Meal(int id, String stringDate, String stringTime, String type, String notes, ArrayList<Integer> foodIDs, int userID) {
+    public Meal(int id, String stringDate, String stringTime, String type, String notes, ArrayList<Integer> foodIDs, ArrayList<Integer> servingSizes, int userID) {
         this.id = id;
         setDate(stringDate);
         setTime(stringTime);
         this.type = (type != null) ? type : "Meal";
         this.notes = (notes != null) ? notes : "";
         this.foodIDs = (foodIDs != null) ? foodIDs : new ArrayList<>();
+        this.servingSizes = (servingSizes != null) ? servingSizes : new ArrayList<>();
         this.userID = userID;
     }
 
@@ -108,14 +116,281 @@ public class Meal {
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
 
-    public ArrayList<Integer> getFoodIDs() { return foodIDs; }
-    public void addFood(int foodID) { this.foodIDs.add(foodID); }
-    public void removeFood(int foodID) { this.foodIDs.remove((Integer) foodID); }
-    public void editFood(int oldFoodID, int newFoodID) {
+
+    /* ===================================================================
+       1) FOOD IDs METHODS
+       =================================================================== */
+
+    // --------------------------------------------------
+    // GET
+    // --------------------------------------------------
+    /** Returns the entire list of food IDs. */
+    public ArrayList<Integer> getFoodIDs() {
+        return foodIDs;
+    }
+
+    /** Returns the food ID at the given index. */
+    public int getFoodID(int index) {
+        return foodIDs.get(index);
+    }
+
+    // --------------------------------------------------
+    // SET
+    // --------------------------------------------------
+    /**
+     * Sets the food IDs and serving sizes to the provided lists.
+     * Both lists MUST be of equal length.
+     */
+    public void setFoodIDs(ArrayList<Integer> newFoodIDs, ArrayList<Integer> newServingSizes) {
+        if (newFoodIDs.size() != newServingSizes.size()) {
+            throw new IllegalArgumentException("foodIDs and servingSizes must have the same length.");
+        }
+
+        this.foodIDs.clear();
+        this.servingSizes.clear();
+
+        for (int i = 0; i < newFoodIDs.size(); i++) {
+            this.foodIDs.add(newFoodIDs.get(i));
+            this.servingSizes.add(newServingSizes.get(i));
+        }
+    }
+
+    /**
+     * Sets the food IDs to the given list and assigns a default serving size (100) for each.
+     */
+    public void setFoodIDs(ArrayList<Integer> newFoodIDs) {
+        this.foodIDs.clear();
+        this.servingSizes.clear();
+
+        for (Integer id : newFoodIDs) {
+            this.foodIDs.add(id);
+            this.servingSizes.add(100); // default serving size
+        }
+    }
+
+    // --------------------------------------------------
+    // ADD
+    // --------------------------------------------------
+    /**
+     * Adds a Food object. Extracts its ID and servingSize, then inserts both in sync.
+     */
+    public void addFood(Food food) {
+        addFood(food.getId(), food.getServingSize());
+    }
+
+    /**
+     * Adds a food with an explicit ID and serving size.
+     */
+    public void addFood(int foodID, int servingSize) {
+        this.foodIDs.add(foodID);
+        this.servingSizes.add(servingSize);
+    }
+
+    /**
+     * Adds a food with an explicit ID and a default serving size of 100.
+     */
+    public void addFood(int foodID) {
+        this.foodIDs.add(foodID);
+        this.servingSizes.add(100);
+    }
+
+    // --------------------------------------------------
+    // REMOVE
+    // --------------------------------------------------
+    /**
+     * Removes a food by ID (removes the *first* occurrence).
+     */
+    public void removeFood(int foodID) {
+        int index = this.foodIDs.indexOf(foodID);
+        if (index != -1) {
+            removeFoodByIndex(index);
+        }
+    }
+
+    /**
+     * Removes a food by its index.
+     */
+    public void removeFoodByIndex(int index) {
+        if (index < 0 || index >= this.foodIDs.size()) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+        // Remove both entries to stay in sync
+        this.foodIDs.remove(index);
+        this.servingSizes.remove(index);
+    }
+
+    // --------------------------------------------------
+    // EDIT
+    // --------------------------------------------------
+    /**
+     * Edits a food item by replacing the old ID with a new ID and updating serving size.
+     */
+    public void editFood(int oldFoodID, int newFoodID, int newServingSize) {
         int index = this.foodIDs.indexOf(oldFoodID);
         if (index != -1) {
-            this.foodIDs.set(index, newFoodID);
+            editFood(index, newFoodID, newServingSize);
         }
+    }
+
+    /**
+     * Edits a food item at a given index (if valid).
+     */
+    public void editFoodByIndex(int index, int newFoodID, int newServingSize) {
+        if (index < 0 || index >= this.foodIDs.size()) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+        this.foodIDs.set(index, newFoodID);
+        this.servingSizes.set(index, newServingSize);
+    }
+
+    /* ===================================================================
+       2) SERVING SIZES METHODS
+       =================================================================== */
+
+    // --------------------------------------------------
+    // GET
+    // --------------------------------------------------
+    /** Returns the entire list of serving sizes. */
+    public ArrayList<Integer> getServingSizes() {
+        return servingSizes;
+    }
+
+    /** Returns the serving size at the given index. */
+    public int getServingSize(int index) {
+        return servingSizes.get(index);
+    }
+
+    /**
+     * Returns the serving size for the given foodID (first occurrence).
+     * Throws an exception if not found.
+     */
+    public int getServingSizeByFoodID(int foodID) {
+        int index = this.foodIDs.indexOf(foodID);
+        if (index == -1) {
+            throw new IllegalArgumentException("Food ID not found: " + foodID);
+        }
+        return servingSizes.get(index);
+    }
+
+    // --------------------------------------------------
+    // SET
+    // --------------------------------------------------
+    /**
+     * Sets the servingSizes list. Must match the size of foodIDs.
+     */
+    public void setServingSizes(ArrayList<Integer> newServingSizes) {
+        if (newServingSizes.size() != this.foodIDs.size()) {
+            throw new IllegalArgumentException("Size mismatch: must match the number of foodIDs.");
+        }
+        this.servingSizes = new ArrayList<>(newServingSizes);
+    }
+
+    // --------------------------------------------------
+    // ADD
+    // --------------------------------------------------
+    /**
+     * Adding a serving size alone **would break synchronization** if there's
+     * no corresponding food ID. So we disallow it.
+     */
+    public void addServingSize(int servingSize) {
+        throw new UnsupportedOperationException(
+                "Cannot add serving size alone without a corresponding food ID."
+        );
+    }
+
+    /**
+     * Adds a default serving size of 100 alone, also disallowed by default.
+     */
+    public void addServingSize() {
+        throw new UnsupportedOperationException(
+                "Cannot add serving size alone without a corresponding food ID."
+        );
+    }
+
+    // --------------------------------------------------
+    // REMOVE
+    // --------------------------------------------------
+    /**
+     * Removes a serving size at the given index (and its corresponding ID).
+     */
+    public void removeServingSizeByIndex(int index) {
+        removeFoodByIndex(index);
+    }
+
+    // --------------------------------------------------
+    // EDIT
+    // --------------------------------------------------
+    /**
+     * Edits the serving size at a given index. Food ID remains unchanged.
+     */
+    public void editServingSize(int index, int newServingSize) {
+        if (index < 0 || index >= this.servingSizes.size()) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+        this.servingSizes.set(index, newServingSize);
+    }
+
+    /* ===================================================================
+       3) METHODS FOR MANAGING "MEAL FOODS" (Food Objects)
+          - Converts between (foodID, servingSize) and actual Food objects.
+       =================================================================== */
+
+    /**
+     * Converts all entries in foodIDs + servingSizes into a list of Food objects.
+     * We only know the ID and servingSize. Other Food fields are unknown,
+     * so we can create a Food object with minimal data, or fetch from a DB, etc.
+     */
+    public ArrayList<Food> getMealFoods(Context context) {
+        ArrayList<Food> mealFoods = new ArrayList<>();
+        for (int i = 0; i < foodIDs.size(); i++) {
+            int currentID = foodIDs.get(i);
+            int currentSize = servingSizes.get(i);
+
+            Food food = FoodsTable.getFoodByID(context, currentID);
+            if (food != null)
+                food.setServingSize(currentSize);
+
+            mealFoods.add(food);
+        }
+        return mealFoods;
+    }
+
+    /**
+     * Replaces the internal lists with the IDs/servingSizes extracted from the given Foods.
+     * All other Food fields are lost unless you persist them elsewhere.
+     */
+    public void setMealFoods(ArrayList<Food> mealFoods) {
+        this.foodIDs.clear();
+        this.servingSizes.clear();
+
+        for (Food food : mealFoods) {
+            this.foodIDs.add(food.getId());
+            this.servingSizes.add(food.getServingSize());
+        }
+    }
+
+    /**
+     * Adds a single Food object to the internal lists.
+     */
+    public void addMealFood(Food mealFood) {
+        addFood(mealFood.getId(), mealFood.getServingSize());
+    }
+
+    /**
+     * Removes a single Food object from the internal lists (by its ID).
+     */
+    public void removeMealFood(Food mealFood) {
+        removeFood(mealFood.getId());
+    }
+
+    /**
+     * Edits a single Food object. Replaces oldFood (found by oldFood's ID) with newFood’s ID & servingSize.
+     */
+    public void editMealFood(Food oldFood, Food newFood) {
+        int oldID = oldFood.getId();
+        int newID = newFood.getId();
+        int newSize = newFood.getServingSize();
+        editFood(oldID, newID, newSize);
     }
 
     public String getNotes() { return notes; }
@@ -133,6 +408,8 @@ public class Meal {
                 ", time='" + getStringTime() + '\'' +
                 ", type='" + type + '\'' +
                 ", foodIDs=" + foodIDs +
+                ", foodQuantities=" + servingSizes +
+                ", userID=" + userID +
                 ", notes='" + notes + '\'' +
                 '}';
     }
