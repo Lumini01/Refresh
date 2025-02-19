@@ -1,6 +1,7 @@
 package com.example.refresh.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,6 +30,7 @@ import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.MyApplication;
 import com.example.refresh.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -53,6 +55,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     private FragmentContainerView foodInfoFragmentContainer;
     private FoodInfoFragment foodInfoFragment;
     private Button logMealBtn;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         applyWindowInsets();
         initializeUI();
+        setupBottomNavigationMenu();
     }
 
     public void onAddingToSelectedFoods(ListItem<Food> addedFood) {
@@ -107,6 +111,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         backArrow = findViewById(R.id.backArrow);
         backArrow.setOnClickListener(v -> finish());
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         searchBarET = findViewById(R.id.searchEditText);
         clearButton = findViewById(R.id.clearButton);
@@ -190,7 +195,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             return;
         }
 
-        ArrayList<Food> foodResults = dbHelper.getRecords(DatabaseHelper.Tables.FOODS, FoodsTable.Columns.NAME, query);
+        ArrayList<Food> foodResults = dbHelper.getRecordsLike(DatabaseHelper.Tables.FOODS, FoodsTable.Columns.NAME, query);
 
         if ( foodResults == null || foodResults.isEmpty()) {
             Toast.makeText(this, "No results found for: " + rawQuery, Toast.LENGTH_SHORT).show();
@@ -245,7 +250,6 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         view.clearFocus(); // Remove focus from EditText
     }
 
-    // TODO: fix serving sizes not being saved - making the entire saving mechanisem useless.
     private void logMeal() {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
 
@@ -276,5 +280,32 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             Food food = foodItem.getModel();
             mealFoods.add(food);
         }
+    }
+
+    private void setupBottomNavigationMenu() {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_today) {
+                Intent intent = new Intent(MealLogActivity.this, HomeDashboard.class);
+                startActivity(intent);
+                return true;
+            } else if (itemId == R.id.nav_log) {
+
+                return true;
+            } else if (itemId == R.id.nav_progress) {
+                Intent intent = new Intent(MealLogActivity.this, Progress.class);
+                startActivity(intent);
+                return true;
+            }
+
+            return false;
+        });
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_log);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        bottomNavigationView.setSelectedItemId(R.id.nav_log);
     }
 }

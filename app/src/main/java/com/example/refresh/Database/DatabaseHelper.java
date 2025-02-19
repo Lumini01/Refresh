@@ -108,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Retrieve multiple records from the database using LIKE (all records containing the argument)
-    public <T> ArrayList<T> getRecords(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
+    public <T> ArrayList<T> getRecordsLike(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Construct WHERE clause dynamically based on the number of arguments
@@ -132,6 +132,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 while (cursor.moveToNext()) {
                     records.add(createRecord(cursor, table));
                 }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        if (!records.isEmpty())
+            return records;
+
+        return null; // Return null if no record is found
+    }
+
+    // Retrieve multiple records from the database using LIKE (all records containing the argument)
+    public <T> ArrayList<T> getRecords(Tables table, Enum<?> columnEnum, String selection, String[] selectionArgs) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Construct WHERE clause dynamically based on the number of arguments
+        String columnName = getEnumColumnName(columnEnum);
+
+
+        Cursor cursor = null;
+        ArrayList<T> records = new ArrayList<>();
+
+        try {
+            cursor = db.query(table.getTableName(), null, selection, selectionArgs, null, null, null);
+            while (cursor.moveToNext()) {
+                records.add(createRecord(cursor, table));
+            }
         } finally {
             if (cursor != null) {
                 cursor.close();

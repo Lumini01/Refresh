@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/padding_medium"
-    android:background="@color/cardBackground"
+    android:padding="@dimen/padding_medium_large"
+    android:background="@drawable/card_background"
     android:layout_marginBottom="@dimen/margin_small"
     android:gravity="center_vertical">
 
@@ -23,7 +23,7 @@
             android:id="@+id/meal_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Title"
+            android:text="Meal Title"
             android:textSize="16sp"
             android:textColor="@color/textSecondary"
             android:textStyle="bold" />
@@ -33,23 +33,38 @@
             android:id="@+id/meal_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Description"
+            android:text="Meal Description"
             android:textSize="14sp"
             android:textColor="@color/gray"
             android:layout_marginTop="4dp" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/buttonEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
+        android:background="@null"
+        android:contentDescription="edit"
+        android:padding="8dp"
+        app:tint="@color/iconTint" />
 
     <!-- Delete Button -->
     <ImageButton
         android:id="@+id/buttonRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_clear"
+        android:src="@drawable/ic_delete"
         android:scaleX="1.25"
         android:scaleY="1.25"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:background="@null"
         android:contentDescription="@string/delete"
         android:padding="8dp"
+        android:layout_marginLeft="@dimen/margin_medium"
         app:tint="@color/iconTint" />
+
+
 
 </LinearLayout>

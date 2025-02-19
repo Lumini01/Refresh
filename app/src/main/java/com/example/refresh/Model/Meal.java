@@ -414,17 +414,45 @@ public class Meal {
                 '}';
     }
 
-    public static String determineMealType(LocalTime time) {
+    public static String determineDayTime(LocalTime time) {
         if (time.isAfter(LocalTime.of(5, 0)) && time.isBefore(LocalTime.of(12, 0))) {
-            return "Breakfast";
+            return "Morning";
         }
         if (time.isAfter(LocalTime.of(12, 0)) && time.isBefore(LocalTime.of(17, 0))) {
+            return "AfterNoon";
+        }
+        if (time.isAfter(LocalTime.of(17, 0)) && time.isBefore(LocalTime.of(21, 30))) {
+            return "Evening";
+        }
+
+        return "Night";
+    }
+
+    public static String determineMealType(LocalTime time) {
+        String timeOfDay = Meal.determineDayTime(time);
+        if (timeOfDay.equals("Morning")) {
+            return "Breakfast";
+        }
+        if (timeOfDay.equals("AfterNoon")) {
             return "Lunch";
         }
-        if (time.isAfter(LocalTime.of(17, 0)) && time.isBefore(LocalTime.of(23, 59))) {
+        if (timeOfDay.equals("Evening")) {
             return "Dinner";
         }
 
         return "Snack";
+    }
+
+    public String getDayOfWeek() {
+        return date.getDayOfWeek().toString();
+    }
+
+    public String getMealTitle() {
+        return date.getDayOfWeek() + " " + determineDayTime(time) + " - " + type;
+    }
+
+
+    public String getMealDescription() {
+        return getStringDate() + ", " + getStringTime();
     }
 }

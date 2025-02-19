@@ -195,7 +195,10 @@ public class SignUp extends AppCompatActivity {
      * Set up the login button listener to navigate to the Login screen.
      */
     private void setUpLoginButton() {
-        btLogin.setOnClickListener(view -> startActivity(new Intent(SignUp.this, Login.class)));
+        btLogin.setOnClickListener(view -> {
+                startActivity(new Intent(SignUp.this, Login.class));
+                finish();
+        });
     }
 
     /**

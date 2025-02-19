@@ -34,7 +34,9 @@ public class MyApplication extends android.app.Application {
         int loggedUserID = sharedPreferences.getInt("loggedUserID", -1);
 
         DatabaseHelper dbHelper = new DatabaseHelper(this);
+        boolean userExists = dbHelper.existsInDB(DatabaseHelper.Tables.USERS, UsersTable.Columns.ID, String.valueOf(loggedUserID)) != -1;
+        dbHelper.close();
 
-        return loggedUserID != -1 &&dbHelper.existsInDB(DatabaseHelper.Tables.USERS, UsersTable.Columns.ID, String.valueOf(loggedUserID)) != -1;
+        return loggedUserID != -1 && userExists;
     }
 }

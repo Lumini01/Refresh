@@ -17,6 +17,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 // Home Dashboard activity which is the main activity of the app
 public class HomeDashboard extends AppCompatActivity {
 
+    private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,11 @@ public class HomeDashboard extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Setup Bottom Navigation
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        setupBottomNavigationMenu();
+    }
+
+    private void setupBottomNavigationMenu() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_today) {
@@ -46,7 +52,8 @@ public class HomeDashboard extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_progress) {
-                // Handle progress click
+                Intent intent = new Intent(HomeDashboard.this, Progress.class);
+                startActivity(intent);
                 return true;
             }
 //            else if (itemId == R.id.nav_recipes) {
@@ -56,6 +63,8 @@ public class HomeDashboard extends AppCompatActivity {
 
             return false;
         });
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_today);
     }
 
     // Toolbar menu setup
@@ -84,5 +93,10 @@ public class HomeDashboard extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        bottomNavigationView.setSelectedItemId(R.id.nav_today);
     }
 }

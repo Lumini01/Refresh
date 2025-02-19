@@ -2,7 +2,6 @@ package com.example.refresh.Adapters;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -126,8 +125,8 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
 
         public FoodSelectionViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewTitle = itemView.findViewById(R.id.textViewSelectionTitle);
-            textViewDescription = itemView.findViewById(R.id.textViewSelectionDescription);
+            textViewTitle = itemView.findViewById(R.id.meal_title);
+            textViewDescription = itemView.findViewById(R.id.meal_description);
             removeButton = itemView.findViewById(R.id.buttonRemove);
             itemContainer = itemView.findViewById(R.id.item_container);
 

@@ -183,6 +183,7 @@ public class Login extends AppCompatActivity {
     private void navigateToHomeDashboard() {
         Intent intent = new Intent(Login.this, HomeDashboard.class);
         startActivity(intent);
+        finish();
     }
 
     /**
