@@ -1,4 +1,4 @@
-package com.example.refresh.Notification;
+package com.example.refresh.Helper;
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
@@ -13,11 +13,11 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.refresh.Database.Tables.NotificationInstancesTable;
+import com.example.refresh.Database.NotificationInstancesTable;
 import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Model.NotificationTemplate;
+import com.example.refresh.Notification.AppNotificationChannel;
 import com.example.refresh.R;
-import com.example.refresh.TestingGrounds;
 
 // Notification Helper Class which provides methods for displaying notifications
 public class NotificationHelper {

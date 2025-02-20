@@ -1,17 +1,20 @@
-package com.example.refresh.Database;
+package com.example.refresh.Helper;
 
-import static com.example.refresh.Database.Tables.UsersTable.Columns.*;
-import static com.example.refresh.Database.Tables.NotificationTemplatesTable.Columns.*;
-import static com.example.refresh.Database.Tables.NotificationInstancesTable.Columns.*;
+import static com.example.refresh.Database.UsersTable.Columns.*;
+import static com.example.refresh.Database.NotificationTemplatesTable.Columns.*;
+import static com.example.refresh.Database.NotificationInstancesTable.Columns.*;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import com.example.refresh.Database.Tables.*;
+import com.example.refresh.Database.FoodsTable;
+import com.example.refresh.Database.MealsTable;
+import com.example.refresh.Database.NotificationInstancesTable;
+import com.example.refresh.Database.NotificationTemplatesTable;
+import com.example.refresh.Database.UsersTable;
 import com.example.refresh.Model.*;
 
 import java.util.ArrayList;
@@ -146,12 +149,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Retrieve multiple records from the database using LIKE (all records containing the argument)
-    public <T> ArrayList<T> getRecords(Tables table, Enum<?> columnEnum, String selection, String[] selectionArgs) {
+    public <T> ArrayList<T> getRecords(Tables table, String selection, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
-
-        // Construct WHERE clause dynamically based on the number of arguments
-        String columnName = getEnumColumnName(columnEnum);
-
 
         Cursor cursor = null;
         ArrayList<T> records = new ArrayList<>();

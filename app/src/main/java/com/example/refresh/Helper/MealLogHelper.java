@@ -1,7 +1,6 @@
-package com.example.refresh.Utility;
+package com.example.refresh.Helper;
 
 import com.example.refresh.Model.Meal;
-import com.example.refresh.Database.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.Date;

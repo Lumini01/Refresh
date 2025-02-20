@@ -10,9 +10,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.refresh.Adapters.DaySection;
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Database.Tables.MealsTable;
+import com.example.refresh.Adapter.DaySection;
+import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Database.MealsTable;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.R;
 import com.github.mikephil.charting.charts.LineChart;
@@ -41,7 +41,6 @@ public class Progress extends AppCompatActivity {
     private ImageButton refreshButton;
     private ImageButton calenderButton;
     private RecyclerView recyclerViewMeals;
-    private LineChart chart;
     private ArrayList<Meal> weekMeals;
     private SectionedRecyclerViewAdapter sectionAdapter;
     private LocalDate currentWeekStart;
@@ -63,7 +62,6 @@ public class Progress extends AppCompatActivity {
         setupBottomNavigationMenu();
         setupRecyclerView();
 
-        setupLineChart();
     }
 
     public void initializeUI() {
@@ -119,7 +117,6 @@ public class Progress extends AppCompatActivity {
         // Set the adapter to the RecyclerView
     }
 
-    // TODO: bug test - this doesn't work...
     private void updateRecyclerView() {
         LocalDate weekStart = currentWeekStart;
         LocalDate weekEnd = getCurrentWeekEnd();
@@ -155,87 +152,12 @@ public class Progress extends AppCompatActivity {
     }
 
     private void setWeekMeals(LocalDate weekStart, LocalDate weekEnd) {
-        // Build the selection query.
-        // This converts the stored date ("DD/MM/YYYY") into ISO format ("YYYY-MM-DD") on the fly.
-        String selection = "(substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) >= ? " +
-                "AND (substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) <= ?";
-        // Use ISO-formatted week boundaries as selection arguments.
-        String[] selectionArgs = { weekStart.toString(), weekEnd.toString() };
 
-        // Query the "meals" table. Change null to specify columns if needed.
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        weekMeals = dbHelper.getRecords(DatabaseHelper.Tables.MEALS, MealsTable.Columns.DATE, selection, selectionArgs);
+        weekMeals = MealsTable.getMealsInRange(this, weekStart, weekEnd);
 
         if (weekMeals == null) {
             weekMeals = new ArrayList<>();
         }
-    }
-
-
-    public void setupLineChart() {
-        // Find the chart from the layout
-        chart = findViewById(R.id.lineChart);
-
-        // Prepare sample data entries
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(0f, 1f));
-        entries.add(new Entry(1f, 3f));
-        entries.add(new Entry(2f, 2f));
-        entries.add(new Entry(3f, 5f));
-        entries.add(new Entry(4f, 4f));
-
-        // Create a dataset and configure styling for a modern look
-        LineDataSet dataSet = new LineDataSet(entries, "Health Data");
-        dataSet.setColor(Color.parseColor("#4CAF50")); // Modern flat color
-        dataSet.setLineWidth(2f);
-        dataSet.setDrawCircles(false);
-        dataSet.setDrawValues(false);
-        dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // Smooth, curved lines
-        dataSet.setDrawFilled(true);
-        dataSet.setFillColor(Color.parseColor("#4CAF50"));
-        dataSet.setFillAlpha(80); // Adjust transparency
-
-        // Create a LineData object with the dataset
-        LineData lineData = new LineData(dataSet);
-        chart.setData(lineData);
-
-        // Customize the X-Axis
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setDrawGridLines(false);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setTextColor(Color.DKGRAY);
-
-        // Customize the Left Y-Axis
-        YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setDrawGridLines(false);
-        leftAxis.setDrawAxisLine(false);
-        leftAxis.setTextColor(Color.DKGRAY);
-
-        // Disable the Right Y-Axis
-        YAxis rightAxis = chart.getAxisRight();
-        rightAxis.setEnabled(false);
-
-        // Remove the description label
-        Description description = new Description();
-        description.setEnabled(false);
-        chart.setDescription(description);
-
-        // Disable the legend for a minimalist look
-        Legend legend = chart.getLegend();
-        legend.setEnabled(false);
-
-        // Enable touch gestures and pinch zoom
-        chart.setTouchEnabled(true);
-        chart.setPinchZoom(true);
-
-        // Set a transparent background for a modern feel
-        chart.setBackgroundColor(Color.TRANSPARENT);
-
-        // Animate the chart horizontally
-        chart.animateX(1500);
-
-        // Refresh the chart
-        chart.invalidate();
     }
 
     private LocalDate getCurrentWeekEnd() {

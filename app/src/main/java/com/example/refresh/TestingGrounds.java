@@ -2,12 +2,11 @@ package com.example.refresh;
 
 import android.app.AlarmManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Database.Tables.NotificationInstancesTable;
+import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Database.NotificationInstancesTable;
 import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Model.NotificationTemplate;
 import com.example.refresh.Notification.NotificationScheduler;
@@ -15,8 +14,6 @@ import com.example.refresh.Notification.NotificationScheduler;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class TestingGrounds {
     public static void test(Context context) {

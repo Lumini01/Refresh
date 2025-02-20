@@ -18,12 +18,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.R;
 import com.example.refresh.Start;
 import com.example.refresh.Model.UserInfo;
-import com.example.refresh.Utility.ErrorMessage;
-import com.example.refresh.Utility.ValidationHelper;
+import com.example.refresh.Model.ErrorMessage;
+import com.example.refresh.Helper.ValidationHelper;
 
 /**
  * Login Activity - This screen handles user login by allowing them to enter their email

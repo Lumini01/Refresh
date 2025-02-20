@@ -1,4 +1,4 @@
-package com.example.refresh.Fragments;
+package com.example.refresh.Fragment;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.example.refresh.Adapters;
+package com.example.refresh.Adapter;
 
 import android.view.View;
 import android.widget.TextView;

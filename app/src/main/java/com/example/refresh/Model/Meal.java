@@ -2,8 +2,7 @@ package com.example.refresh.Model;
 
 import android.content.Context;
 
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Database.Tables.FoodsTable;
+import com.example.refresh.Database.FoodsTable;
 import com.example.refresh.MyApplication;
 
 import java.time.LocalDate;
@@ -445,6 +444,13 @@ public class Meal {
         return "Snack";
     }
 
+    public static boolean determineIfWaterIntake(Meal meal) {
+        if (meal.foodIDs.size() == 1 && meal.foodIDs.get(0) == 144 && meal.time == null)
+            return true;
+
+        return false;
+    }
+
     public static String getDayOfWeek(LocalDate date) {
         return date.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
     }
@@ -466,5 +472,37 @@ public class Meal {
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return date.format(formatter);
+    }
+
+    public int getCalories(Context context) {
+        int calories = 0;
+        for (Food food : getMealFoods(context)) {
+            calories += food.getActualCalories();
+        }
+        return calories;
+    }
+
+    public int getCarbs(Context context) {
+        int carbs = 0;
+        for (Food food : getMealFoods(context)) {
+            carbs += food.getActualCarbs();
+        }
+        return carbs;
+    }
+
+    public int getProtein(Context context) {
+        int protein = 0;
+        for (Food food : getMealFoods(context)) {
+            protein += food.getActualProtein();
+        }
+        return protein;
+    }
+
+    public int getFat(Context context) {
+        int fat = 0;
+        for (Food food : getMealFoods(context)) {
+            fat += food.getActualFat();
+        }
+        return fat;
     }
 }

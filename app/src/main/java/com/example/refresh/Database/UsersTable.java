@@ -1,4 +1,4 @@
-package com.example.refresh.Database.Tables;
+package com.example.refresh.Database;
 
 import android.content.ContentValues;
 import android.database.Cursor;

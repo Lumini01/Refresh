@@ -1,4 +1,4 @@
-package com.example.refresh.Fragments;
+package com.example.refresh.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.refresh.Adapters.FoodSelectionsAdapter;
-import com.example.refresh.Adapters.SearchResultsAdapter;
+import com.example.refresh.Adapter.FoodSelectionsAdapter;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
 import com.example.refresh.R;

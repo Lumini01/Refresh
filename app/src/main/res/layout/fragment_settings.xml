@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:padding="@dimen/padding_medium"
-    tools:context=".Fragments.SettingsFragment">
+    tools:context=".Fragment.SettingsFragment">
 
     <androidx.fragment.app.FragmentContainerView
         xmlns:android="http://schemas.android.com/apk/res/android"

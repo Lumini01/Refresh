@@ -1,13 +1,13 @@
-package com.example.refresh.Utility;
+package com.example.refresh.Helper;
 
-import static com.example.refresh.Database.DatabaseHelper.Tables.*;
-import static com.example.refresh.Database.Tables.UsersTable.Columns.*;
+import static com.example.refresh.Helper.DatabaseHelper.Tables.*;
+import static com.example.refresh.Database.UsersTable.Columns.*;
 
 import android.util.Patterns;
 import android.telephony.PhoneNumberUtils;
 
-import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Model.UserInfo;
+import com.example.refresh.Model.ErrorMessage;
 
 /**
  * Utility class to handle validation logic for user signup and login.

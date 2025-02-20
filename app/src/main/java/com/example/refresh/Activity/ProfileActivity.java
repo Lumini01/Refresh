@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentContainerView;
 
 import com.example.refresh.R;
-import com.example.refresh.Fragments.SettingsFragment;
+import com.example.refresh.Fragment.SettingsFragment;
 
 public class ProfileActivity extends AppCompatActivity {
 

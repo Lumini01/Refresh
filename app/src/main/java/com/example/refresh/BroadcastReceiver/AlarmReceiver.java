@@ -7,11 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.refresh.Database.Tables.NotificationInstancesTable;
+import com.example.refresh.Database.NotificationInstancesTable;
 import com.example.refresh.Model.NotificationInstance;
-import com.example.refresh.Notification.NotificationHelper;
+import com.example.refresh.Helper.NotificationHelper;
 import com.example.refresh.Notification.NotificationScheduler;
-import com.example.refresh.Start;
 
 public class AlarmReceiver extends BroadcastReceiver {
 

@@ -1,18 +1,18 @@
 package com.example.refresh.Notification;
 
-import static com.example.refresh.Database.DatabaseHelper.Tables.*;
-import static com.example.refresh.Database.Tables.NotificationInstancesTable.Columns.*;
+import static com.example.refresh.Helper.DatabaseHelper.Tables.*;
+import static com.example.refresh.Database.NotificationInstancesTable.Columns.*;
 
 import android.app.AlarmManager;
-import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
 import com.example.refresh.BroadcastReceiver.AlarmReceiver;
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Database.Tables.*;
+import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Database.NotificationInstancesTable;
+import com.example.refresh.Database.NotificationTemplatesTable;
 import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Model.NotificationTemplate;
 import com.example.refresh.R;

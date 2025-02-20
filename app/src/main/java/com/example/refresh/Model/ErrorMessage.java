@@ -1,6 +1,6 @@
-package com.example.refresh.Utility;
+package com.example.refresh.Model;
 
-import com.example.refresh.Database.Tables.UsersTable.Columns;
+import com.example.refresh.Database.UsersTable.Columns;
 
 /**
  * Represents an error message related to a specific field.

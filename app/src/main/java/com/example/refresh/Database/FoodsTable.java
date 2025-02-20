@@ -1,4 +1,4 @@
-package com.example.refresh.Database.Tables;
+package com.example.refresh.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.Food;
 
 import org.json.JSONArray;

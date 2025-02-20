@@ -2,8 +2,8 @@ package com.example.refresh;
 
 import android.content.SharedPreferences;
 
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Database.Tables.UsersTable;
+import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Database.UsersTable;
 
 public class MyApplication extends android.app.Application {
     private static MyApplication instance;

@@ -1,16 +1,16 @@
-package com.example.refresh.Database.Tables;
+package com.example.refresh.Database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 
-import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.Model.Food; // Ensure you have this import
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MealsTable {
 
@@ -43,7 +43,7 @@ public class MealsTable {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     Columns.MEAL_ID.getColumnName() + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Columns.DATE.getColumnName() + " TEXT NOT NULL, " +
-                    Columns.TIME.getColumnName() + " TEXT NOT NULL, " +
+                    Columns.TIME.getColumnName() + " TEXT, " +
                     Columns.TYPE.getColumnName() + " TEXT NOT NULL, " +
                     Columns.NOTES.getColumnName() + " TEXT, " +
                     Columns.FOOD_IDS.getColumnName() + " TEXT, " +
@@ -219,5 +219,30 @@ public class MealsTable {
             }
         }
         return total;
+    }
+
+    public static ArrayList<Meal> getMealsInRange(Context context, LocalDate startDate, LocalDate endDate) {
+        ArrayList<Meal> mealsInRange = new ArrayList<>();
+
+        // Build the selection query.
+        // This converts the stored date ("DD/MM/YYYY") into ISO format ("YYYY-MM-DD") on the fly.
+        String selection = "(substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) >= ? " +
+                "AND (substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) <= ?";
+        // Use ISO-formatted week boundaries as selection arguments.
+        String[] selectionArgs = { startDate.toString(), endDate.toString() };
+
+        // Query the "meals" table. Change null to specify columns if needed.
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        mealsInRange = dbHelper.getRecords(DatabaseHelper.Tables.MEALS, selection, selectionArgs);
+
+        return mealsInRange;
+    }
+
+    public static int getWaterIntakeForDay(Context context, LocalDate day) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        String selection = "type = 'waterIntake' AND (substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) = ?";
+        Meal waterIntakeMeal = (Meal) dbHelper.getRecords(DatabaseHelper.Tables.MEALS, selection, DatabaseHelper.toStringArray(day.toString())).get(0);
+
+        return waterIntakeMeal.getServingSizes().get(0);
     }
 }

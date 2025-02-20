@@ -1,7 +1,7 @@
 package com.example.refresh;
 
-import static com.example.refresh.Database.Tables.FoodsTable.populateFoodsTable;
-import static com.example.refresh.Database.Tables.NotificationTemplatesTable.populateNotificationTemplatesTable;
+import static com.example.refresh.Database.FoodsTable.populateFoodsTable;
+import static com.example.refresh.Database.NotificationTemplatesTable.populateNotificationTemplatesTable;
 
 import android.app.AlarmManager;
 import android.content.Context;
@@ -31,7 +31,7 @@ import android.widget.Toast;
 import com.example.refresh.Activity.HomeDashboard;
 import com.example.refresh.Activity.Login;
 import com.example.refresh.Activity.SignUp;
-import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Notification.NotificationScheduler;
 
 import java.util.ArrayList;

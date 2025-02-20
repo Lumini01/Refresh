@@ -3,9 +3,8 @@ package com.example.refresh.BroadcastReceiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
-import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Notification.NotificationScheduler;
 

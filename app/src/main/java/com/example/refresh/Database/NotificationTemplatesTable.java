@@ -1,16 +1,12 @@
-package com.example.refresh.Database.Tables;
+package com.example.refresh.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 
-import androidx.annotation.Nullable;
-
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Model.NotificationInstance;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.NotificationTemplate;
 
 import org.json.JSONArray;

@@ -2,9 +2,9 @@ package com.example.refresh.Model;
 
 import android.content.Context;
 
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Database.DatabaseHelper.Tables;
-import com.example.refresh.Database.Tables.UsersTable.Columns;
+import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Helper.DatabaseHelper.Tables;
+import com.example.refresh.Database.UsersTable.Columns;
 
 /**
  * UserInfo - This class is used to store and manage user information, including

@@ -1,4 +1,4 @@
-package com.example.refresh.Adapters;
+package com.example.refresh.Adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.refresh.Fragments.SelectedFoodsFragment;
+import com.example.refresh.Fragment.SelectedFoodsFragment;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
 import com.example.refresh.R;

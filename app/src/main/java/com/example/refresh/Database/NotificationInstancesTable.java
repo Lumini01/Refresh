@@ -1,10 +1,10 @@
-package com.example.refresh.Database.Tables;
+package com.example.refresh.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.example.refresh.Database.DatabaseHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Model.NotificationTemplate;
 

@@ -20,15 +20,14 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.refresh.Database.DatabaseHelper;
-import com.example.refresh.Database.Tables.FoodsTable;
-import com.example.refresh.Fragments.FoodInfoFragment;
-import com.example.refresh.Fragments.SearchResultsFragment;
-import com.example.refresh.Fragments.SelectedFoodsFragment;
+import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Database.FoodsTable;
+import com.example.refresh.Fragment.FoodInfoFragment;
+import com.example.refresh.Fragment.SearchResultsFragment;
+import com.example.refresh.Fragment.SelectedFoodsFragment;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
-import com.example.refresh.MyApplication;
 import com.example.refresh.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -36,7 +35,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MealLogActivity extends AppCompatActivity implements SearchResultsFragment.OnSearchResultsFragmentListener, SelectedFoodsFragment.OnSelectedFoodsFragmentListener, FoodInfoFragment.OnFoodInfoFragmentListener {
 
