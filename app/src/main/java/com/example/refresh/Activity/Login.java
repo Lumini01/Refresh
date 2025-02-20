@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
     private ImageView logo;
 
     // Database Helper
-    private UserInfo user = new UserInfo();
+    private UserInfo user;
     private DatabaseHelper databaseHelper = new DatabaseHelper(this);
     private SQLiteDatabase db;
 
@@ -110,16 +110,22 @@ public class Login extends AppCompatActivity {
      */
     private void handleLogin() {
         // Set user credentials from the input fields
-        user.setEmail(etEmailLogin.getText().toString());
-        user.setPwd(etPwdLogin.getText().toString());
+
+        UserInfo validationUser = new UserInfo();
+        String userEmail = etEmailLogin.getText().toString();
+        String userPwd = etPwdLogin.getText().toString();
+
+        validationUser.setEmail(userEmail);
+        validationUser.setPwd(userPwd);
         boolean rememberMe = rememberMeCheckbox.isChecked();
 
         // Validate login credentials
-        ErrorMessage validationError = ValidationHelper.validateLogin(user, databaseHelper);
+        ErrorMessage validationError = ValidationHelper.validateLogin(validationUser, databaseHelper);
 
         if (validationError == null) {
             // Successful login
             // Save user email to SharedPreferences
+            user = new UserInfo(this ,userEmail, userPwd);
             if (rememberMe) {
                 updateActiveUser();
             }

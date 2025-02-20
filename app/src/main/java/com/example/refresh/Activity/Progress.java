@@ -3,6 +3,7 @@ package com.example.refresh.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -37,6 +38,8 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 public class Progress extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private ImageButton refreshButton;
+    private ImageButton calenderButton;
     private RecyclerView recyclerViewMeals;
     private LineChart chart;
     private ArrayList<Meal> weekMeals;
@@ -49,15 +52,32 @@ public class Progress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
 
+        initializeUI();
+        setupUI();
+
         // Set up the toolbar
-        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         currentWeekStart = LocalDate.now().with(java.time.DayOfWeek.MONDAY);
 
-        recyclerViewMeals = findViewById(R.id.recycler_view_meals);
         setupBottomNavigationMenu();
         setupRecyclerView();
+
+        setupLineChart();
+    }
+
+    public void initializeUI() {
+        toolbar = findViewById(R.id.toolbar);
+        recyclerViewMeals = findViewById(R.id.recycler_view_meals);
+        refreshButton = findViewById(R.id.backArrow);
+        calenderButton = findViewById(R.id.extra_button);
+    }
+
+    public void setupUI() {
+        refreshButton.setImageResource(R.drawable.ic_refresh);
+        calenderButton.setImageResource(R.drawable.ic_calendar);
+
+        refreshButton.setOnClickListener(v -> updateRecyclerView());
     }
 
     private void setupBottomNavigationMenu() {
@@ -93,13 +113,14 @@ public class Progress extends AppCompatActivity {
         // Create the SectionedRecyclerViewAdapter instance
         sectionAdapter = new SectionedRecyclerViewAdapter();
 
-        updateRecyclerViewForWeek();
-        // Set the adapter to the RecyclerView
         recyclerViewMeals.setAdapter(sectionAdapter);
+
+        updateRecyclerView();
+        // Set the adapter to the RecyclerView
     }
 
     // TODO: bug test - this doesn't work...
-    private void updateRecyclerViewForWeek() {
+    private void updateRecyclerView() {
         LocalDate weekStart = currentWeekStart;
         LocalDate weekEnd = getCurrentWeekEnd();
 

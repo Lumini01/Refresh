@@ -61,7 +61,6 @@ public class MealsTable {
     // Convert Meal to ContentValues
     public static ContentValues toContentValues(Meal meal) {
         ContentValues values = new ContentValues();
-        values.put(Columns.MEAL_ID.getColumnName(), meal.getId());
 
         LocalDate localDate = meal.getDate();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

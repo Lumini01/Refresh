@@ -11,13 +11,15 @@ public class MyApplication extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
 
         // Initialize global state or resources here
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         sharedPreferences.edit().putBoolean("isFirstLaunch", true).apply();
 
-        if (!loggedUserExistsInDB())
-            sharedPreferences.edit().putInt("loggedUserID", -1).apply();
+        if (getLoggedUserID() != -1)
+            if (!loggedUserExistsInDB())
+                sharedPreferences.edit().putInt("loggedUserID", -1).apply();
     }
 
     public static MyApplication getInstance() {

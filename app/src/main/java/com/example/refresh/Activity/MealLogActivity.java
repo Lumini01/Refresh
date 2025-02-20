@@ -34,6 +34,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -104,14 +105,15 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
      */
     private void initializeUI() {
         title = findViewById(R.id.toolbarTitle);
-        title.setText(R.string.meal_log);
+        title.setText(Meal.getMealLogTitle());
 
         extraButton = findViewById(R.id.extra_button);
-        extraButton.setVisibility(View.GONE);
+        extraButton.setImageResource(R.drawable.ic_calendar);
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         backArrow = findViewById(R.id.backArrow);
-        backArrow.setOnClickListener(v -> finish());
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        backArrow.setImageResource(R.drawable.ic_clear_all);
 
         searchBarET = findViewById(R.id.searchEditText);
         clearButton = findViewById(R.id.clearButton);
@@ -262,7 +264,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         }
 
         LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
+        LocalTime time = LocalTime.now().truncatedTo(ChronoUnit.MINUTES);;
         String mealType = Meal.determineMealType(time);
         String notes = "";
 

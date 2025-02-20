@@ -9,7 +9,9 @@ import com.example.refresh.MyApplication;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Locale;
 
 // Meal Model Class which represents a meal
 public class Meal {
@@ -443,16 +445,26 @@ public class Meal {
         return "Snack";
     }
 
-    public String getDayOfWeek() {
-        return date.getDayOfWeek().toString();
+    public static String getDayOfWeek(LocalDate date) {
+        return date.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
     }
 
     public String getMealTitle() {
-        return date.getDayOfWeek() + " " + determineDayTime(time) + " - " + type;
+        return getDayOfWeek(date) + " " + determineDayTime(time) + " - " + type;
+    }
+
+    public static String getMealLogTitle() {
+        return getDayOfWeek(LocalDate.now()) + " " + determineDayTime(LocalTime.now());
     }
 
 
     public String getMealDescription() {
         return getStringDate() + ", " + getStringTime();
+    }
+
+    public static String getCurrentDateParsed() {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return date.format(formatter);
     }
 }

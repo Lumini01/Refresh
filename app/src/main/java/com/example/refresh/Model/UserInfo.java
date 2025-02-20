@@ -1,5 +1,7 @@
 package com.example.refresh.Model;
 
+import android.content.Context;
+
 import com.example.refresh.Database.DatabaseHelper;
 import com.example.refresh.Database.DatabaseHelper.Tables;
 import com.example.refresh.Database.Tables.UsersTable.Columns;
@@ -53,14 +55,14 @@ public class UserInfo {
      * @param email The user's email
      * @param pwd The user's password
      */
-    public UserInfo(int id,String email, String pwd) {
-        DatabaseHelper dbHelper = new DatabaseHelper(null);
+    public UserInfo(Context context, String email, String pwd) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        setID(id);
-        setName(dbHelper.getFromRecordByValue(Tables.USERS, Columns.NAME, Columns.ID, String.valueOf(id)));  // User's name is optional
+        setID(dbHelper.getFromRecordByValue(Tables.USERS, Columns.ID, Columns.EMAIL, email));
+        setName(dbHelper.getFromRecordByValue(Tables.USERS, Columns.NAME, Columns.EMAIL, email));  // User's name is optional
         setPwd(pwd);
         setEmail(email);
-        setPhone(dbHelper.getFromRecordByValue(Tables.USERS, Columns.PHONE, Columns.ID, String.valueOf(id)));  // User's phone is optional
+        setPhone(dbHelper.getFromRecordByValue(Tables.USERS, Columns.PHONE, Columns.EMAIL, email));  // User's phone is optional
     }
 
     public int getID() {

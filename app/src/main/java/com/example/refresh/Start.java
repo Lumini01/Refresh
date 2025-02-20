@@ -74,13 +74,14 @@ public class Start extends AppCompatActivity {
         continueBTN = findViewById(R.id.continueBTN);
         cdtView = findViewById(R.id.cdt);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+
         // Set up the 'Continue' button click listener to transition to the login screen
         continueBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-                String loggedUserEmail = sharedPreferences.getString("loggedUser", null );
-                if (loggedUserEmail != null)
+                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1 );
+                if (loggedUserID != -1)
                     navigateToHome();
                 else {
                     navigateToLogin();
@@ -93,7 +94,6 @@ public class Start extends AppCompatActivity {
             }
         });
 
-        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         boolean isFirstLaunch = sharedPreferences.getBoolean("isFirstLaunch", true);
 
         if (isFirstLaunch) {
@@ -159,7 +159,13 @@ public class Start extends AppCompatActivity {
             public void onFinish() {
                 // When the timer finishes, update text and navigate to the login screen
                 cdtView.setText("Loading...");
-                navigateToLogin();
+
+                SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1 );
+                if (loggedUserID != -1)
+                    navigateToHome();
+                else
+                    navigateToLogin();
             }
         }.start();  // Start the timer
     }
