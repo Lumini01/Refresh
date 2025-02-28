@@ -5,10 +5,11 @@ import android.content.Context;
 import com.example.refresh.Database.MealsTable;
 import com.example.refresh.Helper.DatabaseHelper;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class DaySummary {
+public class DaySummary implements Serializable {
     private LocalDate day;
     private ArrayList<Meal> meals;
     private int mealCount;
@@ -30,21 +31,21 @@ public class DaySummary {
     public DaySummary(Context context, ArrayList<Meal> meals) {
         this.day = LocalDate.now();
         this.meals = meals;
-        mealCount = meals.size();
+        mealCount = meals != null ? meals.size() : 0;
         calcSummaryMetrics(context);
     }
 
     public DaySummary(Context context, LocalDate day, ArrayList<Meal> meals) {
         this.day = day;
         this.meals = meals;
-        mealCount = meals.size();
+        mealCount = meals != null ? meals.size() : 0;
         calcSummaryMetrics(context);
     }
 
     public DaySummary(LocalDate day, ArrayList<Meal> meals, int totalCalories, int totalCarbs, int totalProtein, int totalFat, int totalWater) {
         this.day = day;
         this.meals = meals;
-        this.mealCount = meals.size();
+        this.mealCount = meals != null ? meals.size() : 0;
         this.totalCalories = totalCalories;
         this.totalCarbs = totalCarbs;
         this.totalProtein = totalProtein;
@@ -126,6 +127,8 @@ public class DaySummary {
 
     private int calcTotalCalories(Context context) {
         int totalCalories = 0;
+        if (meals == null) return 0;
+
         for (Meal meal : meals) {
             totalCalories += meal.getCalories(context);
         }
@@ -134,6 +137,8 @@ public class DaySummary {
 
     private int calcTotalCarbs(Context context) {
         int totalCarbs = 0;
+        if (meals == null) return 0;
+
         for (Meal meal : meals) {
             totalCarbs += meal.getCarbs(context);
         }
@@ -142,6 +147,8 @@ public class DaySummary {
 
     private int calcTotalProtein(Context context) {
         int totalProtein = 0;
+        if (meals == null) return 0;
+
         for (Meal meal : meals) {
             totalProtein += meal.getProtein(context);
         }
@@ -150,6 +157,8 @@ public class DaySummary {
 
     private int calcTotalFat(Context context) {
         int totalFat = 0;
+        if (meals == null) return 0;
+
         for (Meal meal : meals) {
             totalFat += meal.getFat(context);
         }

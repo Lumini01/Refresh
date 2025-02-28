@@ -27,11 +27,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/week_graph"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/week_graph_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/fragment_trend_graph"/>
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_meals"

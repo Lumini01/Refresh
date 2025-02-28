@@ -7,7 +7,7 @@
     tools:context=".Fragment.TrendGraphFragment"
     android:background="@drawable/card_background">
 
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/lineChart"
         android:layout_width="match_parent"
         android:layout_height="300dp"

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.refresh.Database.FoodsTable;
 import com.example.refresh.MyApplication;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 // Meal Model Class which represents a meal
-public class Meal {
+public class Meal implements Serializable {
     private int id; // Unique identifier for the meal
     private LocalDate date;
     private LocalTime time; // 15-minute accuracy

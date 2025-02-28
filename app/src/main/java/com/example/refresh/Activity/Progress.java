@@ -1,28 +1,25 @@
 package com.example.refresh.Activity;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.refresh.Adapter.DaySection;
-import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Database.MealsTable;
+import com.example.refresh.Fragment.FoodInfoFragment;
+import com.example.refresh.Fragment.TrendGraphFragment;
+import com.example.refresh.Helper.DailySummaryHelper;
+import com.example.refresh.Model.DaySummary;
+import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.R;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.DayOfWeek;
@@ -45,11 +42,21 @@ public class Progress extends AppCompatActivity {
     private SectionedRecyclerViewAdapter sectionAdapter;
     private LocalDate currentWeekStart;
     private BottomNavigationView bottomNavigationView;
+    private FragmentContainerView weekGraphContainer;
+    private TrendGraphFragment trendGraphFragment;
+    private SharedPreferences userSP;
+    private DailySummaryHelper dailySummaryHelper;
+    private ArrayList<DaySummary> daySummaries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
+
+        dailySummaryHelper = new DailySummaryHelper(this);
+        userSP = getSharedPreferences(getSharedPreferences("AppPreferences", MODE_PRIVATE)
+                        .getString("loggedUserSPName", null),
+                MODE_PRIVATE);
 
         initializeUI();
         setupUI();
@@ -58,13 +65,20 @@ public class Progress extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         currentWeekStart = LocalDate.now().with(java.time.DayOfWeek.MONDAY);
+        daySummaries = dailySummaryHelper.getSummariesBetween(currentWeekStart, getCurrentWeekEnd());
 
         setupBottomNavigationMenu();
         setupRecyclerView();
 
+
+        trendGraphFragment = TrendGraphFragment.newInstance(daySummaries, userSP.getInt("calorieGoal", 0));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.week_graph_container, trendGraphFragment) // put it in our container
+                .commit();
     }
 
     public void initializeUI() {
+        weekGraphContainer = findViewById(R.id.week_graph_container);
         toolbar = findViewById(R.id.toolbar);
         recyclerViewMeals = findViewById(R.id.recycler_view_meals);
         refreshButton = findViewById(R.id.backArrow);
@@ -75,7 +89,11 @@ public class Progress extends AppCompatActivity {
         refreshButton.setImageResource(R.drawable.ic_refresh);
         calenderButton.setImageResource(R.drawable.ic_calendar);
 
-        refreshButton.setOnClickListener(v -> updateRecyclerView());
+        refreshButton.setOnClickListener(v -> {
+            updateRecyclerView();
+            updateDaySummaries();
+            trendGraphFragment.updateLineChart(daySummaries, userSP.getInt("calorieGoal", 0));
+        });
     }
 
     private void setupBottomNavigationMenu() {
@@ -144,11 +162,22 @@ public class Progress extends AppCompatActivity {
             ArrayList<Meal> dayMeals = mealsByDay.get(day);
             if (dayMeals != null && !dayMeals.isEmpty()) {
                 String dayName = day.getDisplayName(TextStyle.FULL, Locale.getDefault());
-                sectionAdapter.addSection(new DaySection(dayName, dayMeals));
+                ArrayList<ListItem<Meal>> dayMealsItems = new ArrayList<>();
+                for (Meal meal : dayMeals) {
+                    dayMealsItems.add(new ListItem<>(meal.getMealTitle(), meal.getMealDescription(), meal));
+                }
+
+                sectionAdapter.addSection(new DaySection(dayName, dayMealsItems));
             }
         }
 
         sectionAdapter.notifyDataSetChanged();
+    }
+
+    private void updateDaySummaries() {
+        LocalDate weekStart = currentWeekStart;
+        LocalDate weekEnd = getCurrentWeekEnd();
+        daySummaries = dailySummaryHelper.getSummariesBetween(weekStart, weekEnd);
     }
 
     private void setWeekMeals(LocalDate weekStart, LocalDate weekEnd) {

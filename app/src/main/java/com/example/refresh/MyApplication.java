@@ -17,6 +17,9 @@ public class MyApplication extends android.app.Application {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         sharedPreferences.edit().putBoolean("isFirstLaunch", true).apply();
 
+        SharedPreferences userSP = getSharedPreferences(getLoggedUserSPName(), MODE_PRIVATE);
+        userSP.edit().putInt("calorieGoal", 2500).apply();
+
         if (getLoggedUserID() != -1)
             if (!loggedUserExistsInDB())
                 sharedPreferences.edit().putInt("loggedUserID", -1).apply();
@@ -29,6 +32,11 @@ public class MyApplication extends android.app.Application {
     public int getLoggedUserID() {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         return sharedPreferences.getInt("loggedUserID", -1);
+    }
+
+    public String getLoggedUserSPName() {
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        return sharedPreferences.getString("loggedUserSPName", null);
     }
 
     public boolean loggedUserExistsInDB() {

@@ -235,14 +235,18 @@ public class MealsTable {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         mealsInRange = dbHelper.getRecords(DatabaseHelper.Tables.MEALS, selection, selectionArgs);
 
-        return mealsInRange;
+        return mealsInRange != null ? mealsInRange : new ArrayList<>();
     }
 
     public static int getWaterIntakeForDay(Context context, LocalDate day) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         String selection = "type = 'waterIntake' AND (substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) = ?";
-        Meal waterIntakeMeal = (Meal) dbHelper.getRecords(DatabaseHelper.Tables.MEALS, selection, DatabaseHelper.toStringArray(day.toString())).get(0);
 
-        return waterIntakeMeal.getServingSizes().get(0);
+        ArrayList<Meal> waterIntakeMeals = dbHelper.getRecords(DatabaseHelper.Tables.MEALS, selection, DatabaseHelper.toStringArray(day.toString()));
+
+        if (waterIntakeMeals == null || waterIntakeMeals.isEmpty()) return 0;
+        Meal waterIntakeMeal = waterIntakeMeals.get(0);
+
+        return waterIntakeMeal != null ? waterIntakeMeal.getServingSizes().get(0) : 0;
     }
 }

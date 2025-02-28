@@ -1,9 +1,12 @@
 package com.example.refresh.Adapter;
 
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.R;
 
@@ -15,21 +18,21 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 public class DaySection extends Section {
 
     private String day;         // e.g., "Sunday"
-    private ArrayList<Meal> meals;   // List of meals for that day
+    private ArrayList<ListItem<Meal>> mealLogs;   // List of mealLogs for that day
 
-    public DaySection(String day, ArrayList<Meal> meals) {
+    public DaySection(String day, ArrayList<ListItem<Meal>> mealLogs) {
         super(SectionParameters.builder()
                 .itemResourceId(R.layout.item_meal)
                 .headerResourceId(R.layout.item_header)
                 .build());
         this.day = day;
-        this.meals = meals;
+        this.mealLogs = mealLogs;
     }
 
     // Return the number of meal items in this section
     @Override
     public int getContentItemsTotal() {
-        return meals.size();
+        return mealLogs.size();
     }
 
     // Provide a ViewHolder for a meal item
@@ -41,10 +44,10 @@ public class DaySection extends Section {
     // Bind data to the meal item ViewHolder
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Meal meal = meals.get(position);
+        ListItem<Meal> mealLog = mealLogs.get(position);
         MealViewHolder itemHolder = (MealViewHolder) holder;
-        itemHolder.mealTitle.setText(meal.getMealTitle());
-        itemHolder.mealDescription.setText(meal.getMealDescription());
+
+        itemHolder.bind(mealLog);
     }
 
     // Provide a ViewHolder for the header (the day title)
@@ -64,11 +67,22 @@ public class DaySection extends Section {
     private class MealViewHolder extends RecyclerView.ViewHolder {
         private final TextView mealTitle;
         private final TextView mealDescription;
+        private final ImageButton removeButton;
+        private final ImageButton editButton;
+        private final LinearLayout itemContainer;
 
         public MealViewHolder(View itemView) {
             super(itemView);
             mealTitle = itemView.findViewById(R.id.meal_title);
             mealDescription = itemView.findViewById(R.id.meal_description);
+            removeButton = itemView.findViewById(R.id.buttonRemove);
+            editButton = itemView.findViewById(R.id.buttonEdit);
+            itemContainer = itemView.findViewById(R.id.item_container);
+        }
+
+        public void bind(ListItem<Meal> mealLog) {
+            mealTitle.setText(mealLog.getTitle());
+            mealDescription.setText(mealLog.getDescription());
         }
     }
 
