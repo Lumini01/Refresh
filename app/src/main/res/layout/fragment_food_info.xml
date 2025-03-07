@@ -154,10 +154,10 @@
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"
                                 app:cpb_background_progressbar_color="@color/borderColor"
-                                app:cpb_background_progressbar_width="7dp"
+                                app:cpb_background_progressbar_width="9dp"
                                 app:cpb_progress="50"
                                 app:cpb_progressbar_color="@color/carbs_progress_color"
-                                app:cpb_progressbar_width="10dp"
+                                app:cpb_progressbar_width="12dp"
                                 app:cpb_round_border="true"
                                 app:cpb_progress_direction="to_right"
                                 android:layout_gravity="center" />
@@ -216,10 +216,10 @@
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"
                                 app:cpb_background_progressbar_color="@color/borderColor"
-                                app:cpb_background_progressbar_width="7dp"
+                                app:cpb_background_progressbar_width="9dp"
                                 app:cpb_progress="50"
                                 app:cpb_progressbar_color="@color/protein_progress_color"
-                                app:cpb_progressbar_width="10dp"
+                                app:cpb_progressbar_width="12dp"
                                 app:cpb_round_border="true"
                                 app:cpb_progress_direction="to_right"
                                 android:layout_gravity="center" />
@@ -278,10 +278,10 @@
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"
                                 app:cpb_background_progressbar_color="@color/borderColor"
-                                app:cpb_background_progressbar_width="7dp"
+                                app:cpb_background_progressbar_width="9dp"
                                 app:cpb_progress="50"
                                 app:cpb_progressbar_color="@color/fat_progress_color"
-                                app:cpb_progressbar_width="10dp"
+                                app:cpb_progressbar_width="12dp"
                                 app:cpb_round_border="true"
                                 app:cpb_progress_direction="to_right"
                                 android:layout_gravity="center" />
@@ -403,7 +403,7 @@
         android:layout_gravity="center_horizontal|bottom"
         android:textSize="@dimen/text_size_xxlarge"
         android:layout_marginVertical="@dimen/margin_large"
-        android:backgroundTint="@color/my_draker_blue"
+        android:backgroundTint="@color/my_darker_blue"
         android:textColor="@color/buttonText"/>
 
 </LinearLayout>

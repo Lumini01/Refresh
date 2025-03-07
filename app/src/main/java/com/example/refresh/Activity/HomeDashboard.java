@@ -67,34 +67,6 @@ public class HomeDashboard extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.nav_today);
     }
 
-    // Toolbar menu setup
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the toolbar if present
-        getMenuInflater().inflate(R.menu.main_toolbar_menu, menu);
-        return true;
-    }
-
-    // Handle menu item clicks
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle menu item clicks
-        int itemId = item.getItemId();
-        if (itemId == R.id.action_profile) {
-            // Handle profile action click
-            Intent intent = new Intent(HomeDashboard.this, ProfileActivity.class);
-            startActivity(intent);
-            return true;
-        } else if (itemId == R.id.action_notifications) {
-            // Handle notifications action click
-            return true;
-        } else if (itemId == R.id.action_menu) {
-            // Handle navigation drawer action click
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     protected void onResume() {
         super.onResume();
         bottomNavigationView.setSelectedItemId(R.id.nav_today);

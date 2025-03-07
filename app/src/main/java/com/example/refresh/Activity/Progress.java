@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentContainerView;
@@ -13,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.refresh.Adapter.DaySection;
 import com.example.refresh.Database.MealsTable;
-import com.example.refresh.Fragment.FoodInfoFragment;
 import com.example.refresh.Fragment.TrendGraphFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
 import com.example.refresh.Model.DaySummary;
@@ -37,7 +38,11 @@ public class Progress extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageButton refreshButton;
     private ImageButton calenderButton;
+    private TextView title;
     private RecyclerView recyclerViewMeals;
+    private TextView WeekDatesTV;
+    private ImageButton lastWeekButton;
+    private ImageButton nextWeekButton;
     private ArrayList<Meal> weekMeals;
     private SectionedRecyclerViewAdapter sectionAdapter;
     private LocalDate currentWeekStart;
@@ -83,17 +88,38 @@ public class Progress extends AppCompatActivity {
         recyclerViewMeals = findViewById(R.id.recycler_view_meals);
         refreshButton = findViewById(R.id.backArrow);
         calenderButton = findViewById(R.id.extra_button);
+        WeekDatesTV = findViewById(R.id.WeekDatesTV);
+        lastWeekButton = findViewById(R.id.lastWeekButton);
+        nextWeekButton = findViewById(R.id.nextWeekButton);
+        title = findViewById(R.id.toolbarTitle);
     }
 
     public void setupUI() {
         refreshButton.setImageResource(R.drawable.ic_refresh);
         calenderButton.setImageResource(R.drawable.ic_calendar);
+        title.setText("Progress");
 
         refreshButton.setOnClickListener(v -> {
-            updateRecyclerView();
-            updateDaySummaries();
-            trendGraphFragment.updateLineChart(daySummaries, userSP.getInt("calorieGoal", 0));
+            refreshActivity();
         });
+
+        lastWeekButton.setOnClickListener(v -> {
+            previousWeek();
+            updateWeekDates();
+            refreshActivity();
+        });
+
+        nextWeekButton.setOnClickListener(v -> {
+            nextWeek();
+            updateWeekDates();
+            refreshActivity();
+        });
+    }
+
+    private void refreshActivity() {
+        updateRecyclerView();
+        updateDaySummaries();
+        updateTrendGraph();
     }
 
     private void setupBottomNavigationMenu() {
@@ -204,6 +230,42 @@ public class Progress extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bottomNavigationView.setSelectedItemId(R.id.nav_progress);
+    }
+
+    private void updateTrendGraph() {
+        trendGraphFragment.updateLineChart(daySummaries, userSP.getInt("calorieGoal", 0));
+    }
+
+    public void updateWeekDates() {
+
+        int startDayInt = currentWeekStart.getDayOfMonth();
+        int endDayInt = getCurrentWeekEnd().getDayOfMonth();
+
+        String startDay = getDayString(startDayInt);
+        String endDay = getDayString(endDayInt);
+
+        String weekDates = currentWeekStart.getMonth().getDisplayName(TextStyle.SHORT, Locale.getDefault()) + " " + startDay + " - " + getCurrentWeekEnd().getMonth().getDisplayName(TextStyle.SHORT, Locale.getDefault()) + " " + endDay;
+        WeekDatesTV.setText(weekDates);
+    }
+
+    @NonNull
+    private static String getDayString(int dayInt) {
+        String startDay = dayInt + "";
+        switch (dayInt) {
+            case 1:
+                startDay += "st";
+                break;
+            case 2:
+                startDay += "nd";
+                break;
+            case 3:
+                startDay += "rd";
+                break;
+            default:
+                startDay += "th";
+                break;
+        }
+        return startDay;
     }
 }
 

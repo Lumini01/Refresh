@@ -115,6 +115,20 @@ public class SelectedFoodsFragment extends Fragment {
         }
     }
 
+    public void removeFoodFromSelectedFoodsByFoodID(int foodID) {
+        int position = 0;
+
+        for (ListItem<Food> foodItem : selectedFoods) {
+            if (foodItem.getModel().getId() == foodID) {
+                break;
+            }
+            position++;
+        }
+
+        selectedFoods.remove(position);  // Update the list in fragment
+        adapter.removeItem(position);  // Notify adapter to remove item
+    }
+
     public void navigateToFoodInfo(Food food) {
         fragmentListener.onNavigateToFoodInfo(food);
     }

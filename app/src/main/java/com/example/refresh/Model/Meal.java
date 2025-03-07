@@ -460,8 +460,8 @@ public class Meal implements Serializable {
         return getDayOfWeek(date) + " " + determineDayTime(time) + " - " + type;
     }
 
-    public static String getMealLogTitle() {
-        return getDayOfWeek(LocalDate.now()) + " " + determineDayTime(LocalTime.now());
+    public static String getMealLogTitle(LocalDate date, LocalTime time) {
+        return getDayOfWeek(date) + " " + determineDayTime(time);
     }
 
 

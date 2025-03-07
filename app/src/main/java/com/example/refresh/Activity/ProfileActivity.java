@@ -1,7 +1,6 @@
 package com.example.refresh.Activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,7 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentContainerView;
 
 import com.example.refresh.R;
-import com.example.refresh.Fragment.SettingsFragment;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -64,13 +62,6 @@ public class ProfileActivity extends AppCompatActivity {
         backArrow.setOnClickListener(v -> finish());
 
         // Handle settings button click
-        settingsButton.setOnClickListener(v -> {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new SettingsFragment())
-                    .commit();
-
-            fragmentContainer.setVisibility(View.VISIBLE); // Ensure visibility
-        });
     }
 
     // Populate Profile Data

@@ -54,4 +54,5 @@ dependencies {
     implementation("com.mikhaellopez:circularprogressbar:3.1.0")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("com.github.luizgrp:SectionedRecyclerViewAdapter:v3.2.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
 }

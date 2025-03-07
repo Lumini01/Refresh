@@ -21,6 +21,16 @@
         layout="@layout/basic_nav_toolbar"
         android:id="@+id/toolbar" />
 
+    <TextView
+        android:id="@+id/mealDateAndTimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meal Date Goes Here"
+        android:textColor="@color/textPrimary"
+        android:padding="@dimen/padding_small"
+        android:layout_marginVertical="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_medium"/>
+
     <!-- Search Bar -->
     <include
         layout="@layout/search_bar"
@@ -47,50 +57,15 @@
                 layout="@layout/fragment_macronutrient"
                 android:id="@+id/macronutrient_fragment" />
 
-            <!-- Selection Bar -->
-            <LinearLayout
-                android:id="@+id/selection_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/card_background"
-                android:padding="@dimen/padding_small"
-                android:weightSum="3"
-                android:layout_marginBottom="@dimen/margin_small">
-
-                <Button
-                    android:id="@+id/btn_meal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Meal"
-                    android:textSize="@dimen/text_size_xlarge"
-                    android:background="@drawable/card_background"
-                    android:backgroundTint="@color/buttonBackground"
-                    android:textColor="@color/buttonText"/>
-
-                <Button
-                    android:id="@+id/btn_favorites"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Favorites"
-                    android:textSize="@dimen/text_size_xlarge"
-                    android:background="@drawable/card_background"
-                    android:backgroundTint="@color/buttonBackground"
-                    android:textColor="@color/buttonText"/>
-
-                <Button
-                    android:id="@+id/btn_history"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="History"
-                    android:textSize="@dimen/text_size_xlarge"
-                    android:background="@drawable/card_background"
-                    android:backgroundTint="@color/buttonBackground"
-                    android:textColor="@color/buttonText"/>
-            </LinearLayout>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Selected Foods"
+               android:textColor="@color/textPrimary"
+               android:textSize="@dimen/text_size_xxlarge"
+               android:padding="@dimen/padding_small"
+               android:layout_marginTop="@dimen/margin_small"
+               android:paddingStart="@dimen/padding_large"/>
 
             <!-- Fragment Container -->
             <androidx.fragment.app.FragmentContainerView
@@ -110,7 +85,7 @@
                 android:layout_gravity="center"
                 android:textSize="@dimen/text_size_xxlarge"
                 android:layout_marginVertical="@dimen/margin_large"
-                android:backgroundTint="@color/my_draker_blue"
+                android:backgroundTint="@color/my_darker_blue"
                 android:textColor="@color/buttonText"/>
 
             <!-- Bottom Navigation -->

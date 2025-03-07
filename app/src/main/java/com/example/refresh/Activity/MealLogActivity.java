@@ -30,9 +30,17 @@ import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.android.material.timepicker.TimeFormat;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -43,6 +51,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     // UI Elements
     private TextView title;
+    private TextView mealDateAndTimeTV;
     private ImageButton backArrow;
     private ImageButton extraButton;
     private EditText searchBarET;
@@ -54,6 +63,8 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     private FragmentContainerView foodInfoFragmentContainer;
     private FoodInfoFragment foodInfoFragment;
     private Button logMealBtn;
+    private LocalDate mealDate;
+    private LocalTime mealTime;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -69,7 +80,6 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     public void onAddingToSelectedFoods(ListItem<Food> addedFood) {
         cancelSearchInteraction();
         addFoodToSelectedFoods(addedFood);
-        
     }
 
     public void onNavigateToFoodInfo(Food food) {
@@ -103,7 +113,9 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
      */
     private void initializeUI() {
         title = findViewById(R.id.toolbarTitle);
-        title.setText(Meal.getMealLogTitle());
+        title.setText(Meal.getMealLogTitle(LocalDate.now(), LocalTime.now()));
+        mealDateAndTimeTV = findViewById(R.id.mealDateAndTimeTV);
+        updateMealDate(LocalDate.now());
 
         extraButton = findViewById(R.id.extra_button);
         extraButton.setImageResource(R.drawable.ic_calendar);
@@ -149,10 +161,113 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         logMealBtn.setOnClickListener(v -> {
             logMeal();
         });
+
+        setupDatePickerMenu();
+    }
+
+    private void setupDatePickerMenu() {
+        MaterialDatePicker.Builder<Long> dateBuilder = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select a date")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds());
+
+        CalendarConstraints.Builder constraintsBuilder = new CalendarConstraints.Builder()
+                .setValidator(DateValidatorPointBackward.now());
+        dateBuilder.setCalendarConstraints(constraintsBuilder.build());
+
+        MaterialDatePicker<Long> datePicker = dateBuilder.build();
+
+        extraButton.setOnClickListener(v -> {
+            datePicker.show(getSupportFragmentManager(), "DATE_PICKER");
+        });
+
+        datePicker.addOnPositiveButtonClickListener(selection -> {
+            LocalDate localDate = Instant.ofEpochMilli(selection)
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+
+            updateMealDate(localDate);
+            setupTimePickerMenu(LocalDate.now());
+        });
+    }
+
+    private void setupTimePickerMenu(LocalDate selectedDate) {
+        // Build the time picker (24-hour format as an example)
+        MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(LocalTime.now().getHour())      // Default hour
+                .setMinute(LocalTime.now().getMinute())  // Default minute
+                .setTitleText("Select a time")
+                .build();
+
+        // Listen for the user to confirm a time
+        timePicker.addOnPositiveButtonClickListener(dialog -> {
+            int hour = timePicker.getHour();
+            int minute = timePicker.getMinute();
+
+            // Convert the picked hour/minute to a LocalTime
+            LocalTime selectedTime = LocalTime.of(hour, minute);
+
+            // Validate the picked time
+            validateTimeSelection(selectedDate, selectedTime);
+        });
+
+        // Show the time picker
+        timePicker.show(getSupportFragmentManager(), "TIME_PICKER");
+    }
+
+    private void validateTimeSelection(LocalDate selectedDate, LocalTime selectedTime) {
+        // If the date is before today, we don't care about the time (it's all in the past).
+        LocalDate today = LocalDate.now();
+        if (selectedDate.isBefore(today)) {
+            updateMealTime(selectedTime);
+            return;
+        }
+
+        // If the date is after today, let's say we don't allow that at all, or handle differently.
+        // (If you already disallowed future dates in the date picker, this might never happen.)
+        if (selectedDate.isAfter(today)) {
+            // For example, show an error or skip.
+            Toast.makeText(this, "Cannot pick a time for a future date.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // If the date is exactly today, ensure the time is not in the future.
+        if (selectedDate.isEqual(today)) {
+            LocalTime nowTime = LocalTime.now();
+            if (selectedTime.isAfter(nowTime)) {
+                // Show an error or ignore
+                Toast.makeText(this, "Cannot pick a future time for today.", Toast.LENGTH_SHORT).show();
+            } else {
+                // It's valid
+                updateMealTime(selectedTime);
+            }
+        }
+    }
+
+    private void updateMealDate(LocalDate date) {
+        mealDate = date;
+        if (mealTime == null)
+            mealTime = LocalTime.now();
+        updateMealDateTimeTV();
+    }
+
+    public void updateMealTime(LocalTime time) {
+        mealTime = time;
+        if (mealDate == null)
+            mealDate = LocalDate.now();
+        updateMealDateTimeTV();
+        title.setText(Meal.getMealLogTitle(mealDate, mealTime));
+
+    }
+
+    public void updateMealDateTimeTV() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String timeText = mealTime.withSecond(0).withNano(0).toString();
+        String text = mealDate.format(formatter) + "  |  " + timeText;
+        mealDateAndTimeTV.setText(text);
     }
 
     private void cancelSearchInteraction() {
-        searchBarET.setText("");
         clearButton.setVisibility(View.GONE);
         hideSearchResults();
         hideKeyboard(searchBarET);
@@ -235,11 +350,26 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     public void addFoodToSelectedFoods(ListItem<Food> addedFood) {
         ListItem<Food> parsedFood = parseSelectedFood(addedFood.getModel());
+        int servingSize = exsitsInSelectedFoods(parsedFood.getModel().getId());
+        if (servingSize != -1) {
+            selectedFoodsFragment.removeFoodFromSelectedFoodsByFoodID(parsedFood.getModel().getId());
+            parsedFood.getModel().setServingSize(parsedFood.getModel().getServingSize() + servingSize);
+        }
+
         selectedFoodsFragment.addFoodToSelectedFoods(parsedFood);
     }
 
     public void removeFoodFromSelectedFoods(int position) {
         selectedFoodsFragment.removeFoodFromSelectedFoods(position);
+    }
+
+    private int exsitsInSelectedFoods(int id) {
+        for (ListItem<Food> food : selectedFoodsFragment.getSelectedFoods()) {
+            if (food.getModel().getId() == id)
+                return food.getModel().getServingSize();
+        }
+
+        return -1;
     }
 
     private void hideKeyboard(View view) {
@@ -261,12 +391,10 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             mealServingSizes.add(food.getServingSize());
         }
 
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now().truncatedTo(ChronoUnit.MINUTES);;
-        String mealType = Meal.determineMealType(time);
+        String mealType = Meal.determineMealType(mealTime);
         String notes = "";
 
-        meal = new Meal(date, time, mealType, notes, mealFoodIDs, mealServingSizes);
+        meal = new Meal(mealDate, mealTime, mealType, notes, mealFoodIDs, mealServingSizes);
         dbHelper.insert(DatabaseHelper.Tables.MEALS, meal);
         dbHelper.close();
 

@@ -5,6 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
 
         <item name="android:fontFamily">@font/lato_black</item>
+        <item name="colorPrimary">@color/my_darker_blue</item>
 
     </style>
     <style name="ThemeOverlay.Refresh.FullscreenContainer" parent="">
