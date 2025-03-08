@@ -116,8 +116,13 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
         }
     }
 
+    public void clearAll() {
+        notifyDataSetChanged();
+    }
+
     // ViewHolder (placed at the bottom, following best practices)
     public static class FoodSelectionViewHolder extends RecyclerView.ViewHolder {
+
         private final TextView textViewTitle;
         private final TextView textViewDescription;
         private final ImageButton removeButton;

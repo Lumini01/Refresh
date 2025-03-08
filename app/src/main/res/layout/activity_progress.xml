@@ -84,7 +84,7 @@
                 android:clipToPadding="false"
                 android:padding="@dimen/padding_medium"
                 android:scrollbars="vertical"
-                tools:itemCount="8"
+                tools:itemCount="9"
                 tools:listitem="@layout/item_meal"/>
 
         </LinearLayout>

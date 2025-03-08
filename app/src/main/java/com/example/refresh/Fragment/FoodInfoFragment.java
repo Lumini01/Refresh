@@ -314,7 +314,7 @@ public class FoodInfoFragment extends Fragment {
     }
 
     public void addFoodToSelectedFoods() {
-        ListItem<Food> addedFood = new ListItem<>(food.getName(), food.getServingSize() + "g  ✦  " + food.getActualCalories() + " kcal" , food);
+        ListItem<Food> addedFood = new ListItem<>(food);
         fragmentListener.onAddingToSelectedFoods(addedFood);
         fragmentListener.onExitFoodInfoFragment();
     }

@@ -20,6 +20,10 @@ public class ListItem<T> implements Serializable {
         this.model = model;
     }
 
+    public ListItem(T model) {
+        this.model = model;
+    }
+
     // Getter and Setter for Title
     public String getTitle() {
         return title;

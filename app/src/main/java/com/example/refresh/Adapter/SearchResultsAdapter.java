@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.refresh.Fragment.SearchResultsFragment;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
+import com.example.refresh.Model.Meal;
 import com.example.refresh.R;
 
 import java.util.ArrayList;

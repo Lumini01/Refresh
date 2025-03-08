@@ -264,7 +264,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Edit a record in the database
-    public <T> Integer editRecords(Tables table, T model,  Enum<?> columnEnum, String[] selectionArgs) {
+    public <T> int editRecords(Tables table, T model,  Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
         String columnName = getEnumColumnName(columnEnum);
         String selection = columnName + " = ?";
@@ -297,7 +297,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     break;  // Found a matching record
                 }
             }
-
             cursor.close();
         }
 

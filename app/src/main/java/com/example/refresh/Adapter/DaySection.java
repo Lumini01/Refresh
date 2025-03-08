@@ -17,22 +17,41 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 
 public class DaySection extends Section {
 
-    private String day;         // e.g., "Sunday"
-    private ArrayList<ListItem<Meal>> mealLogs;   // List of mealLogs for that day
+    private String day; // e.g., "Sunday"
+    private ArrayList<ListItem<Meal>> mealItems;   // List of mealLogs for that day
+    private OnEditMealListener editMealListener; // add a listener member
+    private OnDeleteMealListener deleteMealListener;
 
-    public DaySection(String day, ArrayList<ListItem<Meal>> mealLogs) {
+
+    public interface OnEditMealListener {
+        void onEditMeal(ListItem<Meal> mealItem, int adapterPosition);
+    }
+
+    public interface OnDeleteMealListener {
+        void onDeleteMeal(ListItem<Meal> mealItem, int adapterPosition);
+    }
+
+    public DaySection(String day, ArrayList<ListItem<Meal>> mealLogs,
+                      OnEditMealListener editMealListener,
+                      OnDeleteMealListener deleteMealListener) {
         super(SectionParameters.builder()
                 .itemResourceId(R.layout.item_meal)
                 .headerResourceId(R.layout.item_header)
                 .build());
         this.day = day;
-        this.mealLogs = mealLogs;
+        this.mealItems = mealLogs;
+        this.editMealListener = editMealListener;
+        this.deleteMealListener = deleteMealListener;
+    }
+
+    public String getDay() {
+        return day;
     }
 
     // Return the number of meal items in this section
     @Override
     public int getContentItemsTotal() {
-        return mealLogs.size();
+        return mealItems.size();
     }
 
     // Provide a ViewHolder for a meal item
@@ -44,10 +63,44 @@ public class DaySection extends Section {
     // Bind data to the meal item ViewHolder
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ListItem<Meal> mealLog = mealLogs.get(position);
+        ListItem<Meal> mealItem = mealItems.get(position);
         MealViewHolder itemHolder = (MealViewHolder) holder;
 
-        itemHolder.bind(mealLog);
+        itemHolder.bind(mealItem);
+
+        itemHolder.editButton.setOnClickListener(v -> {
+            int adapterPosition = holder.getAdapterPosition();
+            if (adapterPosition != RecyclerView.NO_POSITION && editMealListener != null) {
+                // Pass the meal item and its adapter position to the listener
+                editMealListener.onEditMeal(mealItem, adapterPosition); }
+        });
+
+        itemHolder.removeButton.setOnClickListener(v -> {
+            int adapterPosition = holder.getAdapterPosition();
+            if (adapterPosition != RecyclerView.NO_POSITION && deleteMealListener != null) {
+                deleteMealListener.onDeleteMeal(mealItem, adapterPosition);
+            }
+        });
+    }
+
+    public void addMealItem(ListItem<Meal> mealItem) {
+        if (mealItem == null) {
+            throw new IllegalArgumentException("Meal item cannot be null");
+        }
+        mealItems.add(mealItem);
+    }
+
+
+    public void removeMealItem(int position) {
+        if (position < 0 || position >= mealItems.size()) {
+            throw new IndexOutOfBoundsException("Invalid position: " + position);
+        }
+        mealItems.remove(position);
+    }
+
+    // Method to update an individual meal in the list
+    public void updateMealItem(int position, ListItem<Meal> mealItem) {
+        mealItems.set(position, mealItem);
     }
 
     // Provide a ViewHolder for the header (the day title)

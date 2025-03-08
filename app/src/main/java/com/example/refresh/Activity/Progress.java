@@ -1,11 +1,14 @@
 package com.example.refresh.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +20,7 @@ import com.example.refresh.Adapter.DaySection;
 import com.example.refresh.Database.MealsTable;
 import com.example.refresh.Fragment.TrendGraphFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.DaySummary;
 import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
@@ -26,11 +30,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
+import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
 public class Progress extends AppCompatActivity {
@@ -52,6 +59,7 @@ public class Progress extends AppCompatActivity {
     private SharedPreferences userSP;
     private DailySummaryHelper dailySummaryHelper;
     private ArrayList<DaySummary> daySummaries;
+    private ActivityResultLauncher<Intent> editMealLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +88,23 @@ public class Progress extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.week_graph_container, trendGraphFragment) // put it in our container
                 .commit();
+
+        editMealLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+                            Meal updatedMeal = (Meal) data.getSerializableExtra("meal");
+                            int adapterPosition = data.getIntExtra("adapter_position", -1);
+                            LocalDate oldDate = (LocalDate) data.getSerializableExtra("old_date");
+
+                            if (updatedMeal != null && adapterPosition != -1)
+                                updateMealInAdapter(updatedMeal, adapterPosition, oldDate);
+                        }
+                    }
+                }
+        );
     }
 
     public void initializeUI() {
@@ -158,7 +183,99 @@ public class Progress extends AppCompatActivity {
         recyclerViewMeals.setAdapter(sectionAdapter);
 
         updateRecyclerView();
-        // Set the adapter to the RecyclerView
+    }
+
+    private void updateMealInAdapter(Meal updatedMeal, int adapterPosition, LocalDate oldDate) {
+        LocalDate weekStart = currentWeekStart;
+        LocalDate weekEnd = getCurrentWeekEnd();
+        LocalDate updatedDate = updatedMeal.getDate();
+        boolean inWeek = !updatedDate.isBefore(weekStart) && !updatedDate.isAfter(weekEnd);
+        String updatedDay = updatedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
+
+        // Find the source section and local position from the global adapterPosition.
+        int currentPosition = 0;
+        DaySection sourceSection = null;
+        int localPosition = -1;
+        for (Section section : sectionAdapter.getCopyOfSectionsMap().values()) {
+            int headerCount = section.hasHeader() ? 1 : 0;
+            int sectionItemCount = section.getContentItemsTotal();
+            int sectionTotal = headerCount + sectionItemCount;
+            if (adapterPosition >= currentPosition && adapterPosition < currentPosition + sectionTotal) {
+                localPosition = adapterPosition - currentPosition - headerCount;
+                if (section instanceof DaySection) {
+                    sourceSection = (DaySection) section;
+                }
+                break;
+            }
+            currentPosition += sectionTotal;
+        }
+        if (sourceSection == null) return; // nothing to update if not found
+
+        // Get the day string of the source section
+        String sourceDay = sourceSection.getDay();
+
+        if (!inWeek) {
+            // The updated meal is no longer in this week: remove it.
+            sourceSection.removeMealItem(localPosition);
+            sectionAdapter.notifyItemRemoved(adapterPosition);
+        } else {
+            if (sourceDay.equals(updatedDay)) {
+                // Same day/section: update the item in place.
+                ListItem<Meal> updatedMealItem = new ListItem<>(
+                        updatedMeal.getMealTitle(),
+                        updatedMeal.getMealDescription(this),
+                        updatedMeal
+                );
+                sourceSection.updateMealItem(localPosition, updatedMealItem);
+                sectionAdapter.notifyItemChanged(adapterPosition);
+            } else {
+                // The meal's date has changed to another day in the current week.
+                // Remove it from the source section first.
+                sourceSection.removeMealItem(localPosition);
+                sectionAdapter.notifyItemRemoved(adapterPosition);
+
+                // Now find the target section and insert the updated meal.
+                int newGlobalPosition = 0;
+                boolean inserted = false;
+                for (Section section : sectionAdapter.getCopyOfSectionsMap().values()) {
+                    int headerCount = section.hasHeader() ? 1 : 0;
+                    int sectionItemCount = section.getContentItemsTotal();
+                    if (section instanceof DaySection) {
+                        DaySection daySection = (DaySection) section;
+                        if (daySection.getDay().equals(updatedDay)) {
+                            // Insert at the end of the target section.
+                            ListItem<Meal> updatedMealItem = new ListItem<>(
+                                    updatedMeal.getMealTitle(),
+                                    updatedMeal.getMealDescription(this),
+                                    updatedMeal
+                            );
+                            daySection.addMealItem(updatedMealItem);
+                            // The insertion position is computed as:
+                            // current accumulated global position + header (if any) + new item index.
+                            int insertionPosition = newGlobalPosition + headerCount + sectionItemCount;
+                            sectionAdapter.notifyItemInserted(insertionPosition);
+                            inserted = true;
+                            break;
+                        }
+                    }
+                    newGlobalPosition += headerCount + sectionItemCount;
+                }
+                if (!inserted) {
+                    // If the target section wasn't found (shouldn't happen in a complete week),
+                    // fall back to updating the whole RecyclerView.
+                    updateRecyclerView();
+                }
+            }
+        }
+        int dayNum = (int) ChronoUnit.DAYS.between(weekStart, updatedDate);
+        int oldDayNum = (int) ChronoUnit.DAYS.between(weekStart, oldDate);
+
+        daySummaries.set(oldDayNum, dailySummaryHelper.getSummariesBetween(oldDate, oldDate).get(0));
+        if (ChronoUnit.DAYS.between(weekStart, updatedDate) >= 0 && ChronoUnit.DAYS.between(weekStart, updatedDate) <= 6) {
+            daySummaries.set(dayNum, dailySummaryHelper.getSummariesBetween(updatedDate, updatedDate).get(0));
+        }
+
+        updateTrendGraph();
     }
 
     private void updateRecyclerView() {
@@ -174,9 +291,9 @@ public class Progress extends AppCompatActivity {
             mealsByDay.put(day, new ArrayList<>());
         }
         for (Meal meal : weekMeals) {
-            LocalDate mealDate = meal.getDate(); // Make sure Meal has getDate() returning LocalDate
+            LocalDate mealDate = meal.getDate();
             if (!mealDate.isBefore(weekStart) && !mealDate.isAfter(weekEnd)) {
-                mealsByDay.get(mealDate.getDayOfWeek()).add(meal);
+                Objects.requireNonNull(mealsByDay.get(mealDate.getDayOfWeek())).add(meal);
             }
         }
 
@@ -190,15 +307,32 @@ public class Progress extends AppCompatActivity {
                 String dayName = day.getDisplayName(TextStyle.FULL, Locale.getDefault());
                 ArrayList<ListItem<Meal>> dayMealsItems = new ArrayList<>();
                 for (Meal meal : dayMeals) {
-                    dayMealsItems.add(new ListItem<>(meal.getMealTitle(), meal.getMealDescription(), meal));
+                    dayMealsItems.add(new ListItem<>(meal.getMealTitle(), meal.getMealDescription(this), meal));
                 }
 
-                sectionAdapter.addSection(new DaySection(dayName, dayMealsItems));
+                // Create a DaySection passing the edit listener
+                DaySection section = new DaySection(dayName, dayMealsItems,
+                        (mealItem, adapterPosition) -> {
+                    // Create the Intent to launch the edit activity
+                    Intent editIntent = new Intent(Progress.this, MealLogActivity.class);
+                    editIntent.putExtra("edit_mode", true);
+                    // Pass the Meal object for editing
+                    editIntent.putExtra("meal", mealItem.getModel());
+                    // Optionally, pass the adapterPosition to know which item to update when the result returns
+                    editIntent.putExtra("adapter_position", adapterPosition);
+                    // Launch the edit activity using the registered ActivityResultLauncher
+                    editMealLauncher.launch(editIntent);
+                },
+                        (mealItem, adapterPosition) -> {
+                    deleteMeal(mealItem.getModel(), adapterPosition);
+                });
+
+                sectionAdapter.addSection(section);
             }
         }
-
         sectionAdapter.notifyDataSetChanged();
     }
+
 
     private void updateDaySummaries() {
         LocalDate weekStart = currentWeekStart;
@@ -266,6 +400,45 @@ public class Progress extends AppCompatActivity {
                 break;
         }
         return startDay;
+    }
+
+    private void deleteMeal(Meal meal, int adapterPosition) {
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        databaseHelper.deleteRecords(DatabaseHelper.Tables.MEALS, MealsTable.Columns.MEAL_ID, new String[]{String.valueOf(meal.getId())});
+
+        int currentPosition = 0;
+        DaySection targetSection = null;
+        int localPosition = -1;
+
+        // Iterate through sections to find the section containing the deleted item
+        for (Section section : sectionAdapter.getCopyOfSectionsMap().values()) {
+            int headerCount = section.hasHeader() ? 1 : 0;
+            int sectionItemCount = section.getContentItemsTotal();
+            int sectionTotal = headerCount + sectionItemCount;
+
+            if (adapterPosition >= currentPosition && adapterPosition < currentPosition + sectionTotal) {
+                localPosition = adapterPosition - currentPosition - headerCount;
+                if (section instanceof DaySection) {
+                    targetSection = (DaySection) section;
+                    targetSection.removeMealItem(localPosition);
+                }
+                break;
+            }
+            currentPosition += sectionTotal;
+        }
+
+        // Notify the adapter about the removal
+        sectionAdapter.notifyItemRemoved(adapterPosition);
+
+        // Check if the target section is now empty and remove it if so
+        if (targetSection != null && targetSection.getContentItemsTotal() == 0) {
+            sectionAdapter.removeSection(targetSection);
+            sectionAdapter.notifyDataSetChanged();
+        }
+
+        updateDaySummaries();
+        updateTrendGraph();
     }
 }
 

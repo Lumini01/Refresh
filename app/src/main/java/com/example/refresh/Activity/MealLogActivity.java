@@ -1,5 +1,8 @@
 package com.example.refresh.Activity;
 
+import static com.example.refresh.Fragment.SelectedFoodsFragment.newInstance;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +23,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.refresh.Database.MealsTable;
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Database.FoodsTable;
 import com.example.refresh.Fragment.FoodInfoFragment;
@@ -41,7 +45,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class MealLogActivity extends AppCompatActivity implements SearchResultsFragment.OnSearchResultsFragmentListener, SelectedFoodsFragment.OnSelectedFoodsFragmentListener, FoodInfoFragment.OnFoodInfoFragmentListener {
@@ -65,16 +68,28 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     private Button logMealBtn;
     private LocalDate mealDate;
     private LocalTime mealTime;
+    private EditText notesET;
     private BottomNavigationView bottomNavigationView;
+    private boolean inEditMode;
+    private LocalDate oldDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_log);
 
+        inEditMode = getIntent().getBooleanExtra("edit_mode", false);
+
+
         applyWindowInsets();
-        initializeUI();
         setupBottomNavigationMenu();
+        initializeUI();
+
+        if (!inEditMode)
+            initializeLogModeUI();
+        else {
+            initializeEditModeUI();
+        }
     }
 
     public void onAddingToSelectedFoods(ListItem<Food> addedFood) {
@@ -112,35 +127,105 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
      * Initializes UI components and sets event listeners.
      */
     private void initializeUI() {
+        initializeViews();
+        initializeToolbar();
+        initializeButtons();
+        initializeFragments();
+        initializeSearchInteraction();
+        setupDatePickerMenu();
+        initializeLogButton();
+    }
+
+    private void initializeLogModeUI() {
+        initializeDateTimeViews();
+    }
+
+    private void initializeEditModeUI() {
+        logMealBtn.setText(R.string.save_changes);
+
+        meal = (Meal) getIntent().getSerializableExtra("meal");
+        oldDate = meal.getDate();
+
+        if (meal != null) {
+            mealDate = meal.getDate();
+            mealTime = meal.getTime();
+            title.setText(Meal.getMealLogTitle(mealDate, mealTime));
+            updateMealDate(mealDate);
+            notesET.setText(meal.getNotes());
+
+            ArrayList<Integer> mealFoodIDs = meal.getFoodIDs();
+            parseMealFoods(mealFoodIDs, meal.getServingSizes());
+            ArrayList<ListItem<Food>> foodListItems = populateSelectedFoods();
+
+            selectedFoodsFragment = newInstance(foodListItems);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.selected_foods_fragment_container, selectedFoodsFragment)
+                    .commit();
+        }
+    }
+
+    private void initializeViews() {
+        // Toolbar
         title = findViewById(R.id.toolbarTitle);
-        title.setText(Meal.getMealLogTitle(LocalDate.now(), LocalTime.now()));
+
+        // Date & Time views
         mealDateAndTimeTV = findViewById(R.id.mealDateAndTimeTV);
-        updateMealDate(LocalDate.now());
 
+        // Buttons
         extraButton = findViewById(R.id.extra_button);
-        extraButton.setImageResource(R.drawable.ic_calendar);
-
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-
         backArrow = findViewById(R.id.backArrow);
-        backArrow.setImageResource(R.drawable.ic_clear_all);
-
-        searchBarET = findViewById(R.id.searchEditText);
         clearButton = findViewById(R.id.clearButton);
         logMealBtn = findViewById(R.id.btn_log_meal);
-        searchResultsContainer = findViewById(R.id.search_results_fragment_container);
 
-        // Initialize the SelectedFoodsFragment of the Meal Log Activity
+
+        // Fragments containers and search bar
+        searchResultsContainer = findViewById(R.id.search_results_fragment_container);
         selectedFoodsContainer = findViewById(R.id.selected_foods_fragment_container);
+        foodInfoFragmentContainer = findViewById(R.id.food_info_fragment_container);
+        searchBarET = findViewById(R.id.searchEditText);
+
+        // Notes
+        notesET = findViewById(R.id.notesEditText);
+    }
+
+    private void initializeToolbar() {
+        // Now the title view is already found in initializeViews()
+        title.setText(Meal.getMealLogTitle(LocalDate.now(), LocalTime.now()));
+    }
+
+    private void initializeDateTimeViews() {
+        // mealDateAndTimeTV is already initialized
+        updateMealDate(LocalDate.now());
+    }
+
+    private void initializeButtons() {
+        // Set button resources and images
+        extraButton.setImageResource(R.drawable.ic_calendar);
+    }
+
+    private void initializeLogButton() {
+        if (!inEditMode) {
+            logMealBtn.setOnClickListener(v -> logMeal());
+            backArrow.setImageResource(R.drawable.ic_clear_all);
+            backArrow.setOnClickListener(v -> clearAll());
+        }
+        else {
+            logMealBtn.setOnClickListener(v -> updateMeal());
+            backArrow.setOnClickListener(v -> finish());
+        }
+    }
+
+    private void initializeFragments() {
+        // Initialize fragments using the pre-found container views
         selectedFoodsFragment = new SelectedFoodsFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.selected_foods_fragment_container, selectedFoodsFragment)
                 .commit();
+    }
 
-        foodInfoFragmentContainer = findViewById(R.id.food_info_fragment_container);
-
+    private void initializeSearchInteraction() {
+        // Set up search bar click and text change listeners
         searchBarET.setOnClickListener(v -> clearButton.setVisibility(View.VISIBLE));
-
         searchBarET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -153,17 +238,9 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
                 performSearch();
             }
         });
-
-        clearButton.setOnClickListener(v -> {
-            cancelSearchInteraction();
-        });
-
-        logMealBtn.setOnClickListener(v -> {
-            logMeal();
-        });
-
-        setupDatePickerMenu();
+        clearButton.setOnClickListener(v -> cancelSearchInteraction());
     }
+
 
     private void setupDatePickerMenu() {
         MaterialDatePicker.Builder<Long> dateBuilder = MaterialDatePicker.Builder.datePicker()
@@ -350,7 +427,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     public void addFoodToSelectedFoods(ListItem<Food> addedFood) {
         ListItem<Food> parsedFood = parseSelectedFood(addedFood.getModel());
-        int servingSize = exsitsInSelectedFoods(parsedFood.getModel().getId());
+        int servingSize = existsInSelectedFoods(parsedFood.getModel().getId());
         if (servingSize != -1) {
             selectedFoodsFragment.removeFoodFromSelectedFoodsByFoodID(parsedFood.getModel().getId());
             parsedFood.getModel().setServingSize(parsedFood.getModel().getServingSize() + servingSize);
@@ -363,7 +440,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         selectedFoodsFragment.removeFoodFromSelectedFoods(position);
     }
 
-    private int exsitsInSelectedFoods(int id) {
+    private int existsInSelectedFoods(int id) {
         for (ListItem<Food> food : selectedFoodsFragment.getSelectedFoods()) {
             if (food.getModel().getId() == id)
                 return food.getModel().getServingSize();
@@ -380,9 +457,67 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         view.clearFocus(); // Remove focus from EditText
     }
 
-    private void logMeal() {
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
+    private ArrayList<ListItem<Food>> populateSelectedFoods() {
+        ArrayList<ListItem<Food>> parsedFoodItems = new ArrayList<>();
+        for (Food food : mealFoods) {
+            ListItem<Food> foodItem = parseSelectedFood(food);
+            parsedFoodItems.add(foodItem);
+        }
 
+        return parsedFoodItems;
+    }
+
+    private void parseMealFoods(ArrayList<Integer> mealFoodIDs, ArrayList<Integer> mealServingSizes) {
+        mealFoods = new ArrayList<>();
+        for (int i = 0; i < mealFoodIDs.size(); i++) {
+            int foodID = mealFoodIDs.get(i);
+            Food food = FoodsTable.getFoodByID(this, foodID);
+            if (food != null) {
+                food.setServingSize(mealServingSizes.get(i));
+                mealFoods.add(food);
+            }
+        }
+    }
+
+    private void logMeal() {
+        meal = getFinalMealModel();
+
+        if (!meal.getMealFoods(this).isEmpty()) {
+            DatabaseHelper dbHelper = new DatabaseHelper(this);
+            dbHelper.insert(DatabaseHelper.Tables.MEALS, meal);
+            dbHelper.close();
+
+            Toast.makeText(this, "Meal logged!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else {
+            Toast.makeText(this, "Can't Log an Empty Meal", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void updateMeal() {
+        meal = getFinalMealModel();
+
+        if (!meal.getMealFoods(this).isEmpty()) {
+            DatabaseHelper dbHelper = new DatabaseHelper(this);
+            dbHelper.editRecords(DatabaseHelper.Tables.MEALS, meal, MealsTable.Columns.MEAL_ID, new String[]{String.valueOf(meal.getId())});
+            dbHelper.close();
+
+            Toast.makeText(this, "Meal Updated!", Toast.LENGTH_SHORT).show();
+
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("meal", meal);
+            resultIntent.putExtra("adapter_position", getIntent().getIntExtra("adapter_position", -1));
+            resultIntent.putExtra("old_date", oldDate);
+            setResult(Activity.RESULT_OK, resultIntent);
+            finish();
+        }
+        else {
+            Toast.makeText(this, "Can't Log an Empty Meal", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private Meal getFinalMealModel() {
         setMealFoods();
         ArrayList<Integer> mealFoodIDs = new ArrayList<>();
         ArrayList<Integer> mealServingSizes = new ArrayList<>();
@@ -392,18 +527,14 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         }
 
         String mealType = Meal.determineMealType(mealTime);
-        String notes = "";
+        String notes = String.valueOf(notesET.getText());
 
-        meal = new Meal(mealDate, mealTime, mealType, notes, mealFoodIDs, mealServingSizes);
-        dbHelper.insert(DatabaseHelper.Tables.MEALS, meal);
-        dbHelper.close();
-
-        Toast.makeText(this, "Meal logged!", Toast.LENGTH_SHORT).show();
-        finish();
+        return new Meal(meal.getId(), mealDate, mealTime, mealType, notes, mealFoodIDs, mealServingSizes, meal.getUserID());
     }
 
     public void setMealFoods() {
         ArrayList<ListItem<Food>> foodItemsList = selectedFoodsFragment.getSelectedFoods();
+        mealFoods = new ArrayList<>();
         for (ListItem<Food> foodItem : foodItemsList) {
             Food food = foodItem.getModel();
             mealFoods.add(food);
@@ -411,6 +542,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     }
 
     private void setupBottomNavigationMenu() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_today) {
@@ -432,8 +564,24 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         bottomNavigationView.setSelectedItemId(R.id.nav_log);
     }
 
+    private void clearAll() {
+        searchBarET.setText("");
+        hideSearchResults();
+        hideKeyboard(searchBarET);
+        selectedFoodsFragment.clearSelectedFoods();
+        updateMealDate(LocalDate.now());
+        updateMealTime(LocalTime.now());
+        notesET.setText("");
+    }
+
     protected void onResume() {
         super.onResume();
         bottomNavigationView.setSelectedItemId(R.id.nav_log);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

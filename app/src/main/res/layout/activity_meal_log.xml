@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     android:padding="@dimen/padding_medium"
     tools:context=".Activity.MealLogActivity">
 
@@ -15,90 +14,114 @@
         android:id="@+id/food_info_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <include
-        layout="@layout/basic_nav_toolbar"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/basic_nav_toolbar" />
 
     <TextView
         android:id="@+id/mealDateAndTimeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meal Date Goes Here"
-        android:textColor="@color/textPrimary"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
         android:padding="@dimen/padding_small"
-        android:layout_marginVertical="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_medium"/>
+        android:text="Meal Date/Time Go Here"
+        android:textColor="@color/textPrimary" />
 
     <!-- Search Bar -->
     <include
-        layout="@layout/search_bar"
-        android:id="@+id/search_bar" />
+        android:id="@+id/search_bar"
+        layout="@layout/search_bar" />
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/search_results_fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="10dp"
-            android:visibility="gone"
-            android:background="@null" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include
-                layout="@layout/fragment_macronutrient"
-                android:id="@+id/macronutrient_fragment" />
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/search_results_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:elevation="10dp"
+                android:visibility="gone" />
 
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Selected Foods"
-               android:textColor="@color/textPrimary"
-               android:textSize="@dimen/text_size_xxlarge"
-               android:padding="@dimen/padding_small"
-               android:layout_marginTop="@dimen/margin_small"
-               android:paddingStart="@dimen/padding_large"/>
+            <include
+                android:id="@+id/macronutrient_fragment"
+                layout="@layout/fragment_macronutrient" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:padding="@dimen/padding_small"
+                android:paddingStart="@dimen/padding_large"
+                android:text="Selected Foods"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_xxlarge" />
 
             <!-- Fragment Container -->
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/selected_foods_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="310dp"
                 android:background="@drawable/card_background" />
 
-            <Button
-                android:id="@+id/btn_log_meal"
-                android:layout_width="200dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Log"
-                android:textStyle="bold"
-                android:padding="@dimen/padding_medium_large"
-                android:layout_gravity="center"
-                android:textSize="@dimen/text_size_xxlarge"
-                android:layout_marginVertical="@dimen/margin_large"
-                android:backgroundTint="@color/my_darker_blue"
-                android:textColor="@color/buttonText"/>
+                android:layout_marginTop="@dimen/margin_small"
+                android:padding="@dimen/padding_small"
+                android:paddingStart="@dimen/padding_large"
+                android:text="Notes"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_xxlarge" />
 
-            <!-- Bottom Navigation -->
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
+            <EditText
+                android:id="@+id/notesEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:background="@drawable/card_background"
-                app:itemIconTint="@color/iconTint"
-                app:itemTextColor="@color/textSecondary"
-                app:menu="@menu/bottom_nav_menu"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="@dimen/margin_small"/>
+                android:gravity="start|top"
+                android:hint="Leave any notes here..."
+                android:padding="@dimen/padding_large"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_large" />
+
         </LinearLayout>
-    </FrameLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_log_meal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="@dimen/margin_medium"
+        android:backgroundTint="@color/my_darker_blue"
+        android:padding="@dimen/padding_medium_large"
+        android:text="Log"
+        android:textColor="@color/buttonText"
+        android:textSize="@dimen/text_size_xxlarge"
+        android:textStyle="bold" />
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/card_background"
+        app:itemIconTint="@color/iconTint"
+        app:itemTextColor="@color/textSecondary"
+        app:menu="@menu/bottom_nav_menu" />
+
 </LinearLayout>

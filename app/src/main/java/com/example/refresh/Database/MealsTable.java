@@ -249,4 +249,10 @@ public class MealsTable {
 
         return waterIntakeMeal != null ? waterIntakeMeal.getServingSizes().get(0) : 0;
     }
+
+    public static Meal getMealByID(Context context, int mealID) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        String selection = "meal_id = ?";
+        return dbHelper.getRecord(DatabaseHelper.Tables.MEALS, Columns.MEAL_ID, DatabaseHelper.toStringArray(mealID));
+    }
 }

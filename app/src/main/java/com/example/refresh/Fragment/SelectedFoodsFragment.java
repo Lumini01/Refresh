@@ -24,14 +24,14 @@ import java.util.ArrayList;
 public class SelectedFoodsFragment extends Fragment {
 
     public interface OnSelectedFoodsFragmentListener {
+
         void onNavigateToFoodInfo(Food food);
     }
-
     private SelectedFoodsFragment.OnSelectedFoodsFragmentListener fragmentListener;
+
     private RecyclerView recyclerView;
     private FoodSelectionsAdapter adapter;
     private ArrayList<ListItem<Food>> selectedFoods;
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -102,19 +102,19 @@ public class SelectedFoodsFragment extends Fragment {
     }
 
     // Add food to the selected foods list
+
     public void addFoodToSelectedFoods(ListItem<Food> food) {
         selectedFoods.add(food);  // Update the list in fragment
         adapter.addItem(food, selectedFoods.size());  // Notify adapter
     }
-
     // Remove food from the selected foods list
+
     public void removeFoodFromSelectedFoods(int position) {
         if (position >= 0 && position < selectedFoods.size()) {
             selectedFoods.remove(position);  // Update the list in fragment
             adapter.removeItem(position);  // Notify adapter to remove item
         }
     }
-
     public void removeFoodFromSelectedFoodsByFoodID(int foodID) {
         int position = 0;
 
@@ -127,6 +127,11 @@ public class SelectedFoodsFragment extends Fragment {
 
         selectedFoods.remove(position);  // Update the list in fragment
         adapter.removeItem(position);  // Notify adapter to remove item
+    }
+
+    public void clearSelectedFoods() {
+        selectedFoods.clear();
+        adapter.clearAll();
     }
 
     public void navigateToFoodInfo(Food food) {

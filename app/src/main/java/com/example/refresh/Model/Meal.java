@@ -465,8 +465,8 @@ public class Meal implements Serializable {
     }
 
 
-    public String getMealDescription() {
-        return getStringDate() + ", " + getStringTime();
+    public String getMealDescription(Context context) {
+        return getStringDate() + " | " + getStringTime() + "  ✦  " + getCalories(context);
     }
 
     public static String getCurrentDateParsed() {

@@ -26,13 +26,12 @@
     <!-- Scrollable Content (Logo or Image) -->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_vertical|start"
         app:srcCompat="@mipmap/ic_launcher_brand_foreground"
-        android:padding="0dp"
-        android:scaleX="1.4"
-        android:scaleY="1.4"/>
+        android:scaleX="1.5"
+        android:scaleY="1.5"/>
 
     <ImageButton
         android:id="@+id/notificationButton"
@@ -43,11 +42,11 @@
         android:padding="@dimen/padding_xsmall"
         android:layout_marginVertical="@dimen/margin_xsmall"
         android:layout_gravity="end"
-        android:layout_marginEnd="@dimen/margin_medium_large"
-        android:layout_marginStart="@dimen/margin_xsmall"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_medium"
         app:tint="@color/iconTint"
-        android:scaleY="0.75"
-        android:scaleX="0.75"/>
+        android:scaleY="1.25"
+        android:scaleX="1.25"/>
 
     <ImageButton
         android:id="@+id/profileButton"
@@ -59,8 +58,8 @@
         android:layout_margin="@dimen/margin_xsmall"
         android:layout_gravity="end"
         app:tint="@color/iconTint"
-        android:scaleY="0.75"
-        android:scaleX="0.75"/>
+        android:scaleY="1.25"
+        android:scaleX="1.25"/>
 
   </androidx.appcompat.widget.Toolbar>
 
@@ -258,7 +257,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="X kg"
+              android:text="0 kg"
               android:gravity="center"
               android:textColor="@color/textSecondary"
               android:textSize="@dimen/text_size_xxlarge" />
