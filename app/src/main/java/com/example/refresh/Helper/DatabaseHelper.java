@@ -192,6 +192,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null; // Return null if no record is found
     }
 
+    public <T> T getRecord(Tables table, Enum<?>[] columnEnum, String[] selectionArgs) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = "";
+
+        for (int i=0 ; i<columnEnum.length ; i++) {
+            selection += " AND " + getEnumColumnName(columnEnum[i]) + " = ?";
+        }
+
+        Cursor cursor = null;
+
+        try {
+            cursor = db.query(table.getTableName(), null, selection, selectionArgs, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                return createRecord(cursor, table);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return null; // Return null if no record is found
+    }
+
     // Retrieve a single column value from a record in the database
     public <T> T getFromRecordByIndex(Tables table, Enum<?> columnEnum, int index) {
         SQLiteDatabase db = this.getReadableDatabase();

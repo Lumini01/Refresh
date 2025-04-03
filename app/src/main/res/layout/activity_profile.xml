@@ -93,7 +93,7 @@
                         android:id="@+id/profilePicture"
                         android:layout_width="@dimen/icon_size_large"
                         android:layout_height="@dimen/icon_size_large"
-                        android:src="@drawable/ic_placeholder"
+                        android:src="@drawable/ic_profile"
                         android:contentDescription="Profile Picture"
                         android:layout_marginEnd="@dimen/padding_medium" />
 

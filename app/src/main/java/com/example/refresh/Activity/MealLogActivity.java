@@ -529,7 +529,11 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         String mealType = Meal.determineMealType(mealTime);
         String notes = String.valueOf(notesET.getText());
 
-        return new Meal(meal.getId(), mealDate, mealTime, mealType, notes, mealFoodIDs, mealServingSizes, meal.getUserID());
+        int id = 0;
+        if (meal != null)
+            return new Meal(meal.getId(), mealDate, mealTime, mealType, notes, mealFoodIDs, mealServingSizes, meal.getUserID());
+
+        return new Meal(mealDate, mealTime, mealType, notes, mealFoodIDs, mealServingSizes);
     }
 
     public void setMealFoods() {

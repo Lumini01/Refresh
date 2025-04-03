@@ -63,15 +63,58 @@
 
   </androidx.appcompat.widget.Toolbar>
 
-  <TextView
-      android:id="@+id/dateTitleTV"
-      android:layout_width="wrap_content"
+  <LinearLayout
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Today's Summary"
-      android:textColor="@color/textPrimary"
-      android:textSize="@dimen/text_size_title"
-      android:padding="@dimen/padding_medium"
-      android:layout_margin="@dimen/margin_medium"/>
+      android:orientation="horizontal"
+      android:paddingEnd="@dimen/padding_small"
+      android:weightSum="1">
+
+    <TextView
+        android:id="@+id/dateTitleTV"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Thu.│ 03.04.2025"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        android:paddingVertical="@dimen/padding_medium"
+        android:paddingStart="@dimen/padding_small"
+        android:layout_margin="@dimen/margin_small"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/card_background"
+        android:layout_gravity="center|end">
+
+      <ImageButton
+          android:id="@+id/lastSummaryButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_back_button"
+          android:background="@drawable/circle_button"
+          android:backgroundTint="@color/my_darker_blue"
+          app:tint="@color/colorPrimary"
+          android:padding="@dimen/padding_medium"
+          android:layout_marginEnd="@dimen/margin_medium"
+          android:layout_gravity="center|end" />
+
+      <ImageButton
+          android:id="@+id/nextSummaryButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_forward_button"
+          android:background="@drawable/circle_button"
+          android:backgroundTint="@color/my_darker_blue"
+          app:tint="@color/colorPrimary"
+          android:padding="@dimen/padding_medium"
+          android:layout_gravity="center|end"/>
+
+    </LinearLayout>
+
+  </LinearLayout>
 
   <ScrollView
       android:layout_width="match_parent"
@@ -116,9 +159,9 @@
 
       <com.google.android.material.divider.MaterialDivider
           android:layout_width="match_parent"
-          android:layout_height="3dp"
+          android:layout_height="2dp"
           app:dividerColor="@color/dividerColorLight"
-          android:layout_marginVertical="@dimen/margin_medium"
+          android:layout_marginVertical="@dimen/margin_small"
           android:layout_marginHorizontal="@dimen/margin_small" />
 
       <!-- Quick Actions Section -->
@@ -160,6 +203,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/log_water_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

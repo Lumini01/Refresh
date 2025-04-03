@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:layout_marginHorizontal="64dp"
-        android:layout_marginVertical="@dimen/default_margin"
+        android:layout_marginVertical="64dp"
         android:text="Continue" />
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
-        android:text=""
+        android:text="Continue in 3 ..."
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/white"

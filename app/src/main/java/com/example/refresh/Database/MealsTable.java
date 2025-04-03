@@ -255,4 +255,5 @@ public class MealsTable {
         String selection = "meal_id = ?";
         return dbHelper.getRecord(DatabaseHelper.Tables.MEALS, Columns.MEAL_ID, DatabaseHelper.toStringArray(mealID));
     }
+
 }
