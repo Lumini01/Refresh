@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -132,12 +135,24 @@ public class Progress extends AppCompatActivity {
             previousWeek();
             updateWeekDates();
             refreshActivity();
+
+            nextWeekButton.setEnabled(true);
         });
 
         nextWeekButton.setOnClickListener(v -> {
-            nextWeek();
-            updateWeekDates();
-            refreshActivity();
+            if (currentWeekStart.plusWeeks(1).isBefore(LocalDate.now())) {
+                nextWeek();
+                updateWeekDates();
+                refreshActivity();
+            }
+            else {
+                Toast.makeText(this, "Cant view future weeks.", Toast.LENGTH_SHORT).show();
+                nextWeekButton.setEnabled(false);
+
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    nextWeekButton.setEnabled(true);
+                }, 2000);
+            }
         });
     }
 
@@ -335,9 +350,7 @@ public class Progress extends AppCompatActivity {
 
 
     private void updateDaySummaries() {
-        LocalDate weekStart = currentWeekStart;
-        LocalDate weekEnd = getCurrentWeekEnd();
-        daySummaries = dailySummaryHelper.getSummariesBetween(weekStart, weekEnd);
+        daySummaries = dailySummaryHelper.getSummariesBetween(currentWeekStart, getCurrentWeekEnd());
     }
 
     private void setWeekMeals(LocalDate weekStart, LocalDate weekEnd) {

@@ -130,7 +130,7 @@ public class Login extends AppCompatActivity {
                 updateActiveUser();
             }
 
-            updateUserSP();
+            replaceUserSP();
 
             showToast("Login Successful!");
             clearErrors();
@@ -208,19 +208,13 @@ public class Login extends AppCompatActivity {
         editor.apply();
     }
 
-    private void updateUserSP() {
+    private void replaceUserSP() {
         SharedPreferences appPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = appPreferences.edit();
 
         String loggedUserSPName = "User" + user.getID() + "Preferences";
         editor.putString("loggedUserSPName", loggedUserSPName);
+        editor.putInt("loggedUserID", user.getID());
         editor.apply();
-
-        // Create a new SharedPreferences file for the logged-in user
-        SharedPreferences userPreferences = getSharedPreferences(loggedUserSPName, MODE_PRIVATE);
-
-        SharedPreferences.Editor userEditor = userPreferences.edit();
-        userEditor.putInt("userID", user.getID());
-        userEditor.apply();
     }
 }

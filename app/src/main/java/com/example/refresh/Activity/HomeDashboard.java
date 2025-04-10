@@ -2,11 +2,14 @@ package com.example.refresh.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +18,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.refresh.Helper.DailySummaryHelper;
 import com.example.refresh.Helper.WaterLogHelper;
+import com.example.refresh.Model.DaySummary;
 import com.example.refresh.R;
 import com.example.refresh.Start;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,10 +33,13 @@ public class HomeDashboard extends AppCompatActivity {
 
     private TextView title;
     private Toolbar mainToolbar;
+    private LocalDate date;
+    private DaySummary daySummary;
     private ImageButton nextSummary;
     private ImageButton lastSummary;
     private LinearLayout logWaterButton;
     private BottomNavigationView bottomNavigationView;
+    private DailySummaryHelper dailySummaryHelper;
     private WaterLogHelper waterLogHelper;
 
     @Override
@@ -47,6 +55,7 @@ public class HomeDashboard extends AppCompatActivity {
             return insets;
         });
 
+        date = LocalDate.now();
         waterLogHelper = new WaterLogHelper(this);
 
         setUpUI();
@@ -60,6 +69,8 @@ public class HomeDashboard extends AppCompatActivity {
     }
 
     private void setUpUI() {
+        updateDaySummary();
+
         initializeViews();
         initializeUIData();
         setUpListeners();
@@ -75,16 +86,30 @@ public class HomeDashboard extends AppCompatActivity {
     }
 
     private void initializeUIData() {
-        setTitle(LocalDate.now());
+        setTitle(date);
     }
 
     private void setUpListeners() {
         nextSummary.setOnClickListener(v -> {
+            if (date.isBefore(LocalDate.now())) {
+                date = date.plusDays(1);
+                refreshUI();
+            }
+            else {
+                Toast.makeText(this, "Cant view future dates.", Toast.LENGTH_SHORT).show();
+                nextSummary.setEnabled(false);
 
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    nextSummary.setEnabled(true);
+                }, 2000);
+            }
         });
 
         lastSummary.setOnClickListener(v -> {
+            date = date.minusDays(1);
+            refreshUI();
 
+            nextSummary.setEnabled(true);
         });
 
         logWaterButton.setOnClickListener(v -> {
@@ -112,10 +137,6 @@ public class HomeDashboard extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             }
-//            else if (itemId == R.id.nav_recipes) {
-//                // Handle recipes click
-//                return true;
-//            }
 
             return false;
         });
@@ -133,7 +154,19 @@ public class HomeDashboard extends AppCompatActivity {
     }
 
     private void refreshUI() {
+        setTitle(date);
+        updateDaySummary();
+        refreshNutritionFragment();
+    }
 
+    private void refreshNutritionFragment() {
+
+    }
+
+    private void updateDaySummary() {
+        if (dailySummaryHelper == null)
+            dailySummaryHelper = new DailySummaryHelper(this);
+        daySummary = dailySummaryHelper.getDailySummary(date);
     }
 
     protected void onResume() {

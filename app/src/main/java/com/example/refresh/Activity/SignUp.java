@@ -1,6 +1,7 @@
 package com.example.refresh.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -22,6 +23,9 @@ import com.example.refresh.Start;
 import com.example.refresh.Model.UserInfo;
 import com.example.refresh.Model.ErrorMessage;
 import com.example.refresh.Helper.ValidationHelper;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * SignUp Activity - This screen handles user registration by allowing them to enter
@@ -137,6 +141,7 @@ public class SignUp extends AppCompatActivity {
 
             // Clear input errors and navigate to Login activity
             clearInputErrors();
+            createUserSP();
             startActivity(new Intent(SignUp.this, Login.class));
         } else {
             showToast("Unexpected Signup Error.");
@@ -206,5 +211,20 @@ public class SignUp extends AppCompatActivity {
      */
     private void setUpLogoClickListener() {
         logo.setOnClickListener(view -> startActivity(new Intent(SignUp.this, Start.class)));
+    }
+
+    private void createUserSP() {
+        String userSPName = "User" + user.getID() + "Preferences";
+
+        // Create a new SharedPreferences file for the logged-in user
+        SharedPreferences userPreferences = getSharedPreferences(userSPName, MODE_PRIVATE);
+
+        SharedPreferences.Editor userEditor = userPreferences.edit();
+        userEditor.putInt("userID", user.getID());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = LocalDate.now().format(formatter);
+        userEditor.putString("startDate", formattedDate);
+        userEditor.apply();
     }
 }

@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -56,7 +58,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     private TextView title;
     private TextView mealDateAndTimeTV;
     private ImageButton backArrow;
-    private ImageButton extraButton;
+    private ImageButton datePickerButton;
     private EditText searchBarET;
     private ImageButton clearButton;
     private FragmentContainerView searchResultsContainer;
@@ -172,7 +174,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         mealDateAndTimeTV = findViewById(R.id.mealDateAndTimeTV);
 
         // Buttons
-        extraButton = findViewById(R.id.extra_button);
+        datePickerButton = findViewById(R.id.extra_button);
         backArrow = findViewById(R.id.backArrow);
         clearButton = findViewById(R.id.clearButton);
         logMealBtn = findViewById(R.id.btn_log_meal);
@@ -200,7 +202,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     private void initializeButtons() {
         // Set button resources and images
-        extraButton.setImageResource(R.drawable.ic_calendar);
+        datePickerButton.setImageResource(R.drawable.ic_calendar);
     }
 
     private void initializeLogButton() {
@@ -253,7 +255,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         MaterialDatePicker<Long> datePicker = dateBuilder.build();
 
-        extraButton.setOnClickListener(v -> {
+        datePickerButton.setOnClickListener(v -> {
             datePicker.show(getSupportFragmentManager(), "DATE_PICKER");
         });
 
@@ -304,7 +306,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         // (If you already disallowed future dates in the date picker, this might never happen.)
         if (selectedDate.isAfter(today)) {
             // For example, show an error or skip.
-            Toast.makeText(this, "Cannot pick a time for a future date.", Toast.LENGTH_SHORT).show();
+            handleInvalidDateTime();
             return;
         }
 
@@ -313,12 +315,21 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             LocalTime nowTime = LocalTime.now();
             if (selectedTime.isAfter(nowTime)) {
                 // Show an error or ignore
-                Toast.makeText(this, "Cannot pick a future time for today.", Toast.LENGTH_SHORT).show();
+                handleInvalidDateTime();
             } else {
                 // It's valid
                 updateMealTime(selectedTime);
             }
         }
+    }
+
+    private void handleInvalidDateTime() {
+        Toast.makeText(this, "Cannot pick a future time for today.", Toast.LENGTH_SHORT).show();
+        datePickerButton.setEnabled(false);
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            datePickerButton.setEnabled(true);
+        }, 2000);
     }
 
     private void updateMealDate(LocalDate date) {
