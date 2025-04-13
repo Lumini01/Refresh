@@ -46,7 +46,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="32sp"
-        android:background="@drawable/edit_text_background"/>
+        android:background="@drawable/edit_text_background" />
 
     <EditText
         android:id="@+id/etPhoneSignUp"

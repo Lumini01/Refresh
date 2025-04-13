@@ -36,11 +36,11 @@ public class SelectedFoodsFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Make sure the hosting activity implements the interface.
-        if (context instanceof SearchResultsFragment.OnSearchResultsFragmentListener) {
+        if (context instanceof SelectedFoodsFragment.OnSelectedFoodsFragmentListener) {
             fragmentListener = (SelectedFoodsFragment.OnSelectedFoodsFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnSearchResultsFragmentListener");
+                    + " must implement OnSelectedFoodsFragmentListener");
         }
     }
 

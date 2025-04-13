@@ -31,7 +31,9 @@ import android.widget.Toast;
 import com.example.refresh.Activity.HomeDashboard;
 import com.example.refresh.Activity.Login;
 import com.example.refresh.Activity.SignUp;
+import com.example.refresh.Fragment.UserDetailsFragment;
 import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Notification.NotificationScheduler;
 
 import java.util.ArrayList;
@@ -172,6 +174,11 @@ public class Start extends AppCompatActivity {
 
     private void navigateToHome() {
         Intent intent = new Intent(Start.this, HomeDashboard.class);
+        UserInfoHelper helper = new UserInfoHelper(this);
+
+        if (helper.getStartDate() == null || helper.getStartWeight() == 0 || helper.getWeight() == 0 || helper.getGoal().equals(""))
+            intent.putExtra("firstLog", true);
+
         startActivity(intent);
     }
     /**

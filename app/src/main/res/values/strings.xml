@@ -36,5 +36,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="save_changes">Save Changes</string>
+    <string name="empty_field_hint">____________</string>
+    <string name="user_details">User Details</string>
 
 </resources>

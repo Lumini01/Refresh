@@ -1,36 +1,42 @@
 package com.example.refresh.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentContainerView;
 
+import com.example.refresh.Fragment.UserDetailsFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
+import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Helper.WaterLogHelper;
 import com.example.refresh.Model.DaySummary;
 import com.example.refresh.R;
-import com.example.refresh.Start;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 // Home Dashboard activity which is the main activity of the app
-public class HomeDashboard extends AppCompatActivity {
+public class HomeDashboard extends AppCompatActivity implements UserDetailsFragment.OnUserDetailsFragmentListener {
 
+    private FragmentContainerView userDetailsFragmentContainer;
+    private UserDetailsFragment userDetailsFragment;
     private TextView title;
     private Toolbar mainToolbar;
     private LocalDate date;
@@ -38,9 +44,16 @@ public class HomeDashboard extends AppCompatActivity {
     private ImageButton nextSummary;
     private ImageButton lastSummary;
     private LinearLayout logWaterButton;
+    private LinearLayout logMealButton;
+    private LinearLayout logWeightButton;
+    private LinearLayout progressShortcutBtn;
     private BottomNavigationView bottomNavigationView;
+    private TextView weightProgressTV;
+    private TextView weightProgressValueTV;
     private DailySummaryHelper dailySummaryHelper;
     private WaterLogHelper waterLogHelper;
+    private ImageButton profileButton;
+    private UserInfoHelper userInfoHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +70,7 @@ public class HomeDashboard extends AppCompatActivity {
 
         date = LocalDate.now();
         waterLogHelper = new WaterLogHelper(this);
+        userInfoHelper = new UserInfoHelper(this);
 
         setUpUI();
 
@@ -66,27 +80,82 @@ public class HomeDashboard extends AppCompatActivity {
 
         // Setup Bottom Navigation
         setupBottomNavigationMenu();
+
+    }
+
+    public void onNavigateToUserDetails() {
+        int userId = getSharedPreferences("AppPreferences", MODE_PRIVATE).getInt("loggedUserID", -1);
+        if (userId != -1) {
+            userDetailsFragment = UserDetailsFragment.newInstance(UserDetailsFragment.States.FIRST_LOG.getStateName(), userId);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.user_details_container, userDetailsFragment)
+                    .commit();
+            userDetailsFragmentContainer.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void onExitUserDetailsFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .remove(userDetailsFragment)
+                .commit();
+        userDetailsFragmentContainer.setVisibility(View.GONE);
     }
 
     private void setUpUI() {
         updateDaySummary();
 
         initializeViews();
+
+        if (getIntent().getBooleanExtra("firstLog", false))
+            onNavigateToUserDetails();
+
         initializeUIData();
         setUpListeners();
         initializeFragments();
     }
 
     private void initializeViews() {
+        userDetailsFragmentContainer = findViewById(R.id.user_details_container);
         title = findViewById(R.id.dateTitleTV);
         mainToolbar = findViewById(R.id.toolbar);
         nextSummary = findViewById(R.id.nextSummaryButton);
         lastSummary = findViewById(R.id.lastSummaryButton);
-        logWaterButton = findViewById(R.id.log_water_layout);
+        logWaterButton = findViewById(R.id.waterLogButton);
+        logMealButton = findViewById(R.id.mealLogButton);
+        logWeightButton = findViewById(R.id.weightLogButton);
+        progressShortcutBtn = findViewById(R.id.progressShortcutButton);
+        profileButton = findViewById(R.id.profileButton);
+        weightProgressTV = findViewById(R.id.gain_lose_weight_tv);
+        weightProgressValueTV = findViewById(R.id.gain_lose_weight_value_tv);
     }
 
     private void initializeUIData() {
         setTitle(date);
+
+        if (userInfoHelper.getGoal().equals("lose")) {
+            String weightProgressTVValue = "Using Refresh You've Lost:";
+            weightProgressTV.setText(weightProgressTVValue);
+            String weightProgressValue = (userInfoHelper.getStartWeight() - userInfoHelper.getTargetWeight()) + " kg";
+            weightProgressValueTV.setText(weightProgressValue);
+        }
+        else if (userInfoHelper.getGoal().equals("gain")) {
+            String weightProgressTVValue = "Using Refresh You've Gained:";
+            weightProgressTV.setText(weightProgressTVValue);
+            String weightProgressValue = (userInfoHelper.getWeight() - userInfoHelper.getStartWeight()) + " kg";
+            weightProgressValueTV.setText(weightProgressValue);
+        }
+        else if (userInfoHelper.getGoal().equals("maintain")) {
+            int weightDelta = userInfoHelper.getWeight() - userInfoHelper.getStartWeight();
+            String weightProgressTVValue = "Your Weight is" + Math.abs(weightDelta) + " kg" + (weightDelta >= 0 ? " More" : " Less") + "Then When You Started";
+            weightProgressTV.setText(weightProgressTVValue);
+            weightProgressValueTV.setVisibility(View.GONE);
+        }
+        else if (userInfoHelper.getGoal().equals("gain_muscle")) {
+            int weightDelta = userInfoHelper.getWeight() - userInfoHelper.getStartWeight();
+            String weightProgressTVValue = "Your Weight is" + Math.abs(weightDelta) + " kg" + (weightDelta >= 0 ? " More" : " Less") + "Then When You Started";
+            weightProgressTV.setText(weightProgressTVValue);
+            weightProgressValueTV.setVisibility(View.GONE);
+        }
     }
 
     private void setUpListeners() {
@@ -114,6 +183,52 @@ public class HomeDashboard extends AppCompatActivity {
 
         logWaterButton.setOnClickListener(v -> {
             waterLogHelper.logWaterCup();
+        });
+
+        logMealButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeDashboard.this, MealLogActivity.class);
+            startActivity(intent);
+        });
+
+        userInfoHelper = new UserInfoHelper(this);
+        logWeightButton.setOnClickListener(v -> {
+            LayoutInflater inflater = LayoutInflater.from(this);
+            View customView = inflater.inflate(R.layout.dialog_custom, null);
+
+            final EditText customEditText = customView.findViewById(R.id.customEditText);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setView(customView)
+                    .setTitle("Enter Your Value")
+                    .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Retrieve the input when the positive button is pressed
+                            String userInput = customEditText.getText().toString().trim();
+                            if (!userInput.isEmpty()) {
+                                userInfoHelper.setWeight(Integer.parseInt(userInput));
+                            }
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+        progressShortcutBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeDashboard.this, Progress.class);
+            startActivity(intent);
+        });
+
+        profileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeDashboard.this, ProfileActivity.class);
+            startActivity(intent);
         });
     }
 

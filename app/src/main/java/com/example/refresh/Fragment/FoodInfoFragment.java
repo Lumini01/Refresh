@@ -129,11 +129,11 @@ public class FoodInfoFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Make sure the hosting activity implements the interface.
-        if (context instanceof SearchResultsFragment.OnSearchResultsFragmentListener) {
+        if (context instanceof FoodInfoFragment.OnFoodInfoFragmentListener) {
             fragmentListener = (FoodInfoFragment.OnFoodInfoFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnSearchResultsFragmentListener");
+                    + " must implement OnFoodInfoFragmentListener");
         }
     }
 
@@ -168,9 +168,7 @@ public class FoodInfoFragment extends Fragment {
                 food = new Food();
             }
         }
-        else {
-            food = new Food();
-        }
+        else food = new Food();
 
         initializeViews(view);
 
@@ -222,7 +220,7 @@ public class FoodInfoFragment extends Fragment {
 
         // 4. Spinner for Serving Options
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
-                android.R.layout.simple_spinner_item, food.isLiquid() ? liquidsOptions : solidServingOptions);adapter.setDropDownViewResource(android.R.layout.select_dialog_item);
+                R.layout.custom_spinner_item, food.isLiquid() ? liquidsOptions : solidServingOptions);
         adapter.setDropDownViewResource(R.layout.custom_spinner_item);
         spinnerServingOptions.setAdapter(adapter);
         spinnerServingOptions.setSelection(0); // Set the default selection to the first item

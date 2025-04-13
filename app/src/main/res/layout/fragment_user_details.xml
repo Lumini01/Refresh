@@ -1,0 +1,944 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
+
+    <include
+        layout="@layout/basic_nav_toolbar"
+        android:id="@+id/profile_fragment" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/personal_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/personal_info_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Information"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title"
+                    android:padding="@dimen/padding_small"
+                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+                <LinearLayout
+                    android:id="@+id/name_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Name" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/name_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Name..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="text"
+                        android:gravity="start"
+                        android:minEms="4"
+                        android:maxEms="8"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/weight_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Weight (kg)" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/weight_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:hint="Enter Weight..."
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/height_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Height (cm)" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/height_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Height..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/date_of_birth_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Date of Birth" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/date_of_birth_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Click Here..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="date"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:minEms="4"
+                        android:maxEms="6"/>
+                </LinearLayout>
+                
+                <LinearLayout
+                    android:id="@+id/gender_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Gender" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/gender_error_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* Must pick a gender"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/errorColor"
+                        android:layout_gravity="center"
+                        android:visibility="gone"/>
+
+                    <Spinner
+                        android:id="@+id/gender_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown"
+                        android:layout_gravity="end|center_vertical"
+                        android:background="@null"
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        tools:listitem="@layout/custom_spinner_item"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/account_details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/account_details_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Account Details"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title"
+                    android:padding="@dimen/padding_small"
+                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_large"/>
+
+                <LinearLayout
+                    android:id="@+id/email_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Email" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/email_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Email..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="textEmailAddress"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:gravity="start"
+                        android:minEms="4"
+                        android:maxEms="8"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/phone_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Phone" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/phone_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Phone..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="phone"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:gravity="start"
+                        android:minEms="4"
+                        android:maxEms="8"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pwd_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Password" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/pwd_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Password..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="textPassword"
+                        android:gravity="start"
+                        android:minEms="4"
+                        android:maxEms="8"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lifestyle_goal_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lifestyle &amp; Goal"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title"
+                    android:padding="@dimen/padding_small"
+                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_large"/>
+
+                <LinearLayout
+                    android:id="@+id/goal_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_medium"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_gravity="start|top"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxxlarge"
+                            android:text="Goal" />
+
+                        <TextView
+                            android:id="@+id/goal_error_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="* Must pick\n a goal"
+                            android:textSize="@dimen/text_size_large"
+                            android:textColor="@color/errorColor"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+
+                    <RadioGroup
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/goal_rg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="end|top"
+                        android:background="@null"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_large">
+
+                        <RadioButton
+                            android:id="@+id/lose_rBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lose Weight"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            android:textColor="@color/textPrimary"/>
+
+                        <RadioButton
+                            android:id="@+id/maintain_rBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Maintain Weight"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            android:textColor="@color/textPrimary"/>
+
+                        <RadioButton
+                            android:id="@+id/gain_rBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gain Weight"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            android:textColor="@color/textPrimary"/>
+
+                        <RadioButton
+                            android:id="@+id/gain_muscle_rBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gain Muscle Mass"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            android:textColor="@color/textPrimary"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/target_weight_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Target (kg)"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
+
+
+                    <EditText
+                        android:id="@+id/target_weight_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:hint="Enter Weight..."
+                        android:inputType="number"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_level_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_medium"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_gravity="start|top"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxxlarge"
+                            android:text="Activity Level" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"/>
+
+                        <Spinner
+                            android:id="@+id/activity_level_spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:spinnerMode="dropdown"
+                            android:layout_gravity="end|center_vertical"
+                            android:background="@null"
+                            android:padding="@dimen/padding_medium"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            tools:listitem="@layout/custom_spinner_item"/>
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/activity_level_error_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* Must pick an activity level"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/errorColor"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/diet_type_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_medium"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_gravity="start|top"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxxlarge"
+                            android:text="Diet Type" />
+
+                        <TextView
+                            android:id="@+id/diet_type_error_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="* Must pick\n a diet type"
+                            android:textSize="@dimen/text_size_large"
+                            android:textColor="@color/errorColor"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <RadioGroup
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/diet_type_rg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="end|top"
+                        android:background="@null"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_large">
+
+                        <RadioButton
+                            android:id="@+id/carnivore_rBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carnivore"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            android:textColor="@color/textPrimary"/>
+
+                        <RadioButton
+                            android:id="@+id/vegetarian_rBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vegetarian"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            android:textColor="@color/textPrimary"/>
+
+                        <RadioButton
+                            android:id="@+id/vegan_rBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vegan"
+                            android:textSize="@dimen/text_size_xxlarge"
+                            android:textColor="@color/textPrimary"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/goal_adjustment_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Adjust Daily Goal"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title"
+                    android:padding="@dimen/padding_small"
+                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_large"/>
+
+                <LinearLayout
+                    android:id="@+id/adjust_calories_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Calorie Goal (kcal)" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/adjust_calories_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/adjust_carbs_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Carbs Goal (g)" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/adjust_carbs_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/adjust_protein_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Protein Goal (g)" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/adjust_protein_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/adjust_fat_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Fat Goal (g)" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/adjust_fat_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/adjust_water_intake_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/card_background"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_gravity="start|center_vertical"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:text="Water Intake (ml)" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"/>
+
+
+                    <EditText
+                        android:id="@+id/adjust_water_intake_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter..."
+                        android:layout_gravity="end|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:maxEms="7"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -142,7 +142,9 @@ public class SignUp extends AppCompatActivity {
             // Clear input errors and navigate to Login activity
             clearInputErrors();
             createUserSP();
-            startActivity(new Intent(SignUp.this, Login.class));
+            Intent intent = new Intent(SignUp.this, Login.class);
+            intent.putExtra("firstLog", true);
+            startActivity(intent);
         } else {
             showToast("Unexpected Signup Error.");
         }
@@ -201,8 +203,8 @@ public class SignUp extends AppCompatActivity {
      */
     private void setUpLoginButton() {
         btLogin.setOnClickListener(view -> {
-                startActivity(new Intent(SignUp.this, Login.class));
-                finish();
+            startActivity(new Intent(SignUp.this, Login.class));
+            finish();
         });
     }
 

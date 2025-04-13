@@ -1,0 +1,36 @@
+<!-- res/layout/dialog_custom.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_large"
+    android:layout_margin="@dimen/margin_xlarge"
+    android:background="@drawable/card_background">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Your Weight:"
+        android:textColor="@color/textPrimary"
+        android:textSize="@dimen/text_size_title"
+        android:layout_gravity="center"
+        android:padding="@dimen/padding_small"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginVertical="@dimen/margin_large" />
+
+    <EditText
+        android:id="@+id/customEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Weight..."
+        android:inputType="number"
+        android:layout_gravity="center"
+        android:textColorHint="@color/textHint"
+        android:textColor="@color/textPrimary"
+        android:textSize="@dimen/text_size_xxxlarge"/>
+
+    <!-- Add more views if required -->
+
+</LinearLayout>

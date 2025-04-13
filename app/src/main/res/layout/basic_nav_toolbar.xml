@@ -7,7 +7,8 @@
     android:background="@color/colorPrimary"
     android:elevation="4dp"
     app:titleTextColor="@color/textPrimary"
-    android:layout_marginBottom="@dimen/margin_small">
+    android:layout_marginBottom="@dimen/margin_small"
+    android:padding="@dimen/padding_small">
 
     <!-- Back Arrow -->
     <ImageButton
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_size_xxlarge"
+        android:textSize="@dimen/text_size_xxxlarge"
         android:layout_gravity="center" />
 
     <!-- Gear Icon -->

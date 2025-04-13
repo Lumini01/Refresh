@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Root LinearLayout with a ScrollView inside -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:weightSum="0.9">
@@ -94,32 +94,35 @@
                     android:layout_height="wrap_content"
                     android:padding="4dp"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center">
 
                     <!-- Left View: Portion Amount Input -->
                     <EditText
                         android:id="@+id/etServingCount"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:gravity="center"
-                        android:inputType="numberDecimal"
+                        android:inputType="number"
                         android:text="1"
-                        android:textSize="@dimen/text_size_xlarge"
-                        android:background="@drawable/card_background"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:background="@drawable/custom_spinner_background"
                         android:layout_weight="4"
                         android:padding="@dimen/padding_small"
-                        android:layout_margin="@dimen/margin_small"/>
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginVertical="@dimen/margin_medium"/>
 
                     <!-- Right View: Dropdown for Serving Options -->
                     <Spinner
                         android:id="@+id/spinnerServingOptions"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:spinnerMode="dialog"
-                        android:background="@drawable/card_background"
                         android:layout_weight="1"
                         android:padding="@dimen/padding_small"
-                        android:layout_margin="@dimen/margin_small"/>
+                        android:layout_marginHorizontal="@dimen/margin_small"
+                        android:layout_marginVertical="@dimen/margin_small"
+                        tools:listitem="@layout/custom_spinner_item"/>
 
                 </LinearLayout>
 

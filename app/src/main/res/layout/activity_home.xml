@@ -11,6 +11,12 @@
     android:padding="@dimen/padding_medium"
     tools:context=".Activity.HomeDashboard">
 
+  <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/user_details_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone"/>
+
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
@@ -68,6 +74,7 @@
       android:layout_height="wrap_content"
       android:orientation="horizontal"
       android:paddingEnd="@dimen/padding_small"
+      android:layout_marginBottom="@dimen/margin_small"
       android:weightSum="1">
 
     <TextView
@@ -174,6 +181,7 @@
           android:layout_marginVertical="@dimen/margin_medium">
 
         <LinearLayout
+            android:id="@+id/mealLogButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -203,7 +211,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/log_water_layout"
+            android:id="@+id/waterLogButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -233,6 +241,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/weightLogButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -278,7 +287,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:src="@drawable/ic_scale"
-            android:contentDescription="Tips Icon"
+            android:contentDescription="Weight Icon"
             app:tint="@color/iconTint"/>
 
         <LinearLayout
@@ -288,6 +297,7 @@
             android:padding="16dp">
 
           <TextView
+              android:id="@+id/gain_lose_weight_tv"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Using Refresh You've Lost/Gained:"
@@ -297,8 +307,8 @@
               android:textStyle="bold"
               android:layout_marginBottom="8dp" />
 
-          <!-- Placeholder for health tip content -->
           <TextView
+              android:id="@+id/gain_lose_weight_value_tv"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="0 kg"
@@ -312,6 +322,7 @@
 
       <!-- Calendar Overview -->
       <LinearLayout
+          android:id="@+id/progressShortcutButton"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"

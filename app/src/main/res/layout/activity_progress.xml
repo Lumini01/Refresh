@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/card_background"
-        android:layout_marginHorizontal="@dimen/margin_medium">
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_small">
 
         <include
             layout="@layout/date_swipe_bar"

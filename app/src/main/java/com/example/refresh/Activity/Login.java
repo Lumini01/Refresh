@@ -188,6 +188,9 @@ public class Login extends AppCompatActivity {
      */
     private void navigateToHomeDashboard() {
         Intent intent = new Intent(Login.this, HomeDashboard.class);
+        if (getIntent().getExtras() != null) {
+            intent.putExtra("firstLog", getIntent().getBooleanExtra("firstLog", false));
+        }
         startActivity(intent);
         finish();
     }

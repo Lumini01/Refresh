@@ -455,5 +455,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             throw new IllegalArgumentException("Enum does not have a getColumnName method", e);
         }
     }
-
 }
