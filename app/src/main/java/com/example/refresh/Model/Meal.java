@@ -19,7 +19,7 @@ public class Meal implements Serializable {
     private LocalDate date;
     private LocalTime time; // 15-minute accuracy
     private String type; // breakfast, lunch, dinner, snack, etc.
-    private ArrayList<Integer> foodIDs; // List of food IDs (not Food objects)
+    private final ArrayList<Integer> foodIDs; // List of food IDs (not Food objects)
     private ArrayList<Integer> servingSizes; // List of food quantities in grams
     private int userID;
     private String notes; // Can be empty
@@ -446,10 +446,7 @@ public class Meal implements Serializable {
     }
 
     public static boolean determineIfWaterIntake(Meal meal) {
-        if (meal.foodIDs.size() == 1 && meal.foodIDs.get(0) == 144 && meal.time == null)
-            return true;
-
-        return false;
+        return meal.foodIDs.size() == 1 && meal.foodIDs.get(0) == 144 && meal.time == null;
     }
 
     public static String getDayOfWeek(LocalDate date) {

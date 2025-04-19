@@ -45,12 +45,12 @@ public class FoodInfoFragment extends Fragment {
 
     private Food food;
     private OnFoodInfoFragmentListener fragmentListener;
-    private ArrayList<String> solidServingOptions = new ArrayList<>(Arrays.asList(
+    private final ArrayList<String> solidServingOptions = new ArrayList<>(Arrays.asList(
             "Standard Serving (100g)", "Teaspoon (5g)", "Tablespoon (15g)",
             "Cup (240g)", "Pint (473g)", "Quart (946g)", "Custom (grams)"
     ));
 
-    private ArrayList<String> liquidsOptions = new ArrayList<>(Arrays.asList(
+    private final ArrayList<String> liquidsOptions = new ArrayList<>(Arrays.asList(
             "Standard Serving (100ml)", "Teaspoon (5ml)", "Tablespoon (15ml)", "Fluid Ounce (30ml)",
             "Cup (240ml)", "Pint (473ml)", "Quart (946ml)", "Custom (milliliters)"
     ));
@@ -132,7 +132,7 @@ public class FoodInfoFragment extends Fragment {
         if (context instanceof FoodInfoFragment.OnFoodInfoFragmentListener) {
             fragmentListener = (FoodInfoFragment.OnFoodInfoFragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(context
                     + " must implement OnFoodInfoFragmentListener");
         }
     }

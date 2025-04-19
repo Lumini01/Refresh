@@ -43,7 +43,7 @@ public class SearchResultsFragment extends Fragment {
         if (context instanceof OnSearchResultsFragmentListener) {
             fragmentListener = (OnSearchResultsFragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(context
                     + " must implement OnSearchResultsFragmentListener");
         }
     }

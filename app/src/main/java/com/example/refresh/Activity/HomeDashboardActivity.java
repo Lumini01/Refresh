@@ -21,7 +21,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 
-import com.example.refresh.Fragment.UserDetailsFragment;
+import com.example.refresh.Fragment.UserInfoFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
 import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Helper.WaterLogHelper;
@@ -33,10 +33,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 // Home Dashboard activity which is the main activity of the app
-public class HomeDashboard extends AppCompatActivity implements UserDetailsFragment.OnUserDetailsFragmentListener {
+public class HomeDashboardActivity extends AppCompatActivity implements UserInfoFragment.OnUserDetailsFragmentListener {
 
     private FragmentContainerView userDetailsFragmentContainer;
-    private UserDetailsFragment userDetailsFragment;
+    private UserInfoFragment userDetailsFragment;
     private TextView title;
     private Toolbar mainToolbar;
     private LocalDate date;
@@ -86,7 +86,7 @@ public class HomeDashboard extends AppCompatActivity implements UserDetailsFragm
     public void onNavigateToUserDetails() {
         int userId = getSharedPreferences("AppPreferences", MODE_PRIVATE).getInt("loggedUserID", -1);
         if (userId != -1) {
-            userDetailsFragment = UserDetailsFragment.newInstance(UserDetailsFragment.States.FIRST_LOG.getStateName(), userId);
+            userDetailsFragment = UserInfoFragment.newInstance(UserInfoFragment.States.FIRST_LOG.getStateName(), userId);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.user_details_container, userDetailsFragment)
                     .commit();
@@ -116,15 +116,15 @@ public class HomeDashboard extends AppCompatActivity implements UserDetailsFragm
 
     private void initializeViews() {
         userDetailsFragmentContainer = findViewById(R.id.user_details_container);
-        title = findViewById(R.id.dateTitleTV);
+        title = findViewById(R.id.date_title_tv);
         mainToolbar = findViewById(R.id.toolbar);
-        nextSummary = findViewById(R.id.nextSummaryButton);
-        lastSummary = findViewById(R.id.lastSummaryButton);
-        logWaterButton = findViewById(R.id.waterLogButton);
-        logMealButton = findViewById(R.id.mealLogButton);
-        logWeightButton = findViewById(R.id.weightLogButton);
-        progressShortcutBtn = findViewById(R.id.progressShortcutButton);
-        profileButton = findViewById(R.id.profileButton);
+        nextSummary = findViewById(R.id.next_summary_btn);
+        lastSummary = findViewById(R.id.last_summary_btn);
+        logWaterButton = findViewById(R.id.log_water_btn);
+        logMealButton = findViewById(R.id.log_meal_btn);
+        logWeightButton = findViewById(R.id.log_weight_btn);
+        progressShortcutBtn = findViewById(R.id.progress_shortcut_btn);
+        profileButton = findViewById(R.id.profile_btn);
         weightProgressTV = findViewById(R.id.gain_lose_weight_tv);
         weightProgressValueTV = findViewById(R.id.gain_lose_weight_value_tv);
     }
@@ -186,7 +186,7 @@ public class HomeDashboard extends AppCompatActivity implements UserDetailsFragm
         });
 
         logMealButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeDashboard.this, MealLogActivity.class);
+            Intent intent = new Intent(HomeDashboardActivity.this, MealLogActivity.class);
             startActivity(intent);
         });
 
@@ -222,12 +222,12 @@ public class HomeDashboard extends AppCompatActivity implements UserDetailsFragm
         });
 
         progressShortcutBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeDashboard.this, Progress.class);
+            Intent intent = new Intent(HomeDashboardActivity.this, ProgressActivity.class);
             startActivity(intent);
         });
 
         profileButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeDashboard.this, ProfileActivity.class);
+            Intent intent = new Intent(HomeDashboardActivity.this, ProfileActivity.class);
             startActivity(intent);
         });
     }
@@ -244,11 +244,13 @@ public class HomeDashboard extends AppCompatActivity implements UserDetailsFragm
                 // Handle home click
                 return true;
             } else if (itemId == R.id.nav_log) {
-                Intent intent = new Intent(HomeDashboard.this, MealLogActivity.class);
+                Intent intent = new Intent(HomeDashboardActivity.this, MealLogActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_progress) {
-                Intent intent = new Intent(HomeDashboard.this, Progress.class);
+                Intent intent = new Intent(HomeDashboardActivity.this, ProgressActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             }

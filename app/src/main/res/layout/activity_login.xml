@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/my_blue"
-    tools:context=".Activity.Login"
+    tools:context=".Activity.LoginActivity"
     android:padding="@dimen/padding_small">
 
 
     <TextView
-        android:id="@+id/msg"
+        android:id="@+id/title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Welcome Back!"
@@ -24,7 +24,7 @@
         android:textColor="@color/white"/>
 
     <EditText
-        android:id="@+id/etEmailLogin"
+        android:id="@+id/email_login_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -37,7 +37,7 @@
         android:background="@drawable/edit_text_background"/>
 
     <EditText
-        android:id="@+id/etPwdLogin"
+        android:id="@+id/pwd_login_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -50,15 +50,16 @@
         android:background="@drawable/edit_text_background"/>
 
     <Button
-        android:id="@+id/btLogin"
+        android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
         android:layout_margin="@dimen/default_margin"
-        android:textSize="32sp"/>
+        android:textSize="32sp"
+        android:textColor="@color/white"/>
 
     <CheckBox
-        android:id="@+id/rememberMeCheckbox"
+        android:id="@+id/remember_me_cb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Remember Me"
@@ -71,7 +72,7 @@
 
 
     <TextView
-        android:id="@+id/btSignUp"
+        android:id="@+id/sign_up_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Don't Have An Account? Sign Up."

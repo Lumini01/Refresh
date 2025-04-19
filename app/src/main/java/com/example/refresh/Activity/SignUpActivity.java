@@ -19,8 +19,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.R;
-import com.example.refresh.Start;
-import com.example.refresh.Model.UserInfo;
+import com.example.refresh.StartActivity;
+import com.example.refresh.Model.User;
 import com.example.refresh.Model.ErrorMessage;
 import com.example.refresh.Helper.ValidationHelper;
 
@@ -34,7 +34,7 @@ import java.time.format.DateTimeFormatter;
  * It also includes a login button to redirect to the login screen and a logo that
  * leads back to the Start activity.
  */
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     // UI Elements
     private TextView title;
@@ -44,8 +44,8 @@ public class SignUp extends AppCompatActivity {
     private ImageView logo;
 
     // User object and DB helper
-    private UserInfo user = new UserInfo();
-    private DatabaseHelper databaseHelper = new DatabaseHelper(this);
+    private final User user = new User();
+    private final DatabaseHelper databaseHelper = new DatabaseHelper(this);
     private SQLiteDatabase db;
 
     /**
@@ -75,13 +75,13 @@ public class SignUp extends AppCompatActivity {
      * Initialize all UI components.
      */
     private void initializeUI() {
-        etNameSignUp = findViewById(R.id.etNameSignUp);
-        etEmailSignUp = findViewById(R.id.etEmailSignUp);
-        etPhoneSignUp = findViewById(R.id.etPhoneSignUp);
-        etPwdSignUp = findViewById(R.id.etPwdSignUp);
-        etPwdConfSignUp = findViewById(R.id.etPwdConfSignUp);
-        btSignUp = findViewById(R.id.btSignUp);
-        btLogin = findViewById(R.id.btLogin);
+        etNameSignUp = findViewById(R.id.name_sign_up_et);
+        etEmailSignUp = findViewById(R.id.email_sign_up_et);
+        etPhoneSignUp = findViewById(R.id.phone_sign_up_et);
+        etPwdSignUp = findViewById(R.id.pwd_sign_up_et);
+        etPwdConfSignUp = findViewById(R.id.pwd_conf_sign_up_et);
+        btSignUp = findViewById(R.id.sign_up_btn);
+        btLogin = findViewById(R.id.login_tv);
         logo = findViewById(R.id.logo);
     }
 
@@ -142,7 +142,7 @@ public class SignUp extends AppCompatActivity {
             // Clear input errors and navigate to Login activity
             clearInputErrors();
             createUserSP();
-            Intent intent = new Intent(SignUp.this, Login.class);
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
             intent.putExtra("firstLog", true);
             startActivity(intent);
         } else {
@@ -166,7 +166,7 @@ public class SignUp extends AppCompatActivity {
      * @param message Message to display in the toast.
      */
     private void showToast(String message) {
-        Toast toast = Toast.makeText(SignUp.this, message, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
         toast.show();
     }
@@ -203,7 +203,7 @@ public class SignUp extends AppCompatActivity {
      */
     private void setUpLoginButton() {
         btLogin.setOnClickListener(view -> {
-            startActivity(new Intent(SignUp.this, Login.class));
+            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             finish();
         });
     }
@@ -212,7 +212,7 @@ public class SignUp extends AppCompatActivity {
      * Set up the logo click listener to navigate to the Start screen.
      */
     private void setUpLogoClickListener() {
-        logo.setOnClickListener(view -> startActivity(new Intent(SignUp.this, Start.class)));
+        logo.setOnClickListener(view -> startActivity(new Intent(SignUpActivity.this, StartActivity.class)));
     }
 
     private void createUserSP() {

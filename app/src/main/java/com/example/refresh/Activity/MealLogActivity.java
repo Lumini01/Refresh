@@ -561,14 +561,16 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_today) {
-                Intent intent = new Intent(MealLogActivity.this, HomeDashboard.class);
+                Intent intent = new Intent(MealLogActivity.this, HomeDashboardActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_log) {
 
                 return true;
             } else if (itemId == R.id.nav_progress) {
-                Intent intent = new Intent(MealLogActivity.this, Progress.class);
+                Intent intent = new Intent(MealLogActivity.this, ProgressActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             }

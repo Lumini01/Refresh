@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:padding="@dimen/padding_medium"
-    tools:context=".Activity.Progress">
+    tools:context=".Activity.ProgressActivity">
 
     <include
         layout="@layout/basic_nav_toolbar"

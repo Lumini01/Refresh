@@ -152,10 +152,7 @@ public class FoodsTable {
     private static boolean isDatabaseUpdateNeeded(String json) {
         try {
             JSONObject jsonObject = (new JSONArray(json)).getJSONObject(0);
-            if (jsonObject.getInt("id") == -1)
-                return true;
-            else
-                return false;
+            return jsonObject.getInt("id") == -1;
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

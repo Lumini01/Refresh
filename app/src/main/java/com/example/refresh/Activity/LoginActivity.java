@@ -20,8 +20,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.R;
-import com.example.refresh.Start;
-import com.example.refresh.Model.UserInfo;
+import com.example.refresh.StartActivity;
+import com.example.refresh.Model.User;
 import com.example.refresh.Model.ErrorMessage;
 import com.example.refresh.Helper.ValidationHelper;
 
@@ -32,7 +32,7 @@ import com.example.refresh.Helper.ValidationHelper;
  * to redirect to the registration screen and a logo that leads back to the Start activity.
  */
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     // UI Components
     private TextView title;
@@ -44,8 +44,8 @@ public class Login extends AppCompatActivity {
     private ImageView logo;
 
     // Database Helper
-    private UserInfo user;
-    private DatabaseHelper databaseHelper = new DatabaseHelper(this);
+    private User user;
+    private final DatabaseHelper databaseHelper = new DatabaseHelper(this);
     private SQLiteDatabase db;
 
     /**
@@ -83,11 +83,11 @@ public class Login extends AppCompatActivity {
      * Initialize all UI components.
      */
     private void initUIComponents() {
-        etEmailLogin = findViewById(R.id.etEmailLogin);
-        etPwdLogin = findViewById(R.id.etPwdLogin);
-        btLogin = findViewById(R.id.btLogin);
-        rememberMeCheckbox = findViewById(R.id.rememberMeCheckbox);
-        btSignUp = findViewById(R.id.btSignUp);
+        etEmailLogin = findViewById(R.id.email_login_et);
+        etPwdLogin = findViewById(R.id.pwd_login_et);
+        btLogin = findViewById(R.id.login_btn);
+        rememberMeCheckbox = findViewById(R.id.remember_me_cb);
+        btSignUp = findViewById(R.id.sign_up_tv);
         logo = findViewById(R.id.logo);
     }
 
@@ -111,7 +111,7 @@ public class Login extends AppCompatActivity {
     private void handleLogin() {
         // Set user credentials from the input fields
 
-        UserInfo validationUser = new UserInfo();
+        User validationUser = new User();
         String userEmail = etEmailLogin.getText().toString();
         String userPwd = etPwdLogin.getText().toString();
 
@@ -125,7 +125,7 @@ public class Login extends AppCompatActivity {
         if (validationError == null) {
             // Successful login
             // Save user email to SharedPreferences
-            user = new UserInfo(this ,userEmail, userPwd);
+            user = new User(this ,userEmail, userPwd);
             if (rememberMe) {
                 updateActiveUser();
             }
@@ -146,7 +146,7 @@ public class Login extends AppCompatActivity {
      * Show a toast message.
      */
     private void showToast(String message) {
-        Toast toast = Toast.makeText(Login.this, message, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
         toast.show();
     }
@@ -179,7 +179,7 @@ public class Login extends AppCompatActivity {
      * Navigate to the sign-up activity.
      */
     private void navigateToSignUp() {
-        Intent intent = new Intent(Login.this, SignUp.class);
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intent);
     }
 
@@ -187,7 +187,7 @@ public class Login extends AppCompatActivity {
      * Navigate to the home dashboard.
      */
     private void navigateToHomeDashboard() {
-        Intent intent = new Intent(Login.this, HomeDashboard.class);
+        Intent intent = new Intent(LoginActivity.this, HomeDashboardActivity.class);
         if (getIntent().getExtras() != null) {
             intent.putExtra("firstLog", getIntent().getBooleanExtra("firstLog", false));
         }
@@ -199,7 +199,7 @@ public class Login extends AppCompatActivity {
      * Navigate to the start activity.
      */
     private void navigateToStart() {
-        Intent intent = new Intent(Login.this, Start.class);
+        Intent intent = new Intent(LoginActivity.this, StartActivity.class);
         startActivity(intent);
     }
 

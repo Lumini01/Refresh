@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MealLogHelper {
 
-    private DatabaseHelper dbHelper;
+    private final DatabaseHelper dbHelper;
 
     // Constructor to initialize DatabaseHelper
     public MealLogHelper(DatabaseHelper dbHelper) {

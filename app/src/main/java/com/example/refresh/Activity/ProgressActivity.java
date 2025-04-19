@@ -43,7 +43,7 @@ import java.util.Objects;
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
-public class Progress extends AppCompatActivity {
+public class ProgressActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ImageButton refreshButton;
@@ -167,23 +167,20 @@ public class Progress extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_today) {
-                Intent intent = new Intent(Progress.this, HomeDashboard.class);
+                Intent intent = new Intent(ProgressActivity.this, HomeDashboardActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_log) {
-                Intent intent = new Intent(Progress.this, MealLogActivity.class);
+                Intent intent = new Intent(ProgressActivity.this, MealLogActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
-            } else if (itemId == R.id.nav_progress) {
-
-                return true;
-            }
+            } else return itemId == R.id.nav_progress;
 //            else if (itemId == R.id.nav_recipes) {
 //                // Handle recipes click
 //                return true;
 //            }
-
-            return false;
         });
 
         bottomNavigationView.setSelectedItemId(R.id.nav_progress);
@@ -329,7 +326,7 @@ public class Progress extends AppCompatActivity {
                 DaySection section = new DaySection(dayName, dayMealsItems,
                         (mealItem, adapterPosition) -> {
                     // Create the Intent to launch the edit activity
-                    Intent editIntent = new Intent(Progress.this, MealLogActivity.class);
+                    Intent editIntent = new Intent(ProgressActivity.this, MealLogActivity.class);
                     editIntent.putExtra("edit_mode", true);
                     // Pass the Meal object for editing
                     editIntent.putExtra("meal", mealItem.getModel());

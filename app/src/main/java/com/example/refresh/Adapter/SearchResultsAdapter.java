@@ -25,7 +25,7 @@ import java.util.List;
 public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ResultViewHolder> {
 
     private ArrayList<ListItem<Food>> resultsList;
-    private SearchResultsFragment fragment;
+    private final SearchResultsFragment fragment;
 
     // Constructor
     public SearchResultsAdapter(ArrayList<ListItem<Food>> resultsList, SearchResultsFragment fragment) {

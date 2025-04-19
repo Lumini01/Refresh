@@ -39,7 +39,7 @@ public class SelectedFoodsFragment extends Fragment {
         if (context instanceof SelectedFoodsFragment.OnSelectedFoodsFragmentListener) {
             fragmentListener = (SelectedFoodsFragment.OnSelectedFoodsFragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(context
                     + " must implement OnSelectedFoodsFragmentListener");
         }
     }

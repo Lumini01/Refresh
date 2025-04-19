@@ -5,7 +5,7 @@ package com.example.refresh.Utility;
  * This class allows for setting a future time and countdown interval.
  * Subclasses must implement the logic for counting down the time.
  */
-public abstract class CountDownTimer extends Object {
+public abstract class CountDownTimer {
     private long millisInFuture;
     private long countDownInterval;
 

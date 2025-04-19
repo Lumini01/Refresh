@@ -6,7 +6,7 @@ import static com.example.refresh.Database.UsersTable.Columns.*;
 import android.util.Patterns;
 import android.telephony.PhoneNumberUtils;
 
-import com.example.refresh.Model.UserInfo;
+import com.example.refresh.Model.User;
 import com.example.refresh.Model.ErrorMessage;
 
 /**
@@ -158,7 +158,7 @@ public class ValidationHelper {
      * @param databaseHelper The database helper.
      * @return Error message if validation fails, null otherwise.
      */
-    public static ErrorMessage validateLogin(UserInfo user, DatabaseHelper databaseHelper) {
+    public static ErrorMessage validateLogin(User user, DatabaseHelper databaseHelper) {
         String emailError = validateEmail(user.getEmail(), databaseHelper);
         if (emailError != null) {
             return new ErrorMessage(EMAIL, emailError);
@@ -177,7 +177,7 @@ public class ValidationHelper {
      * @param databaseHelper The database helper.
      * @return Error message if validation fails, null otherwise.
      */
-    public static ErrorMessage validateSignUp(UserInfo user, String pwdConf, DatabaseHelper databaseHelper) {
+    public static ErrorMessage validateSignUp(User user, String pwdConf, DatabaseHelper databaseHelper) {
         String nameError = registerName(user.getName());
         if (nameError != null) {
             return new ErrorMessage(NAME, nameError);

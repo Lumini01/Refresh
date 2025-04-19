@@ -17,10 +17,10 @@ public class MacronutrientFragment extends Fragment {
     private ProgressBar caloriesProgress, carbsProgress, proteinProgress, fatProgress;
     private TextView caloriesText, carbsText, proteinText, fatText;
 
-    private int totalCalories = 2000;
-    private int totalCarbs = 400;
-    private int totalProtein = 400;
-    private int totalFat = 400;
+    private final int totalCalories = 2000;
+    private final int totalCarbs = 400;
+    private final int totalProtein = 400;
+    private final int totalFat = 400;
 
     public MacronutrientFragment() {}
 

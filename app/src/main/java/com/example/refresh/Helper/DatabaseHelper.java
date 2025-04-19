@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_FILE = "app_database.db";
     private static final int DATABASE_VERSION = 4;
-    private Context context;
+    private final Context context;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_FILE, null, DATABASE_VERSION);
@@ -348,7 +348,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         switch (table) {
             case USERS:
                 // Example: User table mapping
-                return (T) new UserInfo(
+                return (T) new User(
                         cursor.getInt(cursor.getColumnIndexOrThrow(ID.getColumnName())),
                         cursor.getString(cursor.getColumnIndexOrThrow(NAME.getColumnName())),
                         cursor.getString(cursor.getColumnIndexOrThrow(EMAIL.getColumnName())),
@@ -393,7 +393,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         switch (table) {
             case USERS:
-                UserInfo user = (UserInfo) model;
+                User user = (User) model;
                 values.put(NAME.getColumnName(), user.getName()); // Assuming UserInfo has a name
                 values.put(EMAIL.getColumnName(), user.getEmail()); // Assuming UserInfo has an email
                 values.put(PHONE.getColumnName(), user.getPhone()); // Assuming UserInfo has a phone

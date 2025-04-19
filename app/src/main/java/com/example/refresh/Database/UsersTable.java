@@ -3,7 +3,7 @@ package com.example.refresh.Database;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.example.refresh.Model.UserInfo;
+import com.example.refresh.Model.User;
 
 public class UsersTable {
     public static final String TABLE_NAME = "users";
@@ -39,7 +39,7 @@ public class UsersTable {
                     Columns.PWD.getColumnName() + " TEXT NOT NULL);";
 
     // Convert UserInfo to ContentValues
-    public static ContentValues toContentValues(UserInfo user) {
+    public static ContentValues toContentValues(User user) {
         ContentValues values = new ContentValues();
         values.put(Columns.NAME.getColumnName(), user.getName());
         values.put(Columns.EMAIL.getColumnName(), user.getEmail());
@@ -50,13 +50,13 @@ public class UsersTable {
     }
 
     // Convert Cursor to UserInfo
-    public static UserInfo fromCursor(Cursor cursor) {
+    public static User fromCursor(Cursor cursor) {
         int id = cursor.getInt(cursor.getColumnIndexOrThrow(Columns.ID.getColumnName()));
         String name = cursor.getString(cursor.getColumnIndexOrThrow(Columns.NAME.getColumnName()));
         String email = cursor.getString(cursor.getColumnIndexOrThrow(Columns.EMAIL.getColumnName()));
         String phone = cursor.getString(cursor.getColumnIndexOrThrow(Columns.PHONE.getColumnName()));
         String password = cursor.getString(cursor.getColumnIndexOrThrow(Columns.PWD.getColumnName()));
 
-        return new UserInfo(id, name, email, phone, password);
+        return new User(id, name, email, phone, password);
     }
 }

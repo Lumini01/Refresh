@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAdapter.FoodSelectionViewHolder> {
 
     private ArrayList<ListItem<Food>> foodSelections;
-    private SelectedFoodsFragment fragment;
+    private final SelectedFoodsFragment fragment;
 
     // Constructor
     public FoodSelectionsAdapter(ArrayList<ListItem<Food>> foodSelectionsList, SelectedFoodsFragment fragment) {

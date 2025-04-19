@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:padding="@dimen/padding_medium"
-    tools:context=".Activity.HomeDashboard">
+    tools:context=".Activity.HomeDashboardActivity">
 
   <androidx.fragment.app.FragmentContainerView
       android:id="@+id/user_details_container"
@@ -40,25 +40,25 @@
         android:scaleY="1.5"/>
 
     <ImageButton
-        android:id="@+id/notificationButton"
+        android:id="@+id/profile_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginVertical="@dimen/margin_xsmall"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@null"
+        android:padding="@dimen/padding_xsmall"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
+        android:src="@drawable/ic_profile"
+        app:tint="@color/iconTint" />
+
+    <ImageButton
+        android:id="@+id/notification_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_notifications"
-        android:background="@null"
-        android:padding="@dimen/padding_xsmall"
-        android:layout_marginVertical="@dimen/margin_xsmall"
-        android:layout_gravity="end"
-        android:layout_marginEnd="@dimen/margin_large"
-        android:layout_marginStart="@dimen/margin_medium"
-        app:tint="@color/iconTint"
-        android:scaleY="1.25"
-        android:scaleX="1.25"/>
-
-    <ImageButton
-        android:id="@+id/profileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_profile"
         android:background="@null"
         android:padding="@dimen/padding_xsmall"
         android:layout_margin="@dimen/margin_xsmall"
@@ -78,7 +78,7 @@
       android:weightSum="1">
 
     <TextView
-        android:id="@+id/dateTitleTV"
+        android:id="@+id/date_title_tv"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
         android:layout_gravity="center|end">
 
       <ImageButton
-          android:id="@+id/lastSummaryButton"
+          android:id="@+id/last_summary_btn"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:src="@drawable/ic_back_button"
@@ -109,7 +109,7 @@
           android:layout_gravity="center|end" />
 
       <ImageButton
-          android:id="@+id/nextSummaryButton"
+          android:id="@+id/next_summary_btn"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:src="@drawable/ic_forward_button"
@@ -134,11 +134,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+      <androidx.fragment.app.FragmentContainerView
+          android:id="@+id/daily_progress_container"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:visibility="gone"/>
+
       <include
           layout="@layout/fragment_macronutrient"
           android:id="@+id/macronutrient_fragment" />
 
       <LinearLayout
+          android:id="@+id/daily_goal_meter"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
@@ -181,7 +188,7 @@
           android:layout_marginVertical="@dimen/margin_medium">
 
         <LinearLayout
-            android:id="@+id/mealLogButton"
+            android:id="@+id/log_meal_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -211,7 +218,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/waterLogButton"
+            android:id="@+id/log_water_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -241,7 +248,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/weightLogButton"
+            android:id="@+id/log_weight_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -275,6 +282,7 @@
       </LinearLayout>
 
       <LinearLayout
+          android:id="@+id/weight_progress_meter"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
@@ -322,7 +330,7 @@
 
       <!-- Calendar Overview -->
       <LinearLayout
-          android:id="@+id/progressShortcutButton"
+          android:id="@+id/progress_shortcut_btn"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"

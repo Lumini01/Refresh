@@ -3,6 +3,7 @@ package com.example.refresh.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 // Food Model Class which represents a food item
 public class Food implements Serializable {
@@ -25,7 +26,7 @@ public class Food implements Serializable {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.labels = (labels != null) ? labels : new ArrayList<>(Arrays.asList("")); // Ensure label is never null
+        this.labels = (labels != null) ? labels : new ArrayList<>(List.of("")); // Ensure label is never null
         this.servingSize = servingSize;
         this.calories = calories;
         this.carbs = carbs;
@@ -41,7 +42,7 @@ public class Food implements Serializable {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.labels = (labels != null) ? labels : new ArrayList<>(Arrays.asList("")); // Ensure label is never null.calories = calories;
+        this.labels = (labels != null) ? labels : new ArrayList<>(List.of("")); // Ensure label is never null.calories = calories;
         this.calories = calories;
         this.carbs = carbs;
         this.protein = protein;
@@ -54,7 +55,7 @@ public class Food implements Serializable {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.labels = (labels != null) ? new ArrayList<>(Arrays.asList(labels.split(","))) : new ArrayList<>(Arrays.asList("")); // Ensure label is never null
+        this.labels = (labels != null) ? new ArrayList<>(Arrays.asList(labels.split(","))) : new ArrayList<>(List.of("")); // Ensure label is never null
         this.servingSize = servingSize;
         this.calories = calories;
         this.carbs = carbs;
@@ -75,14 +76,14 @@ public class Food implements Serializable {
         return description;
     }
     public void setDescription(String description) {
-        this.description = (description != null) ? description : "";;
+        this.description = (description != null) ? description : "";
     }
 
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
 
     public ArrayList<String> getLabels() { return labels; }
-    public void setLabels(ArrayList<String> labels) { this.labels = (labels != null) ? labels : new ArrayList<>(Arrays.asList("")); }
+    public void setLabels(ArrayList<String> labels) { this.labels = (labels != null) ? labels : new ArrayList<>(List.of("")); }
 
     public int getServingSize() { return servingSize; }
     public void setServingSize(int servingSize) { this.servingSize = servingSize; }

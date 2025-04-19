@@ -17,10 +17,10 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 
 public class DaySection extends Section {
 
-    private String day; // e.g., "Sunday"
-    private ArrayList<ListItem<Meal>> mealItems;   // List of mealLogs for that day
-    private OnEditMealListener editMealListener; // add a listener member
-    private OnDeleteMealListener deleteMealListener;
+    private final String day; // e.g., "Sunday"
+    private final ArrayList<ListItem<Meal>> mealItems;   // List of mealLogs for that day
+    private final OnEditMealListener editMealListener; // add a listener member
+    private final OnDeleteMealListener deleteMealListener;
 
 
     public interface OnEditMealListener {

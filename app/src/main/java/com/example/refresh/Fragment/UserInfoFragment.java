@@ -1,22 +1,22 @@
 package com.example.refresh.Fragment;
 
-import static com.example.refresh.Fragment.UserDetailsFragment.States.*;
+import static com.example.refresh.Fragment.UserInfoFragment.States.ACCOUNT_DETAILS;
+import static com.example.refresh.Fragment.UserInfoFragment.States.ADJUST_GOAL;
+import static com.example.refresh.Fragment.UserInfoFragment.States.ALL;
+import static com.example.refresh.Fragment.UserInfoFragment.States.FIRST_LOG;
+import static com.example.refresh.Fragment.UserInfoFragment.States.LIFESTYLE_GOAL;
+import static com.example.refresh.Fragment.UserInfoFragment.States.MULTIPLE;
+import static com.example.refresh.Fragment.UserInfoFragment.States.PERSONAL_INFO;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.icu.util.Calendar;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -24,12 +24,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.refresh.Database.UsersTable;
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Helper.UserInfoHelper;
-import com.example.refresh.Model.UserInfo;
+import com.example.refresh.Model.User;
 import com.example.refresh.R;
 
 import java.time.LocalDate;
@@ -39,7 +42,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class UserDetailsFragment extends Fragment {
+public class UserInfoFragment extends Fragment {
 
     public interface OnUserDetailsFragmentListener {
         void onExitUserDetailsFragment();
@@ -67,7 +70,7 @@ public class UserDetailsFragment extends Fragment {
 
     private String state;
     private int userId;
-    private UserInfo user;
+    private User user;
     private OnUserDetailsFragmentListener fragmentListener;
     private ArrayList<String> displayedSections;
     private UserInfoHelper userInfoHelper;
@@ -127,27 +130,27 @@ public class UserDetailsFragment extends Fragment {
     private ImageButton saveButton;
     private ImageButton backArrow;
 
-    private ArrayList<String> genderOptions = new ArrayList<>(Arrays.asList("Select Gender", "Male", "Female", "Other"));
-    private ArrayList<String> activityLevelOptions = new ArrayList<>(Arrays.asList("Select Level", "Low", "Medium", "High", "Very High"));
+    private final ArrayList<String> genderOptions = new ArrayList<>(Arrays.asList("Select Gender", "Male", "Female", "Other"));
+    private final ArrayList<String> activityLevelOptions = new ArrayList<>(Arrays.asList("Select Level", "Low", "Medium", "High", "Very High"));
 
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Make sure the hosting activity implements the interface.
-        if (context instanceof UserDetailsFragment.OnUserDetailsFragmentListener) {
-            fragmentListener = (UserDetailsFragment.OnUserDetailsFragmentListener) context;
+        if (context instanceof UserInfoFragment.OnUserDetailsFragmentListener) {
+            fragmentListener = (UserInfoFragment.OnUserDetailsFragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(context
                     + " must implement OnUserDetailsFragmentListener");
         }
     }
 
-    public UserDetailsFragment() {
+    public UserInfoFragment() {
         // Required empty public constructor
     }
-    public static UserDetailsFragment newInstance(String state, int userId) {
-        UserDetailsFragment fragment = new UserDetailsFragment();
+    public static UserInfoFragment newInstance(String state, int userId) {
+        UserInfoFragment fragment = new UserInfoFragment();
         Bundle args = new Bundle();
         args.putString("state", state);
         args.putInt("userId", userId);
@@ -174,7 +177,7 @@ public class UserDetailsFragment extends Fragment {
                 UsersTable.Columns.ID,
                 new String[]{userId + ""}
         );
-        else user = new UserInfo();
+        else user = new User();
         dbHelper.close();
 
         userInfoHelper = new UserInfoHelper(requireContext());
@@ -184,7 +187,7 @@ public class UserDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_details, container, false);
+        return inflater.inflate(R.layout.fragment_user_info, container, false);
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -337,7 +340,7 @@ public class UserDetailsFragment extends Fragment {
         if (state.equals(FIRST_LOG.getStateName()))
             backArrow.setVisibility(View.GONE);
 
-        title.setText(R.string.user_details);
+        title.setText(R.string.user_info);
         nameET.setText(user != null ? user.getName() : "");
         nameET.setEnabled(false);
 

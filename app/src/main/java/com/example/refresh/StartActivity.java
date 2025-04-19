@@ -3,8 +3,10 @@ package com.example.refresh;
 import static com.example.refresh.Database.FoodsTable.populateFoodsTable;
 import static com.example.refresh.Database.NotificationTemplatesTable.populateNotificationTemplatesTable;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -13,25 +15,23 @@ import android.os.CountDownTimer;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Button;
-import android.content.Intent;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.view.View;
-import android.Manifest;
-import android.widget.Toast;
 
-import com.example.refresh.Activity.HomeDashboard;
-import com.example.refresh.Activity.Login;
-import com.example.refresh.Activity.SignUp;
-import com.example.refresh.Fragment.UserDetailsFragment;
+import com.example.refresh.Activity.HomeDashboardActivity;
+import com.example.refresh.Activity.LoginActivity;
+import com.example.refresh.Activity.SignUpActivity;
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Notification.NotificationScheduler;
@@ -42,7 +42,7 @@ import java.util.ArrayList;
  * Start Activity - This is the initial screen of the app before login,
  * featuring a countdown timer and a button to proceed to the login screen.
  */
-public class Start extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     // UI Components
     private LinearLayout mainLayout;
@@ -54,6 +54,7 @@ public class Start extends AppCompatActivity {
 
     /**
      * Initializes the activity, sets up the UI components, and starts the countdown timer.
+     *
      * @param savedInstanceState saved instance state bundle for restoring previous activity state.
      */
     @Override
@@ -71,9 +72,9 @@ public class Start extends AppCompatActivity {
 
         // Initialize UI components
         mainLayout = findViewById(R.id.main);
-        brandName = findViewById(R.id.brandName);
+        brandName = findViewById(R.id.app_name_tv);
         logo = findViewById(R.id.logo);
-        continueBTN = findViewById(R.id.continueBTN);
+        continueBTN = findViewById(R.id.continue_btn);
         cdtView = findViewById(R.id.cdt);
 
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
@@ -82,7 +83,7 @@ public class Start extends AppCompatActivity {
         continueBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1 );
+                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1);
                 if (loggedUserID != -1)
                     navigateToHome();
                 else {
@@ -119,7 +120,7 @@ public class Start extends AppCompatActivity {
 
     private void checkUserStatus() {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-        int loggedUserID = sharedPreferences.getInt("loggedUserID", -1 );
+        int loggedUserID = sharedPreferences.getInt("loggedUserID", -1);
         if (loggedUserID != -1)
             navigateToHome();
         else {
@@ -163,7 +164,7 @@ public class Start extends AppCompatActivity {
                 cdtView.setText("Loading...");
 
                 SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1 );
+                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1);
                 if (loggedUserID != -1)
                     navigateToHome();
                 else
@@ -173,7 +174,7 @@ public class Start extends AppCompatActivity {
     }
 
     private void navigateToHome() {
-        Intent intent = new Intent(Start.this, HomeDashboard.class);
+        Intent intent = new Intent(StartActivity.this, HomeDashboardActivity.class);
         UserInfoHelper helper = new UserInfoHelper(this);
 
         if (helper.getStartDate() == null || helper.getStartWeight() == 0 || helper.getWeight() == 0 || helper.getGoal().equals(""))
@@ -181,17 +182,19 @@ public class Start extends AppCompatActivity {
 
         startActivity(intent);
     }
+
     /**
      * Helper method to start the Login activity.
      */
     private void navigateToLogin() {
-        Intent intent = new Intent(Start.this, Login.class);
+        Intent intent = new Intent(StartActivity.this, LoginActivity.class);
         startActivity(intent);
         cdtView.setText("");
     }
 
     /**
      * Create the options menu for the activity.
+     *
      * @param menu Menu object that is inflated with items.
      * @return true to display the menu, false otherwise.
      */
@@ -203,6 +206,7 @@ public class Start extends AppCompatActivity {
 
     /**
      * Handle menu item selection.
+     *
      * @param item The selected menu item.
      * @return true if an item was selected, false otherwise.
      */
@@ -214,14 +218,12 @@ public class Start extends AppCompatActivity {
         if (id == R.id.item1) {
             navigateToLogin();
             return true;
-        }
-        else if (id == R.id.item2) {
-            Intent intentSignUp = new Intent(Start.this, SignUp.class);
+        } else if (id == R.id.item2) {
+            Intent intentSignUp = new Intent(StartActivity.this, SignUpActivity.class);
             startActivity(intentSignUp);
             return true;
-        }
-        else if (id == R.id.item3) {
-            Intent intentDashboard = new Intent(Start.this, HomeDashboard.class);
+        } else if (id == R.id.item3) {
+            Intent intentDashboard = new Intent(StartActivity.this, HomeDashboardActivity.class);
             startActivity(intentDashboard);
             return true;
         }
@@ -282,8 +284,7 @@ public class Start extends AppCompatActivity {
             instanceIDs.add(3);
 
             NotificationScheduler.addDefaultNotifications(this, instanceIDs, templateIDs, times);
-        }
-        else {
+        } else {
             NotificationScheduler.addNotificationInstances(this, templateIDs, times);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -291,6 +292,7 @@ public class Start extends AppCompatActivity {
             editor.apply();
         }
     }
+
     protected void onResume() {
         super.onResume();
 
@@ -298,5 +300,5 @@ public class Start extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);*/
-    } 
+    }
 }

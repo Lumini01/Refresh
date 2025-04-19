@@ -12,7 +12,7 @@ import com.example.refresh.Database.UsersTable.Columns;
  * and modify these details, and includes constructors for creating user objects
  * with different combinations of the user data.
  */
-public class UserInfo {
+public class User {
 
     private int id;        // Stores the user's unique identifier
     private String name;   // Stores the user's name
@@ -23,7 +23,7 @@ public class UserInfo {
     /**
      * Default constructor for creating a UserInfo object with no initial values.
      */
-    public UserInfo() {}
+    public User() {}
 
     /**
      * Constructor to create a UserInfo object with all user details (name, email, phone, and password).
@@ -33,7 +33,7 @@ public class UserInfo {
      * @param phone The user's phone number
      * @param pwd The user's password
      */
-    public UserInfo(int id, String name, String email, String phone, String pwd) {
+    public User(int id, String name, String email, String phone, String pwd) {
         setID(id);
         setName(name);
         setEmail(email);
@@ -41,7 +41,7 @@ public class UserInfo {
         setPwd(pwd);
     }
 
-    public UserInfo( String name, String email, String phone, String pwd) {
+    public User(String name, String email, String phone, String pwd) {
         id = -1;
         setName(name);
         setEmail(email);
@@ -55,7 +55,7 @@ public class UserInfo {
      * @param email The user's email
      * @param pwd The user's password
      */
-    public UserInfo(Context context, String email, String pwd) {
+    public User(Context context, String email, String pwd) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
         setID(dbHelper.getFromRecordByValue(Tables.USERS, Columns.ID, Columns.EMAIL, email));

@@ -14,7 +14,7 @@ import java.time.format.DateTimeParseException;
 
 public class UserInfoHelper {
     private int userId;
-    private Context context;
+    private final Context context;
     private SharedPreferences userPreferences;
 
     public UserInfoHelper(Context context) {
