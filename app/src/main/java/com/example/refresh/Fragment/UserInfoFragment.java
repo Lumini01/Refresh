@@ -270,10 +270,10 @@ public class UserInfoFragment extends Fragment {
         adjustWaterIntakeLayout = view.findViewById(R.id.adjust_water_intake_layout);
         adjustWaterIntakeET = view.findViewById(R.id.adjust_water_intake_et);
 
-        backArrow = view.findViewById(R.id.backArrow);
-        saveButton = view.findViewById(R.id.extra_button);
+        backArrow = view.findViewById(R.id.back_btn);
+        saveButton = view.findViewById(R.id.extra_btn);
         saveButton.setImageResource(R.drawable.ic_save);
-        title = view.findViewById(R.id.toolbarTitle);
+        title = view.findViewById(R.id.toolbar_title_tv);
     }
 
     private void configureFragmentState() {

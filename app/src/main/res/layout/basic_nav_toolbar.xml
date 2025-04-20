@@ -12,7 +12,7 @@
 
     <!-- Back Arrow -->
     <ImageButton
-        android:id="@+id/backArrow"
+        android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back_arrow"
@@ -24,7 +24,7 @@
 
     <!-- Title -->
     <TextView
-        android:id="@+id/toolbarTitle"
+        android:id="@+id/toolbar_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
@@ -34,7 +34,7 @@
 
     <!-- Gear Icon -->
     <ImageButton
-        android:id="@+id/extra_button"
+        android:id="@+id/extra_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"

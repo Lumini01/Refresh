@@ -114,12 +114,12 @@ public class ProgressActivity extends AppCompatActivity {
         weekGraphContainer = findViewById(R.id.week_graph_container);
         toolbar = findViewById(R.id.toolbar);
         recyclerViewMeals = findViewById(R.id.recycler_view_meals);
-        refreshButton = findViewById(R.id.backArrow);
-        calenderButton = findViewById(R.id.extra_button);
-        WeekDatesTV = findViewById(R.id.WeekDatesTV);
-        lastWeekButton = findViewById(R.id.lastWeekButton);
-        nextWeekButton = findViewById(R.id.nextWeekButton);
-        title = findViewById(R.id.toolbarTitle);
+        refreshButton = findViewById(R.id.back_btn);
+        calenderButton = findViewById(R.id.extra_btn);
+        WeekDatesTV = findViewById(R.id.week_dates_btn);
+        lastWeekButton = findViewById(R.id.last_week_btn);
+        nextWeekButton = findViewById(R.id.next_week_btn);
+        title = findViewById(R.id.toolbar_title_tv);
     }
 
     public void setupUI() {

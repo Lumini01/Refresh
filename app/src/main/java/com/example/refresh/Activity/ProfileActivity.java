@@ -38,8 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
     // Initialize Views
     private void initViews() {
         // Toolbar components
-        backArrow = findViewById(R.id.backArrow);
-        toolbarTitle = findViewById(R.id.toolbarTitle);
+        backArrow = findViewById(R.id.back_btn);
+        toolbarTitle = findViewById(R.id.toolbar_title_tv);
         settingsButton = findViewById(R.id.settings_button);
 
         // Profile Section components

@@ -121,7 +121,7 @@ public class HomeDashboardActivity extends AppCompatActivity implements UserInfo
         nextSummary = findViewById(R.id.next_summary_btn);
         lastSummary = findViewById(R.id.last_summary_btn);
         logWaterButton = findViewById(R.id.log_water_btn);
-        logMealButton = findViewById(R.id.log_meal_btn);
+        logMealButton = findViewById(R.id.meal_log_shortcut_btn);
         logWeightButton = findViewById(R.id.log_weight_btn);
         progressShortcutBtn = findViewById(R.id.progress_shortcut_btn);
         profileButton = findViewById(R.id.profile_btn);

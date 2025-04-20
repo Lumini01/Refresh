@@ -7,7 +7,7 @@
     android:weightSum="1">
 
     <ImageButton
-        android:id="@+id/lastWeekButton"
+        android:id="@+id/last_week_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back_button"
@@ -17,7 +17,7 @@
         android:layout_marginHorizontal="@dimen/margin_small"/>
 
     <TextView
-        android:id="@+id/WeekDatesTV"
+        android:id="@+id/week_dates_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Week Dates"
@@ -30,7 +30,7 @@
         android:padding="@dimen/padding_medium"/>
 
     <ImageButton
-        android:id="@+id/nextWeekButton"
+        android:id="@+id/next_week_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_forward_button"

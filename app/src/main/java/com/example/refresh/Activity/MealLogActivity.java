@@ -102,7 +102,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     public void onNavigateToFoodInfo(Food food) {
         foodInfoFragment = FoodInfoFragment.newInstance(food);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.food_info_fragment_container, foodInfoFragment)
+                .replace(R.id.food_info_container, foodInfoFragment)
                 .commit();
         foodInfoFragmentContainer.setVisibility(View.VISIBLE);
     }
@@ -161,33 +161,33 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
             selectedFoodsFragment = newInstance(foodListItems);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.selected_foods_fragment_container, selectedFoodsFragment)
+                    .replace(R.id.selected_foods_container, selectedFoodsFragment)
                     .commit();
         }
     }
 
     private void initializeViews() {
         // Toolbar
-        title = findViewById(R.id.toolbarTitle);
+        title = findViewById(R.id.toolbar_title_tv);
 
         // Date & Time views
-        mealDateAndTimeTV = findViewById(R.id.mealDateAndTimeTV);
+        mealDateAndTimeTV = findViewById(R.id.meal_dateTime_tv);
 
         // Buttons
-        datePickerButton = findViewById(R.id.extra_button);
-        backArrow = findViewById(R.id.backArrow);
-        clearButton = findViewById(R.id.clearButton);
-        logMealBtn = findViewById(R.id.btn_log_meal);
+        datePickerButton = findViewById(R.id.extra_btn);
+        backArrow = findViewById(R.id.back_btn);
+        clearButton = findViewById(R.id.clear_btn);
+        logMealBtn = findViewById(R.id.log_meal_btn);
 
 
         // Fragments containers and search bar
         searchResultsContainer = findViewById(R.id.search_results_fragment_container);
-        selectedFoodsContainer = findViewById(R.id.selected_foods_fragment_container);
-        foodInfoFragmentContainer = findViewById(R.id.food_info_fragment_container);
-        searchBarET = findViewById(R.id.searchEditText);
+        selectedFoodsContainer = findViewById(R.id.selected_foods_container);
+        foodInfoFragmentContainer = findViewById(R.id.food_info_container);
+        searchBarET = findViewById(R.id.search_et);
 
         // Notes
-        notesET = findViewById(R.id.notesEditText);
+        notesET = findViewById(R.id.notes_et);
     }
 
     private void initializeToolbar() {
@@ -221,7 +221,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         // Initialize fragments using the pre-found container views
         selectedFoodsFragment = new SelectedFoodsFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.selected_foods_fragment_container, selectedFoodsFragment)
+                .replace(R.id.selected_foods_container, selectedFoodsFragment)
                 .commit();
     }
 

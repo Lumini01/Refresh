@@ -179,9 +179,9 @@ public class FoodInfoFragment extends Fragment {
 
     private void initializeViews(View view) {
 
-        tvTitle = view.findViewById(R.id.toolbarTitle);
-        backArrow = view.findViewById(R.id.backArrow);
-        extraBtn = view.findViewById(R.id.extra_button);
+        tvTitle = view.findViewById(R.id.toolbar_title_tv);
+        backArrow = view.findViewById(R.id.back_btn);
+        extraBtn = view.findViewById(R.id.extra_btn);
 
         tvFoodName = view.findViewById(R.id.tv_food_name);
         favoriteBtn = view.findViewById(R.id.favorite_btn);
