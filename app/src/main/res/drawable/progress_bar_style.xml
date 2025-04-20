@@ -4,8 +4,8 @@
     <!-- Background of the progress bar -->
     <item android:id="@android:id/background">
         <shape>
-            <corners android:radius="4dp"/>
-            <solid android:color="@color/borderColor"/>
+            <corners android:radius="4dp" />
+            <solid android:color="@color/borderColor" />
         </shape>
     </item>
 
@@ -13,8 +13,8 @@
     <item android:id="@android:id/secondaryProgress">
         <clip>
             <shape>
-                <corners android:radius="4dp"/>
-                <solid android:color="@color/colorAccent"/>
+                <corners android:radius="4dp" />
+                <solid android:color="@color/colorAccent" />
             </shape>
         </clip>
     </item>
@@ -23,8 +23,8 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <corners android:radius="4dp"/>
-                <solid android:color="@color/my_blue"/>
+                <corners android:radius="4dp" />
+                <solid android:color="@color/my_blue" />
             </shape>
         </clip>
     </item>

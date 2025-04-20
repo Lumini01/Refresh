@@ -1,13 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
     <include
-        layout="@layout/basic_nav_toolbar"
-        android:id="@+id/profile_fragment" />
+        android:id="@+id/profile_fragment"
+        layout="@layout/basic_nav_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,55 +30,55 @@
                     android:id="@+id/personal_info_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Personal Information"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title"
-                    android:padding="@dimen/padding_small"
                     android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_medium"/>
+                    android:padding="@dimen/padding_small"
+                    android:text="Personal Information"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title" />
 
                 <LinearLayout
                     android:id="@+id/name_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Name"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Name" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/name_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Name..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="text"
                         android:gravity="start"
+                        android:hint="Enter Name..."
+                        android:inputType="text"
+                        android:maxEms="8"
                         android:minEms="4"
-                        android:maxEms="8"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
 
@@ -86,26 +86,26 @@
                     android:id="@+id/weight_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Weight (kg)"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Weight (kg)" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
@@ -113,148 +113,148 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
-                        android:hint="Enter Weight..."
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="number"
                         android:gravity="center"
+                        android:hint="Enter Weight..."
+                        android:inputType="number"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/height_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Height (cm)"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Height (cm)" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/height_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Height..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="number"
                         android:gravity="center"
+                        android:hint="Enter Height..."
+                        android:inputType="number"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/date_of_birth_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Date of Birth"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Date of Birth" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/date_of_birth_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Click Here..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="date"
                         android:focusable="false"
                         android:gravity="center"
+                        android:hint="Click Here..."
+                        android:inputType="date"
+                        android:maxEms="6"
                         android:minEms="4"
-                        android:maxEms="6"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
-                
+
                 <LinearLayout
                     android:id="@+id/gender_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Gender"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Gender" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/gender_error_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="* Must pick a gender"
-                        android:textSize="@dimen/text_size_large"
-                        android:textColor="@color/errorColor"
                         android:layout_gravity="center"
-                        android:visibility="gone"/>
+                        android:text="* Must pick a gender"
+                        android:textColor="@color/errorColor"
+                        android:textSize="@dimen/text_size_large"
+                        android:visibility="gone" />
 
                     <Spinner
                         android:id="@+id/gender_spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:spinnerMode="dropdown"
                         android:layout_gravity="end|center_vertical"
                         android:background="@null"
                         android:padding="@dimen/padding_medium"
+                        android:spinnerMode="dropdown"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge"
-                        tools:listitem="@layout/custom_spinner_item"/>
+                        tools:listitem="@layout/custom_spinner_item" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -269,140 +269,181 @@
                     android:id="@+id/account_details_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Account Details"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title"
-                    android:padding="@dimen/padding_small"
                     android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_large"/>
+                    android:padding="@dimen/padding_small"
+                    android:text="Account Details"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title" />
 
                 <LinearLayout
                     android:id="@+id/email_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Email"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Email" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/email_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Email..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="textEmailAddress"
                         android:enabled="false"
                         android:focusable="false"
                         android:gravity="start"
+                        android:hint="Enter Email..."
+                        android:inputType="textEmailAddress"
+                        android:maxEms="8"
                         android:minEms="4"
-                        android:maxEms="8"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/phone_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Phone"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Phone" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/phone_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Phone..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="phone"
                         android:enabled="false"
                         android:focusable="false"
                         android:gravity="start"
+                        android:hint="Enter Phone..."
+                        android:inputType="phone"
+                        android:maxEms="8"
                         android:minEms="4"
-                        android:maxEms="8"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/pwd_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Password"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Password" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/pwd_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Password..."
                         android:layout_gravity="end|center_vertical"
+                        android:gravity="start"
+                        android:hint="Enter Password..."
+                        android:inputType="textPassword"
+                        android:maxEms="8"
+                        android:minEms="4"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="textPassword"
+                        android:textSize="@dimen/text_size_xxlarge" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pwd_conf_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_medium_large"
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Confirm"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
+
+
+                    <EditText
+                        android:id="@+id/pwd_conf_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
                         android:gravity="start"
+                        android:hint="Reenter Password..."
+                        android:inputType="textPassword"
+                        android:maxEms="8"
                         android:minEms="4"
-                        android:maxEms="8"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -414,26 +455,27 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/lifestyle_goal_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lifestyle &amp; Goal"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title"
-                    android:padding="@dimen/padding_small"
                     android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_large"/>
+                    android:padding="@dimen/padding_small"
+                    android:text="Lifestyle &amp; Goal"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title" />
 
                 <LinearLayout
                     android:id="@+id/goal_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -443,77 +485,75 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/padding_medium"
+                            android:layout_gravity="start|top"
                             android:layout_marginStart="@dimen/margin_large"
                             android:layout_marginTop="@dimen/margin_medium"
-                            android:layout_gravity="start|top"
+                            android:padding="@dimen/padding_medium"
+                            android:text="Goal"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xxxlarge"
-                            android:text="Goal" />
+                            android:textSize="@dimen/text_size_xxxlarge" />
 
                         <TextView
                             android:id="@+id/goal_error_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="* Must pick\n a goal"
-                            android:textSize="@dimen/text_size_large"
-                            android:textColor="@color/errorColor"
                             android:layout_gravity="center"
-                            android:visibility="gone"
                             android:layout_marginTop="@dimen/margin_large"
-                            android:gravity="center" />
+                            android:gravity="center"
+                            android:text="* Must pick\n a goal"
+                            android:textColor="@color/errorColor"
+                            android:textSize="@dimen/text_size_large"
+                            android:visibility="gone" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
-
-                    <RadioGroup
-                        xmlns:android="http://schemas.android.com/apk/res/android"
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/goal_rg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_gravity="end|top"
+                        android:layout_marginEnd="@dimen/margin_large"
                         android:background="@null"
-                        android:padding="@dimen/padding_medium"
-                        android:layout_marginEnd="@dimen/margin_large">
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_medium">
 
                         <RadioButton
                             android:id="@+id/lose_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lose Weight"
-                            android:textSize="@dimen/text_size_xxlarge"
-                            android:textColor="@color/textPrimary"/>
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                         <RadioButton
                             android:id="@+id/maintain_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Maintain Weight"
-                            android:textSize="@dimen/text_size_xxlarge"
-                            android:textColor="@color/textPrimary"/>
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                         <RadioButton
                             android:id="@+id/gain_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Gain Weight"
-                            android:textSize="@dimen/text_size_xxlarge"
-                            android:textColor="@color/textPrimary"/>
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                         <RadioButton
                             android:id="@+id/gain_muscle_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Gain Muscle Mass"
-                            android:textSize="@dimen/text_size_xxlarge"
-                            android:textColor="@color/textPrimary"/>
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                     </RadioGroup>
 
@@ -551,26 +591,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:gravity="center"
                         android:hint="Enter Weight..."
                         android:inputType="number"
-                        android:padding="@dimen/padding_medium"
-                        android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:gravity="center"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/activity_level_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_medium">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -580,31 +620,31 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/padding_medium"
+                            android:layout_gravity="start|top"
                             android:layout_marginStart="@dimen/margin_large"
                             android:layout_marginTop="@dimen/margin_medium"
-                            android:layout_gravity="start|top"
+                            android:padding="@dimen/padding_medium"
+                            android:text="Activity Level"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xxxlarge"
-                            android:text="Activity Level" />
+                            android:textSize="@dimen/text_size_xxxlarge" />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1" />
 
                         <Spinner
                             android:id="@+id/activity_level_spinner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:spinnerMode="dropdown"
                             android:layout_gravity="end|center_vertical"
                             android:background="@null"
                             android:padding="@dimen/padding_medium"
+                            android:spinnerMode="dropdown"
                             android:textColor="@color/textPrimary"
                             android:textSize="@dimen/text_size_xxlarge"
-                            tools:listitem="@layout/custom_spinner_item"/>
+                            tools:listitem="@layout/custom_spinner_item" />
                     </LinearLayout>
 
 
@@ -612,12 +652,12 @@
                         android:id="@+id/activity_level_error_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="* Must pick an activity level"
-                        android:textSize="@dimen/text_size_large"
-                        android:textColor="@color/errorColor"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_medium"
                         android:layout_marginBottom="@dimen/margin_small"
+                        android:text="* Must pick an activity level"
+                        android:textColor="@color/errorColor"
+                        android:textSize="@dimen/text_size_large"
                         android:visibility="gone" />
                 </LinearLayout>
 
@@ -625,11 +665,11 @@
                     android:id="@+id/diet_type_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -639,68 +679,67 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/padding_medium"
+                            android:layout_gravity="start|top"
                             android:layout_marginStart="@dimen/margin_large"
                             android:layout_marginTop="@dimen/margin_medium"
-                            android:layout_gravity="start|top"
+                            android:padding="@dimen/padding_medium"
+                            android:text="Diet Type"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xxxlarge"
-                            android:text="Diet Type" />
+                            android:textSize="@dimen/text_size_xxxlarge" />
 
                         <TextView
                             android:id="@+id/diet_type_error_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="* Must pick\n a diet type"
-                            android:textSize="@dimen/text_size_large"
-                            android:textColor="@color/errorColor"
                             android:layout_gravity="center"
-                            android:visibility="gone"
                             android:layout_marginTop="@dimen/margin_large"
-                            android:gravity="center"/>
+                            android:gravity="center"
+                            android:text="* Must pick\n a diet type"
+                            android:textColor="@color/errorColor"
+                            android:textSize="@dimen/text_size_large"
+                            android:visibility="gone" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
-                    <RadioGroup
-                        xmlns:android="http://schemas.android.com/apk/res/android"
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/diet_type_rg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_gravity="end|top"
+                        android:layout_marginEnd="@dimen/margin_large"
                         android:background="@null"
-                        android:padding="@dimen/padding_medium"
-                        android:layout_marginEnd="@dimen/margin_large">
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_medium">
 
                         <RadioButton
                             android:id="@+id/carnivore_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Carnivore"
-                            android:textSize="@dimen/text_size_xxlarge"
-                            android:textColor="@color/textPrimary"/>
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                         <RadioButton
                             android:id="@+id/vegetarian_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Vegetarian"
-                            android:textSize="@dimen/text_size_xxlarge"
-                            android:textColor="@color/textPrimary"/>
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                         <RadioButton
                             android:id="@+id/vegan_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Vegan"
-                            android:textSize="@dimen/text_size_xxlarge"
-                            android:textColor="@color/textPrimary"/>
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                     </RadioGroup>
 
@@ -715,225 +754,226 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/goal_adjustment_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Adjust Daily Goal"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title"
-                    android:padding="@dimen/padding_small"
                     android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_large"/>
+                    android:padding="@dimen/padding_small"
+                    android:text="Adjust Daily Goal"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_title" />
 
                 <LinearLayout
                     android:id="@+id/adjust_calories_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Calorie Goal (kcal)"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Calorie Goal (kcal)" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/adjust_calories_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="number"
                         android:gravity="center"
+                        android:hint="Enter..."
+                        android:inputType="number"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/adjust_carbs_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Carbs Goal (g)"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Carbs Goal (g)" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/adjust_carbs_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="number"
                         android:gravity="center"
+                        android:hint="Enter..."
+                        android:inputType="number"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/adjust_protein_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Protein Goal (g)"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Protein Goal (g)" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/adjust_protein_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="number"
                         android:gravity="center"
+                        android:hint="Enter..."
+                        android:inputType="number"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/adjust_fat_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Fat Goal (g)"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Fat Goal (g)" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/adjust_fat_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="number"
                         android:gravity="center"
+                        android:hint="Enter..."
+                        android:inputType="number"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/adjust_water_intake_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_background"
-                    android:padding="@dimen/padding_medium"
                     android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small">
+                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Water Intake (ml)"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:text="Water Intake (ml)" />
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
                     <EditText
                         android:id="@+id/adjust_water_intake_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter..."
                         android:layout_gravity="end|center_vertical"
-                        android:padding="@dimen/padding_medium"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:inputType="number"
                         android:gravity="center"
+                        android:hint="Enter..."
+                        android:inputType="number"
+                        android:maxEms="7"
                         android:minEms="2"
-                        android:maxEms="7"/>
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xxlarge" />
                 </LinearLayout>
 
             </LinearLayout>

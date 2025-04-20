@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:layout_marginHorizontal="@dimen/margin_small"
     android:layout_marginVertical="@dimen/margin_large"
     android:background="@drawable/card_background"
+    android:orientation="horizontal"
     android:weightSum="25">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_large"
         android:layout_weight="24"
-        android:layout_marginStart="@dimen/margin_large">
+        android:orientation="vertical">
 
         <!-- Calories Section -->
         <LinearLayout
@@ -26,20 +26,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calories"
                 android:layout_weight="1"
-                android:textSize="@dimen/text_size_xlarge"
+                android:paddingStart="2dp"
+                android:text="Calories"
                 android:textColor="@color/textPrimary"
-                android:paddingStart="2dp"/>
+                android:textSize="@dimen/text_size_xlarge" />
 
             <TextView
                 android:id="@+id/calories_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingEnd="2dp"
                 android:text="@string/x_total"
-                android:textSize="@dimen/text_size_xlarge"
                 android:textColor="@color/textPrimary"
-                android:paddingEnd="2dp"/>
+                android:textSize="@dimen/text_size_xlarge" />
         </LinearLayout>
 
         <!-- Calories Progress Bar -->
@@ -55,7 +55,7 @@
                 android:max="2000"
                 android:progress="850"
                 android:progressDrawable="@drawable/progress_bar_style"
-                android:progressTint="@color/calorie_progress_color"/>
+                android:progressTint="@color/calorie_progress_color" />
         </LinearLayout>
 
         <!-- Macronutrient Labels -->
@@ -69,29 +69,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Carbs"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_large" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Protein"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_large" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fat"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/textPrimary" />
+                android:text="Fat"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_large" />
         </LinearLayout>
 
         <!-- Macronutrient Progress Bars -->
@@ -105,6 +105,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <ProgressBar
                     android:id="@+id/carbs_progress"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -113,15 +114,18 @@
                     android:max="400"
                     android:progress="150"
                     android:progressDrawable="@drawable/progress_bar_style"
-                    android:progressTint="@color/carbs_progress_color"/>
+                    android:progressTint="@color/carbs_progress_color" />
             </LinearLayout>
 
-            <View android:layout_width="@dimen/minimal_margin" android:layout_height="8dp" />
+            <View
+                android:layout_width="@dimen/minimal_margin"
+                android:layout_height="8dp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <ProgressBar
                     android:id="@+id/protein_progress"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -129,16 +133,19 @@
                     android:layout_height="10dp"
                     android:max="400"
                     android:progress="220"
-                    android:progressTint="@color/protein_progress_color"
-                    android:progressDrawable="@drawable/progress_bar_style" />
+                    android:progressDrawable="@drawable/progress_bar_style"
+                    android:progressTint="@color/protein_progress_color" />
             </LinearLayout>
 
-            <View android:layout_width="@dimen/minimal_margin" android:layout_height="8dp" />
+            <View
+                android:layout_width="@dimen/minimal_margin"
+                android:layout_height="8dp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <ProgressBar
                     android:id="@+id/fat_progress"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -147,7 +154,7 @@
                     android:max="400"
                     android:progress="260"
                     android:progressDrawable="@drawable/progress_bar_style"
-                    android:progressTint="@color/fat_progress_color"/>
+                    android:progressTint="@color/fat_progress_color" />
             </LinearLayout>
         </LinearLayout>
 
@@ -162,31 +169,31 @@
                 android:id="@+id/carbs_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/x_total"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/textPrimary" />
+                android:text="@string/x_total"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_large" />
 
             <TextView
                 android:id="@+id/protein_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/x_total"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/textPrimary" />
+                android:text="@string/x_total"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_large" />
 
             <TextView
                 android:id="@+id/fat_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/x_total"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/textPrimary" />
+                android:text="@string/x_total"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_large" />
         </LinearLayout>
 
     </LinearLayout>
@@ -194,49 +201,49 @@
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        app:dividerColor="@color/dividerColorLight"
         android:layout_marginVertical="6dp"
-        android:layout_marginStart="@dimen/margin_large" />
+        android:layout_marginStart="@dimen/margin_large"
+        app:dividerColor="@color/dividerColorLight" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_gravity="end"
         android:layout_weight="1"
-        android:layout_gravity="end">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Water"
-            android:textSize="@dimen/text_size_xlarge"
-            android:textColor="@color/textPrimary"
-            android:background="@null"
             android:layout_gravity="center"
-            android:gravity="center"/>
+            android:background="@null"
+            android:gravity="center"
+            android:text="Water"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_size_xlarge" />
 
         <ProgressBar
             android:id="@+id/water_progress"
             style="?android:attr/progressBarStyleHorizontal"
-            android:rotation="270"
-            android:layout_marginVertical="35dp"
             android:layout_width="85dp"
             android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="35dp"
             android:max="2500"
             android:progress="1000"
             android:progressDrawable="@drawable/progress_bar_style"
             android:progressTint="@color/my_blue"
-            android:layout_gravity="center"/>
+            android:rotation="270" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="x/total"
-            android:textSize="@dimen/text_size_xlarge"
-            android:textColor="@color/textPrimary"
-            android:background="@null"
             android:layout_gravity="center"
-            android:gravity="center"/>
+            android:background="@null"
+            android:gravity="center"
+            android:text="x/total"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_size_xlarge" />
     </LinearLayout>
 
 </LinearLayout>

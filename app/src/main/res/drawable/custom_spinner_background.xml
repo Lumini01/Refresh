@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- A selector that changes background on press -->
+<?xml version="1.0" encoding="utf-8"?><!-- A selector that changes background on press -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Pressed state -->
     <item android:state_pressed="true">

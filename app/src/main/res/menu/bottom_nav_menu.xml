@@ -13,9 +13,9 @@
         android:id="@+id/nav_progress"
         android:icon="@drawable/ic_progress"
         android:title="" />
-<!--    <item-->
-<!--        android:id="@+id/nav_recipes"-->
-<!--        android:icon="@drawable/ic_recipe_book"-->
-<!--        android:title="" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/nav_recipes"-->
+    <!--        android:icon="@drawable/ic_recipe_book"-->
+    <!--        android:title="" />-->
 
 </menu>

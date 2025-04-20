@@ -183,11 +183,11 @@ public class FoodInfoFragment extends Fragment {
         backArrow = view.findViewById(R.id.back_btn);
         extraBtn = view.findViewById(R.id.extra_btn);
 
-        tvFoodName = view.findViewById(R.id.tv_food_name);
+        tvFoodName = view.findViewById(R.id.food_title_tv);
         favoriteBtn = view.findViewById(R.id.favorite_btn);
-        tvFoodDescription = view.findViewById(R.id.tv_food_description);
-        etServingCount = view.findViewById(R.id.etServingCount);
-        spinnerServingOptions = view.findViewById(R.id.spinnerServingOptions);
+        tvFoodDescription = view.findViewById(R.id.food_description_tv);
+        etServingCount = view.findViewById(R.id.serving_count_et);
+        spinnerServingOptions = view.findViewById(R.id.serving_options_spinner);
         progressBarCrabs = view.findViewById(R.id.progressBarCrabs);
         progressTextCarbs = view.findViewById(R.id.progressTextCarbs);
         tvCarbs = view.findViewById(R.id.tv_carbs);
@@ -199,7 +199,7 @@ public class FoodInfoFragment extends Fragment {
         tvFat = view.findViewById(R.id.tv_fat);
         tvCalories = view.findViewById(R.id.tv_calories);
         seekBarCalories = view.findViewById(R.id.calorie_seek_bar);
-        btnAdd = view.findViewById(R.id.btn_add);
+        btnAdd = view.findViewById(R.id.add_btn);
     }
 
     private void assignValuesToViews() {

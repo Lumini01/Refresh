@@ -1,25 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Root LinearLayout with a ScrollView inside -->
+<?xml version="1.0" encoding="utf-8"?><!-- Root LinearLayout with a ScrollView inside -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     android:weightSum="0.9">
 
     <include
-        layout="@layout/basic_nav_toolbar"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/basic_nav_toolbar" />
 
     <!-- ScrollView ensures content is scrollable on smaller devices -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding_medium"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:padding="@dimen/padding_medium">
 
         <!-- Container for your food info content -->
         <LinearLayout
@@ -30,120 +29,121 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/padding_small">
 
                 <!-- Food Name Title -->
                 <TextView
-                    android:id="@+id/tv_food_name"
+                    android:id="@+id/food_title_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:padding="@dimen/padding_medium"
                     android:text="Food Name"
                     android:textColor="@color/textPrimary"
-                    android:padding="@dimen/padding_medium"
                     android:textSize="@dimen/text_size_title"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="@dimen/margin_medium"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/favorite_btn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_favorite_bold"
-                    android:background="@null"
-                    android:contentDescription="favorite"
-                    android:padding="@dimen/padding_small"
                     android:layout_gravity="end"
                     android:layout_marginHorizontal="@dimen/margin_medium"
                     android:layout_marginVertical="@dimen/margin_small"
                     android:layout_weight="5"
-                    app:tint="@color/iconTint" />
+                    android:background="@null"
+                    android:contentDescription="favorite"
+                    android:padding="@dimen/padding_small"
+                    android:src="@drawable/ic_favorite_bold"
+                    app:tint="@color/iconTint"
+                    android:visibility="visible"/>
 
 
             </LinearLayout>
 
-            <!-- Food Image Could Go Here -->
-
-            <!-- Food Description -->
             <TextView
-                android:id="@+id/tv_food_description"
+                android:id="@+id/food_description_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:padding="@dimen/padding_medium"
                 android:text="Food description goes here."
                 android:textColor="@color/textPrimary"
                 android:textSize="@dimen/text_size_xlarge"
-                android:layout_margin="@dimen/margin_small"
-                android:padding="@dimen/padding_medium"
-                android:layout_marginBottom="@dimen/margin_medium" />
+                android:visibility="visible"/>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                app:dividerColor="@color/dividerColorLight"
+                android:layout_marginHorizontal="@dimen/margin_small"
                 android:layout_marginVertical="@dimen/margin_medium"
-                android:layout_marginHorizontal="@dimen/margin_small" />
+                app:dividerColor="@color/dividerColorLight" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:orientation="horizontal"
+                    android:layout_gravity="center"
                     android:gravity="center_vertical"
-                    android:layout_gravity="center">
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <!-- Left View: Portion Amount Input -->
                     <EditText
-                        android:id="@+id/etServingCount"
+                        android:id="@+id/serving_count_et"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginVertical="@dimen/margin_medium"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_weight="4"
+                        android:background="@drawable/custom_spinner_background"
                         android:gravity="center"
                         android:inputType="number"
-                        android:text="1"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        android:background="@drawable/custom_spinner_background"
-                        android:layout_weight="4"
                         android:padding="@dimen/padding_small"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginVertical="@dimen/margin_medium"/>
+                        android:text="1"
+                        android:textSize="@dimen/text_size_xxlarge" />
 
                     <!-- Right View: Dropdown for Serving Options -->
                     <Spinner
-                        android:id="@+id/spinnerServingOptions"
+                        android:id="@+id/serving_options_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:spinnerMode="dialog"
-                        android:layout_weight="1"
-                        android:padding="@dimen/padding_small"
                         android:layout_marginHorizontal="@dimen/margin_small"
                         android:layout_marginVertical="@dimen/margin_small"
-                        tools:listitem="@layout/custom_spinner_item"/>
+                        android:layout_weight="1"
+                        android:padding="@dimen/padding_small"
+                        android:spinnerMode="dialog"
+                        tools:listitem="@layout/custom_spinner_item" />
 
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:id="@+id/nutrition_info_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_medium"
                     android:orientation="horizontal"
-                    android:weightSum="3"
-                    android:layout_marginVertical="@dimen/margin_medium">
+                    android:weightSum="3">
 
                     <!-- First Column (e.g. Carbs) -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="4dp"
                         android:layout_marginHorizontal="4dp"
-                        android:background="@drawable/card_background">
+                        android:layout_weight="1"
+                        android:background="@drawable/card_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="4dp">
 
                         <!-- Progress Bar with overlay percentage -->
                         <FrameLayout
@@ -156,56 +156,55 @@
                                 android:id="@+id/progressBarCrabs"
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"
+                                android:layout_gravity="center"
                                 app:cpb_background_progressbar_color="@color/borderColor"
                                 app:cpb_background_progressbar_width="9dp"
                                 app:cpb_progress="50"
+                                app:cpb_progress_direction="to_right"
                                 app:cpb_progressbar_color="@color/carbs_progress_color"
                                 app:cpb_progressbar_width="12dp"
-                                app:cpb_round_border="true"
-                                app:cpb_progress_direction="to_right"
-                                android:layout_gravity="center" />
+                                app:cpb_round_border="true" />
 
                             <TextView
                                 android:id="@+id/progressTextCarbs"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="50%"
-                                android:gravity="center"
                                 android:layout_gravity="center"
-                                android:textSize="@dimen/text_size_xlarge"
-                                android:textColor="@color/textSecondary" />
+                                android:gravity="center"
+                                android:text="50%"
+                                android:textColor="@color/textSecondary"
+                                android:textSize="@dimen/text_size_xlarge" />
                         </FrameLayout>
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            app:dividerColor="@color/dividerColorLight"
-                            android:layout_marginVertical="@dimen/margin_medium_large"
                             android:layout_marginHorizontal="@dimen/margin_medium"
-                            />
+                            android:layout_marginVertical="@dimen/margin_medium_large"
+                            app:dividerColor="@color/dividerColorLight" />
 
                         <!-- Nutritional Info Text -->
                         <TextView
                             android:id="@+id/tv_carbs"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Carbs: Xg"
+                            android:gravity="center"
                             android:padding="@dimen/padding_xsmall"
+                            android:text="Carbs: Xg"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xlarge"
-                            android:gravity="center" />
+                            android:textSize="@dimen/text_size_xlarge" />
                     </LinearLayout>
 
                     <!-- Second Column (e.g. Protein) -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="4dp"
                         android:layout_marginHorizontal="4dp"
-                        android:background="@drawable/card_background">
+                        android:layout_weight="1"
+                        android:background="@drawable/card_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="4dp">
 
                         <!-- Progress Bar with overlay percentage -->
                         <FrameLayout
@@ -218,56 +217,55 @@
                                 android:id="@+id/progressBarProtein"
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"
+                                android:layout_gravity="center"
                                 app:cpb_background_progressbar_color="@color/borderColor"
                                 app:cpb_background_progressbar_width="9dp"
                                 app:cpb_progress="50"
+                                app:cpb_progress_direction="to_right"
                                 app:cpb_progressbar_color="@color/protein_progress_color"
                                 app:cpb_progressbar_width="12dp"
-                                app:cpb_round_border="true"
-                                app:cpb_progress_direction="to_right"
-                                android:layout_gravity="center" />
+                                app:cpb_round_border="true" />
 
                             <TextView
                                 android:id="@+id/progressTextProtein"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="50%"
-                                android:gravity="center"
                                 android:layout_gravity="center"
-                                android:textSize="@dimen/text_size_xlarge"
-                                android:textColor="@color/textSecondary" />
+                                android:gravity="center"
+                                android:text="50%"
+                                android:textColor="@color/textSecondary"
+                                android:textSize="@dimen/text_size_xlarge" />
                         </FrameLayout>
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            app:dividerColor="@color/dividerColorLight"
-                            android:layout_marginVertical="@dimen/margin_medium_large"
                             android:layout_marginHorizontal="@dimen/margin_medium"
-                            />
+                            android:layout_marginVertical="@dimen/margin_medium_large"
+                            app:dividerColor="@color/dividerColorLight" />
 
                         <!-- Nutritional Info Text -->
                         <TextView
                             android:id="@+id/tv_protein"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Protein: Xg"
+                            android:gravity="center"
                             android:padding="@dimen/padding_xsmall"
+                            android:text="Protein: Xg"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xlarge"
-                            android:gravity="center" />
+                            android:textSize="@dimen/text_size_xlarge" />
                     </LinearLayout>
 
                     <!-- Third Column (e.g. Carbs or Fat) -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="4dp"
                         android:layout_marginHorizontal="4dp"
-                        android:background="@drawable/card_background">
+                        android:layout_weight="1"
+                        android:background="@drawable/card_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="4dp">
 
                         <!-- Progress Bar with overlay percentage -->
                         <FrameLayout
@@ -280,53 +278,53 @@
                                 android:id="@+id/progressBarFat"
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"
+                                android:layout_gravity="center"
                                 app:cpb_background_progressbar_color="@color/borderColor"
                                 app:cpb_background_progressbar_width="9dp"
                                 app:cpb_progress="50"
+                                app:cpb_progress_direction="to_right"
                                 app:cpb_progressbar_color="@color/fat_progress_color"
                                 app:cpb_progressbar_width="12dp"
-                                app:cpb_round_border="true"
-                                app:cpb_progress_direction="to_right"
-                                android:layout_gravity="center" />
+                                app:cpb_round_border="true" />
 
                             <TextView
                                 android:id="@+id/progressTextFat"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="50%"
-                                android:gravity="center"
                                 android:layout_gravity="center"
-                                android:textSize="@dimen/text_size_xlarge"
-                                android:textColor="@color/textSecondary" />
+                                android:gravity="center"
+                                android:text="50%"
+                                android:textColor="@color/textSecondary"
+                                android:textSize="@dimen/text_size_xlarge" />
                         </FrameLayout>
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            app:dividerColor="@color/dividerColorLight"
-                            android:layout_marginVertical="@dimen/margin_medium_large"
                             android:layout_marginHorizontal="@dimen/margin_medium"
-                            />
+                            android:layout_marginVertical="@dimen/margin_medium_large"
+                            app:dividerColor="@color/dividerColorLight" />
 
                         <!-- Nutritional Info Text -->
                         <TextView
                             android:id="@+id/tv_fat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fat: Xg"
+                            android:gravity="center"
                             android:padding="@dimen/padding_xsmall"
+                            android:text="Fat: Xg"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xlarge"
-                            android:gravity="center" />
+                            android:textSize="@dimen/text_size_xlarge" />
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/calorie_info_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/card_background">
+                    android:background="@drawable/card_background"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -338,11 +336,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/margin_medium"
                             android:layout_marginBottom="@dimen/margin_small"
+                            android:layout_weight="1"
                             android:padding="@dimen/padding_medium_large"
                             android:text="Calories:"
-                            android:textSize="22dp"
                             android:textColor="@color/textPrimary"
-                            android:layout_weight="1"/>
+                            android:textSize="22dp" />
 
                         <TextView
                             android:id="@+id/tv_calories"
@@ -350,28 +348,27 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/margin_medium"
                             android:layout_marginBottom="@dimen/margin_small"
+                            android:layout_weight="2"
+                            android:gravity="center"
                             android:padding="@dimen/padding_medium_large"
                             android:text="X kcal"
-                            android:textSize="22dp"
                             android:textColor="@color/textPrimary"
-                            android:layout_weight="2"
-                            android:gravity="center"/>
+                            android:textSize="22dp" />
 
                     </LinearLayout>
-
 
 
                     <SeekBar
                         android:id="@+id/calorie_seek_bar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:enabled="false"
                         android:max="3900"
                         android:progress="2300"
-                        android:thumb="@drawable/custom_thumb"
                         android:progressDrawable="@drawable/segmented_progress_drawable"
-                        android:enabled="false"
-                        android:clickable="false"
-                        android:splitTrack="false" />
+                        android:splitTrack="false"
+                        android:thumb="@drawable/custom_thumb" />
 
                 </LinearLayout>
 
@@ -380,11 +377,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nutrition Labels"
-                android:textSize="@dimen/text_size_xxlarge"
                 android:layout_margin="@dimen/margin_small"
                 android:paddingVertical="@dimen/padding_small"
-                android:textColor="@color/textPrimary"/>
+                android:text="Nutrition Labels"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_xxlarge" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -397,16 +394,16 @@
 
     <!-- Action Button -->
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/add_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:textStyle="bold"
-        android:padding="@dimen/padding_medium_large"
         android:layout_gravity="center_horizontal|bottom"
-        android:textSize="@dimen/text_size_xxlarge"
         android:layout_marginVertical="@dimen/margin_large"
         android:backgroundTint="@color/my_darker_blue"
-        android:textColor="@color/buttonText"/>
+        android:padding="@dimen/padding_medium_large"
+        android:text="Add"
+        android:textColor="@color/buttonText"
+        android:textSize="@dimen/text_size_xxlarge"
+        android:textStyle="bold" />
 
 </LinearLayout>

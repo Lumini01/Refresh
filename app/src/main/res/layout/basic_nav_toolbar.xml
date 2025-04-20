@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_small"
     android:background="@color/colorPrimary"
     android:elevation="4dp"
-    app:titleTextColor="@color/textPrimary"
-    android:layout_marginBottom="@dimen/margin_small"
-    android:padding="@dimen/padding_small">
+    android:padding="@dimen/padding_small"
+    app:titleTextColor="@color/textPrimary">
 
     <!-- Back Arrow -->
     <ImageButton
         android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back_arrow"
+        android:layout_gravity="start"
         android:background="@null"
         android:contentDescription="@string/back_arrow"
         android:padding="@dimen/padding_medium"
-        app:tint="@color/iconTint"
-        android:layout_gravity="start" />
+        android:src="@drawable/ic_back_arrow"
+        app:tint="@color/iconTint" />
 
     <!-- Title -->
     <TextView
         android:id="@+id/toolbar_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/title"
         android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_size_xxxlarge"
-        android:layout_gravity="center" />
+        android:textSize="@dimen/text_size_xxxlarge" />
 
     <!-- Gear Icon -->
     <ImageButton

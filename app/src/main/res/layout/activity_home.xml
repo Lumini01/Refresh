@@ -1,376 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     android:padding="@dimen/padding_medium"
     tools:context=".Activity.HomeDashboardActivity">
 
-  <androidx.fragment.app.FragmentContainerView
-      android:id="@+id/user_details_container"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:visibility="gone"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/user_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
-  <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@drawable/card_background"
-      android:elevation="4dp"
-      android:title="Dashboard"
-      android:titleTextColor="@color/textSecondary"
-      app:itemIconTint="@color/iconTint"
-      android:drawableTint="@color/iconTint"
-      android:layout_marginBottom="@dimen/minimal_margin">
-
-    <!-- Scrollable Content (Logo or Image) -->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical|start"
-        app:srcCompat="@mipmap/ic_launcher_brand_foreground"
-        android:scaleX="1.5"
-        android:scaleY="1.5"/>
-
-    <ImageButton
-        android:id="@+id/profile_btn"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginVertical="@dimen/margin_xsmall"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_large"
-        android:background="@null"
-        android:padding="@dimen/padding_xsmall"
-        android:scaleX="1.25"
-        android:scaleY="1.25"
-        android:src="@drawable/ic_profile"
-        app:tint="@color/iconTint" />
-
-    <ImageButton
-        android:id="@+id/notification_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_notifications"
-        android:background="@null"
-        android:padding="@dimen/padding_xsmall"
-        android:layout_margin="@dimen/margin_xsmall"
-        android:layout_gravity="end"
-        app:tint="@color/iconTint"
-        android:scaleY="1.25"
-        android:scaleX="1.25"/>
-
-  </androidx.appcompat.widget.Toolbar>
-
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      android:paddingEnd="@dimen/padding_small"
-      android:layout_marginBottom="@dimen/margin_small"
-      android:weightSum="1">
-
-    <TextView
-        android:id="@+id/date_title_tv"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="Thu.│ 03.04.2025"
-        android:textColor="@color/textPrimary"
-        android:textSize="30sp"
-        android:paddingVertical="@dimen/padding_medium"
-        android:paddingStart="@dimen/padding_small"
-        android:layout_margin="@dimen/margin_small"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/minimal_margin"
         android:background="@drawable/card_background"
-        android:layout_gravity="center|end">
+        android:drawableTint="@color/iconTint"
+        android:elevation="4dp"
+        android:title="Dashboard"
+        android:titleTextColor="@color/textSecondary"
+        app:itemIconTint="@color/iconTint">
 
-      <ImageButton
-          android:id="@+id/last_summary_btn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@drawable/ic_back_button"
-          android:background="@drawable/circle_button"
-          android:backgroundTint="@color/my_darker_blue"
-          app:tint="@color/colorPrimary"
-          android:padding="@dimen/padding_medium"
-          android:layout_marginEnd="@dimen/margin_medium"
-          android:layout_gravity="center|end" />
+        <!-- Scrollable Content (Logo or Image) -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical|start"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            app:srcCompat="@mipmap/ic_launcher_brand_foreground" />
 
-      <ImageButton
-          android:id="@+id/next_summary_btn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@drawable/ic_forward_button"
-          android:background="@drawable/circle_button"
-          android:backgroundTint="@color/my_darker_blue"
-          app:tint="@color/colorPrimary"
-          android:padding="@dimen/padding_medium"
-          android:layout_gravity="center|end"/>
+        <ImageButton
+            android:id="@+id/profile_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginVertical="@dimen/margin_xsmall"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:background="@null"
+            android:padding="@dimen/padding_xsmall"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
+            android:src="@drawable/ic_profile"
+            app:tint="@color/iconTint" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/notification_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/margin_xsmall"
+            android:background="@null"
+            android:padding="@dimen/padding_xsmall"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
+            android:src="@drawable/ic_notifications"
+            app:tint="@color/iconTint" />
 
-  </LinearLayout>
-
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:fillViewport="true">
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-      <androidx.fragment.app.FragmentContainerView
-          android:id="@+id/daily_progress_container"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:visibility="gone"/>
-
-      <include
-          layout="@layout/fragment_macronutrient"
-          android:id="@+id/macronutrient_fragment" />
-
-      <LinearLayout
-          android:id="@+id/daily_goal_meter"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:background="@drawable/card_background"
-          android:padding="8dp"
-          android:layout_marginBottom="8dp"
-          android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_warning"
-            android:contentDescription="Calendar Icon"
-            app:tint="@color/iconTint" />
+        android:layout_marginBottom="@dimen/margin_small"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/padding_small"
+        android:weightSum="1">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:text="Daily Goal Not Reached"
-            android:textSize="@dimen/text_size_xxlarge"
-            android:textColor="@color/textSecondary"
-            android:gravity="center" />
-      </LinearLayout>
-
-      <com.google.android.material.divider.MaterialDivider
-          android:layout_width="match_parent"
-          android:layout_height="2dp"
-          app:dividerColor="@color/dividerColorLight"
-          android:layout_marginVertical="@dimen/margin_small"
-          android:layout_marginHorizontal="@dimen/margin_small" />
-
-      <!-- Quick Actions Section -->
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:gravity="center_horizontal"
-          android:orientation="horizontal"
-          android:weightSum="3"
-          android:layout_marginVertical="@dimen/margin_medium">
-
-        <LinearLayout
-            android:id="@+id/meal_log_shortcut_btn"
+            android:id="@+id/date_title_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/card_background"
-            android:padding="16dp"
-            android:layout_margin="4dp"
-            android:gravity="center">
-
-          <!-- Placeholder for Icon -->
-          <ImageView
-              android:layout_width="48dp"
-              android:layout_height="48dp"
-              android:src="@drawable/ic_today"
-              android:contentDescription="Quick Action 1 Icon"
-              app:tint="@color/iconTint"
-              android:layout_margin="@dimen/margin_medium"/>
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Log Meal"
-              android:textSize="@dimen/text_size_large"
-              android:textColor="@color/textSecondary"
-              android:gravity="center" />
-
-        </LinearLayout>
+            android:paddingVertical="@dimen/padding_medium"
+            android:paddingStart="@dimen/padding_small"
+            android:text="Thu.│ 03.04.2025"
+            android:textColor="@color/textPrimary"
+            android:textSize="30sp" />
 
         <LinearLayout
-            android:id="@+id/log_water_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/card_background"
-            android:padding="16dp"
-            android:layout_margin="4dp"
-            android:gravity="center">
-
-          <!-- Placeholder for Icon -->
-          <ImageView
-              android:layout_width="48dp"
-              android:layout_height="48dp"
-              android:src="@drawable/ic_water_cup"
-              android:contentDescription="Quick Action 1 Icon"
-              app:tint="@color/iconTint"
-              android:layout_margin="@dimen/margin_medium"/>
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Log Cup"
-              android:textSize="@dimen/text_size_large"
-              android:textColor="@color/textSecondary"
-              android:gravity="center" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/log_weight_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/card_background"
-            android:padding="16dp"
-            android:layout_margin="4dp"
-            android:gravity="center">
-
-          <!-- Placeholder for Icon -->
-          <ImageView
-              android:layout_width="48dp"
-              android:layout_height="48dp"
-              android:src="@drawable/ic_weight"
-              android:contentDescription="Quick Action 1 Icon"
-              app:tint="@color/iconTint"
-              android:layout_margin="@dimen/margin_medium"/>
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Log Weight"
-              android:textSize="@dimen/text_size_large"
-              android:textColor="@color/textSecondary"
-              android:gravity="center" />
-
-        </LinearLayout>
-
-        <!-- Repeat similar blocks for more quick actions -->
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:id="@+id/weight_progress_meter"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:background="@drawable/card_background"
-          android:padding="16dp"
-          android:layout_marginBottom="16dp"
-          android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/ic_scale"
-            android:contentDescription="Weight Icon"
-            app:tint="@color/iconTint"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-          <TextView
-              android:id="@+id/gain_lose_weight_tv"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Using Refresh You've Lost/Gained:"
-              android:textSize="@dimen/text_size_xxlarge"
-              android:gravity="center"
-              android:textColor="@color/textSecondary"
-              android:textStyle="bold"
-              android:layout_marginBottom="8dp" />
-
-          <TextView
-              android:id="@+id/gain_lose_weight_value_tv"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="0 kg"
-              android:gravity="center"
-              android:textColor="@color/textSecondary"
-              android:textSize="@dimen/text_size_xxlarge" />
-
-        </LinearLayout>
-
-      </LinearLayout>
-
-      <!-- Calendar Overview -->
-      <LinearLayout
-          android:id="@+id/progress_shortcut_btn"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:background="@drawable/card_background"
-          android:padding="16dp"
-          android:layout_marginBottom="16dp"
-          android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/ic_progress_graph"
-            android:contentDescription="Calendar Icon"
-            app:tint="@color/iconTint"/>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="View Your Progress"
-            android:textSize="@dimen/text_size_xxlarge"
-            android:textColor="@color/textSecondary"
-            android:gravity="center_vertical" />
-      </LinearLayout>
+            android:layout_gravity="center|end"
+            android:background="@drawable/card_background"
+            android:orientation="horizontal">
 
-      <!-- Health Tips Section -->
+            <ImageButton
+                android:id="@+id/last_summary_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/circle_button"
+                android:backgroundTint="@color/my_darker_blue"
+                android:padding="@dimen/padding_medium"
+                android:src="@drawable/ic_back_button"
+                app:tint="@color/colorPrimary" />
+
+            <ImageButton
+                android:id="@+id/next_summary_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:background="@drawable/circle_button"
+                android:backgroundTint="@color/my_darker_blue"
+                android:padding="@dimen/padding_medium"
+                android:src="@drawable/ic_forward_button"
+                app:tint="@color/colorPrimary" />
+
+        </LinearLayout>
 
     </LinearLayout>
-  </ScrollView>
 
-  <!-- Bottom Navigation -->
-  <com.google.android.material.bottomnavigation.BottomNavigationView
-      android:id="@+id/bottom_navigation"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@drawable/card_background"
-      app:itemIconTint="@color/iconTint"
-      app:itemTextColor="@color/textSecondary"
-      app:menu="@menu/bottom_nav_menu"
-      android:layout_gravity="bottom"
-      android:layout_marginTop="@dimen/minimal_margin"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/daily_progress_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/macronutrient_fragment"
+                layout="@layout/fragment_macronutrient" />
+
+            <LinearLayout
+                android:id="@+id/daily_goal_meter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="Calendar Icon"
+                    android:src="@drawable/ic_warning"
+                    app:tint="@color/iconTint" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:gravity="center"
+                    android:text="Daily Goal Not Reached"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_size_xxlarge" />
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                android:layout_marginVertical="@dimen/margin_small"
+                app:dividerColor="@color/dividerColorLight" />
+
+            <!-- Quick Actions Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/meal_log_shortcut_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Placeholder for Icon -->
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:contentDescription="Quick Action 1 Icon"
+                        android:src="@drawable/ic_today"
+                        app:tint="@color/iconTint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Log Meal"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="@dimen/text_size_large" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/log_water_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Placeholder for Icon -->
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:contentDescription="Quick Action 1 Icon"
+                        android:src="@drawable/ic_water_cup"
+                        app:tint="@color/iconTint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Log Cup"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="@dimen/text_size_large" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/log_weight_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Placeholder for Icon -->
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:contentDescription="Quick Action 1 Icon"
+                        android:src="@drawable/ic_weight"
+                        app:tint="@color/iconTint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Log Weight"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="@dimen/text_size_large" />
+
+                </LinearLayout>
+
+                <!-- Repeat similar blocks for more quick actions -->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weight_progress_meter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/card_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="Weight Icon"
+                    android:src="@drawable/ic_scale"
+                    app:tint="@color/iconTint" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/gain_lose_weight_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:text="Using Refresh You've Lost/Gained:"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gain_lose_weight_value_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="0 kg"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="@dimen/text_size_xxlarge" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Calendar Overview -->
+            <LinearLayout
+                android:id="@+id/progress_shortcut_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/card_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="Calendar Icon"
+                    android:src="@drawable/ic_progress_graph"
+                    app:tint="@color/iconTint" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="View Your Progress"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_size_xxlarge" />
+            </LinearLayout>
+
+            <!-- Health Tips Section -->
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/minimal_margin"
+        android:background="@drawable/card_background"
+        app:itemIconTint="@color/iconTint"
+        app:itemTextColor="@color/textSecondary"
+        app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>

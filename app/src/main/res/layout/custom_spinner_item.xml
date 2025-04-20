@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- A custom layout for spinner items -->
+<?xml version="1.0" encoding="utf-8"?><!-- A custom layout for spinner items -->
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/spinner_item_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
-    android:textSize="@dimen/text_size_xxlarge"
-    android:textColor="@android:color/black"
-    android:gravity="center_vertical"
-    android:ellipsize="end"
-    android:maxLines="1"
+    android:layout_marginVertical="@dimen/margin_medium"
     android:background="@drawable/custom_spinner_background"
-    android:layout_marginVertical="@dimen/margin_medium"/>
+    android:ellipsize="end"
+    android:gravity="center_vertical"
+    android:maxLines="1"
+    android:padding="12dp"
+    android:textColor="@android:color/black"
+    android:textSize="@dimen/text_size_xxlarge" />

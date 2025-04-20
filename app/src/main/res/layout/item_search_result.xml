@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="@dimen/padding_medium"
     android:background="@color/cardBackground"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_medium">
 
     <!-- Container for TextViews -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:layout_marginEnd="8dp"> <!-- Added margin to separate from delete button -->
+        android:orientation="vertical"> <!-- Added margin to separate from delete button -->
 
         <TextView
             android:id="@+id/textViewResultTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Result Title"
-            android:textSize="16sp"
             android:textColor="@color/textSecondary"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <!-- Optional: Description TextView -->
@@ -32,10 +31,10 @@
             android:id="@+id/textViewResultDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Result Description"
-            android:textSize="14sp"
             android:textColor="@color/gray"
-            android:layout_marginTop="4dp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <!-- Delete Button -->
@@ -43,14 +42,14 @@
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/add"
+        android:focusable="false"
+        android:padding="8dp"
         android:scaleX="1.25"
         android:scaleY="1.25"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/add"
-        android:padding="8dp"
-        app:tint="@color/iconTint"
-        android:focusable="false"
-        android:clickable="true"/>
+        android:src="@drawable/ic_add"
+        app:tint="@color/iconTint" />
 
 </LinearLayout>

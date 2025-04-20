@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="@dimen/padding_medium_large"
-    android:background="@drawable/card_background"
     android:layout_marginBottom="@dimen/margin_small"
-    android:gravity="center_vertical">
+    android:background="@drawable/card_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_medium_large">
 
     <!-- Container for TextViews -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:layout_marginEnd="8dp"> <!-- Added margin to separate from delete button -->
+        android:orientation="vertical"> <!-- Added margin to separate from delete button -->
 
         <TextView
             android:id="@+id/meal_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Meal Title"
-            android:textSize="16sp"
             android:textColor="@color/textSecondary"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <!-- Optional: Description TextView -->
@@ -33,22 +32,22 @@
             android:id="@+id/meal_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Meal Description"
-            android:textSize="14sp"
             android:textColor="@color/gray"
-            android:layout_marginTop="4dp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/buttonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit"
-        android:scaleX="1.25"
-        android:scaleY="1.25"
         android:background="@null"
         android:contentDescription="edit"
         android:padding="8dp"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
+        android:src="@drawable/ic_edit"
         app:tint="@color/iconTint" />
 
     <!-- Delete Button -->
@@ -56,15 +55,14 @@
         android:id="@+id/buttonRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_delete"
-        android:scaleX="1.25"
-        android:scaleY="1.25"
+        android:layout_marginLeft="@dimen/margin_medium"
         android:background="@null"
         android:contentDescription="@string/delete"
         android:padding="8dp"
-        android:layout_marginLeft="@dimen/margin_medium"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
+        android:src="@drawable/ic_delete"
         app:tint="@color/iconTint" />
-
 
 
 </LinearLayout>

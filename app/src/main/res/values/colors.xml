@@ -20,7 +20,8 @@
     <!-- Background Colors -->
     <color name="backgroundColor">#FFFFFF</color> <!-- General background color -->
     <color name="cardBackgroundColor">#F9F9F9</color> <!-- Background for cards -->
-    <color name="surfaceBackground">#F5F5F5</color> <!-- Background for surfaces like dialogs or bottom sheets -->
+    <color name="surfaceBackground">#F5F5F5
+    </color> <!-- Background for surfaces like dialogs or bottom sheets -->
     <color name="windowBackground">#FFFFFF</color> <!-- Window background color -->
 
     <!-- Text Colors -->
@@ -42,7 +43,8 @@
     <color name="buttonBackgroundDisabled">#D0D0D0</color> <!-- Disabled button background -->
 
     <!-- Border and Divider Colors -->
-    <color name="borderColor_X">#E0E0E0</color> <!-- Border color for input fields or other UI components -->
+    <color name="borderColor_X">#E0E0E0
+    </color> <!-- Border color for input fields or other UI components -->
     <color name="dividerColorLight">#D0D0D0</color> <!-- Divider line color -->
     <color name="dividerColorDark">#0F0E0C</color> <!-- Divider line color -->
 

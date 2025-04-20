@@ -89,7 +89,7 @@ public class ProgressActivity extends AppCompatActivity {
 
         trendGraphFragment = TrendGraphFragment.newInstance(daySummaries, userSP.getInt("calorieGoal", 0));
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.week_graph_container, trendGraphFragment) // put it in our container
+                .replace(R.id.trend_graph_container, trendGraphFragment) // put it in our container
                 .commit();
 
         editMealLauncher = registerForActivityResult(
@@ -111,9 +111,9 @@ public class ProgressActivity extends AppCompatActivity {
     }
 
     public void initializeUI() {
-        weekGraphContainer = findViewById(R.id.week_graph_container);
+        weekGraphContainer = findViewById(R.id.trend_graph_container);
         toolbar = findViewById(R.id.toolbar);
-        recyclerViewMeals = findViewById(R.id.recycler_view_meals);
+        recyclerViewMeals = findViewById(R.id.meals_rv);
         refreshButton = findViewById(R.id.back_btn);
         calenderButton = findViewById(R.id.extra_btn);
         WeekDatesTV = findViewById(R.id.week_dates_btn);

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:weightSum="1">
 
@@ -10,33 +10,33 @@
         android:id="@+id/last_week_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back_button"
+        android:layout_marginHorizontal="@dimen/margin_small"
         android:background="@drawable/circle_button"
         android:backgroundTint="@color/my_darker_blue"
-        app:tint="@color/colorPrimary"
-        android:layout_marginHorizontal="@dimen/margin_small"/>
+        android:src="@drawable/ic_back_button"
+        app:tint="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/week_dates_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Week Dates"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="@dimen/text_size_xlarge"
-        android:textColor="@color/textPrimary"
-        android:layout_weight="1"
         android:layout_marginHorizontal="@dimen/margin_medium"
-        android:padding="@dimen/padding_medium"/>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="@dimen/padding_medium"
+        android:text="Week Dates"
+        android:textColor="@color/textPrimary"
+        android:textSize="@dimen/text_size_xlarge" />
 
     <ImageButton
         android:id="@+id/next_week_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_forward_button"
+        android:layout_marginHorizontal="@dimen/margin_small"
         android:background="@drawable/circle_button"
         android:backgroundTint="@color/my_darker_blue"
-        app:tint="@color/colorPrimary"
-        android:layout_marginHorizontal="@dimen/margin_small"/>
+        android:src="@drawable/ic_forward_button"
+        app:tint="@color/colorPrimary" />
 
 </LinearLayout>
