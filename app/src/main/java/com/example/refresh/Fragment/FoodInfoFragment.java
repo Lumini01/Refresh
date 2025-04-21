@@ -220,8 +220,8 @@ public class FoodInfoFragment extends Fragment {
 
         // 4. Spinner for Serving Options
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
-                R.layout.custom_spinner_item, food.isLiquid() ? liquidsOptions : solidServingOptions);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_item);
+                R.layout.item_custom_spinner, food.isLiquid() ? liquidsOptions : solidServingOptions);
+        adapter.setDropDownViewResource(R.layout.item_custom_spinner);
         spinnerServingOptions.setAdapter(adapter);
         spinnerServingOptions.setSelection(0); // Set the default selection to the first item
     }

@@ -12,7 +12,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/basic_nav_toolbar" />
+        layout="@layout/layout_navigation_toolbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 
         <include
             android:id="@+id/date_swipe_bar"
-            layout="@layout/date_swipe_bar"
+            layout="@layout/layout_date_swipe_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_medium"
@@ -58,7 +58,7 @@
                 android:padding="@dimen/padding_medium"
                 android:scrollbars="vertical"
                 tools:itemCount="9"
-                tools:listitem="@layout/item_meal" />
+                tools:listitem="@layout/item_logged_meal" />
 
         </LinearLayout>
     </ScrollView>
@@ -73,6 +73,6 @@
         android:background="@drawable/card_background"
         app:itemIconTint="@color/iconTint"
         app:itemTextColor="@color/textSecondary"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/menu_bottom_nav" />
 
 </LinearLayout>

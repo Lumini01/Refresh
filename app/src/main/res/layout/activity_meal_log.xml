@@ -18,7 +18,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/basic_nav_toolbar" />
+        layout="@layout/layout_navigation_toolbar" />
 
     <TextView
         android:id="@+id/meal_dateTime_tv"
@@ -33,7 +33,7 @@
     <!-- Search Bar -->
     <include
         android:id="@+id/search_bar"
-        layout="@layout/search_bar" />
+        layout="@layout/layout_search_bar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
 
             <include
                 android:id="@+id/macronutrient_fragment"
-                layout="@layout/fragment_macronutrient" />
+                layout="@layout/fragment_daily_progress" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/daily_progress_container"
@@ -128,6 +128,6 @@
         android:background="@drawable/card_background"
         app:itemIconTint="@color/iconTint"
         app:itemTextColor="@color/textSecondary"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/menu_bottom_nav" />
 
 </LinearLayout>

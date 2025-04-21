@@ -1,4 +1,4 @@
-package com.example.refresh.BroadcastReceiver;
+package com.example.refresh.Notification;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.Intent;
 
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.NotificationInstance;
-import com.example.refresh.Notification.NotificationScheduler;
 
 import java.util.ArrayList;
 

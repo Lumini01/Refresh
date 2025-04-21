@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.refresh.BroadcastReceiver.AlarmReceiver;
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Database.NotificationInstancesTable;
 import com.example.refresh.Database.NotificationTemplatesTable;
@@ -220,7 +219,7 @@ public class NotificationScheduler {
             template.setIconID(R.drawable.ic_placeholder);
         }
 
-        Intent intent = new Intent(context, AlarmReceiver.class);
+        Intent intent = new Intent(context, NotificationReceiver.class);
         intent.putExtra("NOTIFICATION_INSTANCE_ID", String.valueOf(instance.getInstanceID()));
 
         // Get the current stack trace

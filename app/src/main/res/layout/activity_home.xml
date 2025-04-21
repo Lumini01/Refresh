@@ -141,7 +141,7 @@
 
             <include
                 android:id="@+id/macronutrient_fragment"
-                layout="@layout/fragment_macronutrient" />
+                layout="@layout/fragment_daily_progress" />
 
             <LinearLayout
                 android:id="@+id/daily_goal_meter"
@@ -370,6 +370,6 @@
         android:background="@drawable/card_background"
         app:itemIconTint="@color/iconTint"
         app:itemTextColor="@color/textSecondary"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/menu_bottom_nav" />
 
 </LinearLayout>

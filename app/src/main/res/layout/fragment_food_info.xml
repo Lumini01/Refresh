@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/basic_nav_toolbar" />
+        layout="@layout/layout_navigation_toolbar" />
 
     <!-- ScrollView ensures content is scrollable on smaller devices -->
     <ScrollView
@@ -121,7 +121,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/padding_small"
                         android:spinnerMode="dialog"
-                        tools:listitem="@layout/custom_spinner_item" />
+                        tools:listitem="@layout/item_custom_spinner" />
 
                 </LinearLayout>
 

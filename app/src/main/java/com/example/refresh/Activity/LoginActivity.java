@@ -2,7 +2,6 @@ package com.example.refresh.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Button;
@@ -12,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -20,10 +18,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.R;
-import com.example.refresh.StartActivity;
 import com.example.refresh.Model.User;
 import com.example.refresh.Model.ErrorMessage;
 import com.example.refresh.Helper.ValidationHelper;
+import com.example.refresh.StartActivity;
 
 /**
  * Login Activity - This screen handles user login by allowing them to enter their email
@@ -31,63 +29,56 @@ import com.example.refresh.Helper.ValidationHelper;
  * navigates to the HomeDashboard upon successful login. It also includes a sign-up button
  * to redirect to the registration screen and a logo that leads back to the Start activity.
  */
-
 public class LoginActivity extends AppCompatActivity {
 
     // UI Components
-    private TextView title;
-    private EditText etEmailLogin;
-    private EditText etPwdLogin;
-    private Button btLogin;
-    private CheckBox rememberMeCheckbox;
-    private TextView btSignUp;
-    private ImageView logo;
+    private EditText emailET;
+    private EditText pwdET;
+    private Button loginBtn;
+    private CheckBox rememberMeCB;
+    private TextView signUpBtn;
 
     // Database Helper
-    private User user;
-    private final DatabaseHelper databaseHelper = new DatabaseHelper(this);
-    private SQLiteDatabase db;
+    private final DatabaseHelper dbHelper = new DatabaseHelper(this);
 
-    /**
-     * Initializes the activity, sets up UI components, and handles login and sign-up button clicks.
-     * @param savedInstanceState Bundle containing the saved instance state for restoring the previous activity state.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Set up edge-to-edge view and content
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        // Handle window insets for proper padding on devices with system bars
+        // Set up edge-to-edge view and content
+        setupEdgeToEdge();
+
+        // Initialize UI components
+        initUIComponents();
+
+        // Set up listeners for buttons and logo
+        setupListeners();
+
+        // Hide the action bar for a clean UI
+        hideActionBar();
+    }
+
+    /**
+     * Set up the edge-to-edge view for the activity.
+     */
+    private void setupEdgeToEdge() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        // Initialize UI components
-        initUIComponents();
-
-        // Set up the actions for each button and image view
-        setupListeners();
-
-        // Hide the action bar for a clean UI
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
     }
 
     /**
      * Initialize all UI components.
      */
     private void initUIComponents() {
-        etEmailLogin = findViewById(R.id.email_login_et);
-        etPwdLogin = findViewById(R.id.pwd_login_et);
-        btLogin = findViewById(R.id.login_btn);
-        rememberMeCheckbox = findViewById(R.id.remember_me_cb);
-        btSignUp = findViewById(R.id.sign_up_tv);
+        emailET = findViewById(R.id.email_login_et);
+        pwdET = findViewById(R.id.pwd_login_et);
+        loginBtn = findViewById(R.id.login_btn);
+        rememberMeCB = findViewById(R.id.remember_me_cb);
+        signUpBtn = findViewById(R.id.sign_up_tv);
         logo = findViewById(R.id.logo);
     }
 
@@ -96,48 +87,35 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void setupListeners() {
         // Login button listener
-        btLogin.setOnClickListener(view -> handleLogin());
+        loginBtn.setOnClickListener(view -> handleLogin());
 
         // Sign Up button listener
-        btSignUp.setOnClickListener(view -> navigateToSignUp());
-
-        // Logo click listener
-        logo.setOnClickListener(view -> navigateToStart());
+        signUpBtn.setOnClickListener(view -> navigateToSignUp());
     }
 
     /**
      * Handle the login process.
      */
     private void handleLogin() {
-        // Set user credentials from the input fields
-
-        User validationUser = new User();
-        String userEmail = etEmailLogin.getText().toString();
-        String userPwd = etPwdLogin.getText().toString();
-
-        validationUser.setEmail(userEmail);
-        validationUser.setPwd(userPwd);
-        boolean rememberMe = rememberMeCheckbox.isChecked();
+        // Get user credentials from input fields
+        String userEmail = emailET.getText().toString();
+        String userPwd = pwdET.getText().toString();
+        boolean rememberMe = rememberMeCB.isChecked();
 
         // Validate login credentials
-        ErrorMessage validationError = ValidationHelper.validateLogin(validationUser, databaseHelper);
+        User validationUser = new User(this, userEmail, userPwd);
+        ErrorMessage validationError = ValidationHelper.validateLogin(validationUser, dbHelper);
 
         if (validationError == null) {
             // Successful login
-            // Save user email to SharedPreferences
-            user = new User(this ,userEmail, userPwd);
             if (rememberMe) {
-                updateActiveUser();
+                updateActiveUser(new User(this, userEmail, userPwd));
             }
-
-            replaceUserSP();
-
             showToast("Login Successful!");
             clearErrors();
             navigateToHomeDashboard();
-        }
-        else {
-            // Show error messages based on validation failure
+        } else {
+            // Show validation error
             showValidationError(validationError);
         }
     }
@@ -155,8 +133,8 @@ public class LoginActivity extends AppCompatActivity {
      * Clear error indicators on the input fields.
      */
     private void clearErrors() {
-        etEmailLogin.setError(null);
-        etPwdLogin.setError(null);
+        emailET.setError(null);
+        pwdET.setError(null);
     }
 
     /**
@@ -165,13 +143,12 @@ public class LoginActivity extends AppCompatActivity {
     private void showValidationError(ErrorMessage error) {
         switch (error.getField()) {
             case EMAIL:
-                etEmailLogin.setError(error.getMessage());
+                emailET.setError(error.getMessage());
                 break;
             case PWD:
-                etPwdLogin.setError(error.getMessage());
+                pwdET.setError(error.getMessage());
                 break;
         }
-
         showToast("Unable to Log In.");
     }
 
@@ -196,28 +173,34 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * Navigate to the start activity.
+     * Update the active user in SharedPreferences.
      */
-    private void navigateToStart() {
-        Intent intent = new Intent(LoginActivity.this, StartActivity.class);
-        startActivity(intent);
-    }
-
-    private void updateActiveUser() {
+    private void updateActiveUser(User user) {
         SharedPreferences appPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = appPreferences.edit();
-
         editor.putInt("loggedUserID", user.getID());
         editor.apply();
+        replaceUserSP(user);
     }
 
-    private void replaceUserSP() {
+    /**
+     * Replace the user's SharedPreferences with the logged-in user's information.
+     */
+    private void replaceUserSP(User user) {
         SharedPreferences appPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = appPreferences.edit();
-
         String loggedUserSPName = "User" + user.getID() + "Preferences";
         editor.putString("loggedUserSPName", loggedUserSPName);
         editor.putInt("loggedUserID", user.getID());
         editor.apply();
+    }
+
+    /**
+     * Hide the action bar for a clean UI.
+     */
+    private void hideActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
     }
 }

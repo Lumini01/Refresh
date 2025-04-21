@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/profile_fragment"
-        layout="@layout/basic_nav_toolbar" />
+        layout="@layout/layout_navigation_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -254,7 +254,7 @@
                         android:spinnerMode="dropdown"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge"
-                        tools:listitem="@layout/custom_spinner_item" />
+                        tools:listitem="@layout/item_custom_spinner" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -644,7 +644,7 @@
                             android:spinnerMode="dropdown"
                             android:textColor="@color/textPrimary"
                             android:textSize="@dimen/text_size_xxlarge"
-                            tools:listitem="@layout/custom_spinner_item" />
+                            tools:listitem="@layout/item_custom_spinner" />
                     </LinearLayout>
 
 

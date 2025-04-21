@@ -5,7 +5,6 @@ import static com.example.refresh.Database.NotificationTemplatesTable.populateNo
 
 import android.Manifest;
 import android.app.AlarmManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -13,14 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.Settings;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -31,7 +24,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.refresh.Activity.HomeDashboardActivity;
 import com.example.refresh.Activity.LoginActivity;
-import com.example.refresh.Activity.SignUpActivity;
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Notification.NotificationScheduler;
@@ -45,105 +37,107 @@ import java.util.ArrayList;
 public class StartActivity extends AppCompatActivity {
 
     // UI Components
-    private LinearLayout mainLayout;
-    private TextView brandName;
-    private ImageView logo;
+    private TextView cdtTV;
     private Button continueBTN;
-    private TextView cdtView;  // Countdown timer text
-    private CountDownTimer timer;  // Countdown timer object
+    private CountDownTimer timer;
 
-    /**
-     * Initializes the activity, sets up the UI components, and starts the countdown timer.
-     *
-     * @param savedInstanceState saved instance state bundle for restoring previous activity state.
-     */
+    private static final String PREFS_NAME = MyApplication.PREFS_NAME;
+    private static final String FIRST_LAUNCH_KEY = MyApplication.FIRST_LAUNCH_KEY;
+    private static final String LOGGED_USER_ID_KEY = MyApplication.LOGGED_USER_ID_KEY;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        // Setting edge-to-edge padding to account for system UI (status bar, navigation bar)
+        // Initialize UI components
+        initUI();
+
+        // Check if it's the first launch and perform necessary actions
+        checkFirstLaunch();
+
+        // Check user status and decide navigation flow
+        checkUserStatus();
+
+        // Hide action bar temporarily
+        hideActionBar();
+    }
+
+    /**
+     * Initializes the UI components and sets up event listeners.
+     */
+    private void initUI() {
+        continueBTN = findViewById(R.id.continue_btn);
+        cdtTV = findViewById(R.id.cdt);
+
+        // Edge-to-edge padding for system UI adjustments
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
+        // Setup 'Continue' button click listener
+        continueBTN.setOnClickListener(view -> onContinueButtonClicked());
+    }
 
-        // Initialize UI components
-        mainLayout = findViewById(R.id.main);
-        brandName = findViewById(R.id.app_name_tv);
-        logo = findViewById(R.id.logo);
-        continueBTN = findViewById(R.id.continue_btn);
-        cdtView = findViewById(R.id.cdt);
+    /**
+     * Handles the actions when the continue button is clicked.
+     */
+    private void onContinueButtonClicked() {
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int loggedUserID = sharedPreferences.getInt(LOGGED_USER_ID_KEY, -1);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        if (loggedUserID != -1) {
+            navigateToHome();
+        } else {
+            navigateToLogin();
+        }
 
-        // Set up the 'Continue' button click listener to transition to the login screen
-        continueBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1);
-                if (loggedUserID != -1)
-                    navigateToHome();
-                else {
-                    navigateToLogin();
-                }
+        cdtTV.setText(""); // Clear countdown timer text
+        if (timer != null) {
+            timer.cancel(); // Stop the countdown timer when the user clicks continue
+        }
+    }
 
-                cdtView.setText("");
-
-                if (timer != null)
-                    timer.cancel();  // Stop the countdown timer when the user clicks continue
-            }
-        });
-
-        boolean isFirstLaunch = sharedPreferences.getBoolean("isFirstLaunch", true);
+    /**
+     * Checks if this is the first launch of the app.
+     */
+    private void checkFirstLaunch() {
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean isFirstLaunch = sharedPreferences.getBoolean(FIRST_LAUNCH_KEY, true);
 
         if (isFirstLaunch) {
-            // Perform first-time launch functionalities
             firstLaunchActions();
-
-            // Update the flag so this block doesn't run again
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("isFirstLaunch", false);
+            editor.putBoolean(FIRST_LAUNCH_KEY, false);
             editor.apply();
         }
-
-        // Navigate to the home screen if the user is already logged in
-        checkUserStatus();
-
-        // Hide the action bar temporarily
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
     }
 
+    /**
+     * Performs actions specific to the first launch of the app.
+     */
+    private void firstLaunchActions() {
+        requestNotificationPermission();
+        populateNotificationTemplatesTable(getApplicationContext());
+        populateFoodsTable(getApplicationContext());
+        setDefaultNotifications();
+        TestingGrounds.test(getApplicationContext());
+    }
+
+    /**
+     * Checks if the user is already logged in and navigates accordingly.
+     */
     private void checkUserStatus() {
-        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-        int loggedUserID = sharedPreferences.getInt("loggedUserID", -1);
-        if (loggedUserID != -1)
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int loggedUserID = sharedPreferences.getInt(LOGGED_USER_ID_KEY, -1);
+
+        if (loggedUserID != -1) {
             navigateToHome();
-        else {
-            // Start the countdown timer
+        } else {
             startCountdownTimer();
         }
-    }
-
-    private void firstLaunchActions() {
-        // Request notification permission
-        requestPostNotificationPermission();
-
-        // Populate the notification templates table and the foods table if needed
-        Context context = getApplicationContext();
-        populateNotificationTemplatesTable(context);
-        populateFoodsTable(context);
-
-        // Set default notification times
-        setDefaultNotificationInstances();
-
-
-        // Run testing methods
-        TestingGrounds.test(context);
     }
 
     /**
@@ -153,114 +147,69 @@ public class StartActivity extends AppCompatActivity {
         timer = new CountDownTimer(10000, 1000) {  // 10 seconds countdown, update every second
             @Override
             public void onTick(long millisUntilFinished) {
-                // Update the countdown text every second
-                String stTimerText = millisUntilFinished / 1000 + "";
-                cdtView.setText("Continuing in " + stTimerText + " Seconds");
+                cdtTV.setText("Continuing in " + (millisUntilFinished / 1000) + " Seconds");
             }
 
             @Override
             public void onFinish() {
-                // When the timer finishes, update text and navigate to the login screen
-                cdtView.setText("Loading...");
+                cdtTV.setText("Loading...");
+                SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                int loggedUserID = sharedPreferences.getInt(LOGGED_USER_ID_KEY, -1);
 
-                SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-                int loggedUserID = sharedPreferences.getInt("loggedUserID", -1);
-                if (loggedUserID != -1)
+                if (loggedUserID != -1) {
                     navigateToHome();
-                else
+                } else {
                     navigateToLogin();
+                }
             }
-        }.start();  // Start the timer
+        }.start();
     }
 
+    /**
+     * Navigates to the Home Dashboard activity.
+     */
     private void navigateToHome() {
         Intent intent = new Intent(StartActivity.this, HomeDashboardActivity.class);
         UserInfoHelper helper = new UserInfoHelper(this);
 
-        if (helper.getStartDate() == null || helper.getStartWeight() == 0 || helper.getWeight() == 0 || helper.getGoal().equals(""))
+        if (helper.getStartDate() == null || helper.getStartWeight() == 0 || helper.getWeight() == 0 || helper.getGoal().equals("")) {
             intent.putExtra("firstLog", true);
+        }
 
         startActivity(intent);
     }
 
     /**
-     * Helper method to start the Login activity.
+     * Navigates to the Login activity.
      */
     private void navigateToLogin() {
         Intent intent = new Intent(StartActivity.this, LoginActivity.class);
         startActivity(intent);
-        cdtView.setText("");
     }
 
     /**
-     * Create the options menu for the activity.
-     *
-     * @param menu Menu object that is inflated with items.
-     * @return true to display the menu, false otherwise.
+     * Requests notification permissions from the user (Android 13 and higher).
      */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    /**
-     * Handle menu item selection.
-     *
-     * @param item The selected menu item.
-     * @return true if an item was selected, false otherwise.
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        // Handle actions based on selected menu item
-        if (id == R.id.item1) {
-            navigateToLogin();
-            return true;
-        } else if (id == R.id.item2) {
-            Intent intentSignUp = new Intent(StartActivity.this, SignUpActivity.class);
-            startActivity(intentSignUp);
-            return true;
-        } else if (id == R.id.item3) {
-            Intent intentDashboard = new Intent(StartActivity.this, HomeDashboardActivity.class);
-            startActivity(intentDashboard);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void requestPostNotificationPermission() {
-        // Check for POST_NOTIFICATIONS permission
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {  // Android 13 (API 33) and higher
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-                    != PackageManager.PERMISSION_GRANTED) {
-                // Check if the user has denied the permission permanently
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
-                    // Show rationale (optional): You can explain why the permission is needed here
-                    Toast.makeText(this, "Notifications are important for this app. Please allow them.", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    // Request permission
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
-                }
+    private void requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
             }
         }
 
-        // Check for SCHEDULE_EXACT_ALARM permission (API 31+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             if (!alarmManager.canScheduleExactAlarms()) {
-                // Only start the intent if the permission is not already granted
                 Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
                 startActivity(intent);
             }
         }
     }
 
-    private void setDefaultNotificationInstances() {
+    /**
+     * Sets default notification instances in the app.
+     */
+    private void setDefaultNotifications() {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         ArrayList<Integer> templateIDs = new ArrayList<>();
         ArrayList<String> times = new ArrayList<>();
@@ -273,32 +222,29 @@ public class StartActivity extends AppCompatActivity {
         times.add("14:00");
         times.add("19:00");
 
-        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         boolean defaultNotificationsSet = sharedPreferences.getBoolean("defaultNotificationsSet", false);
 
         if (defaultNotificationsSet) {
             ArrayList<Integer> instanceIDs = new ArrayList<>();
-
             instanceIDs.add(1);
             instanceIDs.add(2);
             instanceIDs.add(3);
-
             NotificationScheduler.addDefaultNotifications(this, instanceIDs, templateIDs, times);
         } else {
             NotificationScheduler.addNotificationInstances(this, templateIDs, times);
-
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("defaultNotificationsSet", true);
             editor.apply();
         }
     }
 
-    protected void onResume() {
-        super.onResume();
-
-        /*Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);*/
+    /**
+     * Hides the action bar.
+     */
+    private void hideActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
     }
 }

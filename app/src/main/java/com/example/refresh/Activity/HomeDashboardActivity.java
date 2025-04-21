@@ -193,7 +193,7 @@ public class HomeDashboardActivity extends AppCompatActivity implements UserInfo
         userInfoHelper = new UserInfoHelper(this);
         logWeightButton.setOnClickListener(v -> {
             LayoutInflater inflater = LayoutInflater.from(this);
-            View customView = inflater.inflate(R.layout.dialog_custom, null);
+            View customView = inflater.inflate(R.layout.layout_weight_dialog, null);
 
             final EditText customEditText = customView.findViewById(R.id.customEditText);
 

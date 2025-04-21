@@ -345,15 +345,15 @@ public class UserInfoFragment extends Fragment {
         nameET.setEnabled(false);
 
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(requireContext(),
-                R.layout.custom_spinner_item, genderOptions);
-        genderAdapter.setDropDownViewResource(R.layout.custom_spinner_item);
+                R.layout.item_custom_spinner, genderOptions);
+        genderAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
         genderSpinner.setAdapter(genderAdapter);
         genderSpinner.setSelection(0); // Set the default selection to the first item
         activityLevelSpinner.setPopupBackgroundDrawable(null);
 
         ArrayAdapter<String> activityLevelAdapter = new ArrayAdapter<>(requireContext(),
-                R.layout.custom_spinner_item, activityLevelOptions);
-        activityLevelAdapter.setDropDownViewResource(R.layout.custom_spinner_item);
+                R.layout.item_custom_spinner, activityLevelOptions);
+        activityLevelAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
         activityLevelSpinner.setAdapter(activityLevelAdapter);
         activityLevelSpinner.setSelection(0); // Set the default selection to the first item
         activityLevelSpinner.setPopupBackgroundDrawable(null);

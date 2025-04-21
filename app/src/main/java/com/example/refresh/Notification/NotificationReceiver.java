@@ -1,4 +1,4 @@
-package com.example.refresh.BroadcastReceiver;
+package com.example.refresh.Notification;
 
 import static com.example.refresh.TestingGrounds.testCleanup;
 
@@ -10,9 +10,8 @@ import android.util.Log;
 import com.example.refresh.Database.NotificationInstancesTable;
 import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Helper.NotificationHelper;
-import com.example.refresh.Notification.NotificationScheduler;
 
-public class AlarmReceiver extends BroadcastReceiver {
+public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {

@@ -35,7 +35,7 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
     @Override
     public FoodSelectionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_food, parent, false);
+                .inflate(R.layout.item_selected_food, parent, false);
         return new FoodSelectionViewHolder(view);
     }
 

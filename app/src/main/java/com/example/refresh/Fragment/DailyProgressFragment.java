@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.refresh.R;
 
 // Macronutrient Fragment which displays the macronutrients in the meal log activity
-public class MacronutrientFragment extends Fragment {
+public class DailyProgressFragment extends Fragment {
 
     private ProgressBar caloriesProgress, carbsProgress, proteinProgress, fatProgress;
     private TextView caloriesText, carbsText, proteinText, fatText;
@@ -22,14 +22,14 @@ public class MacronutrientFragment extends Fragment {
     private final int totalProtein = 400;
     private final int totalFat = 400;
 
-    public MacronutrientFragment() {}
+    public DailyProgressFragment() {}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_macronutrient, container, false);
+        View view = inflater.inflate(R.layout.fragment_daily_progress, container, false);
 
         // Initialize Views
         caloriesProgress = view.findViewById(R.id.calories_progress);

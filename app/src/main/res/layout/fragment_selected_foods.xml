@@ -14,6 +14,6 @@
         android:padding="@dimen/padding_medium"
         android:scrollbars="vertical"
         tools:itemCount="8"
-        tools:listitem="@layout/item_food" />
+        tools:listitem="@layout/item_selected_food" />
 
 </LinearLayout>

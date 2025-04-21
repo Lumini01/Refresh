@@ -35,8 +35,8 @@ public class DaySection extends Section {
                       OnEditMealListener editMealListener,
                       OnDeleteMealListener deleteMealListener) {
         super(SectionParameters.builder()
-                .itemResourceId(R.layout.item_meal)
-                .headerResourceId(R.layout.item_header)
+                .itemResourceId(R.layout.item_logged_meal)
+                .headerResourceId(R.layout.item_day_header)
                 .build());
         this.day = day;
         this.mealItems = mealLogs;
