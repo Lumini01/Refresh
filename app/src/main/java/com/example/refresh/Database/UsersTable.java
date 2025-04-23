@@ -26,6 +26,7 @@ public class UsersTable {
         public String getColumnName() {
             return columnName;
         }
+
     }
 
     // Create table query

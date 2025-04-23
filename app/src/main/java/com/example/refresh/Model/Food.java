@@ -21,6 +21,8 @@ public class Food implements Serializable {
     private String notes;
 
     // Constructors, getters and setters
+    public Food() {}
+
     public Food(int id, String name, String description, String category, ArrayList<String> labels, int servingSize, int calories, int carbs, int protein, int fat, String notes) {
         this.id = id;
         this.name = name;
@@ -34,8 +36,6 @@ public class Food implements Serializable {
         this.fat = fat;
         this.notes = (notes != null) ? notes : "";
     }
-
-    public Food() {}
 
     public Food(int id, String name, String description, String category, ArrayList<String> labels, int calories, int carbs, int protein, int fat, String notes) {
         this.id = id;

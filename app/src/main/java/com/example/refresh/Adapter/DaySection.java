@@ -68,14 +68,14 @@ public class DaySection extends Section {
 
         itemHolder.bind(mealItem);
 
-        itemHolder.editButton.setOnClickListener(v -> {
+        itemHolder.editBtn.setOnClickListener(v -> {
             int adapterPosition = holder.getAdapterPosition();
             if (adapterPosition != RecyclerView.NO_POSITION && editMealListener != null) {
                 // Pass the meal item and its adapter position to the listener
                 editMealListener.onEditMeal(mealItem, adapterPosition); }
         });
 
-        itemHolder.removeButton.setOnClickListener(v -> {
+        itemHolder.removeBtn.setOnClickListener(v -> {
             int adapterPosition = holder.getAdapterPosition();
             if (adapterPosition != RecyclerView.NO_POSITION && deleteMealListener != null) {
                 deleteMealListener.onDeleteMeal(mealItem, adapterPosition);
@@ -89,7 +89,6 @@ public class DaySection extends Section {
         }
         mealItems.add(mealItem);
     }
-
 
     public void removeMealItem(int position) {
         if (position < 0 || position >= mealItems.size()) {
@@ -113,39 +112,39 @@ public class DaySection extends Section {
     @Override
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
         DayHeaderViewHolder headerHolder = (DayHeaderViewHolder) holder;
-        headerHolder.headerTitle.setText(day);
+        headerHolder.headerTitleTV.setText(day);
     }
 
     // Define the ViewHolder for meal items
     private class MealViewHolder extends RecyclerView.ViewHolder {
-        private final TextView mealTitle;
-        private final TextView mealDescription;
-        private final ImageButton removeButton;
-        private final ImageButton editButton;
+        private final TextView mealTitleTV;
+        private final TextView mealDescriptionTV;
+        private final ImageButton removeBtn;
+        private final ImageButton editBtn;
         private final LinearLayout itemContainer;
 
         public MealViewHolder(View itemView) {
             super(itemView);
-            mealTitle = itemView.findViewById(R.id.meal_title);
-            mealDescription = itemView.findViewById(R.id.meal_description);
-            removeButton = itemView.findViewById(R.id.buttonRemove);
-            editButton = itemView.findViewById(R.id.buttonEdit);
+            mealTitleTV = itemView.findViewById(R.id.meal_title);
+            mealDescriptionTV = itemView.findViewById(R.id.meal_description);
+            removeBtn = itemView.findViewById(R.id.buttonRemove);
+            editBtn = itemView.findViewById(R.id.buttonEdit);
             itemContainer = itemView.findViewById(R.id.item_container);
         }
 
         public void bind(ListItem<Meal> mealLog) {
-            mealTitle.setText(mealLog.getTitle());
-            mealDescription.setText(mealLog.getDescription());
+            mealTitleTV.setText(mealLog.getTitle());
+            mealDescriptionTV.setText(mealLog.getDescription());
         }
     }
 
     // Define the ViewHolder for the header (day)
     private class DayHeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView headerTitle;
+        private final TextView headerTitleTV;
 
         public DayHeaderViewHolder(View itemView) {
             super(itemView);
-            headerTitle = itemView.findViewById(R.id.headerTitle);
+            headerTitleTV = itemView.findViewById(R.id.headerTitle);
         }
     }
 }

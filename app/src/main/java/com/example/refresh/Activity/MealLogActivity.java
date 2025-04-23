@@ -23,7 +23,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.refresh.Database.MealsTable;
 import com.example.refresh.Helper.DatabaseHelper;
@@ -51,29 +50,34 @@ import java.util.ArrayList;
 
 public class MealLogActivity extends AppCompatActivity implements SearchResultsFragment.OnSearchResultsFragmentListener, SelectedFoodsFragment.OnSelectedFoodsFragmentListener, FoodInfoFragment.OnFoodInfoFragmentListener {
 
+    // Domain model
     private Meal meal;
     private ArrayList<Food> mealFoods = new ArrayList<>();
 
-    // UI Elements
-    private TextView title;
-    private TextView mealDateAndTimeTV;
-    private ImageButton backArrow;
-    private ImageButton datePickerButton;
-    private EditText searchBarET;
-    private ImageButton clearButton;
-    private FragmentContainerView searchResultsContainer;
-    private FragmentContainerView selectedFoodsContainer;
-    private RecyclerView searchResultsRecycler;
-    private SelectedFoodsFragment selectedFoodsFragment;
-    private FragmentContainerView foodInfoFragmentContainer;
-    private FoodInfoFragment foodInfoFragment;
-    private Button logMealBtn;
+    // Date & time
     private LocalDate mealDate;
     private LocalTime mealTime;
-    private EditText notesET;
-    private BottomNavigationView bottomNavigationView;
-    private boolean inEditMode;
     private LocalDate oldDate;
+
+    // UI elements
+    private TextView title;
+    private TextView mealDateTimeTV;
+    private ImageButton backBtn;
+    private ImageButton datePickerBtn;
+    private EditText searchBarET;
+    private ImageButton clearBtn;
+    private FragmentContainerView searchResultsContainer;
+    private FragmentContainerView selectedFoodsContainer;
+    private FragmentContainerView foodInfoFragmentContainer;
+    private SelectedFoodsFragment selectedFoodsFragment;
+    private FoodInfoFragment foodInfoFragment;
+    private EditText notesET;
+    private Button logMealBtn;
+    private BottomNavigationView bottomNavigationView;
+
+    // State flag
+    private boolean inEditMode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,12 +175,12 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         title = findViewById(R.id.toolbar_title_tv);
 
         // Date & Time views
-        mealDateAndTimeTV = findViewById(R.id.meal_dateTime_tv);
+        mealDateTimeTV = findViewById(R.id.meal_dateTime_tv);
 
         // Buttons
-        datePickerButton = findViewById(R.id.extra_btn);
-        backArrow = findViewById(R.id.back_btn);
-        clearButton = findViewById(R.id.clear_btn);
+        datePickerBtn = findViewById(R.id.extra_btn);
+        backBtn = findViewById(R.id.back_btn);
+        clearBtn = findViewById(R.id.clear_btn);
         logMealBtn = findViewById(R.id.log_meal_btn);
 
 
@@ -202,18 +206,18 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     private void initializeButtons() {
         // Set button resources and images
-        datePickerButton.setImageResource(R.drawable.ic_calendar);
+        datePickerBtn.setImageResource(R.drawable.ic_calendar);
     }
 
     private void initializeLogButton() {
         if (!inEditMode) {
             logMealBtn.setOnClickListener(v -> logMeal());
-            backArrow.setImageResource(R.drawable.ic_clear_all);
-            backArrow.setOnClickListener(v -> clearAll());
+            backBtn.setImageResource(R.drawable.ic_clear_all);
+            backBtn.setOnClickListener(v -> clearAll());
         }
         else {
             logMealBtn.setOnClickListener(v -> updateMeal());
-            backArrow.setOnClickListener(v -> finish());
+            backBtn.setOnClickListener(v -> finish());
         }
     }
 
@@ -227,7 +231,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     private void initializeSearchInteraction() {
         // Set up search bar click and text change listeners
-        searchBarET.setOnClickListener(v -> clearButton.setVisibility(View.VISIBLE));
+        searchBarET.setOnClickListener(v -> clearBtn.setVisibility(View.VISIBLE));
         searchBarET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -240,9 +244,8 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
                 performSearch();
             }
         });
-        clearButton.setOnClickListener(v -> cancelSearchInteraction());
+        clearBtn.setOnClickListener(v -> cancelSearchInteraction());
     }
-
 
     private void setupDatePickerMenu() {
         MaterialDatePicker.Builder<Long> dateBuilder = MaterialDatePicker.Builder.datePicker()
@@ -255,7 +258,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         MaterialDatePicker<Long> datePicker = dateBuilder.build();
 
-        datePickerButton.setOnClickListener(v -> {
+        datePickerBtn.setOnClickListener(v -> {
             datePicker.show(getSupportFragmentManager(), "DATE_PICKER");
         });
 
@@ -325,10 +328,10 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     private void handleInvalidDateTime() {
         Toast.makeText(this, "Cannot pick a future time for today.", Toast.LENGTH_SHORT).show();
-        datePickerButton.setEnabled(false);
+        datePickerBtn.setEnabled(false);
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            datePickerButton.setEnabled(true);
+            datePickerBtn.setEnabled(true);
         }, 2000);
     }
 
@@ -339,7 +342,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         updateMealDateTimeTV();
     }
 
-    public void updateMealTime(LocalTime time) {
+    private void updateMealTime(LocalTime time) {
         mealTime = time;
         if (mealDate == null)
             mealDate = LocalDate.now();
@@ -348,15 +351,15 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     }
 
-    public void updateMealDateTimeTV() {
+    private void updateMealDateTimeTV() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String timeText = mealTime.withSecond(0).withNano(0).toString();
         String text = mealDate.format(formatter) + "  |  " + timeText;
-        mealDateAndTimeTV.setText(text);
+        mealDateTimeTV.setText(text);
     }
 
     private void cancelSearchInteraction() {
-        clearButton.setVisibility(View.GONE);
+        clearBtn.setVisibility(View.GONE);
         hideSearchResults();
         hideKeyboard(searchBarET);
     }
@@ -409,7 +412,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         dbHelper.close();
     }
 
-    public ArrayList<ListItem<Food>> parseSearchResults(ArrayList<Food> results) {
+    private ArrayList<ListItem<Food>> parseSearchResults(ArrayList<Food> results) {
         ArrayList<ListItem<Food>> parsedResults = new ArrayList<>();
 
         for (Food food : results) {
@@ -432,11 +435,11 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         return parsedResults;
     }
 
-    public ListItem<Food> parseSelectedFood(Food food) {
+    private ListItem<Food> parseSelectedFood(Food food) {
         return new ListItem<>(food.getName(), food.getServingSize() + "g  ✦  " + food.getActualCalories() + " kcal" , food);
     }
 
-    public void addFoodToSelectedFoods(ListItem<Food> addedFood) {
+    private void addFoodToSelectedFoods(ListItem<Food> addedFood) {
         ListItem<Food> parsedFood = parseSelectedFood(addedFood.getModel());
         int servingSize = existsInSelectedFoods(parsedFood.getModel().getId());
         if (servingSize != -1) {
@@ -447,7 +450,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         selectedFoodsFragment.addFoodToSelectedFoods(parsedFood);
     }
 
-    public void removeFoodFromSelectedFoods(int position) {
+    private void removeFoodFromSelectedFoods(int position) {
         selectedFoodsFragment.removeFoodFromSelectedFoods(position);
     }
 
@@ -547,7 +550,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         return new Meal(mealDate, mealTime, mealType, notes, mealFoodIDs, mealServingSizes);
     }
 
-    public void setMealFoods() {
+    private void setMealFoods() {
         ArrayList<ListItem<Food>> foodItemsList = selectedFoodsFragment.getSelectedFoods();
         mealFoods = new ArrayList<>();
         for (ListItem<Food> foodItem : foodItemsList) {
@@ -594,11 +597,5 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     protected void onResume() {
         super.onResume();
         bottomNavigationView.setSelectedItemId(R.id.nav_log);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }

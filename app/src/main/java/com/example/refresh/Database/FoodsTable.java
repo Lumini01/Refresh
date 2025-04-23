@@ -160,7 +160,7 @@ public class FoodsTable {
     }
 
     // Seed the table with data from the JSON file
-    public static void seedFoods(DatabaseHelper dbHelper, ArrayList<Food> foods) {
+    private static void seedFoods(DatabaseHelper dbHelper, ArrayList<Food> foods) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         for (int i = 0; i < foods.size(); i++) {
@@ -172,7 +172,7 @@ public class FoodsTable {
     }
 
     // Parse the JSON data into a list of Food objects
-    public static ArrayList<Food> parseFoods(Context context, String json) {
+    private static ArrayList<Food> parseFoods(Context context, String json) {
         ArrayList<Food> foods = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(json);
@@ -207,7 +207,7 @@ public class FoodsTable {
     }
 
     // Load JSON data from an asset file
-    public static String loadJSONFromAsset(Context context, String fileName) {
+    private static String loadJSONFromAsset(Context context, String fileName) {
         String json = null;
         try {
             AssetManager assetManager = context.getAssets();
@@ -224,40 +224,5 @@ public class FoodsTable {
             e.printStackTrace();
         }
         return json;
-    }
-
-    // Edit the JSON file to change -1 to 0
-    public static void editJson(String json) {
-        try {
-            // 1. Read the file content as a string
-            String content = new String(
-                    Files.readAllBytes(Paths.get(json)),
-                    StandardCharsets.UTF_8
-            );
-
-            // 2. Parse as a JSON array
-            JSONArray jsonArray = new JSONArray(content);
-
-            // 3. If there's at least one item, check its 'id'
-            if (jsonArray.length() > 0) {
-                JSONObject firstObject = jsonArray.getJSONObject(0);
-                if (firstObject.optInt("id", 0) == -1) {
-                    // 4. Change -1 to -2
-                    firstObject.put("id", -2);
-
-                    // 5. Write the updated array back to the file
-                    Files.write(
-                            Paths.get(json),
-                            jsonArray.toString(4).getBytes(StandardCharsets.UTF_8)
-                    );
-                }
-            }
-        }
-        catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

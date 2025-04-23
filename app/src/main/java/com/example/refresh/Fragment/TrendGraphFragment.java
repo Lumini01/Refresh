@@ -63,7 +63,7 @@ public class TrendGraphFragment extends Fragment {
             updateLineChart(daySummaries, calorieGoal);
     }
 
-    public void initializeUI(View view) {
+    private void initializeUI(View view) {
         chart = view.findViewById(R.id.lineChart);
     }
 

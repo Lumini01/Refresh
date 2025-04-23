@@ -15,7 +15,7 @@ import java.util.Locale;
 
 // Meal Model Class which represents a meal
 public class Meal implements Serializable {
-    private int id; // Unique identifier for the meal
+        private int id; // Unique identifier for the meal
     private LocalDate date;
     private LocalTime time; // 15-minute accuracy
     private String type; // breakfast, lunch, dinner, snack, etc.
@@ -177,13 +177,13 @@ public class Meal implements Serializable {
      * Adds a Food object. Extracts its ID and servingSize, then inserts both in sync.
      */
     public void addFood(Food food) {
-        addFood(food.getId(), food.getServingSize());
+        addFoodByID(food.getId(), food.getServingSize());
     }
 
     /**
      * Adds a food with an explicit ID and serving size.
      */
-    public void addFood(int foodID, int servingSize) {
+    public void addFoodByID(int foodID, int servingSize) {
         this.foodIDs.add(foodID);
         this.servingSizes.add(servingSize);
     }
@@ -191,7 +191,7 @@ public class Meal implements Serializable {
     /**
      * Adds a food with an explicit ID and a default serving size of 100.
      */
-    public void addFood(int foodID) {
+    public void addFoodByID(int foodID) {
         this.foodIDs.add(foodID);
         this.servingSizes.add(100);
     }
@@ -200,9 +200,16 @@ public class Meal implements Serializable {
     // REMOVE
     // --------------------------------------------------
     /**
+     * Removes a single Food object from the internal lists (by its ID).
+     */
+    public void removeFood(Food food) {
+        removeFoodByID(food.getId());
+    }
+
+    /**
      * Removes a food by ID (removes the *first* occurrence).
      */
-    public void removeFood(int foodID) {
+    public void removeFoodByID(int foodID) {
         int index = this.foodIDs.indexOf(foodID);
         if (index != -1) {
             removeFoodByIndex(index);
@@ -220,17 +227,27 @@ public class Meal implements Serializable {
         this.foodIDs.remove(index);
         this.servingSizes.remove(index);
     }
-
     // --------------------------------------------------
     // EDIT
     // --------------------------------------------------
+
+    /**
+     * Edits a single Food object. Replaces oldFood (found by oldFood's ID) with newFood’s ID & servingSize.
+     */
+    public void editFood(Food oldFood, Food newFood) {
+        int oldID = oldFood.getId();
+        int newID = newFood.getId();
+        int newSize = newFood.getServingSize();
+        editFoodByID(oldID, newID, newSize);
+    }
+
     /**
      * Edits a food item by replacing the old ID with a new ID and updating serving size.
      */
-    public void editFood(int oldFoodID, int newFoodID, int newServingSize) {
+    public void editFoodByID(int oldFoodID, int newFoodID, int newServingSize) {
         int index = this.foodIDs.indexOf(oldFoodID);
         if (index != -1) {
-            editFood(index, newFoodID, newServingSize);
+            editFoodByIndex(index, newFoodID, newServingSize);
         }
     }
 
@@ -248,10 +265,10 @@ public class Meal implements Serializable {
     /* ===================================================================
        2) SERVING SIZES METHODS
        =================================================================== */
-
     // --------------------------------------------------
     // GET
     // --------------------------------------------------
+
     /** Returns the entire list of serving sizes. */
     public ArrayList<Integer> getServingSizes() {
         return servingSizes;
@@ -273,10 +290,10 @@ public class Meal implements Serializable {
         }
         return servingSizes.get(index);
     }
-
     // --------------------------------------------------
     // SET
     // --------------------------------------------------
+
     /**
      * Sets the servingSizes list. Must match the size of foodIDs.
      */
@@ -286,10 +303,10 @@ public class Meal implements Serializable {
         }
         this.servingSizes = new ArrayList<>(newServingSizes);
     }
-
     // --------------------------------------------------
     // ADD
     // --------------------------------------------------
+
     /**
      * Adding a serving size alone **would break synchronization** if there's
      * no corresponding food ID. So we disallow it.
@@ -308,20 +325,20 @@ public class Meal implements Serializable {
                 "Cannot add serving size alone without a corresponding food ID."
         );
     }
-
     // --------------------------------------------------
     // REMOVE
     // --------------------------------------------------
+
     /**
      * Removes a serving size at the given index (and its corresponding ID).
      */
     public void removeServingSizeByIndex(int index) {
         removeFoodByIndex(index);
     }
-
     // --------------------------------------------------
     // EDIT
     // --------------------------------------------------
+
     /**
      * Edits the serving size at a given index. Food ID remains unchanged.
      */
@@ -369,30 +386,6 @@ public class Meal implements Serializable {
             this.foodIDs.add(food.getId());
             this.servingSizes.add(food.getServingSize());
         }
-    }
-
-    /**
-     * Adds a single Food object to the internal lists.
-     */
-    public void addMealFood(Food mealFood) {
-        addFood(mealFood.getId(), mealFood.getServingSize());
-    }
-
-    /**
-     * Removes a single Food object from the internal lists (by its ID).
-     */
-    public void removeMealFood(Food mealFood) {
-        removeFood(mealFood.getId());
-    }
-
-    /**
-     * Edits a single Food object. Replaces oldFood (found by oldFood's ID) with newFood’s ID & servingSize.
-     */
-    public void editMealFood(Food oldFood, Food newFood) {
-        int oldID = oldFood.getId();
-        int newID = newFood.getId();
-        int newSize = newFood.getServingSize();
-        editFood(oldID, newID, newSize);
     }
 
     public String getNotes() { return notes; }

@@ -24,14 +24,12 @@ import java.util.ArrayList;
 public class SelectedFoodsFragment extends Fragment {
 
     public interface OnSelectedFoodsFragmentListener {
-
         void onNavigateToFoodInfo(Food food);
     }
-    private SelectedFoodsFragment.OnSelectedFoodsFragmentListener fragmentListener;
-
-    private RecyclerView recyclerView;
-    private FoodSelectionsAdapter adapter;
     private ArrayList<ListItem<Food>> selectedFoods;
+    private OnSelectedFoodsFragmentListener fragmentListener;
+    private FoodSelectionsAdapter foodsAdapter;
+    private RecyclerView foodsRV;
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -63,7 +61,7 @@ public class SelectedFoodsFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = view.findViewById(R.id.rv_foods);
+        foodsRV = view.findViewById(R.id.rv_foods);
 
         // Initialize the list and adapter
         if (getArguments() != null) {
@@ -91,28 +89,28 @@ public class SelectedFoodsFragment extends Fragment {
     }
 
     private void setupRecyclerView() {
-        adapter = new FoodSelectionsAdapter(selectedFoods, this);
+        foodsAdapter = new FoodSelectionsAdapter(selectedFoods, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+        foodsRV.setLayoutManager(layoutManager);
+        foodsRV.setAdapter(foodsAdapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(foodsRV.getContext(),
                 layoutManager.getOrientation()
         );
-        recyclerView.addItemDecoration(dividerItemDecoration);
+        foodsRV.addItemDecoration(dividerItemDecoration);
     }
 
     // Add food to the selected foods list
 
     public void addFoodToSelectedFoods(ListItem<Food> food) {
         selectedFoods.add(food);  // Update the list in fragment
-        adapter.addItem(food, selectedFoods.size());  // Notify adapter
+        foodsAdapter.addItem(food, selectedFoods.size());  // Notify adapter
     }
     // Remove food from the selected foods list
 
     public void removeFoodFromSelectedFoods(int position) {
         if (position >= 0 && position < selectedFoods.size()) {
             selectedFoods.remove(position);  // Update the list in fragment
-            adapter.removeItem(position);  // Notify adapter to remove item
+            foodsAdapter.removeItem(position);  // Notify adapter to remove item
         }
     }
     public void removeFoodFromSelectedFoodsByFoodID(int foodID) {
@@ -126,12 +124,12 @@ public class SelectedFoodsFragment extends Fragment {
         }
 
         selectedFoods.remove(position);  // Update the list in fragment
-        adapter.removeItem(position);  // Notify adapter to remove item
+        foodsAdapter.removeItem(position);  // Notify adapter to remove item
     }
 
     public void clearSelectedFoods() {
         selectedFoods.clear();
-        adapter.clearAll();
+        foodsAdapter.clearAll();
     }
 
     public void navigateToFoodInfo(Food food) {

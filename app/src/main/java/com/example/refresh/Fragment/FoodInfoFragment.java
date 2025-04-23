@@ -43,21 +43,24 @@ public class FoodInfoFragment extends Fragment {
         void onExitFoodInfoFragment();
     }
 
+    // Domain model
     private Food food;
+
+    // Listener
     private OnFoodInfoFragmentListener fragmentListener;
+
+    // Serving option lists
     private final ArrayList<String> solidServingOptions = new ArrayList<>(Arrays.asList(
             "Standard Serving (100g)", "Teaspoon (5g)", "Tablespoon (15g)",
             "Cup (240g)", "Pint (473g)", "Quart (946g)", "Custom (grams)"
     ));
-
-    private final ArrayList<String> liquidsOptions = new ArrayList<>(Arrays.asList(
+    private final ArrayList<String> liquidServingOptions = new ArrayList<>(Arrays.asList(
             "Standard Serving (100ml)", "Teaspoon (5ml)", "Tablespoon (15ml)", "Fluid Ounce (30ml)",
             "Cup (240ml)", "Pint (473ml)", "Quart (946ml)", "Custom (milliliters)"
     ));
 
-    // Map for solids: Option string → Size in grams
+    // Static maps for serving sizes
     private static final Map<String, Integer> SOLID_SERVING_MAP = new HashMap<>();
-    // Map for liquids: Option string → Size in milliliters
     private static final Map<String, Integer> LIQUID_SERVING_MAP = new HashMap<>();
 
     static {
@@ -81,49 +84,47 @@ public class FoodInfoFragment extends Fragment {
         LIQUID_SERVING_MAP.put("Custom (milliliters)", 1);
     }
 
+    // Static helper methods
     private static int getSolidServingSize(String option) {
         return SOLID_SERVING_MAP.getOrDefault(option, -1);
     }
-
     private static int getLiquidServingSize(String option) {
         return LIQUID_SERVING_MAP.getOrDefault(option, -1);
     }
 
-    // toolbar views
-    private TextView tvTitle;
-    private ImageButton backArrow;
+    // Toolbar views
+    private TextView title;
+    private ImageButton backBtn;
     private ImageButton extraBtn;
 
-    private TextView tvFoodName;
+    // Food info header views
+    private TextView foodNameTV;
     private ImageButton favoriteBtn;
-    private TextView tvFoodDescription;
+    private TextView descriptionTV;
 
     // Input views
-    private EditText etServingCount;
-    private Spinner spinnerServingOptions;
+    private EditText servingCountET;
+    private Spinner servingOptionSpinner;
 
-    // Nutrient circular progress bars and their overlay texts
-    private CircularProgressBar progressBarCrabs;
-    private TextView progressTextCarbs;
-
-    private CircularProgressBar progressBarProtein;
-    private TextView progressTextProtein;
-
-    private CircularProgressBar progressBarFat;
-    private TextView progressTextFat;
-
-    private SeekBar seekBarCalories;
+    // Nutrient progress bars & overlays
+    private CircularProgressBar carbsProgressBar;
+    private TextView carbsProgressTV;
+    private CircularProgressBar proteinProgressBar;
+    private TextView proteinProgressTV;
+    private CircularProgressBar fatProgressBar;
+    private TextView fatProgressTV;
+    private SeekBar caloriesSeekBar;
 
     // Nutrient detail text views
-    private TextView tvCarbs;
-    private TextView tvProtein;
-    private TextView tvFat;
+    private TextView carbsTV;
+    private TextView proteinTV;
+    private TextView fatTV;
 
-    // Calories per serving (assumed to have been added to the XML)
-    private TextView tvCalories;
+    // Calories per serving view
+    private TextView caloriesTV;
 
     // Bottom action button
-    private Button btnAdd;
+    private Button addBtn;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -179,27 +180,27 @@ public class FoodInfoFragment extends Fragment {
 
     private void initializeViews(View view) {
 
-        tvTitle = view.findViewById(R.id.toolbar_title_tv);
-        backArrow = view.findViewById(R.id.back_btn);
+        title = view.findViewById(R.id.toolbar_title_tv);
+        backBtn = view.findViewById(R.id.back_btn);
         extraBtn = view.findViewById(R.id.extra_btn);
 
-        tvFoodName = view.findViewById(R.id.food_title_tv);
+        foodNameTV = view.findViewById(R.id.food_title_tv);
         favoriteBtn = view.findViewById(R.id.favorite_btn);
-        tvFoodDescription = view.findViewById(R.id.food_description_tv);
-        etServingCount = view.findViewById(R.id.serving_count_et);
-        spinnerServingOptions = view.findViewById(R.id.serving_options_spinner);
-        progressBarCrabs = view.findViewById(R.id.progressBarCrabs);
-        progressTextCarbs = view.findViewById(R.id.progressTextCarbs);
-        tvCarbs = view.findViewById(R.id.tv_carbs);
-        progressBarProtein = view.findViewById(R.id.progressBarProtein);
-        progressTextProtein = view.findViewById(R.id.progressTextProtein);
-        tvProtein = view.findViewById(R.id.tv_protein);
-        progressBarFat = view.findViewById(R.id.progressBarFat);
-        progressTextFat = view.findViewById(R.id.progressTextFat);
-        tvFat = view.findViewById(R.id.tv_fat);
-        tvCalories = view.findViewById(R.id.tv_calories);
-        seekBarCalories = view.findViewById(R.id.calorie_seek_bar);
-        btnAdd = view.findViewById(R.id.add_btn);
+        descriptionTV = view.findViewById(R.id.food_description_tv);
+        servingCountET = view.findViewById(R.id.serving_count_et);
+        servingOptionSpinner = view.findViewById(R.id.serving_options_spinner);
+        carbsProgressBar = view.findViewById(R.id.progressBarCrabs);
+        carbsProgressTV = view.findViewById(R.id.progressTextCarbs);
+        carbsTV = view.findViewById(R.id.tv_carbs);
+        proteinProgressBar = view.findViewById(R.id.progressBarProtein);
+        proteinProgressTV = view.findViewById(R.id.progressTextProtein);
+        proteinTV = view.findViewById(R.id.tv_protein);
+        fatProgressBar = view.findViewById(R.id.progressBarFat);
+        fatProgressTV = view.findViewById(R.id.progressTextFat);
+        fatTV = view.findViewById(R.id.tv_fat);
+        caloriesTV = view.findViewById(R.id.tv_calories);
+        caloriesSeekBar = view.findViewById(R.id.calorie_seek_bar);
+        addBtn = view.findViewById(R.id.add_btn);
     }
 
     private void assignValuesToViews() {
@@ -207,56 +208,56 @@ public class FoodInfoFragment extends Fragment {
             return; // Optionally, you could show a default state or error message
         }
 
-        tvTitle.setText("Food Info");
+        title.setText("Food Info");
         extraBtn.setVisibility(View.GONE);
 
 
         // 1. Basic Food Details
-        tvFoodName.setText(food.getName());
-        tvFoodDescription.setText(food.getDescription());
+        foodNameTV.setText(food.getName());
+        descriptionTV.setText(food.getDescription());
 
         updateNutritionalValues();
         setNutrientProgressBars();
 
         // 4. Spinner for Serving Options
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
-                R.layout.item_custom_spinner, food.isLiquid() ? liquidsOptions : solidServingOptions);
+                R.layout.item_custom_spinner, food.isLiquid() ? liquidServingOptions : solidServingOptions);
         adapter.setDropDownViewResource(R.layout.item_custom_spinner);
-        spinnerServingOptions.setAdapter(adapter);
-        spinnerServingOptions.setSelection(0); // Set the default selection to the first item
+        servingOptionSpinner.setAdapter(adapter);
+        servingOptionSpinner.setSelection(0); // Set the default selection to the first item
     }
 
-    public void updateNutritionalValues() {
+    private void updateNutritionalValues() {
 
-        tvCalories.setText(food.getActualCalories() + " kcal");
-        tvCarbs.setText("Carbs: " + food.getActualCarbs() + "g");
-        tvProtein.setText("Protein: " + food.getActualProtein() + "g");
-        tvFat.setText("Fat: " + food.getActualFat() + "g");
+        caloriesTV.setText(food.getActualCalories() + " kcal");
+        carbsTV.setText("Carbs: " + food.getActualCarbs() + "g");
+        proteinTV.setText("Protein: " + food.getActualProtein() + "g");
+        fatTV.setText("Fat: " + food.getActualFat() + "g");
 
     }
 
-    public void setNutrientProgressBars() {
-        progressBarCrabs.setProgress(food.getCarbs());
-        progressBarProtein.setProgress(food.getProtein());
-        progressBarFat.setProgress(food.getFat());
+    private void setNutrientProgressBars() {
+        carbsProgressBar.setProgress(food.getCarbs());
+        proteinProgressBar.setProgress(food.getProtein());
+        fatProgressBar.setProgress(food.getFat());
 
-        progressTextCarbs.setText(food.getCarbs() + "%");
-        progressTextProtein.setText(food.getProtein() + "%");
-        progressTextFat.setText(food.getFat() + "%");
+        carbsProgressTV.setText(food.getCarbs() + "%");
+        proteinProgressTV.setText(food.getProtein() + "%");
+        fatProgressTV.setText(food.getFat() + "%");
 
-        seekBarCalories.setProgress((food.getCalories() - 20) * 4);
+        caloriesSeekBar.setProgress((food.getCalories() - 20) * 4);
     }
 
     private void setListeners() {
-        backArrow.setOnClickListener(v -> {
+        backBtn.setOnClickListener(v -> {
             fragmentListener.onExitFoodInfoFragment();
         });
 
-        spinnerServingOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        servingOptionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int optionPosition = spinnerServingOptions.getSelectedItemPosition();
-                spinnerServingOptions.setSelection(optionPosition);
+                int optionPosition = servingOptionSpinner.getSelectedItemPosition();
+                servingOptionSpinner.setSelection(optionPosition);
 
                 updateServingSize();
             }
@@ -267,7 +268,7 @@ public class FoodInfoFragment extends Fragment {
             }
         });
 
-        etServingCount.addTextChangedListener(new TextWatcher() {
+        servingCountET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -276,29 +277,29 @@ public class FoodInfoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String txt = etServingCount.getText().toString();
-                if (etServingCount.getText().toString().isEmpty())
+                String txt = servingCountET.getText().toString();
+                if (servingCountET.getText().toString().isEmpty())
                     updateServingSize();
                 else if (Double.parseDouble(txt) <= 999.0 || String.valueOf(Integer.parseInt(txt)).length() <= 3)
                     updateServingSize();
                 else if (Double.parseDouble(txt) <= 999.0 && String.valueOf(Integer.parseInt(txt)).length() >= 4) {
-                    etServingCount.setText(String.valueOf(Double.parseDouble(txt)));
+                    servingCountET.setText(String.valueOf(Double.parseDouble(txt)));
                 }
                 else {
-                    etServingCount.setText("1");
+                    servingCountET.setText("1");
                 }
             }
         });
 
-        btnAdd.setOnClickListener(v -> addFoodToSelectedFoods());
+        addBtn.setOnClickListener(v -> addFoodToSelectedFoods());
 
-        seekBarCalories.setOnTouchListener((v, event) -> true);
+        caloriesSeekBar.setOnTouchListener((v, event) -> true);
 
     }
 
     private void updateServingSize() {
-        String servingOption = spinnerServingOptions.getSelectedItem().toString();
-        String etValue = etServingCount.getText().toString();
+        String servingOption = servingOptionSpinner.getSelectedItem().toString();
+        String etValue = servingCountET.getText().toString();
 
         int multiplier = etValue.isEmpty() ? 1 : Integer.parseInt(etValue);
         int servingSize = food.isLiquid() ? getLiquidServingSize(servingOption) : getSolidServingSize(servingOption);
@@ -311,7 +312,7 @@ public class FoodInfoFragment extends Fragment {
         updateNutritionalValues();
     }
 
-    public void addFoodToSelectedFoods() {
+    private void addFoodToSelectedFoods() {
         ListItem<Food> addedFood = new ListItem<>(food);
         fragmentListener.onAddingToSelectedFoods(addedFood);
         fragmentListener.onExitFoodInfoFragment();

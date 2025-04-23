@@ -44,8 +44,8 @@ import java.util.Locale;
 
 public class UserInfoFragment extends Fragment {
 
-    public interface OnUserDetailsFragmentListener {
-        void onExitUserDetailsFragment();
+    public interface OnUserInfoFragmentListener {
+        void hideUserInfo();
     }
 
     public enum States {
@@ -68,81 +68,85 @@ public class UserInfoFragment extends Fragment {
         }
     }
 
+    // State & domain
     private String state;
     private int userId;
     private User user;
-    private OnUserDetailsFragmentListener fragmentListener;
+    private OnUserInfoFragmentListener fragmentListener;
     private ArrayList<String> displayedSections;
+
+    // Helpers & persistence
     private UserInfoHelper userInfoHelper;
     private DatabaseHelper dbHelper;
 
+    // Immutable option lists
+    private final ArrayList<String> genderOptions = new ArrayList<>(Arrays.asList(
+            "Select Gender", "Male", "Female", "Other"
+    ));
+    private final ArrayList<String> activityLevelOptions = new ArrayList<>(Arrays.asList(
+            "Select Level", "Low", "Medium", "High", "Very High"
+    ));
+
+    // Layout containers
     private LinearLayout personalInfoLayout;
     private LinearLayout accountDetailsLayout;
     private LinearLayout lifestyleGoalLayout;
     private LinearLayout adjustGoalLayout;
-    private LinearLayout nameLayout;
+    private LinearLayout targetWeightLayout;
+
+    // Toolbar
+    private TextView title;
+    private ImageButton saveBtn;
+    private ImageButton backBtn;
+
+    // — Personal Info Section —
     private EditText nameET;
-    private LinearLayout weightLayout;
     private EditText weightET;
-    private LinearLayout heightLayout;
     private EditText heightET;
-    private LinearLayout dateOfBirthLayout;
     private EditText dateOfBirthET;
-    private LinearLayout genderLayout;
     private Spinner genderSpinner;
     private TextView genderErrorTV;
-    private LinearLayout emailLayout;
+
+    // — Account Details Section —
     private EditText emailET;
-    private LinearLayout phoneLayout;
     private EditText phoneET;
-    private LinearLayout pwdLayout;
     private EditText pwdET;
-    private LinearLayout goalLayout;
-    private RadioGroup goalRadioGroup;
+
+    // — Goals & Lifestyle Section —
+    private RadioGroup goalRG;
     private RadioButton loseWeightRB;
     private RadioButton maintainWeightRB;
     private RadioButton gainWeightRB;
     private RadioButton gainMuscleRB;
     private TextView goalErrorTV;
-    private LinearLayout targetWeightLayout;
+
     private EditText targetWeightET;
-    private LinearLayout activityLevelLayout;
+
     private Spinner activityLevelSpinner;
     private TextView activityLevelErrorTV;
-    private LinearLayout dietTypeLayout;
-    private RadioGroup dietTypeRadioGroup;
+
+    private RadioGroup dietTypeRG;
     private RadioButton carnivoreRB;
     private RadioButton vegetarianRB;
     private RadioButton veganRB;
     private TextView dietTypeErrorTV;
-    private LinearLayout adjustCaloriesLayout;
+
+    // — Adjustment Inputs Section —
     private EditText adjustCaloriesET;
-    private LinearLayout adjustCarbsLayout;
     private EditText adjustCarbsET;
-    private LinearLayout adjustProteinLayout;
     private EditText adjustProteinET;
-    private LinearLayout adjustFatLayout;
     private EditText adjustFatET;
-    private LinearLayout adjustWaterIntakeLayout;
     private EditText adjustWaterIntakeET;
-
-    private TextView title;
-    private ImageButton saveButton;
-    private ImageButton backArrow;
-
-    private final ArrayList<String> genderOptions = new ArrayList<>(Arrays.asList("Select Gender", "Male", "Female", "Other"));
-    private final ArrayList<String> activityLevelOptions = new ArrayList<>(Arrays.asList("Select Level", "Low", "Medium", "High", "Very High"));
-
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Make sure the hosting activity implements the interface.
-        if (context instanceof UserInfoFragment.OnUserDetailsFragmentListener) {
-            fragmentListener = (UserInfoFragment.OnUserDetailsFragmentListener) context;
+        if (context instanceof OnUserInfoFragmentListener) {
+            fragmentListener = (OnUserInfoFragmentListener) context;
         } else {
             throw new RuntimeException(context
-                    + " must implement OnUserDetailsFragmentListener");
+                    + " must implement OnUserInfoFragmentListener");
         }
     }
 
@@ -208,33 +212,18 @@ public class UserInfoFragment extends Fragment {
         lifestyleGoalLayout = view.findViewById(R.id.lifestyle_goal_layout);
         adjustGoalLayout = view.findViewById(R.id.goal_adjustment_layout);
 
-        nameLayout = view.findViewById(R.id.name_layout);
         nameET = view.findViewById(R.id.name_et);
-
-        weightLayout = view.findViewById(R.id.weight_layout);
         weightET = view.findViewById(R.id.weight_et);
-
-        heightLayout = view.findViewById(R.id.height_layout);
         heightET = view.findViewById(R.id.height_et);
-
-        dateOfBirthLayout = view.findViewById(R.id.date_of_birth_layout);
         dateOfBirthET = view.findViewById(R.id.date_of_birth_et);
-
-        genderLayout = view.findViewById(R.id.gender_layout);
         genderSpinner = view.findViewById(R.id.gender_spinner);
         genderErrorTV = view.findViewById(R.id.gender_error_tv);
 
-        emailLayout = view.findViewById(R.id.email_layout);
         emailET = view.findViewById(R.id.email_et);
-
-        phoneLayout = view.findViewById(R.id.phone_layout);
         phoneET = view.findViewById(R.id.phone_et);
-
-        pwdLayout = view.findViewById(R.id.pwd_layout);
         pwdET = view.findViewById(R.id.pwd_et);
 
-        goalLayout = view.findViewById(R.id.goal_layout);
-        goalRadioGroup = view.findViewById(R.id.goal_rg);
+        goalRG = view.findViewById(R.id.goal_rg);
         loseWeightRB = view.findViewById(R.id.lose_rBtn);
         maintainWeightRB = view.findViewById(R.id.maintain_rBtn);
         gainWeightRB = view.findViewById(R.id.gain_rBtn);
@@ -244,35 +233,24 @@ public class UserInfoFragment extends Fragment {
         targetWeightLayout = view.findViewById(R.id.target_weight_layout);
         targetWeightET = view.findViewById(R.id.target_weight_et);
 
-        activityLevelLayout = view.findViewById(R.id.activity_level_layout);
         activityLevelSpinner = view.findViewById(R.id.activity_level_spinner);
         activityLevelErrorTV = view.findViewById(R.id.activity_level_error_tv);
 
-        dietTypeLayout = view.findViewById(R.id.diet_type_layout);
-        dietTypeRadioGroup = view.findViewById(R.id.diet_type_rg);
+        dietTypeRG = view.findViewById(R.id.diet_type_rg);
         carnivoreRB = view.findViewById(R.id.carnivore_rBtn);
         vegetarianRB = view.findViewById(R.id.vegetarian_rBtn);
         veganRB = view.findViewById(R.id.vegan_rBtn);
         dietTypeErrorTV = view.findViewById(R.id.diet_type_error_tv);
 
-        adjustCaloriesLayout = view.findViewById(R.id.adjust_calories_layout);
         adjustCaloriesET = view.findViewById(R.id.adjust_calories_et);
-
-        adjustCarbsLayout = view.findViewById(R.id.adjust_carbs_layout);
         adjustCarbsET = view.findViewById(R.id.adjust_carbs_et);
-
-        adjustProteinLayout = view.findViewById(R.id.adjust_protein_layout);
         adjustProteinET = view.findViewById(R.id.adjust_protein_et);
-
-        adjustFatLayout = view.findViewById(R.id.adjust_fat_layout);
         adjustFatET = view.findViewById(R.id.adjust_fat_et);
-
-        adjustWaterIntakeLayout = view.findViewById(R.id.adjust_water_intake_layout);
         adjustWaterIntakeET = view.findViewById(R.id.adjust_water_intake_et);
 
-        backArrow = view.findViewById(R.id.back_btn);
-        saveButton = view.findViewById(R.id.extra_btn);
-        saveButton.setImageResource(R.drawable.ic_save);
+        backBtn = view.findViewById(R.id.back_btn);
+        saveBtn = view.findViewById(R.id.extra_btn);
+        saveBtn.setImageResource(R.drawable.ic_save);
         title = view.findViewById(R.id.toolbar_title_tv);
     }
 
@@ -338,7 +316,7 @@ public class UserInfoFragment extends Fragment {
 
     private void assignValuesToViews() {
         if (state.equals(FIRST_LOG.getStateName()))
-            backArrow.setVisibility(View.GONE);
+            backBtn.setVisibility(View.GONE);
 
         title.setText(R.string.user_info);
         nameET.setText(user != null ? user.getName() : "");
@@ -362,12 +340,12 @@ public class UserInfoFragment extends Fragment {
     private void setListeners() {
         // Button Listeners:
 
-        backArrow.setOnClickListener(v -> {
+        backBtn.setOnClickListener(v -> {
             dbHelper.close();
-            fragmentListener.onExitUserDetailsFragment();
+            fragmentListener.hideUserInfo();
         });
 
-        saveButton.setOnClickListener(v -> {
+        saveBtn.setOnClickListener(v -> {
             onSave();
         });
 
@@ -415,7 +393,7 @@ public class UserInfoFragment extends Fragment {
             }
         });
 
-        goalRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        goalRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (loseWeightRB.isChecked()) {
@@ -438,7 +416,7 @@ public class UserInfoFragment extends Fragment {
 
     private void onSave() {
         if (saveByState()) {
-            fragmentListener.onExitUserDetailsFragment();
+            fragmentListener.hideUserInfo();
             dbHelper.close();
         }
     }
@@ -715,12 +693,11 @@ public class UserInfoFragment extends Fragment {
         return valid;
     }
 
-
     private boolean validateLifestyleGoal() {
         boolean valid = true;
 
         // Validate Goal RadioGroup (check that a radio button is selected)
-        if (goalRadioGroup.getCheckedRadioButtonId() == -1) {
+        if (goalRG.getCheckedRadioButtonId() == -1) {
             goalErrorTV.setVisibility(View.VISIBLE);
             valid = false;
         } else {
@@ -768,7 +745,7 @@ public class UserInfoFragment extends Fragment {
         }
 
         // Validate Diet Type RadioGroup
-        if (dietTypeRadioGroup.getCheckedRadioButtonId() == -1) {
+        if (dietTypeRG.getCheckedRadioButtonId() == -1) {
             dietTypeErrorTV.setVisibility(View.VISIBLE);
             valid = false;
         } else {

@@ -60,6 +60,7 @@ public class NotificationTemplatesTable {
     public static ContentValues toContentValues(NotificationTemplate template) {
 
         ContentValues values = new ContentValues();
+        values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), template.getTemplateID()); // Assuming NotificationTemplate has an ID
         values.put(Columns.CATEGORY.getColumnName(), template.getCategory());
         values.put(Columns.TITLE.getColumnName(), template.getTitle());
         values.put(Columns.MESSAGE.getColumnName(), template.getMessage());
@@ -114,7 +115,7 @@ public class NotificationTemplatesTable {
     }
 
     // Check if the table already has data
-    private static boolean isDatabasePopulated(DatabaseHelper dbHelper) {
+    public static boolean isDatabasePopulated(DatabaseHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // Check if the table already has data
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + DatabaseHelper.Tables.NOTIFICATION_TEMPLATES, null);
@@ -127,7 +128,7 @@ public class NotificationTemplatesTable {
     }
 
     // Seed the table with data from the JSON file
-    public static void seedNotificationTemplates(DatabaseHelper dbHelper, ArrayList<NotificationTemplate> templates) {
+    private static void seedNotificationTemplates(DatabaseHelper dbHelper, ArrayList<NotificationTemplate> templates) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         for (NotificationTemplate template : templates) {
@@ -138,7 +139,7 @@ public class NotificationTemplatesTable {
     }
 
     // Parse the notification templates JSON data
-    public static ArrayList<NotificationTemplate> parseTemplates(Context context, String json) {
+    private static ArrayList<NotificationTemplate> parseTemplates(Context context, String json) {
         ArrayList<NotificationTemplate> templates = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(json);
@@ -162,7 +163,7 @@ public class NotificationTemplatesTable {
     }
 
     // Load JSON data from an asset file
-    public static String loadJSONFromAsset(Context context, String fileName) {
+    private static String loadJSONFromAsset(Context context, String fileName) {
         String json = null;
         try {
             AssetManager assetManager = context.getAssets();

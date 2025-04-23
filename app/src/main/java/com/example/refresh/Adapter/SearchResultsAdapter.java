@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.refresh.Fragment.SearchResultsFragment;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
-import com.example.refresh.Model.Meal;
 import com.example.refresh.R;
 
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.bind(result);
 
         // Add click listener to navigate to the correct screen
-        holder.addButton.setOnClickListener(v -> {
+        holder.addBtn.setOnClickListener(v -> {
             fragment.addFoodToSelectedFoods(result);
             Toast.makeText(v.getContext(), result.getTitle() + "Added to the List", Toast.LENGTH_SHORT).show();
         });
@@ -64,65 +63,29 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         return resultsList != null ? resultsList.size() : 0;
     }
 
-    // Method to update data efficiently
-    public void updateResults(List<ListItem<Food>> newResults) {
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback() {
-            @Override
-            public int getOldListSize() {
-                return resultsList.size();
-            }
-
-            @Override
-            public int getNewListSize() {
-                return newResults.size();
-            }
-
-            @Override
-            public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                ListItem<Food> oldItem = resultsList.get(oldItemPosition);
-                ListItem<Food> newItem = newResults.get(newItemPosition);
-
-                if (oldItem == null || newItem == null) {
-                    return false;
-                }
-
-                return oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getDescription().equals(newItem.getDescription());
-            }
-
-            @Override
-            public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                return resultsList.get(oldItemPosition).equals(newResults.get(newItemPosition));
-            }
-        });
-
-        resultsList = new ArrayList<>(newResults);
-        diffResult.dispatchUpdatesTo(this);
-    }
-
     // ViewHolder (placed at the bottom, following best practices)
     public static class ResultViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textViewTitle;
-        private final TextView textViewDescription;
-        private final ImageButton addButton;
+        private final TextView titleTV;
+        private final TextView descriptionTV;
+        private final ImageButton addBtn;
         private final LinearLayout itemContainer;
 
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewTitle = itemView.findViewById(R.id.textViewResultTitle);
-            textViewDescription = itemView.findViewById(R.id.textViewResultDescription);
-            addButton = itemView.findViewById(R.id.buttonAdd);
+            titleTV = itemView.findViewById(R.id.textViewResultTitle);
+            descriptionTV = itemView.findViewById(R.id.textViewResultDescription);
+            addBtn = itemView.findViewById(R.id.buttonAdd);
             itemContainer = itemView.findViewById(R.id.item_container);
-
         }
 
         public void bind(ListItem<Food> result) {
-            textViewTitle.setText(result.getTitle() != null ? result.getTitle() : "No Title");
+            titleTV.setText(result.getTitle() != null ? result.getTitle() : "No Title");
 
             if (result.getDescription() != null && !result.getDescription().isEmpty()) {
-                textViewDescription.setVisibility(View.VISIBLE);
-                textViewDescription.setText(result.getDescription());
+                descriptionTV.setVisibility(View.VISIBLE);
+                descriptionTV.setText(result.getDescription());
             } else {
-                textViewDescription.setVisibility(View.GONE);
+                descriptionTV.setVisibility(View.GONE);
             }
         }
     }

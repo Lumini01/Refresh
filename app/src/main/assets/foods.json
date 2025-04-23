@@ -2,6 +2,7 @@
   {
     "id": -2,
     "name": "",
+    "description": "",
     "category": "",
     "labels": [""],
     "calories": -1,
@@ -12,6 +13,7 @@
   {
     "id": 1,
     "name": "Apple",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","healthy"],
     "calories": 52,
@@ -22,6 +24,7 @@
   {
     "id": 2,
     "name": "Banana",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","sweet"],
     "calories": 89,
@@ -32,6 +35,7 @@
   {
     "id": 3,
     "name": "Cherry",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan"],
     "calories": 63,
@@ -42,6 +46,7 @@
   {
     "id": 4,
     "name": "Strawberry",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","summer"],
     "calories": 33,
@@ -52,6 +57,7 @@
   {
     "id": 5,
     "name": "Raspberry",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","berry"],
     "calories": 52,
@@ -62,6 +68,7 @@
   {
     "id": 6,
     "name": "Blueberry",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","antioxidant"],
     "calories": 57,
@@ -72,6 +79,7 @@
   {
     "id": 7,
     "name": "Blackberry",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","berry"],
     "calories": 43,
@@ -82,6 +90,7 @@
   {
     "id": 8,
     "name": "Watermelon",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","hydrating"],
     "calories": 30,
@@ -92,6 +101,7 @@
   {
     "id": 9,
     "name": "Cantaloupe",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","summer"],
     "calories": 34,
@@ -102,6 +112,7 @@
   {
     "id": 10,
     "name": "Honeydew",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","light"],
     "calories": 36,
@@ -112,6 +123,7 @@
   {
     "id": 11,
     "name": "Grapes",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","sweet"],
     "calories": 69,
@@ -122,6 +134,7 @@
   {
     "id": 12,
     "name": "Orange",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","citrus","vegan"],
     "calories": 47,
@@ -132,6 +145,7 @@
   {
     "id": 13,
     "name": "Mandarin",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","citrus","vegan"],
     "calories": 53,
@@ -142,6 +156,7 @@
   {
     "id": 14,
     "name": "Grapefruit",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","citrus","vegan"],
     "calories": 42,
@@ -152,6 +167,7 @@
   {
     "id": 15,
     "name": "Lemon",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","citrus","vegan"],
     "calories": 29,
@@ -162,6 +178,7 @@
   {
     "id": 16,
     "name": "Lime",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","citrus","vegan"],
     "calories": 30,
@@ -172,6 +189,7 @@
   {
     "id": 17,
     "name": "Pineapple",
+    "description": "",
     "category": "Fruit",
     "labels": ["tropical","vegan","juicy"],
     "calories": 50,
@@ -182,6 +200,7 @@
   {
     "id": 18,
     "name": "Mango",
+    "description": "",
     "category": "Fruit",
     "labels": ["tropical","vegan","sweet"],
     "calories": 60,
@@ -192,6 +211,7 @@
   {
     "id": 19,
     "name": "Papaya",
+    "description": "",
     "category": "Fruit",
     "labels": ["tropical","vegan","fresh"],
     "calories": 43,
@@ -202,6 +222,7 @@
   {
     "id": 20,
     "name": "Kiwi",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","tart"],
     "calories": 61,
@@ -212,6 +233,7 @@
   {
     "id": 21,
     "name": "Peach",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","stone fruit"],
     "calories": 39,
@@ -222,6 +244,7 @@
   {
     "id": 22,
     "name": "Plum",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","stone fruit"],
     "calories": 46,
@@ -232,6 +255,7 @@
   {
     "id": 23,
     "name": "Apricot",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan","stone fruit"],
     "calories": 48,
@@ -242,6 +266,7 @@
   {
     "id": 24,
     "name": "Fig",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","vegan"],
     "calories": 74,
@@ -252,6 +277,7 @@
   {
     "id": 25,
     "name": "Date",
+    "description": "",
     "category": "Fruit",
     "labels": ["vegan","sweet","dried"],
     "calories": 282,
@@ -262,6 +288,7 @@
   {
     "id": 26,
     "name": "Coconut",
+    "description": "",
     "category": "Fruit",
     "labels": ["tropical","vegan","fresh"],
     "calories": 354,
@@ -272,6 +299,7 @@
   {
     "id": 27,
     "name": "Avocado",
+    "description": "",
     "category": "Fruit",
     "labels": ["creamy","vegan","healthy fats"],
     "calories": 160,
@@ -282,6 +310,7 @@
   {
     "id": 28,
     "name": "Tomato",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","salad"],
     "calories": 18,
@@ -292,6 +321,7 @@
   {
     "id": 29,
     "name": "Cucumber",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","hydrating"],
     "calories": 15,
@@ -302,6 +332,7 @@
   {
     "id": 30,
     "name": "Bell Pepper",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","colorful"],
     "calories": 31,
@@ -312,6 +343,7 @@
   {
     "id": 31,
     "name": "Lettuce",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","salad"],
     "calories": 15,
@@ -322,6 +354,7 @@
   {
     "id": 32,
     "name": "Spinach",
+    "description": "",
     "category": "Vegetable",
     "labels": ["leafy green","vegan","healthy"],
     "calories": 23,
@@ -332,6 +365,7 @@
   {
     "id": 33,
     "name": "Kale",
+    "description": "",
     "category": "Vegetable",
     "labels": ["leafy green","vegan","superfood"],
     "calories": 35,
@@ -342,6 +376,7 @@
   {
     "id": 34,
     "name": "Broccoli",
+    "description": "",
     "category": "Vegetable",
     "labels": ["cruciferous","vegan","healthy"],
     "calories": 34,
@@ -352,6 +387,7 @@
   {
     "id": 35,
     "name": "Cauliflower",
+    "description": "",
     "category": "Vegetable",
     "labels": ["cruciferous","vegan","low-carb"],
     "calories": 25,
@@ -362,6 +398,7 @@
   {
     "id": 36,
     "name": "Carrot",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","root"],
     "calories": 41,
@@ -372,6 +409,7 @@
   {
     "id": 37,
     "name": "Potato",
+    "description": "",
     "category": "Vegetable",
     "labels": ["root","vegan","starchy"],
     "calories": 77,
@@ -382,6 +420,7 @@
   {
     "id": 38,
     "name": "Sweet Potato",
+    "description": "",
     "category": "Vegetable",
     "labels": ["root","vegan","starchy"],
     "calories": 86,
@@ -392,6 +431,7 @@
   {
     "id": 39,
     "name": "Onion",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","flavorful"],
     "calories": 40,
@@ -402,6 +442,7 @@
   {
     "id": 40,
     "name": "Garlic",
+    "description": "",
     "category": "Vegetable",
     "labels": ["aromatic","vegan","flavorful"],
     "calories": 149,
@@ -412,6 +453,7 @@
   {
     "id": 41,
     "name": "Ginger",
+    "description": "",
     "category": "Vegetable",
     "labels": ["aromatic","vegan","spicy"],
     "calories": 80,
@@ -422,6 +464,7 @@
   {
     "id": 42,
     "name": "Eggplant",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","purple"],
     "calories": 25,
@@ -432,6 +475,7 @@
   {
     "id": 43,
     "name": "Zucchini",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","summer squash"],
     "calories": 17,
@@ -442,6 +486,7 @@
   {
     "id": 44,
     "name": "Pumpkin",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","fall"],
     "calories": 26,
@@ -452,6 +497,7 @@
   {
     "id": 45,
     "name": "Green Beans",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","fiber"],
     "calories": 31,
@@ -462,6 +508,7 @@
   {
     "id": 46,
     "name": "Peas",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","fiber"],
     "calories": 81,
@@ -472,6 +519,7 @@
   {
     "id": 47,
     "name": "Corn",
+    "description": "",
     "category": "Vegetable",
     "labels": ["starchy","vegan","grain-like"],
     "calories": 86,
@@ -482,6 +530,7 @@
   {
     "id": 48,
     "name": "Mushrooms",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","earthy"],
     "calories": 22,
@@ -492,6 +541,7 @@
   {
     "id": 49,
     "name": "Asparagus",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","spring"],
     "calories": 20,
@@ -502,6 +552,7 @@
   {
     "id": 50,
     "name": "Celery",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","crunchy"],
     "calories": 14,
@@ -512,6 +563,7 @@
   {
     "id": 51,
     "name": "Beetroot",
+    "description": "",
     "category": "Vegetable",
     "labels": ["root","vegan","colorful"],
     "calories": 43,
@@ -522,6 +574,7 @@
   {
     "id": 52,
     "name": "Radish",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","spicy"],
     "calories": 16,
@@ -532,6 +585,7 @@
   {
     "id": 53,
     "name": "Turnip",
+    "description": "",
     "category": "Vegetable",
     "labels": ["root","vegan"],
     "calories": 28,
@@ -542,6 +596,7 @@
   {
     "id": 54,
     "name": "Parsnip",
+    "description": "",
     "category": "Vegetable",
     "labels": ["root","vegan","sweet"],
     "calories": 75,
@@ -552,6 +607,7 @@
   {
     "id": 55,
     "name": "Brussels Sprouts",
+    "description": "",
     "category": "Vegetable",
     "labels": ["cruciferous","vegan","mini cabbage"],
     "calories": 43,
@@ -562,6 +618,7 @@
   {
     "id": 56,
     "name": "Cabbage",
+    "description": "",
     "category": "Vegetable",
     "labels": ["cruciferous","vegan","fresh"],
     "calories": 25,
@@ -572,6 +629,7 @@
   {
     "id": 57,
     "name": "Seaweed",
+    "description": "",
     "category": "Vegetable",
     "labels": ["marine","vegan","mineral-rich"],
     "calories": 45,
@@ -582,6 +640,7 @@
   {
     "id": 58,
     "name": "Rice (White)",
+    "description": "",
     "category": "Grain",
     "labels": ["staple","grain","vegan"],
     "calories": 130,
@@ -592,6 +651,7 @@
   {
     "id": 59,
     "name": "Rice (Brown)",
+    "description": "",
     "category": "Grain",
     "labels": ["whole grain","vegan","healthy"],
     "calories": 111,
@@ -602,6 +662,7 @@
   {
     "id": 60,
     "name": "Quinoa",
+    "description": "",
     "category": "Grain",
     "labels": ["pseudo-grain","vegan","high protein"],
     "calories": 120,
@@ -612,6 +673,7 @@
   {
     "id": 61,
     "name": "Oats",
+    "description": "",
     "category": "Grain",
     "labels": ["whole grain","vegan","breakfast"],
     "calories": 389,
@@ -622,6 +684,7 @@
   {
     "id": 62,
     "name": "Wheat Bread",
+    "description": "",
     "category": "Grain",
     "labels": ["baked","whole wheat","vegan"],
     "calories": 247,
@@ -632,6 +695,7 @@
   {
     "id": 63,
     "name": "Rye Bread",
+    "description": "",
     "category": "Grain",
     "labels": ["baked","vegan","whole grain"],
     "calories": 259,
@@ -642,6 +706,7 @@
   {
     "id": 64,
     "name": "Pasta",
+    "description": "",
     "category": "Grain",
     "labels": ["wheat","italian","vegan"],
     "calories": 131,
@@ -652,6 +717,7 @@
   {
     "id": 65,
     "name": "Noodles (Egg)",
+    "description": "",
     "category": "Grain",
     "labels": ["wheat","egg-based"],
     "calories": 138,
@@ -662,6 +728,7 @@
   {
     "id": 66,
     "name": "Tortilla",
+    "description": "",
     "category": "Grain",
     "labels": ["flatbread","vegan"],
     "calories": 218,
@@ -672,6 +739,7 @@
   {
     "id": 67,
     "name": "Chicken Breast",
+    "description": "",
     "category": "Poultry",
     "labels": ["lean protein","homemade","healthy"],
     "calories": 165,
@@ -682,6 +750,7 @@
   {
     "id": 68,
     "name": "Chicken Thigh",
+    "description": "",
     "category": "Poultry",
     "labels": ["protein","homemade"],
     "calories": 209,
@@ -692,6 +761,7 @@
   {
     "id": 69,
     "name": "Turkey Breast",
+    "description": "",
     "category": "Poultry",
     "labels": ["lean protein","healthy"],
     "calories": 104,
@@ -702,6 +772,7 @@
   {
     "id": 70,
     "name": "Turkey Thigh",
+    "description": "",
     "category": "Poultry",
     "labels": ["protein","homemade"],
     "calories": 130,
@@ -712,6 +783,7 @@
   {
     "id": 71,
     "name": "Duck",
+    "description": "",
     "category": "Poultry",
     "labels": ["rich","protein"],
     "calories": 337,
@@ -722,6 +794,7 @@
   {
     "id": 72,
     "name": "Goose",
+    "description": "",
     "category": "Poultry",
     "labels": ["rich","protein"],
     "calories": 305,
@@ -732,6 +805,7 @@
   {
     "id": 73,
     "name": "Pork Chop",
+    "description": "",
     "category": "Meat",
     "labels": ["protein","homemade"],
     "calories": 231,
@@ -742,6 +816,7 @@
   {
     "id": 74,
     "name": "Pork Loin",
+    "description": "",
     "category": "Meat",
     "labels": ["protein","lean"],
     "calories": 205,
@@ -752,6 +827,7 @@
   {
     "id": 75,
     "name": "Bacon",
+    "description": "",
     "category": "Meat",
     "labels": ["salty","fast food","breakfast"],
     "calories": 541,
@@ -762,6 +838,7 @@
   {
     "id": 76,
     "name": "Ham",
+    "description": "",
     "category": "Meat",
     "labels": ["salty","processed"],
     "calories": 145,
@@ -772,6 +849,7 @@
   {
     "id": 77,
     "name": "Beef Steak",
+    "description": "",
     "category": "Meat",
     "labels": ["protein","grill"],
     "calories": 271,
@@ -782,6 +860,7 @@
   {
     "id": 78,
     "name": "Ground Beef",
+    "description": "",
     "category": "Meat",
     "labels": ["protein","fast food","burger"],
     "calories": 254,
@@ -792,6 +871,7 @@
   {
     "id": 79,
     "name": "Lamb Chop",
+    "description": "",
     "category": "Meat",
     "labels": ["protein","rich"],
     "calories": 282,
@@ -802,6 +882,7 @@
   {
     "id": 80,
     "name": "Lamb Leg",
+    "description": "",
     "category": "Meat",
     "labels": ["protein","rich"],
     "calories": 206,
@@ -812,6 +893,7 @@
   {
     "id": 81,
     "name": "Salmon",
+    "description": "",
     "category": "Seafood",
     "labels": ["oily fish","healthy","protein"],
     "calories": 208,
@@ -822,6 +904,7 @@
   {
     "id": 82,
     "name": "Tuna",
+    "description": "",
     "category": "Seafood",
     "labels": ["lean fish","protein","healthy"],
     "calories": 132,
@@ -832,6 +915,7 @@
   {
     "id": 83,
     "name": "Cod",
+    "description": "",
     "category": "Seafood",
     "labels": ["lean fish","protein"],
     "calories": 105,
@@ -842,6 +926,7 @@
   {
     "id": 84,
     "name": "Trout",
+    "description": "",
     "category": "Seafood",
     "labels": ["freshwater fish","protein"],
     "calories": 141,
@@ -852,6 +937,7 @@
   {
     "id": 85,
     "name": "Sardines",
+    "description": "",
     "category": "Seafood",
     "labels": ["oily fish","protein"],
     "calories": 208,
@@ -862,6 +948,7 @@
   {
     "id": 86,
     "name": "Shrimp",
+    "description": "",
     "category": "Seafood",
     "labels": ["shellfish","protein","low fat"],
     "calories": 99,
@@ -872,6 +959,7 @@
   {
     "id": 87,
     "name": "Crab",
+    "description": "",
     "category": "Seafood",
     "labels": ["shellfish","protein"],
     "calories": 97,
@@ -882,6 +970,7 @@
   {
     "id": 88,
     "name": "Lobster",
+    "description": "",
     "category": "Seafood",
     "labels": ["shellfish","protein","luxury"],
     "calories": 89,
@@ -892,6 +981,7 @@
   {
     "id": 89,
     "name": "Clams",
+    "description": "",
     "category": "Seafood",
     "labels": ["shellfish","protein"],
     "calories": 74,
@@ -902,6 +992,7 @@
   {
     "id": 90,
     "name": "Scallops",
+    "description": "",
     "category": "Seafood",
     "labels": ["shellfish","protein"],
     "calories": 111,
@@ -912,6 +1003,7 @@
   {
     "id": 91,
     "name": "Milk (Whole)",
+    "description": "",
     "category": "Dairy",
     "labels": ["dairy","creamy"],
     "calories": 61,
@@ -922,6 +1014,7 @@
   {
     "id": 92,
     "name": "Milk (Skim)",
+    "description": "",
     "category": "Dairy",
     "labels": ["dairy","low-fat","healthy"],
     "calories": 34,
@@ -932,6 +1025,7 @@
   {
     "id": 93,
     "name": "Cheddar Cheese",
+    "description": "",
     "category": "Dairy",
     "labels": ["cheese","rich","flavorful"],
     "calories": 403,
@@ -942,6 +1036,7 @@
   {
     "id": 94,
     "name": "Mozzarella Cheese",
+    "description": "",
     "category": "Dairy",
     "labels": ["cheese","italian"],
     "calories": 280,
@@ -952,6 +1047,7 @@
   {
     "id": 95,
     "name": "Cottage Cheese",
+    "description": "",
     "category": "Dairy",
     "labels": ["fresh","low-fat"],
     "calories": 98,
@@ -962,6 +1058,7 @@
   {
     "id": 96,
     "name": "Yogurt",
+    "description": "",
     "category": "Dairy",
     "labels": ["probiotic","creamy"],
     "calories": 59,
@@ -972,6 +1069,7 @@
   {
     "id": 97,
     "name": "Butter",
+    "description": "",
     "category": "Dairy",
     "labels": ["spread","rich"],
     "calories": 717,
@@ -982,6 +1080,7 @@
   {
     "id": 98,
     "name": "Cream",
+    "description": "",
     "category": "Dairy",
     "labels": ["rich","whipping"],
     "calories": 340,
@@ -992,6 +1091,7 @@
   {
     "id": 99,
     "name": "Sour Cream",
+    "description": "",
     "category": "Dairy",
     "labels": ["tangy","creamy"],
     "calories": 193,
@@ -1002,6 +1102,7 @@
   {
     "id": 100,
     "name": "Ice Cream",
+    "description": "",
     "category": "Dairy",
     "labels": ["sweet","dessert"],
     "calories": 207,
@@ -1012,6 +1113,7 @@
   {
     "id": 101,
     "name": "Almond",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["healthy fat","vegan","snack"],
     "calories": 579,
@@ -1022,6 +1124,7 @@
   {
     "id": 102,
     "name": "Walnut",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["healthy fat","vegan","snack"],
     "calories": 654,
@@ -1032,6 +1135,7 @@
   {
     "id": 103,
     "name": "Peanuts",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["legume","vegan","snack"],
     "calories": 567,
@@ -1042,6 +1146,7 @@
   {
     "id": 104,
     "name": "Peanut Butter",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["spread","vegan","snack"],
     "calories": 588,
@@ -1052,6 +1157,7 @@
   {
     "id": 105,
     "name": "Cashew",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["creamy","vegan","snack"],
     "calories": 553,
@@ -1062,6 +1168,7 @@
   {
     "id": 106,
     "name": "Pecan",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["buttery","vegan","snack"],
     "calories": 691,
@@ -1072,6 +1179,7 @@
   {
     "id": 107,
     "name": "Hazelnut",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["nutty","vegan","snack"],
     "calories": 628,
@@ -1082,6 +1190,7 @@
   {
     "id": 108,
     "name": "Pumpkin Seeds",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["snack","vegan","roasted"],
     "calories": 559,
@@ -1092,6 +1201,7 @@
   {
     "id": 109,
     "name": "Sunflower Seeds",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["snack","vegan","roasted"],
     "calories": 584,
@@ -1102,6 +1212,7 @@
   {
     "id": 110,
     "name": "Flax Seeds",
+    "description": "",
     "category": "Nuts/Seeds",
     "labels": ["omega-3","vegan","healthy"],
     "calories": 534,
@@ -1112,6 +1223,7 @@
   {
     "id": 111,
     "name": "Lentils",
+    "description": "",
     "category": "Legumes",
     "labels": ["vegan","protein","fiber"],
     "calories": 116,
@@ -1122,6 +1234,7 @@
   {
     "id": 112,
     "name": "Chickpeas",
+    "description": "",
     "category": "Legumes",
     "labels": ["vegan","protein","fiber"],
     "calories": 164,
@@ -1132,6 +1245,7 @@
   {
     "id": 113,
     "name": "Black Beans",
+    "description": "",
     "category": "Legumes",
     "labels": ["vegan","protein","fiber"],
     "calories": 132,
@@ -1142,6 +1256,7 @@
   {
     "id": 114,
     "name": "Kidney Beans",
+    "description": "",
     "category": "Legumes",
     "labels": ["vegan","protein","fiber"],
     "calories": 127,
@@ -1152,6 +1267,7 @@
   {
     "id": 115,
     "name": "Soybeans",
+    "description": "",
     "category": "Legumes",
     "labels": ["vegan","protein","soy"],
     "calories": 173,
@@ -1162,6 +1278,7 @@
   {
     "id": 116,
     "name": "Tofu",
+    "description": "",
     "category": "Alternative Protein",
     "labels": ["vegan","soy","protein"],
     "calories": 76,
@@ -1172,6 +1289,7 @@
   {
     "id": 117,
     "name": "Tempeh",
+    "description": "",
     "category": "Alternative Protein",
     "labels": ["vegan","soy","fermented"],
     "calories": 195,
@@ -1182,6 +1300,7 @@
   {
     "id": 118,
     "name": "Edamame",
+    "description": "",
     "category": "Legumes",
     "labels": ["vegan","soy","green"],
     "calories": 121,
@@ -1192,6 +1311,7 @@
   {
     "id": 119,
     "name": "Brownie",
+    "description": "",
     "category": "Sweets",
     "labels": ["chocolate","dessert"],
     "calories": 466,
@@ -1202,6 +1322,7 @@
   {
     "id": 120,
     "name": "Chocolate Chip Cookie",
+    "description": "",
     "category": "Sweets",
     "labels": ["dessert","sweet"],
     "calories": 488,
@@ -1212,6 +1333,7 @@
   {
     "id": 121,
     "name": "Donut",
+    "description": "",
     "category": "Sweets",
     "labels": ["fried","dessert"],
     "calories": 452,
@@ -1222,6 +1344,7 @@
   {
     "id": 122,
     "name": "Cupcake",
+    "description": "",
     "category": "Sweets",
     "labels": ["baked","dessert","sweet"],
     "calories": 305,
@@ -1232,6 +1355,7 @@
   {
     "id": 123,
     "name": "Muffin",
+    "description": "",
     "category": "Sweets",
     "labels": ["baked","sweet","breakfast"],
     "calories": 377,
@@ -1242,6 +1366,7 @@
   {
     "id": 124,
     "name": "Croissant",
+    "description": "",
     "category": "Baked Goods",
     "labels": ["buttery","french"],
     "calories": 406,
@@ -1252,6 +1377,7 @@
   {
     "id": 125,
     "name": "Bagel",
+    "description": "",
     "category": "Baked Goods",
     "labels": ["bread","breakfast"],
     "calories": 250,
@@ -1262,6 +1388,7 @@
   {
     "id": 126,
     "name": "Pita Bread",
+    "description": "",
     "category": "Baked Goods",
     "labels": ["flatbread","mediterranean"],
     "calories": 275,
@@ -1272,6 +1399,7 @@
   {
     "id": 127,
     "name": "Tortilla Chips",
+    "description": "",
     "category": "Snacks",
     "labels": ["crunchy","fast food"],
     "calories": 488,
@@ -1282,6 +1410,7 @@
   {
     "id": 128,
     "name": "Potato Chips",
+    "description": "",
     "category": "Snacks",
     "labels": ["crunchy","fast food","salty"],
     "calories": 536,
@@ -1292,6 +1421,7 @@
   {
     "id": 129,
     "name": "Popcorn",
+    "description": "",
     "category": "Snacks",
     "labels": ["corn","light","vegan"],
     "calories": 375,
@@ -1302,6 +1432,7 @@
   {
     "id": 130,
     "name": "Candy Bar",
+    "description": "",
     "category": "Sweets",
     "labels": ["chocolate","sweet","processed"],
     "calories": 500,
@@ -1312,6 +1443,7 @@
   {
     "id": 131,
     "name": "Chocolate Bar",
+    "description": "",
     "category": "Sweets",
     "labels": ["chocolate","dessert"],
     "calories": 546,
@@ -1322,6 +1454,7 @@
   {
     "id": 132,
     "name": "Gummy Bears",
+    "description": "",
     "category": "Sweets",
     "labels": ["candy","chewy","sweet"],
     "calories": 343,
@@ -1332,6 +1465,7 @@
   {
     "id": 133,
     "name": "Marshmallow",
+    "description": "",
     "category": "Sweets",
     "labels": ["candy","sweet","soft"],
     "calories": 318,
@@ -1342,6 +1476,7 @@
   {
     "id": 134,
     "name": "Gelatin",
+    "description": "",
     "category": "Sweets",
     "labels": ["dessert","jiggly"],
     "calories": 62,
@@ -1352,6 +1487,7 @@
   {
     "id": 135,
     "name": "Soda (Cola)",
+    "description": "",
     "category": "Beverages",
     "labels": ["soft drink","sweet","processed"],
     "calories": 42,
@@ -1362,6 +1498,7 @@
   {
     "id": 136,
     "name": "Soda (Lemon-Lime)",
+    "description": "",
     "category": "Beverages",
     "labels": ["soft drink","sweet","processed"],
     "calories": 40,
@@ -1372,6 +1509,7 @@
   {
     "id": 137,
     "name": "Juice (Apple)",
+    "description": "",
     "category": "Beverages",
     "labels": ["fruit juice","sweet","vegan"],
     "calories": 46,
@@ -1382,6 +1520,7 @@
   {
     "id": 138,
     "name": "Juice (Orange)",
+    "description": "",
     "category": "Beverages",
     "labels": ["fruit juice","citrus","vegan"],
     "calories": 45,
@@ -1392,6 +1531,7 @@
   {
     "id": 139,
     "name": "Smoothie (Mixed Berry)",
+    "description": "",
     "category": "Beverages",
     "labels": ["vegan","fruity","healthy"],
     "calories": 50,
@@ -1402,6 +1542,7 @@
   {
     "id": 140,
     "name": "Coffee (Black)",
+    "description": "",
     "category": "Beverages",
     "labels": ["caffeinated","zero carb"],
     "calories": 2,
@@ -1412,6 +1553,7 @@
   {
     "id": 141,
     "name": "Latte",
+    "description": "",
     "category": "Beverages",
     "labels": ["coffee","milk"],
     "calories": 54,
@@ -1422,6 +1564,7 @@
   {
     "id": 142,
     "name": "Tea (Green)",
+    "description": "",
     "category": "Beverages",
     "labels": ["caffeinated","light","healthy"],
     "calories": 0,
@@ -1432,6 +1575,7 @@
   {
     "id": 143,
     "name": "Tea (Black)",
+    "description": "",
     "category": "Beverages",
     "labels": ["caffeinated","classic"],
     "calories": 1,
@@ -1442,6 +1586,7 @@
   {
     "id": 144,
     "name": "Water",
+    "description": "",
     "category": "Beverages",
     "labels": ["hydrating","zero calorie"],
     "calories": 0,
@@ -1452,6 +1597,7 @@
   {
     "id": 145,
     "name": "Ketchup",
+    "description": "",
     "category": "Condiments",
     "labels": ["sauce","tomato","processed"],
     "calories": 112,
@@ -1462,6 +1608,7 @@
   {
     "id": 146,
     "name": "Mustard",
+    "description": "",
     "category": "Condiments",
     "labels": ["sauce","spicy"],
     "calories": 66,
@@ -1472,6 +1619,7 @@
   {
     "id": 147,
     "name": "Mayonnaise",
+    "description": "",
     "category": "Condiments",
     "labels": ["emulsion","creamy","processed"],
     "calories": 680,
@@ -1482,6 +1630,7 @@
   {
     "id": 148,
     "name": "Barbecue Sauce",
+    "description": "",
     "category": "Condiments",
     "labels": ["sauce","sweet","processed"],
     "calories": 129,
@@ -1492,6 +1641,7 @@
   {
     "id": 149,
     "name": "Soy Sauce",
+    "description": "",
     "category": "Condiments",
     "labels": ["asian","salty","vegan"],
     "calories": 53,
@@ -1502,6 +1652,7 @@
   {
     "id": 150,
     "name": "Hot Sauce",
+    "description": "",
     "category": "Condiments",
     "labels": ["spicy","vegan","processed"],
     "calories": 29,
@@ -1512,6 +1663,7 @@
   {
     "id": 151,
     "name": "Vinegar (White)",
+    "description": "",
     "category": "Condiments",
     "labels": ["acidic","zero calorie","vegan"],
     "calories": 18,
@@ -1522,6 +1674,7 @@
   {
     "id": 152,
     "name": "Olive Oil",
+    "description": "",
     "category": "Condiments",
     "labels": ["oil","healthy fats","mediterranean"],
     "calories": 884,
@@ -1532,6 +1685,7 @@
   {
     "id": 153,
     "name": "Canola Oil",
+    "description": "",
     "category": "Condiments",
     "labels": ["oil","neutral"],
     "calories": 884,
@@ -1542,6 +1696,7 @@
   {
     "id": 154,
     "name": "Vegetable Oil",
+    "description": "",
     "category": "Condiments",
     "labels": ["oil","generic"],
     "calories": 884,
@@ -1552,6 +1707,7 @@
   {
     "id": 155,
     "name": "Avocado Oil",
+    "description": "",
     "category": "Condiments",
     "labels": ["oil","healthy fats"],
     "calories": 884,
@@ -1562,6 +1718,7 @@
   {
     "id": 156,
     "name": "Sesame Oil",
+    "description": "",
     "category": "Condiments",
     "labels": ["oil","asian","flavorful"],
     "calories": 884,
@@ -1572,6 +1729,7 @@
   {
     "id": 157,
     "name": "Salt",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["seasoning","mineral"],
     "calories": 0,
@@ -1582,6 +1740,7 @@
   {
     "id": 158,
     "name": "Pepper (Black)",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["spice","common"],
     "calories": 255,
@@ -1592,6 +1751,7 @@
   {
     "id": 159,
     "name": "Cinnamon",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["spice","sweet"],
     "calories": 247,
@@ -1602,6 +1762,7 @@
   {
     "id": 160,
     "name": "Cumin",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["spice","aromatic"],
     "calories": 375,
@@ -1612,6 +1773,7 @@
   {
     "id": 161,
     "name": "Paprika",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["spice","red","smoky"],
     "calories": 282,
@@ -1622,6 +1784,7 @@
   {
     "id": 162,
     "name": "Basil",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["herb","italian","fresh"],
     "calories": 23,
@@ -1632,6 +1795,7 @@
   {
     "id": 163,
     "name": "Oregano",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["herb","mediterranean","aromatic"],
     "calories": 265,
@@ -1642,6 +1806,7 @@
   {
     "id": 164,
     "name": "Thyme",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["herb","aromatic"],
     "calories": 101,
@@ -1652,6 +1817,7 @@
   {
     "id": 165,
     "name": "Rosemary",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["herb","aromatic"],
     "calories": 131,
@@ -1662,6 +1828,7 @@
   {
     "id": 166,
     "name": "Parsley",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["herb","fresh"],
     "calories": 36,
@@ -1672,6 +1839,7 @@
   {
     "id": 167,
     "name": "Sage",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["herb","aromatic"],
     "calories": 315,
@@ -1682,6 +1850,7 @@
   {
     "id": 168,
     "name": "Coriander",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["herb","fresh","citrus note"],
     "calories": 23,
@@ -1692,6 +1861,7 @@
   {
     "id": 169,
     "name": "Turmeric",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["spice","yellow","anti-inflammatory"],
     "calories": 354,
@@ -1702,6 +1872,7 @@
   {
     "id": 170,
     "name": "Curry Powder",
+    "description": "",
     "category": "Herbs/Spices",
     "labels": ["spice mix","indian"],
     "calories": 325,
@@ -1712,6 +1883,7 @@
   {
     "id": 171,
     "name": "Bread Crumbs",
+    "description": "",
     "category": "Baked Goods",
     "labels": ["dry","breading"],
     "calories": 395,
@@ -1722,6 +1894,7 @@
   {
     "id": 172,
     "name": "Pancake",
+    "description": "",
     "category": "Baked Goods",
     "labels": ["breakfast","sweet"],
     "calories": 227,
@@ -1732,6 +1905,7 @@
   {
     "id": 173,
     "name": "Waffle",
+    "description": "",
     "category": "Baked Goods",
     "labels": ["breakfast","sweet"],
     "calories": 291,
@@ -1742,6 +1916,7 @@
   {
     "id": 174,
     "name": "French Fries",
+    "description": "",
     "category": "Snacks",
     "labels": ["fast food","fried","salty"],
     "calories": 312,
@@ -1752,6 +1927,7 @@
   {
     "id": 175,
     "name": "Pizza",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["italian","fast food","cheesy"],
     "calories": 266,
@@ -1762,6 +1938,7 @@
   {
     "id": 176,
     "name": "Burger",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["fast food","american","meat"],
     "calories": 295,
@@ -1772,6 +1949,7 @@
   {
     "id": 177,
     "name": "Hot Dog",
+    "description": "",
     "category": "Fast Food",
     "labels": ["processed","american"],
     "calories": 290,
@@ -1782,6 +1960,7 @@
   {
     "id": 178,
     "name": "Fried Chicken",
+    "description": "",
     "category": "Fast Food",
     "labels": ["crispy","meat"],
     "calories": 320,
@@ -1792,6 +1971,7 @@
   {
     "id": 179,
     "name": "Fish Sticks",
+    "description": "",
     "category": "Fast Food",
     "labels": ["processed","seafood","fried"],
     "calories": 277,
@@ -1802,6 +1982,7 @@
   {
     "id": 180,
     "name": "Nuggets",
+    "description": "",
     "category": "Fast Food",
     "labels": ["processed","chicken","fried"],
     "calories": 296,
@@ -1812,6 +1993,7 @@
   {
     "id": 181,
     "name": "Tacos",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["mexican","fast food","spicy"],
     "calories": 226,
@@ -1822,6 +2004,7 @@
   {
     "id": 182,
     "name": "Burrito",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["mexican","fast food"],
     "calories": 206,
@@ -1832,6 +2015,7 @@
   {
     "id": 183,
     "name": "Falafel",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["mediterranean","vegan","fried"],
     "calories": 333,
@@ -1842,6 +2026,7 @@
   {
     "id": 184,
     "name": "Hummus",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["mediterranean","vegan","dip"],
     "calories": 166,
@@ -1852,6 +2037,7 @@
   {
     "id": 185,
     "name": "Guacamole",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["dip","vegan","mexican"],
     "calories": 160,
@@ -1862,6 +2048,7 @@
   {
     "id": 186,
     "name": "Sushi",
+    "description": "",
     "category": "Ethnic Dish",
     "labels": ["japanese","seafood","rice"],
     "calories": 143,
@@ -1872,6 +2059,7 @@
   {
     "id": 187,
     "name": "Fried Rice",
+    "description": "",
     "category": "Ethnic Dish",
     "labels": ["asian","rice","fast food"],
     "calories": 168,
@@ -1882,6 +2070,7 @@
   {
     "id": 188,
     "name": "Stir-Fry Vegetables",
+    "description": "",
     "category": "Ethnic Dish",
     "labels": ["asian","vegan","healthy"],
     "calories": 80,
@@ -1892,6 +2081,7 @@
   {
     "id": 189,
     "name": "Dumplings",
+    "description": "",
     "category": "Ethnic Dish",
     "labels": ["asian","fast food","filled"],
     "calories": 170,
@@ -1902,6 +2092,7 @@
   {
     "id": 190,
     "name": "Ramen",
+    "description": "",
     "category": "Ethnic Dish",
     "labels": ["japanese","noodles","broth"],
     "calories": 436,
@@ -1912,6 +2103,7 @@
   {
     "id": 191,
     "name": "Pho",
+    "description": "",
     "category": "Ethnic Dish",
     "labels": ["vietnamese","noodles","broth"],
     "calories": 40,
@@ -1922,6 +2114,7 @@
   {
     "id": 192,
     "name": "Pad Thai",
+    "description": "",
     "category": "Ethnic Dish",
     "labels": ["thai","noodles","fast food"],
     "calories": 200,
@@ -1932,6 +2125,7 @@
   {
     "id": 193,
     "name": "Fried Eggs",
+    "description": "",
     "category": "Eggs",
     "labels": ["breakfast","protein","homemade"],
     "calories": 196,
@@ -1942,6 +2136,7 @@
   {
     "id": 194,
     "name": "Scrambled Eggs",
+    "description": "",
     "category": "Eggs",
     "labels": ["breakfast","protein","homemade"],
     "calories": 148,
@@ -1952,6 +2147,7 @@
   {
     "id": 195,
     "name": "Hard Boiled Eggs",
+    "description": "",
     "category": "Eggs",
     "labels": ["breakfast","protein"],
     "calories": 155,
@@ -1962,6 +2158,7 @@
   {
     "id": 196,
     "name": "Omelet",
+    "description": "",
     "category": "Eggs",
     "labels": ["breakfast","protein","cheesy"],
     "calories": 154,
@@ -1972,6 +2169,7 @@
   {
     "id": 197,
     "name": "Macaroni and Cheese",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["cheesy","comfort food"],
     "calories": 164,
@@ -1982,6 +2180,7 @@
   {
     "id": 198,
     "name": "Lasagna",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["italian","cheesy","baked"],
     "calories": 135,
@@ -1992,6 +2191,7 @@
   {
     "id": 199,
     "name": "Spaghetti Bolognese",
+    "description": "",
     "category": "Pasta",
     "labels": ["italian","meat sauce"],
     "calories": 140,
@@ -2002,6 +2202,7 @@
   {
     "id": 200,
     "name": "Alfredo Pasta",
+    "description": "",
     "category": "Pasta",
     "labels": ["italian","creamy","cheesy"],
     "calories": 197,
@@ -2012,6 +2213,7 @@
   {
     "id": 201,
     "name": "Tahini",
+    "description": "",
     "category": "Condiments",
     "labels": ["middle eastern","sesame","vegan"],
     "calories": 595,
@@ -2022,6 +2224,7 @@
   {
     "id": 202,
     "name": "Feta Cheese",
+    "description": "",
     "category": "Dairy",
     "labels": ["cheese","greek","salty"],
     "calories": 265,
@@ -2032,6 +2235,7 @@
   {
     "id": 203,
     "name": "Brown Sugar",
+    "description": "",
     "category": "Sweeteners",
     "labels": ["sweet","processed"],
     "calories": 380,
@@ -2042,6 +2246,7 @@
   {
     "id": 204,
     "name": "White Sugar",
+    "description": "",
     "category": "Sweeteners",
     "labels": ["sweet","processed"],
     "calories": 387,
@@ -2052,6 +2257,7 @@
   {
     "id": 205,
     "name": "Honey",
+    "description": "",
     "category": "Sweeteners",
     "labels": ["bee product","sweet"],
     "calories": 304,
@@ -2062,6 +2268,7 @@
   {
     "id": 206,
     "name": "Maple Syrup",
+    "description": "",
     "category": "Sweeteners",
     "labels": ["sweet","breakfast","vegan"],
     "calories": 260,
@@ -2072,6 +2279,7 @@
   {
     "id": 207,
     "name": "Jam",
+    "description": "",
     "category": "Sweeteners",
     "labels": ["fruit-based","sweet","spread"],
     "calories": 250,
@@ -2082,6 +2290,7 @@
   {
     "id": 208,
     "name": "Blue Cheese",
+    "description": "",
     "category": "Dairy",
     "labels": ["cheese","strong flavor"],
     "calories": 353,
@@ -2092,6 +2301,7 @@
   {
     "id": 209,
     "name": "White Bread",
+    "description": "",
     "category": "Grain",
     "labels": ["baked","refined","fast food"],
     "calories": 265,
@@ -2102,6 +2312,7 @@
   {
     "id": 210,
     "name": "Bagged Lettuce",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","convenient","salad"],
     "calories": 15,
@@ -2112,6 +2323,7 @@
   {
     "id": 211,
     "name": "Rotisserie Chicken",
+    "description": "",
     "category": "Meat",
     "labels": ["convenient","protein","homemade"],
     "calories": 229,
@@ -2122,6 +2334,7 @@
   {
     "id": 212,
     "name": "Frozen Pizza",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["convenient","processed","fast food"],
     "calories": 270,
@@ -2132,6 +2345,7 @@
   {
     "id": 213,
     "name": "Frozen Vegetables",
+    "description": "",
     "category": "Vegetable",
     "labels": ["convenient","vegan","healthy"],
     "calories": 40,
@@ -2142,6 +2356,7 @@
   {
     "id": 214,
     "name": "Dried Cranberries",
+    "description": "",
     "category": "Fruit",
     "labels": ["sweet","dried","snack"],
     "calories": 308,
@@ -2152,6 +2367,7 @@
   {
     "id": 215,
     "name": "Raisins",
+    "description": "",
     "category": "Fruit",
     "labels": ["dried","vegan","snack"],
     "calories": 299,
@@ -2162,6 +2378,7 @@
   {
     "id": 216,
     "name": "Granola",
+    "description": "",
     "category": "Grain",
     "labels": ["breakfast","sweet","crunchy"],
     "calories": 471,
@@ -2172,6 +2389,7 @@
   {
     "id": 217,
     "name": "Greek Yogurt",
+    "description": "",
     "category": "Dairy",
     "labels": ["creamy","high protein"],
     "calories": 120,
@@ -2182,6 +2400,7 @@
   {
     "id": 218,
     "name": "Instant Oatmeal",
+    "description": "",
     "category": "Grain",
     "labels": ["breakfast","quick","vegan"],
     "calories": 367,
@@ -2192,6 +2411,7 @@
   {
     "id": 219,
     "name": "Protein Bar",
+    "description": "",
     "category": "Snacks",
     "labels": ["processed","protein","convenient"],
     "calories": 350,
@@ -2202,6 +2422,7 @@
   {
     "id": 220,
     "name": "Chicken Soup",
+    "description": "",
     "category": "Soup",
     "labels": ["comfort food","homemade"],
     "calories": 72,
@@ -2212,6 +2433,7 @@
   {
     "id": 221,
     "name": "Tomato Soup",
+    "description": "",
     "category": "Soup",
     "labels": ["comfort food","vegan option"],
     "calories": 74,
@@ -2222,6 +2444,7 @@
   {
     "id": 222,
     "name": "Miso Soup",
+    "description": "",
     "category": "Soup",
     "labels": ["japanese","fermented","light"],
     "calories": 40,
@@ -2232,6 +2455,7 @@
   {
     "id": 223,
     "name": "Corn Flakes",
+    "description": "",
     "category": "Grain",
     "labels": ["breakfast","processed","cereal"],
     "calories": 357,
@@ -2242,6 +2466,7 @@
   {
     "id": 224,
     "name": "Whey Protein Powder",
+    "description": "",
     "category": "Supplement",
     "labels": ["protein","fitness","processed"],
     "calories": 400,
@@ -2252,6 +2477,7 @@
   {
     "id": 225,
     "name": "Almond Milk",
+    "description": "",
     "category": "Beverages",
     "labels": ["vegan","dairy alternative","healthy"],
     "calories": 15,
@@ -2262,6 +2488,7 @@
   {
     "id": 226,
     "name": "Coconut Milk",
+    "description": "",
     "category": "Beverages",
     "labels": ["dairy alternative","vegan","tropical"],
     "calories": 230,
@@ -2272,6 +2499,7 @@
   {
     "id": 227,
     "name": "Sparkling Water",
+    "description": "",
     "category": "Beverages",
     "labels": ["carbonated","zero calorie"],
     "calories": 0,
@@ -2282,6 +2510,7 @@
   {
     "id": 228,
     "name": "Gatorade",
+    "description": "",
     "category": "Beverages",
     "labels": ["sports drink","processed"],
     "calories": 50,
@@ -2292,6 +2521,7 @@
   {
     "id": 229,
     "name": "Energy Drink",
+    "description": "",
     "category": "Beverages",
     "labels": ["caffeinated","processed","sweet"],
     "calories": 45,
@@ -2302,6 +2532,7 @@
   {
     "id": 230,
     "name": "Iced Tea",
+    "description": "",
     "category": "Beverages",
     "labels": ["sweet","tea","processed"],
     "calories": 27,
@@ -2312,6 +2543,7 @@
   {
     "id": 231,
     "name": "Fried Plantains",
+    "description": "",
     "category": "Snacks",
     "labels": ["caribbean","fried","sweet"],
     "calories": 250,
@@ -2322,6 +2554,7 @@
   {
     "id": 232,
     "name": "Baked Beans",
+    "description": "",
     "category": "Legumes",
     "labels": ["canned","sweet","processed"],
     "calories": 155,
@@ -2332,6 +2565,7 @@
   {
     "id": 233,
     "name": "Tabbouleh",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["mediterranean","vegan","fresh"],
     "calories": 110,
@@ -2342,6 +2576,7 @@
   {
     "id": 234,
     "name": "Couscous",
+    "description": "",
     "category": "Grain",
     "labels": ["middle eastern","vegan","quick"],
     "calories": 112,
@@ -2352,6 +2587,7 @@
   {
     "id": 235,
     "name": "Pomegranate",
+    "description": "",
     "category": "Fruit",
     "labels": ["fresh","antioxidants","vegan"],
     "calories": 83,
@@ -2362,6 +2598,7 @@
   {
     "id": 236,
     "name": "Grapeseed Oil",
+    "description": "",
     "category": "Condiments",
     "labels": ["oil","neutral","healthy fats"],
     "calories": 884,
@@ -2372,6 +2609,7 @@
   {
     "id": 237,
     "name": "Whole Wheat Pasta",
+    "description": "",
     "category": "Grain",
     "labels": ["pasta","whole grain","healthy"],
     "calories": 124,
@@ -2382,6 +2620,7 @@
   {
     "id": 238,
     "name": "Biryani",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["indian","spiced","rice"],
     "calories": 290,
@@ -2392,6 +2631,7 @@
   {
     "id": 239,
     "name": "Chicken Curry",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["indian","spicy","meat"],
     "calories": 220,
@@ -2402,6 +2642,7 @@
   {
     "id": 240,
     "name": "Rice Cake (Brown)",
+    "description": "",
     "category": "Snacks",
     "labels": ["light","whole grain","vegan"],
     "calories": 35,
@@ -2412,6 +2653,7 @@
   {
     "id": 241,
     "name": "Pilaf",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["grain","flavored","healthy"],
     "calories": 160,
@@ -2422,6 +2664,7 @@
   {
     "id": 242,
     "name": "Kimchi",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fermented","korean","spicy"],
     "calories": 15,
@@ -2432,6 +2675,7 @@
   {
     "id": 243,
     "name": "Tzatziki",
+    "description": "",
     "category": "Condiments",
     "labels": ["greek","yogurt-based","dip"],
     "calories": 54,
@@ -2442,6 +2686,7 @@
   {
     "id": 244,
     "name": "Cottage Pie",
+    "description": "",
     "category": "Mixed Dish",
     "labels": ["british","meat","baked"],
     "calories": 120,
@@ -2452,6 +2697,7 @@
   {
     "id": 245,
     "name": "Meatballs",
+    "description": "",
     "category": "Meat",
     "labels": ["protein","italian","baked"],
     "calories": 230,
@@ -2462,6 +2708,7 @@
   {
     "id": 246,
     "name": "Brie Cheese",
+    "description": "",
     "category": "Dairy",
     "labels": ["cheese","french","creamy"],
     "calories": 334,
@@ -2472,6 +2719,7 @@
   {
     "id": 247,
     "name": "Black-Eyed Peas",
+    "description": "",
     "category": "Legumes",
     "labels": ["vegan","protein","fiber"],
     "calories": 128,
@@ -2482,6 +2730,7 @@
   {
     "id": 248,
     "name": "Okra",
+    "description": "",
     "category": "Vegetable",
     "labels": ["fresh","vegan","gumbo"],
     "calories": 33,
@@ -2492,6 +2741,7 @@
   {
     "id": 249,
     "name": "Collard Greens",
+    "description": "",
     "category": "Vegetable",
     "labels": ["leafy green","vegan","southern"],
     "calories": 32,
@@ -2502,6 +2752,7 @@
   {
     "id": 250,
     "name": "Swiss Cheese",
+    "description": "",
     "category": "Dairy",
     "labels": ["cheese","mild","sandwich"],
     "calories": 380,

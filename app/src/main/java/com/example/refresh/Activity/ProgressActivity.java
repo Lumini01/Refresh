@@ -45,23 +45,32 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 
 public class ProgressActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private ImageButton refreshButton;
-    private ImageButton calenderButton;
-    private TextView title;
-    private RecyclerView recyclerViewMeals;
-    private TextView WeekDatesTV;
-    private ImageButton lastWeekButton;
-    private ImageButton nextWeekButton;
+    // Domain model
     private ArrayList<Meal> weekMeals;
-    private SectionedRecyclerViewAdapter sectionAdapter;
+    private ArrayList<DaySummary> daySummaries;
+
+    // Date & time
     private LocalDate currentWeekStart;
-    private BottomNavigationView bottomNavigationView;
+
+    // UI elements
+    private Toolbar toolbar;
+    private TextView title;
+    private ImageButton refreshBtn;
+    private ImageButton calenderBtn;
+    private TextView WeekDatesTV;
+    private ImageButton lastWeekBtn;
+    private ImageButton nextWeekBtn;
+    private RecyclerView mealsRV;
+    private SectionedRecyclerViewAdapter sectionAdapter;
+    private BottomNavigationView bottomNavigation;
     private FragmentContainerView weekGraphContainer;
     private TrendGraphFragment trendGraphFragment;
+
+    // Helpers & services
     private SharedPreferences userSP;
     private DailySummaryHelper dailySummaryHelper;
-    private ArrayList<DaySummary> daySummaries;
+
+    // Activity result launcher
     private ActivityResultLauncher<Intent> editMealLauncher;
 
     @Override
@@ -110,36 +119,36 @@ public class ProgressActivity extends AppCompatActivity {
         );
     }
 
-    public void initializeUI() {
+    private void initializeUI() {
         weekGraphContainer = findViewById(R.id.trend_graph_container);
         toolbar = findViewById(R.id.toolbar);
-        recyclerViewMeals = findViewById(R.id.meals_rv);
-        refreshButton = findViewById(R.id.back_btn);
-        calenderButton = findViewById(R.id.extra_btn);
+        mealsRV = findViewById(R.id.meals_rv);
+        refreshBtn = findViewById(R.id.back_btn);
+        calenderBtn = findViewById(R.id.extra_btn);
         WeekDatesTV = findViewById(R.id.week_dates_btn);
-        lastWeekButton = findViewById(R.id.last_week_btn);
-        nextWeekButton = findViewById(R.id.next_week_btn);
+        lastWeekBtn = findViewById(R.id.last_week_btn);
+        nextWeekBtn = findViewById(R.id.next_week_btn);
         title = findViewById(R.id.toolbar_title_tv);
     }
 
-    public void setupUI() {
-        refreshButton.setImageResource(R.drawable.ic_refresh);
-        calenderButton.setImageResource(R.drawable.ic_calendar);
+    private void setupUI() {
+        refreshBtn.setImageResource(R.drawable.ic_refresh);
+        calenderBtn.setImageResource(R.drawable.ic_calendar);
         title.setText("Progress");
 
-        refreshButton.setOnClickListener(v -> {
+        refreshBtn.setOnClickListener(v -> {
             refreshActivity();
         });
 
-        lastWeekButton.setOnClickListener(v -> {
+        lastWeekBtn.setOnClickListener(v -> {
             previousWeek();
             updateWeekDates();
             refreshActivity();
 
-            nextWeekButton.setEnabled(true);
+            nextWeekBtn.setEnabled(true);
         });
 
-        nextWeekButton.setOnClickListener(v -> {
+        nextWeekBtn.setOnClickListener(v -> {
             if (currentWeekStart.plusWeeks(1).isBefore(LocalDate.now())) {
                 nextWeek();
                 updateWeekDates();
@@ -147,10 +156,10 @@ public class ProgressActivity extends AppCompatActivity {
             }
             else {
                 Toast.makeText(this, "Cant view future weeks.", Toast.LENGTH_SHORT).show();
-                nextWeekButton.setEnabled(false);
+                nextWeekBtn.setEnabled(false);
 
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    nextWeekButton.setEnabled(true);
+                    nextWeekBtn.setEnabled(true);
                 }, 2000);
             }
         });
@@ -163,8 +172,8 @@ public class ProgressActivity extends AppCompatActivity {
     }
 
     private void setupBottomNavigationMenu() {
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        bottomNavigation.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_today) {
                 Intent intent = new Intent(ProgressActivity.this, HomeDashboardActivity.class);
@@ -183,16 +192,16 @@ public class ProgressActivity extends AppCompatActivity {
 //            }
         });
 
-        bottomNavigationView.setSelectedItemId(R.id.nav_progress);
+        bottomNavigation.setSelectedItemId(R.id.nav_progress);
     }
 
-    public void setupRecyclerView() {
-        recyclerViewMeals.setLayoutManager(new LinearLayoutManager(this));
+    private void setupRecyclerView() {
+        mealsRV.setLayoutManager(new LinearLayoutManager(this));
 
         // Create the SectionedRecyclerViewAdapter instance
         sectionAdapter = new SectionedRecyclerViewAdapter();
 
-        recyclerViewMeals.setAdapter(sectionAdapter);
+        mealsRV.setAdapter(sectionAdapter);
 
         updateRecyclerView();
     }
@@ -371,16 +380,11 @@ public class ProgressActivity extends AppCompatActivity {
         currentWeekStart = currentWeekStart.minusWeeks(1);
     }
 
-    protected void onResume() {
-        super.onResume();
-        bottomNavigationView.setSelectedItemId(R.id.nav_progress);
-    }
-
     private void updateTrendGraph() {
         trendGraphFragment.updateLineChart(daySummaries, userSP.getInt("calorieGoal", 0));
     }
 
-    public void updateWeekDates() {
+    private void updateWeekDates() {
 
         int startDayInt = currentWeekStart.getDayOfMonth();
         int endDayInt = getCurrentWeekEnd().getDayOfMonth();
@@ -449,6 +453,11 @@ public class ProgressActivity extends AppCompatActivity {
 
         updateDaySummaries();
         updateTrendGraph();
+    }
+
+    protected void onResume() {
+        super.onResume();
+        bottomNavigation.setSelectedItemId(R.id.nav_progress);
     }
 }
 

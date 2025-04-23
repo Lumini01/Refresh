@@ -11,7 +11,7 @@
     tools:context=".Activity.HomeDashboardActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/user_details_container"
+        android:id="@+id/user_info_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />

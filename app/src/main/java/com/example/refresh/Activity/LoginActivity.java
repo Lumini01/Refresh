@@ -79,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         rememberMeCB = findViewById(R.id.remember_me_cb);
         signUpBtn = findViewById(R.id.sign_up_tv);
-        logo = findViewById(R.id.logo);
     }
 
     /**

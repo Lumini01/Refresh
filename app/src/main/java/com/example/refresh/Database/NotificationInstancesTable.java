@@ -1,5 +1,7 @@
 package com.example.refresh.Database;
 
+import static com.example.refresh.Database.NotificationInstancesTable.Columns.INSTANCE_ID;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -45,6 +47,8 @@ public class NotificationInstancesTable {
     public static ContentValues toContentValues(NotificationInstance instance) {
 
         ContentValues values = new ContentValues();
+        if (instance.getInstanceID() != -1)
+            values.put(INSTANCE_ID.getColumnName(), instance.getInstanceID());
         values.put(Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID());
         values.put(Columns.TIME.getColumnName(), instance.getTime());
 

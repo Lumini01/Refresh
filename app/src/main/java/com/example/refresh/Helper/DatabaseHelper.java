@@ -348,31 +348,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         switch (table) {
             case USERS:
                 // Example: User table mapping
-                return (T) new User(
-                        cursor.getInt(cursor.getColumnIndexOrThrow(ID.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(NAME.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(EMAIL.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(PHONE.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(PWD.getColumnName()))
-                );
+                return (T) UsersTable.fromCursor(cursor);
+
             case NOTIFICATION_TEMPLATES:
                 // Example: NotificationTemplates table mapping
-                return (T) new NotificationTemplate(
-                        context,
-                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationTemplatesTable.Columns.TEMPLATE_ID.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(CATEGORY.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(TITLE.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(MESSAGE.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(ICON_ID.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(ACTIVITY_CLASS.getColumnName()))
-                );
+                return (T) NotificationTemplatesTable.fromCursor(context, cursor);
+
             case NOTIFICATION_INSTANCES:
                 // Example: NotificationInstances table mapping
-                return (T) new NotificationInstance(
-                        cursor.getInt(cursor.getColumnIndexOrThrow(INSTANCE_ID.getColumnName())),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName())),
-                        cursor.getString(cursor.getColumnIndexOrThrow(TIME.getColumnName()))
-                );
+                return (T) NotificationInstancesTable.fromCursor(cursor);
 
             case FOODS:
                 // Example: Foods table mapping
@@ -393,29 +377,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         switch (table) {
             case USERS:
-                User user = (User) model;
-                values.put(NAME.getColumnName(), user.getName()); // Assuming UserInfo has a name
-                values.put(EMAIL.getColumnName(), user.getEmail()); // Assuming UserInfo has an email
-                values.put(PHONE.getColumnName(), user.getPhone()); // Assuming UserInfo has a phone
-                values.put(PWD.getColumnName(), user.getPwd()); // Assuming UserInfo has a password
+                values = UsersTable.toContentValues((User) model);
                 break;
 
             case NOTIFICATION_TEMPLATES:
-                NotificationTemplate template = (NotificationTemplate) model;
-                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), template.getTemplateID()); // Assuming NotificationTemplate has an ID
-                values.put(CATEGORY.getColumnName(), template.getCategory()); // Assuming NotificationTemplate has a category
-                values.put(TITLE.getColumnName(), template.getTitle()); // Assuming NotificationTemplate has a title
-                values.put(MESSAGE.getColumnName(), template.getMessage()); // Assuming NotificationTemplate has a message
-                values.put(ICON_ID.getColumnName(), template.getIconID()); // Assuming NotificationTemplate has an icon
-                values.put(ACTIVITY_CLASS.getColumnName(), template.getActivityClassName());
+                values = NotificationTemplatesTable.toContentValues((NotificationTemplate) model);
                 break;
 
             case NOTIFICATION_INSTANCES:
-                NotificationInstance instance = (NotificationInstance) model;
-                if (instance.getInstanceID() != -1)
-                    values.put(INSTANCE_ID.getColumnName(), instance.getInstanceID()); // Assuming NotificationInstance has an ID
-                values.put(NotificationInstancesTable.Columns.TEMPLATE_ID.getColumnName(), instance.getTemplateID()); // Assuming NotificationInstance has a template_id
-                values.put(TIME.getColumnName(), instance.getTime()); // Assuming NotificationInstance has a timestamp
+                values = NotificationInstancesTable.toContentValues((NotificationInstance) model);
                 break;
 
             case FOODS:

@@ -30,11 +30,11 @@ public class SearchResultsFragment extends Fragment {
         void onNavigateToFoodInfo(Food food);
     }
 
-    private OnSearchResultsFragmentListener fragmentListener;
-    private RecyclerView recyclerViewResults;
-    private TextView textViewNoResults;
-    private SearchResultsAdapter searchResultsAdapter;
     private ArrayList<ListItem<Food>> searchResults;
+    private OnSearchResultsFragmentListener fragmentListener;
+    private SearchResultsAdapter searchResultsAdapter;
+    private RecyclerView resultsRV;
+    private TextView noResultsTV;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -79,8 +79,8 @@ public class SearchResultsFragment extends Fragment {
 
         // Initialize Views
 
-        recyclerViewResults = view.findViewById(R.id.recyclerViewResults);
-        textViewNoResults = view.findViewById(R.id.textViewNoResults);
+        resultsRV = view.findViewById(R.id.recyclerViewResults);
+        noResultsTV = view.findViewById(R.id.textViewNoResults);
 
         // Initialize Search Results List
         if (getArguments() != null) {
@@ -105,39 +105,28 @@ public class SearchResultsFragment extends Fragment {
         // Setup RecyclerView
         searchResultsAdapter = new SearchResultsAdapter(searchResults, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerViewResults.setLayoutManager(layoutManager);
-        recyclerViewResults.setAdapter(searchResultsAdapter);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewResults.getContext(),
+        resultsRV.setLayoutManager(layoutManager);
+        resultsRV.setAdapter(searchResultsAdapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(resultsRV.getContext(),
                 layoutManager.getOrientation()
         );
-        recyclerViewResults.addItemDecoration(dividerItemDecoration);
+        resultsRV.addItemDecoration(dividerItemDecoration);
 
         // Update UI based on initial data
         updateUI();
     }
 
-    /**
-     * Updates the RecyclerView with new search results.
-     *
-     * @param newResults List of new search results.
-     */
-    public void updateResults(List<ListItem<Food>> newResults) {
-        searchResults.clear();
-        searchResults.addAll(newResults);
-        searchResultsAdapter.notifyDataSetChanged();
-        updateUI();
-    }
 
     /**
      * Shows or hides the RecyclerView and No Results TextView based on the data.
      */
     private void updateUI() {
         if (searchResults.isEmpty()) {
-            recyclerViewResults.setVisibility(View.GONE);
-            textViewNoResults.setVisibility(View.VISIBLE);
+            resultsRV.setVisibility(View.GONE);
+            noResultsTV.setVisibility(View.VISIBLE);
         } else {
-            recyclerViewResults.setVisibility(View.VISIBLE);
-            textViewNoResults.setVisibility(View.GONE);
+            resultsRV.setVisibility(View.VISIBLE);
+            noResultsTV.setVisibility(View.GONE);
         }
     }
 

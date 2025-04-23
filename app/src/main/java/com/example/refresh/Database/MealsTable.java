@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MealsTable {
-
     public static final String TABLE_NAME = "meals";
 
     // Enum for table columns
@@ -26,6 +25,7 @@ public class MealsTable {
         FOOD_IDS("food_ids"), // Stores food IDs as a comma-separated string
         SERVING_SIZES("serving_sizes"), // Stores serving sizes as a comma-separated string
         USER_ID("user_id");
+
 
         private final String columnName;
 

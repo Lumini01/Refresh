@@ -115,7 +115,7 @@ public class SignUpActivity extends AppCompatActivity {
             // Clear input errors and create user preferences
             clearInputErrors();
             createUserSP();
-            navigateToLogin();
+            navigateToLogin(true);
         } else {
             showToast("Unexpected Signup Error.");
         }
@@ -161,13 +161,15 @@ public class SignUpActivity extends AppCompatActivity {
 
     // Set up listener for the Login button
     private void setUpLoginButton() {
-        loginBtn.setOnClickListener(view -> navigateToLogin());
+        loginBtn.setOnClickListener(view -> navigateToLogin(false));
     }
 
     // Navigate to the Login screen
-    private void navigateToLogin() {
+    private void navigateToLogin(Boolean signedUp) {
         Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-        intent.putExtra("firstLog", true);
+        if (signedUp)
+            intent.putExtra("firstLog", true);
+
         startActivity(intent);
         finish();
     }

@@ -46,7 +46,7 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
         holder.bind(foodSelection);
 
         // Add click listener to navigate to the correct screen
-        holder.removeButton.setOnClickListener(v -> {
+        holder.removeBtn.setOnClickListener(v -> {
             int currentPosition = holder.getAdapterPosition();
             if (currentPosition != RecyclerView.NO_POSITION) {
                 fragment.removeFoodFromSelectedFoods(currentPosition);
@@ -62,41 +62,6 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
     @Override
     public int getItemCount() {
         return foodSelections != null ? foodSelections.size() : 0;
-    }
-
-    // Method to update data efficiently
-    public void updateFoodSelections(ArrayList<ListItem<Food>> newFoodSelections) {
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback() {
-            @Override
-            public int getOldListSize() {
-                return foodSelections.size();
-            }
-
-            @Override
-            public int getNewListSize() {
-                return newFoodSelections.size();
-            }
-
-            @Override
-            public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                ListItem<Food> oldItem = foodSelections.get(oldItemPosition);
-                ListItem<Food> newItem = newFoodSelections.get(newItemPosition);
-
-                if (oldItem == null || newItem == null) {
-                    return false;
-                }
-
-                return oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getDescription().equals(newItem.getDescription());
-            }
-
-            @Override
-            public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                return foodSelections.get(oldItemPosition).equals(newFoodSelections.get(newItemPosition));
-            }
-        });
-
-        foodSelections = new ArrayList<>(newFoodSelections);
-        diffResult.dispatchUpdatesTo(this);
     }
 
     // **Add an item at a specific position**
@@ -123,28 +88,28 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
     // ViewHolder (placed at the bottom, following best practices)
     public static class FoodSelectionViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView textViewTitle;
-        private final TextView textViewDescription;
-        private final ImageButton removeButton;
+        private final TextView titleTV;
+        private final TextView descriptionTV;
+        private final ImageButton removeBtn;
         private final LinearLayout itemContainer;
 
         public FoodSelectionViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewTitle = itemView.findViewById(R.id.meal_title);
-            textViewDescription = itemView.findViewById(R.id.meal_description);
-            removeButton = itemView.findViewById(R.id.buttonRemove);
+            titleTV = itemView.findViewById(R.id.meal_title);
+            descriptionTV = itemView.findViewById(R.id.meal_description);
+            removeBtn = itemView.findViewById(R.id.buttonRemove);
             itemContainer = itemView.findViewById(R.id.item_container);
 
         }
 
         public void bind(ListItem<Food> foodSelection) {
-            textViewTitle.setText(foodSelection.getTitle() != null ? foodSelection.getTitle() : "No Title");
+            titleTV.setText(foodSelection.getTitle() != null ? foodSelection.getTitle() : "No Title");
 
             if (foodSelection.getDescription() != null && !foodSelection.getDescription().isEmpty()) {
-                textViewDescription.setVisibility(View.VISIBLE);
-                textViewDescription.setText(foodSelection.getDescription());
+                descriptionTV.setVisibility(View.VISIBLE);
+                descriptionTV.setText(foodSelection.getDescription());
             } else {
-                textViewDescription.setVisibility(View.GONE);
+                descriptionTV.setVisibility(View.GONE);
             }
         }
     }
