@@ -49,9 +49,8 @@ public class SignUpActivity extends AppCompatActivity {
         // Adjust layout for system bars
         applyWindowInsets();
 
-        // Set up listeners for buttons
-        setUpSignUpButton();
-        setUpLoginButton();
+        // SetUp listeners for buttons
+        setUpListeners();
 
         // Hide the action bar for a clean UI
         if (getSupportActionBar() != null) {
@@ -80,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     // Set up listener for the Sign Up button
-    private void setUpSignUpButton() {
+    private void setUpListeners() {
         signUpBtn.setOnClickListener(view -> {
             collectUserInput();
             ErrorMessage validationError = validateInput();
@@ -91,6 +90,8 @@ public class SignUpActivity extends AppCompatActivity {
                 handleValidationError(validationError);
             }
         });
+
+        loginBtn.setOnClickListener(view -> navigateToLogin(false));
     }
 
     // Collect user input from form fields
@@ -100,14 +101,14 @@ public class SignUpActivity extends AppCompatActivity {
         user.setPhone(phoneET.getText().toString());
         user.setPwd(pwdET.getText().toString());
     }
-
     // Validate input fields
+
     private ErrorMessage validateInput() {
         String pwdConf = pwdConfET.getText().toString();
         return ValidationHelper.validateSignUp(user, pwdConf, dbHelper);
     }
-
     // Handle successful sign-up
+
     private void handleSuccessfulSignUp() {
         if (dbHelper.insert(DatabaseHelper.Tables.USERS, user) != -1) {
             showToast("Signup Successful!");
@@ -120,23 +121,23 @@ public class SignUpActivity extends AppCompatActivity {
             showToast("Unexpected Signup Error.");
         }
     }
-
     // Clear error messages from input fields
+
     private void clearInputErrors() {
         nameET.setError(null);
         emailET.setError(null);
         phoneET.setError(null);
         pwdET.setError(null);
     }
-
     // Show a toast message
+
     private void showToast(String message) {
         Toast toast = Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
         toast.show();
     }
-
     // Handle validation errors
+
     private void handleValidationError(ErrorMessage validate) {
         switch (validate.getField()) {
             case NAME:
@@ -158,11 +159,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
         showToast("Input Error - Signup Not Completed.");
     }
-
     // Set up listener for the Login button
-    private void setUpLoginButton() {
-        loginBtn.setOnClickListener(view -> navigateToLogin(false));
-    }
 
     // Navigate to the Login screen
     private void navigateToLogin(Boolean signedUp) {

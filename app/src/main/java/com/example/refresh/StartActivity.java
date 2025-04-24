@@ -85,19 +85,12 @@ public class StartActivity extends AppCompatActivity {
      * Handles the actions when the continue button is clicked.
      */
     private void onContinueButtonClicked() {
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        int loggedUserID = sharedPreferences.getInt(LOGGED_USER_ID_KEY, -1);
-
-        if (loggedUserID != -1) {
-            navigateToHome();
-        } else {
-            navigateToLogin();
-        }
-
         cdtTV.setText(""); // Clear countdown timer text
         if (timer != null) {
             timer.cancel(); // Stop the countdown timer when the user clicks continue
         }
+
+        checkUserStatus(); // Check user status and decide navigation flow
     }
 
     /**

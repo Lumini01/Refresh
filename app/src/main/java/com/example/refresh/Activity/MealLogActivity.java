@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -104,6 +105,8 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     }
 
     public void onNavigateToFoodInfo(Food food) {
+        hideKeyboard(searchBarET);
+
         foodInfoFragment = FoodInfoFragment.newInstance(food);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.food_info_container, foodInfoFragment)
@@ -211,13 +214,22 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     private void initializeLogButton() {
         if (!inEditMode) {
-            logMealBtn.setOnClickListener(v -> logMeal());
+            logMealBtn.setOnClickListener(v -> {
+                hideKeyboard(searchBarET);
+                logMeal();
+            });
             backBtn.setImageResource(R.drawable.ic_clear_all);
             backBtn.setOnClickListener(v -> clearAll());
         }
         else {
-            logMealBtn.setOnClickListener(v -> updateMeal());
-            backBtn.setOnClickListener(v -> finish());
+            logMealBtn.setOnClickListener(v -> {
+                hideKeyboard(searchBarET);
+                updateMeal();
+            });
+            backBtn.setOnClickListener(v -> {
+                hideKeyboard(searchBarET);
+                finish();
+            });
         }
     }
 
@@ -439,7 +451,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         return new ListItem<>(food.getName(), food.getServingSize() + "g  ✦  " + food.getActualCalories() + " kcal" , food);
     }
 
-    private void addFoodToSelectedFoods(ListItem<Food> addedFood) {
+    private void addFoodToSelectedFoods(@NonNull ListItem<Food> addedFood) {
         ListItem<Food> parsedFood = parseSelectedFood(addedFood.getModel());
         int servingSize = existsInSelectedFoods(parsedFood.getModel().getId());
         if (servingSize != -1) {
@@ -564,14 +576,16 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_today) {
+                hideKeyboard(searchBarET);
                 Intent intent = new Intent(MealLogActivity.this, HomeDashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             } else if (itemId == R.id.nav_log) {
-
+                hideKeyboard(searchBarET);
                 return true;
             } else if (itemId == R.id.nav_progress) {
+                hideKeyboard(searchBarET);
                 Intent intent = new Intent(MealLogActivity.this, ProgressActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);

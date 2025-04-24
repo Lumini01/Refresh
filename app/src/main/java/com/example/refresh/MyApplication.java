@@ -12,8 +12,6 @@ public class MyApplication extends android.app.Application {
     public static final String LOGGED_USER_ID_KEY = "loggedUserID";
     public static final String LOGGED_USER_SP_NAME_KEY = "loggedUserSPName";
     public static final String FIRST_LAUNCH_KEY = "isFirstLaunch";
-    private static final String CALORIE_GOAL_KEY = "calorieGoal";
-    private static final int DEFAULT_CALORIE_GOAL = 2500;
 
     @Override
     public void onCreate() {
@@ -42,7 +40,7 @@ public class MyApplication extends android.app.Application {
 
         // Set default calorie goal for logged-in user
         SharedPreferences userSP = getSharedPreferences(getLoggedUserSPName(), MODE_PRIVATE);
-        userSP.edit().putInt(CALORIE_GOAL_KEY, DEFAULT_CALORIE_GOAL).apply();
+        userSP.edit().putInt("calorieGoal", 2500).apply();
 
         // If user is logged in, check if they exist in the database
         int loggedUserID = getLoggedUserID();
