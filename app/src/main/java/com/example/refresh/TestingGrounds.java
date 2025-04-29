@@ -54,7 +54,7 @@ public class TestingGrounds {
 
         // Delete the notification instance from the database
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-        dbHelper.deleteRecords(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, NotificationInstancesTable.Columns.INSTANCE_ID, new String[]{String.valueOf(instance.getInstanceID())});
+        dbHelper.deleteRecord(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, NotificationInstancesTable.Columns.INSTANCE_ID, new String[]{String.valueOf(instance.getInstanceID())});
     }
 
     /**

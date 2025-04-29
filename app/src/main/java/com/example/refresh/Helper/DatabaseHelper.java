@@ -1,9 +1,5 @@
 package com.example.refresh.Helper;
 
-import static com.example.refresh.Database.UsersTable.Columns.*;
-import static com.example.refresh.Database.NotificationTemplatesTable.Columns.*;
-import static com.example.refresh.Database.NotificationInstancesTable.Columns.*;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -148,7 +144,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null; // Return null if no record is found
     }
 
-    // Retrieve multiple records from the database using LIKE (all records containing the argument)
     public <T> ArrayList<T> getRecords(Tables table, String selection, String[] selectionArgs) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -287,7 +282,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Edit a record in the database
-    public <T> int editRecords(Tables table, T model,  Enum<?> columnEnum, String[] selectionArgs) {
+    public <T> int editRecord(Tables table, T model, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
         String columnName = getEnumColumnName(columnEnum);
         String selection = columnName + " = ?";
@@ -297,7 +292,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Delete a record from the database
-    public int deleteRecords(Tables table,  Enum<?> columnEnum, String[] selectionArgs) {
+    public int deleteRecord(Tables table, Enum<?> columnEnum, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritableDatabase();
         String columnName = getEnumColumnName(columnEnum);
 

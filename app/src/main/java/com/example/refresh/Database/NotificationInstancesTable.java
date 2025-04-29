@@ -65,20 +65,6 @@ public class NotificationInstancesTable {
         return new NotificationInstance(instanceID, templateID, time);
     }
 
-    // Create a new notification instance ID
-    public static int createInstanceID(Context context) {
-        DatabaseHelper dbHelper = new DatabaseHelper(context);
-        int id = 0;
-        while (true) {
-            if (dbHelper.existsInDB(DatabaseHelper.Tables.NOTIFICATION_INSTANCES, Columns.INSTANCE_ID, String.valueOf(id)) == -1)
-                break;
-
-            id++;
-        }
-
-        return id;
-    }
-
     // Get a notification instance by its ID
     public static NotificationInstance getInstanceByID(Context context, int instanceID) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);

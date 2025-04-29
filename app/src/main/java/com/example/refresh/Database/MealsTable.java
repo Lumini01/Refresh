@@ -7,6 +7,7 @@ import android.database.Cursor;
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Model.Meal;
 import com.example.refresh.Model.Food; // Ensure you have this import
+import com.example.refresh.MyApplication;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -227,9 +228,9 @@ public class MealsTable {
         // Build the selection query.
         // This converts the stored date ("DD/MM/YYYY") into ISO format ("YYYY-MM-DD") on the fly.
         String selection = "(substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) >= ? " +
-                "AND (substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) <= ?";
+                "AND (substr(date, 7, 4) || '-' || substr(date, 4, 2) || '-' || substr(date, 1, 2)) <= ? AND user_id = ?";
         // Use ISO-formatted week boundaries as selection arguments.
-        String[] selectionArgs = { startDate.toString(), endDate.toString() };
+        String[] selectionArgs = { startDate.toString(), endDate.toString(), MyApplication.getInstance().getLoggedUserID() + ""};
 
         // Query the "meals" table. Change null to specify columns if needed.
         DatabaseHelper dbHelper = new DatabaseHelper(context);

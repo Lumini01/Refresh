@@ -526,7 +526,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         if (!meal.getMealFoods(this).isEmpty()) {
             DatabaseHelper dbHelper = new DatabaseHelper(this);
-            dbHelper.editRecords(DatabaseHelper.Tables.MEALS, meal, MealsTable.Columns.MEAL_ID, new String[]{String.valueOf(meal.getId())});
+            dbHelper.editRecord(DatabaseHelper.Tables.MEALS, meal, MealsTable.Columns.MEAL_ID, new String[]{String.valueOf(meal.getId())});
             dbHelper.close();
 
             Toast.makeText(this, "Meal Updated!", Toast.LENGTH_SHORT).show();

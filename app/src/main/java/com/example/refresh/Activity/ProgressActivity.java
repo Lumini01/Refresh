@@ -419,7 +419,7 @@ public class ProgressActivity extends AppCompatActivity {
     private void deleteMeal(Meal meal, int adapterPosition) {
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        databaseHelper.deleteRecords(DatabaseHelper.Tables.MEALS, MealsTable.Columns.MEAL_ID, new String[]{String.valueOf(meal.getId())});
+        databaseHelper.deleteRecord(DatabaseHelper.Tables.MEALS, MealsTable.Columns.MEAL_ID, new String[]{String.valueOf(meal.getId())});
 
         int currentPosition = 0;
         DaySection targetSection = null;

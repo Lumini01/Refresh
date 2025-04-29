@@ -24,7 +24,7 @@ public class Meal implements Serializable {
     private int userID;
     private String notes; // Can be empty
 
-    // Constructor without food ids, meal id, and user id.
+    // Constructor without food ids, serving sizes, meal id, and user id.
     public Meal(LocalDate date, LocalTime time, String type, String notes) {
         id = -1;
         this.date = date;
@@ -61,7 +61,7 @@ public class Meal implements Serializable {
     }
 
 
-    // Constructor with food ids, meal id, and user id.
+    // Constructor with food ids, serving sizes, meal id, and user id.
     public Meal(int id, LocalDate date, LocalTime time, String type, String notes, ArrayList<Integer> foodIDs, ArrayList<Integer> servingSizes, int userID) {
         this.id = id;
         this.date = date;
@@ -106,7 +106,7 @@ public class Meal implements Serializable {
     public LocalTime getTime() { return time; }
 
     public String getStringTime() {
-        return time.toString();
+        return time.withSecond(0).withNano(0).toString();
     }
 
     public void setTime(LocalTime time) { this.time = time; }
@@ -303,38 +303,11 @@ public class Meal implements Serializable {
         }
         this.servingSizes = new ArrayList<>(newServingSizes);
     }
-    // --------------------------------------------------
-    // ADD
-    // --------------------------------------------------
 
-    /**
-     * Adding a serving size alone **would break synchronization** if there's
-     * no corresponding food ID. So we disallow it.
-     */
-    public void addServingSize(int servingSize) {
-        throw new UnsupportedOperationException(
-                "Cannot add serving size alone without a corresponding food ID."
-        );
-    }
-
-    /**
-     * Adds a default serving size of 100 alone, also disallowed by default.
-     */
-    public void addServingSize() {
-        throw new UnsupportedOperationException(
-                "Cannot add serving size alone without a corresponding food ID."
-        );
-    }
     // --------------------------------------------------
     // REMOVE
     // --------------------------------------------------
 
-    /**
-     * Removes a serving size at the given index (and its corresponding ID).
-     */
-    public void removeServingSizeByIndex(int index) {
-        removeFoodByIndex(index);
-    }
     // --------------------------------------------------
     // EDIT
     // --------------------------------------------------
@@ -456,7 +429,7 @@ public class Meal implements Serializable {
 
 
     public String getMealDescription(Context context) {
-        return getStringDate() + " | " + getStringTime() + "  ✦  " + getCalories(context);
+        return getStringDate() + " | " + getStringTime() + "  ✦  " + getCalories(context) + " kcal";
     }
 
     public static String getCurrentDateParsed() {

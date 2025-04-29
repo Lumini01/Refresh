@@ -456,7 +456,7 @@ public class UserInfoFragment extends Fragment {
     private boolean saveStatePersonalInfo() {
         if (validatePersonalInfo()) {
             user.setName(nameET.getText().toString().trim());
-            dbHelper.editRecords(DatabaseHelper.Tables.USERS, user, UsersTable.Columns.ID, new String[]{user.getID() + ""});
+            dbHelper.editRecord(DatabaseHelper.Tables.USERS, user, UsersTable.Columns.ID, new String[]{user.getID() + ""});
 
             userInfoHelper.setWeight(Integer.parseInt(weightET.getText().toString()));
             userInfoHelper.setHeight(Integer.parseInt(weightET.getText().toString()));
@@ -480,7 +480,7 @@ public class UserInfoFragment extends Fragment {
             user.setPwd(pwdET.getText().toString());
             // user.setEmail(emailET.getText().toString());
             // user.setPhone(phoneET.getText().toString());
-            dbHelper.editRecords(DatabaseHelper.Tables.USERS, user, UsersTable.Columns.ID, new String[]{user.getID() + ""});
+            dbHelper.editRecord(DatabaseHelper.Tables.USERS, user, UsersTable.Columns.ID, new String[]{user.getID() + ""});
 
             return true;
         }

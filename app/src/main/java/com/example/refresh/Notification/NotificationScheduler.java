@@ -42,7 +42,7 @@ public class NotificationScheduler {
                         NotificationInstance oldInstance = dbHelper.getRecord(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
 
 
-                        dbHelper.editRecords(NOTIFICATION_INSTANCES, instance, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+                        dbHelper.editRecord(NOTIFICATION_INSTANCES, instance, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
 
                         Intent intent = createNotificationIntent(context, oldInstance);
                         PendingIntent pendingIntent = createPendingIntent(context, oldInstance, intent);
@@ -177,7 +177,7 @@ public class NotificationScheduler {
 
         String instanceID = String.valueOf(instance.getInstanceID());
 
-        dbHelper.deleteRecords(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{instanceID});
+        dbHelper.deleteRecord(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{instanceID});
         dbHelper.close();
     }
 

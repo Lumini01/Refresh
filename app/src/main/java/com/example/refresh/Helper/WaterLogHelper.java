@@ -8,7 +8,6 @@ import com.example.refresh.Model.Meal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class WaterLogHelper {
@@ -51,7 +50,7 @@ public class WaterLogHelper {
         dbHelper.insert(DatabaseHelper.Tables.MEALS, waterIntake);
         else {
             waterIntake.editServingSize(0, waterIntake.getServingSize(0) + loggedIntake.getServingSize(0));
-            dbHelper.editRecords(DatabaseHelper.Tables.MEALS, waterIntake, MealsTable.Columns.MEAL_ID, new String[]{loggedIntake.getId() + ""});
+            dbHelper.editRecord(DatabaseHelper.Tables.MEALS, waterIntake, MealsTable.Columns.MEAL_ID, new String[]{loggedIntake.getId() + ""});
         }
     }
 }
