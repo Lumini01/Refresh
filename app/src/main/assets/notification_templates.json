@@ -207,11 +207,6 @@
     "iconID": "ic_placeholder",
     "activityClass": "com.example.refresh.StartActivity"
   },
-
-
-
-
-
   {
     "templateID": 27,
     "category": "progress",

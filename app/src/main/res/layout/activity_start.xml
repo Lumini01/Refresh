@@ -5,22 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_blue"
+    android:background="@color/start_background_color"
     android:orientation="vertical"
     tools:context=".StartActivity">
 
-    <TextView
-        android:id="@+id/app_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+    <ImageView
         android:layout_marginTop="64dp"
         android:layout_marginBottom="@dimen/default_margin"
         android:gravity="center"
-        android:text="Refresh"
-        android:textColor="@color/white"
-        android:textSize="80sp"
-        android:textStyle="bold" />
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:src="@drawable/refresh_logo_text"
+        android:scaleX="2.75"
+        android:scaleY="2.75"/>
 
     <ImageView
         android:id="@+id/logo"
@@ -48,7 +45,7 @@
         android:layout_margin="@dimen/default_margin"
         android:gravity="center"
         android:text="Continue in 3 ..."
-        android:textColor="@color/white"
+        android:textColor="@color/textPrimary"
         android:textSize="24sp" />
 
 </LinearLayout>

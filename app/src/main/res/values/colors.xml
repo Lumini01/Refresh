@@ -90,5 +90,6 @@
     <color name="fat_progress_color">#FFC107</color>
     <color name="protein_progress_color">#a87afa</color>
     <color name="carbs_progress_color">#FF5722</color>
-    <color name="calorie_progress_color">#4CB944</color> <!-- Background for dark mode -->
+    <color name="calorie_progress_color">#4CB944</color>
+    <color name="start_background_color">#EFE5DB</color> <!-- Background for dark mode -->
 </resources>
