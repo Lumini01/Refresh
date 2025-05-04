@@ -539,7 +539,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             finish();
         }
         else {
-            Toast.makeText(this, "Can't Log an Empty Meal", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Can't Save an Empty Meal", Toast.LENGTH_SHORT).show();
         }
     }
 

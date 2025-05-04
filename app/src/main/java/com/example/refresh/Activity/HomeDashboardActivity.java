@@ -57,7 +57,6 @@ public class HomeDashboardActivity extends AppCompatActivity
     private LinearLayout logWaterBtn;
     private LinearLayout logMealBtn;
     private LinearLayout logWeightBtn;
-    private LinearLayout progressBtn;
     private ImageButton profileBtn;
     private ImageButton notificationBtn;
     private TextView weightProgressLabel;
@@ -162,7 +161,6 @@ public class HomeDashboardActivity extends AppCompatActivity
         logWaterBtn = findViewById(R.id.log_water_btn);
         logMealBtn = findViewById(R.id.meal_log_shortcut_btn);
         logWeightBtn = findViewById(R.id.log_weight_btn);
-        progressBtn = findViewById(R.id.progress_shortcut_btn);
         profileBtn = findViewById(R.id.profile_btn);
         notificationBtn = findViewById(R.id.notification_btn);
         weightProgressLabel = findViewById(R.id.gain_lose_weight_tv);
@@ -184,7 +182,6 @@ public class HomeDashboardActivity extends AppCompatActivity
         logWaterBtn.setOnClickListener(v -> waterLogHelper.logWaterCup());
         logMealBtn.setOnClickListener(v -> launchActivity(MealLogActivity.class));
         logWeightBtn.setOnClickListener(v -> showWeightDialog());
-        progressBtn.setOnClickListener(v -> launchActivity(ProgressActivity.class));
         profileBtn.setOnClickListener(v -> launchActivity(ProfileActivity.class));
     }
 

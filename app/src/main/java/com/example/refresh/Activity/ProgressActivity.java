@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +57,7 @@ public class ProgressActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView title;
     private ImageButton refreshBtn;
-    private ImageButton calenderBtn;
+    private ImageButton ExtraBtn;
     private TextView WeekDatesTV;
     private ImageButton lastWeekBtn;
     private ImageButton nextWeekBtn;
@@ -124,7 +125,7 @@ public class ProgressActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         mealsRV = findViewById(R.id.meals_rv);
         refreshBtn = findViewById(R.id.back_btn);
-        calenderBtn = findViewById(R.id.extra_btn);
+        ExtraBtn = findViewById(R.id.extra_btn);
         WeekDatesTV = findViewById(R.id.week_dates_btn);
         lastWeekBtn = findViewById(R.id.last_week_btn);
         nextWeekBtn = findViewById(R.id.next_week_btn);
@@ -133,7 +134,7 @@ public class ProgressActivity extends AppCompatActivity {
 
     private void setupUI() {
         refreshBtn.setImageResource(R.drawable.ic_refresh);
-        calenderBtn.setImageResource(R.drawable.ic_calendar);
+        ExtraBtn.setVisibility(View.GONE);
         title.setText("Progress");
 
         refreshBtn.setOnClickListener(v -> {
@@ -186,10 +187,6 @@ public class ProgressActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             } else return itemId == R.id.nav_progress;
-//            else if (itemId == R.id.nav_recipes) {
-//                // Handle recipes click
-//                return true;
-//            }
         });
 
         bottomNavigation.setSelectedItemId(R.id.nav_progress);

@@ -44,7 +44,7 @@ public class UserInfoHelper {
             userPreferences.edit().putString("gender", gender).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid gender.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Gender.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -59,7 +59,7 @@ public class UserInfoHelper {
             setAge(calculateAge(dateOfBirth));
             return true;
         } else {
-            Toast.makeText(context, "Invalid date of birth.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Date of Birth.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -69,7 +69,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("age", age).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid age.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Age.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -80,7 +80,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("height", height).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid height.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Height.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -91,7 +91,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("weight", weight).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid weight.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Weight.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -104,7 +104,7 @@ public class UserInfoHelper {
             userPreferences.edit().putString("goal", goal).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid goal.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Goal.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -114,7 +114,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("targetWeight", targetWeight).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid target weight.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Target Weight.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -127,7 +127,7 @@ public class UserInfoHelper {
             userPreferences.edit().putString("activityLevel", activityLevel).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid activity level.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Activity Level.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -139,7 +139,7 @@ public class UserInfoHelper {
             userPreferences.edit().putString("dietType", dietType).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid diet type.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Diet Type.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -149,7 +149,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("streak", streak).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid streak.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Streak.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -163,7 +163,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("calorieGoal", calorieGoal).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid calorie goal.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Calorie Goal.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -173,7 +173,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("carbsGoal", carbsGoal).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid carbs goal.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Carbs Goal.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -183,7 +183,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("proteinGoal", proteinGoal).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid protein goal.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Protein Goal.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -193,7 +193,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("fatGoal", fatGoal).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid fat goal.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Fat Goal.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -203,7 +203,7 @@ public class UserInfoHelper {
             userPreferences.edit().putInt("waterIntakeGoal", waterIntakeGoal).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid water intake goal.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Water Intake goal.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
