@@ -71,8 +71,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginBottom="@dimen/margin_small"
         android:orientation="horizontal"
         android:paddingEnd="@dimen/padding_small"
         android:weightSum="1">
@@ -137,25 +135,23 @@
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/daily_progress_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:visibility="gone" />
-
-            <include
-                android:id="@+id/macronutrient_fragment"
-                layout="@layout/fragment_daily_progress" />
 
             <LinearLayout
                 android:id="@+id/daily_goal_meter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginHorizontal="4dp"
                 android:background="@drawable/card_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:paddingVertical="@dimen/padding_medium"
+                android:paddingHorizontal="@dimen/padding_medium">
 
                 <ImageView
+                    android:id="@+id/goal_indicator_icon"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="@dimen/padding_small"
@@ -164,28 +160,28 @@
                     app:tint="@color/iconTint" />
 
                 <TextView
+                    android:id="@+id/goal_indicator_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_medium"
                     android:gravity="center"
                     android:text="Daily Goal Not Reached"
                     android:textColor="@color/textSecondary"
-                    android:textSize="26dp" />
+                    android:textSize="@dimen/text_size_xxlarge" />
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginHorizontal="@dimen/margin_medium"
-                android:layout_marginVertical="@dimen/margin_small"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="@dimen/margin_small"
                 app:dividerColor="@color/dividerColorLight" />
 
             <!-- Quick Actions Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium_small"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -288,11 +284,11 @@
                 android:id="@+id/gain_lose_weight_meter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:background="@drawable/card_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:paddingHorizontal="@dimen/padding_medium"
+                android:paddingVertical="@dimen/padding_small">
 
                 <ImageView
                     android:layout_width="64dp"
@@ -335,15 +331,14 @@
     </ScrollView>
 
     <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <include
+        android:id="@+id/bottom_navigation_layout"
+        layout="@layout/layout_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="@dimen/minimal_margin"
-        android:background="@drawable/card_background"
-        app:itemIconTint="@color/iconTint"
-        app:itemTextColor="@color/textSecondary"
-        app:menu="@menu/menu_bottom_nav" />
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"/>
 
 </LinearLayout>

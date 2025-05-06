@@ -24,6 +24,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.refresh.Database.UsersTable;
 import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Helper.GoalHelper;
 import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Model.User;
 import com.example.refresh.R;
@@ -78,6 +80,7 @@ public class UserInfoFragment extends Fragment {
     // Helpers & persistence
     private UserInfoHelper userInfoHelper;
     private DatabaseHelper dbHelper;
+    private GoalHelper goalHelper;
 
     // Immutable option lists
     private final ArrayList<String> genderOptions = new ArrayList<>(Arrays.asList(
@@ -111,6 +114,7 @@ public class UserInfoFragment extends Fragment {
     private EditText emailET;
     private EditText phoneET;
     private EditText pwdET;
+    private EditText pwdConfirmET;
 
     // — Goals & Lifestyle Section —
     private RadioGroup goalRG;
@@ -176,6 +180,8 @@ public class UserInfoFragment extends Fragment {
         }
 
         dbHelper = new DatabaseHelper(requireContext());
+        goalHelper = new GoalHelper(requireContext());
+
         if (userId != -1) user = dbHelper.getRecord(
                 DatabaseHelper.Tables.USERS,
                 UsersTable.Columns.ID,
@@ -222,6 +228,7 @@ public class UserInfoFragment extends Fragment {
         emailET = view.findViewById(R.id.email_et);
         phoneET = view.findViewById(R.id.phone_et);
         pwdET = view.findViewById(R.id.pwd_et);
+        pwdConfirmET = view.findViewById(R.id.pwd_conf_et);
 
         goalRG = view.findViewById(R.id.goal_rg);
         loseWeightRB = view.findViewById(R.id.lose_rBtn);
@@ -315,12 +322,12 @@ public class UserInfoFragment extends Fragment {
     }
 
     private void assignValuesToViews() {
-        if (state.equals(FIRST_LOG.getStateName()))
+        if (state.equals(FIRST_LOG.getStateName())) {
             backBtn.setVisibility(View.GONE);
+            nameET.setEnabled(false);
+        }
 
         title.setText(R.string.user_info);
-        nameET.setText(user != null ? user.getName() : "");
-        nameET.setEnabled(false);
 
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(requireContext(),
                 R.layout.item_custom_spinner, genderOptions);
@@ -335,6 +342,119 @@ public class UserInfoFragment extends Fragment {
         activityLevelSpinner.setAdapter(activityLevelAdapter);
         activityLevelSpinner.setSelection(0); // Set the default selection to the first item
         activityLevelSpinner.setPopupBackgroundDrawable(null);
+
+        if (!state.equals(FIRST_LOG.getStateName()))
+            setValuesByState();
+    }
+
+    private void setValuesByState() {
+        if (state.equals(ALL.getStateName())) setValuesAll();
+        else if (state.equals(MULTIPLE.getStateName())) setValuesMultiple();
+        else if (state.equals(PERSONAL_INFO.getStateName())) setValuesPersonalInfo();
+        else if (state.equals(ACCOUNT_DETAILS.getStateName())) setValuesAccountDetails();
+        else if (state.equals(LIFESTYLE_GOAL.getStateName())) setValuesLifestyleGoal();
+        else if (state.equals(ADJUST_GOAL.getStateName())) setValuesAdjustGoal();
+        else throw new IllegalStateException("Unexpected value: " + state);
+    }
+
+    private void setValuesAll() {
+        setValuesPersonalInfo();
+        setValuesAccountDetails();
+        setValuesLifestyleGoal();
+        setValuesAdjustGoal();
+    }
+
+    private void setValuesMultiple() {
+        for (String section : displayedSections) {
+            switch (section) {
+                case "personal_info":
+                    setValuesPersonalInfo();
+                    break;
+                case "account_details":
+                    setValuesAccountDetails();
+                    break;
+                case "lifestyle_goal":
+                    setValuesLifestyleGoal();
+                    break;
+                case "adjust_goal":
+                    setValuesAdjustGoal();
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + section);
+            }
+        }
+    }
+
+    private void setValuesPersonalInfo() {
+        nameET.setText(user != null ? user.getName() : "");
+
+        String weight = userInfoHelper.getWeight() + "";
+        weightET.setText(weight);
+
+        String height = userInfoHelper.getHeight() + "";
+        heightET.setText(height);
+
+        String birthday = userInfoHelper.getParsedDateOfBirth();
+        dateOfBirthET.setText(birthday);
+
+        String gender = userInfoHelper.getGender();
+        genderSpinner.setSelection(genderOptions.indexOf(gender));
+    }
+
+    private void setValuesAccountDetails() {
+        emailET.setText(user != null ? user.getEmail() : "");
+        phoneET.setText(user != null ? user.getPhone() : "");
+        pwdET.setText(user != null ? user.getPwd() : "");
+    }
+
+    private void setValuesLifestyleGoal() {
+        int goalId = -1;
+        String goal = userInfoHelper.getGoal();
+        String targetWeight = "";
+
+        if (goal.equals("lose")) {
+            goalId = loseWeightRB.getId();
+            targetWeight = userInfoHelper.getTargetWeight() + "";
+        }
+        else if (goal.equals("maintain")) goalId = maintainWeightRB.getId();
+        else if (goal.equals("gain")) {
+            goalId = gainWeightRB.getId();
+            targetWeight = userInfoHelper.getTargetWeight() + "";
+        }
+        else if (goal.equals("gain muscle")) goalId = gainMuscleRB.getId();
+
+        goalRG.check(goalId);
+        targetWeightET.setText(targetWeight);
+        if (!targetWeight.isEmpty())
+            targetWeightLayout.setVisibility(View.VISIBLE);
+
+        String activityLevel = userInfoHelper.getActivityLevel();
+        activityLevelSpinner.setSelection(activityLevelOptions.indexOf(activityLevel));
+
+        int dietTypeId = -1;
+        String dietType = userInfoHelper.getDietType();
+        if (dietType.equals("carnivore")) dietTypeId = carnivoreRB.getId();
+        else if (dietType.equals("vegetarian")) dietTypeId = vegetarianRB.getId();
+        else if (dietType.equals("vegan")) dietTypeId = veganRB.getId();
+
+        dietTypeRG.check(dietTypeId);
+    }
+
+    private void setValuesAdjustGoal() {
+        String calories = userInfoHelper.getCalorieGoal() + "";
+        adjustCaloriesET.setText(calories);
+
+        String carbs = userInfoHelper.getCarbGoal() + "";
+        adjustCarbsET.setText(carbs);
+
+        String protein = userInfoHelper.getProteinGoal() + "";
+        adjustProteinET.setText(protein);
+
+        String fat = userInfoHelper.getFatGoal() + "";
+        adjustFatET.setText(fat);
+
+        String waterIntake = userInfoHelper.getWaterIntakeGoal() + "";
+        adjustWaterIntakeET.setText(waterIntake);
     }
 
     private void setListeners() {
@@ -416,8 +536,11 @@ public class UserInfoFragment extends Fragment {
 
     private void onSave() {
         if (saveByState()) {
+            if (!state.equals(ADJUST_GOAL.getStateName()))
+                goalHelper.calculateDailyNutritionGoals();
             fragmentListener.hideUserInfo();
             dbHelper.close();
+            Toast.makeText(dbHelper.getContext(), "Saved!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -433,20 +556,24 @@ public class UserInfoFragment extends Fragment {
     }
 
     private boolean saveStateAll() {
-        return saveStatePersonalInfo()
-                && saveStateAccountDetails()
-                && saveStateLifestyleGoal()
-                && saveStateAdjustGoal();
+        boolean flag = saveStatePersonalInfo();
+        flag &= saveStateAccountDetails();
+        flag &= saveStateLifestyleGoal();
+        flag &= saveStateAdjustGoal();
+
+        return flag;
     }
 
     private boolean saveStateFirstLog() {
-        boolean flag = saveStatePersonalInfo() && saveStateLifestyleGoal();
+        boolean flag = saveStatePersonalInfo();
+        flag &= saveStateLifestyleGoal();
 
         if (validatePersonalInfo() && userInfoHelper.getUserPreferences() != null) {
             userInfoHelper.getUserPreferences()
                     .edit()
                     .putInt("startWeight", Integer.parseInt(weightET.getText().toString()))
                     .apply();
+            userInfoHelper.setStartDate(LocalDate.now());
         }
         else flag = false;
 
@@ -459,7 +586,7 @@ public class UserInfoFragment extends Fragment {
             dbHelper.editRecord(DatabaseHelper.Tables.USERS, user, UsersTable.Columns.ID, new String[]{user.getID() + ""});
 
             userInfoHelper.setWeight(Integer.parseInt(weightET.getText().toString()));
-            userInfoHelper.setHeight(Integer.parseInt(weightET.getText().toString()));
+            userInfoHelper.setHeight(Integer.parseInt(heightET.getText().toString()));
 
             String dateOfBirthStr = (dateOfBirthET.getText() != null) ? dateOfBirthET.getText().toString().trim() : "";
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -467,7 +594,6 @@ public class UserInfoFragment extends Fragment {
             userInfoHelper.setDateOfBirth(dateOfBirth);
 
             userInfoHelper.setGender(genderSpinner.getSelectedItem().toString());
-            userInfoHelper.setActivityLevel(activityLevelSpinner.getSelectedItem().toString());
 
             return true;
         }
@@ -477,10 +603,18 @@ public class UserInfoFragment extends Fragment {
 
     private boolean saveStateAccountDetails() {
         if (validateAccountDetails()) {
-            user.setPwd(pwdET.getText().toString());
+            if (!pwdET.getText().toString().isEmpty()) {
+                user.setPwd(pwdET.getText().toString());
+                dbHelper.editRecord(
+                        DatabaseHelper.Tables.USERS,
+                        user,
+                        UsersTable.Columns.ID,
+                        new String[]{user.getID() + ""}
+                );
+            }
+
             // user.setEmail(emailET.getText().toString());
             // user.setPhone(phoneET.getText().toString());
-            dbHelper.editRecord(DatabaseHelper.Tables.USERS, user, UsersTable.Columns.ID, new String[]{user.getID() + ""});
 
             return true;
         }
@@ -521,7 +655,7 @@ public class UserInfoFragment extends Fragment {
     private boolean saveStateAdjustGoal() {
         if (validateAdjustGoal()) {
             userInfoHelper.setCalorieGoal(Integer.parseInt(adjustCaloriesET.getText().toString()));
-            userInfoHelper.setCarbsGoal(Integer.parseInt(adjustCarbsET.getText().toString()));
+            userInfoHelper.setCarbGoal(Integer.parseInt(adjustCarbsET.getText().toString()));
             userInfoHelper.setProteinGoal(Integer.parseInt(adjustProteinET.getText().toString()));
             userInfoHelper.setFatGoal(Integer.parseInt(adjustFatET.getText().toString()));
             userInfoHelper.setWaterIntakeGoal(Integer.parseInt(adjustWaterIntakeET.getText().toString()));
@@ -627,8 +761,8 @@ public class UserInfoFragment extends Fragment {
                     dateOfBirthET.setError("Date of birth must be in the past");
                     valid = false;
                 }
-                else if (LocalDate.now().getYear() - dob.getYear() < 14 || LocalDate.now().getYear() - dob.getYear() > 120) {
-                    dateOfBirthET.setError("This app is for ages 14-120");
+                else if (LocalDate.now().getYear() - dob.getYear() < 16 || LocalDate.now().getYear() - dob.getYear() > 120) {
+                    dateOfBirthET.setError("This app is for ages 16-120");
                     valid = false;
                 }
                 else {
@@ -659,6 +793,7 @@ public class UserInfoFragment extends Fragment {
         String email = (emailET.getText() != null) ? emailET.getText().toString().trim() : "";
         String phone = (phoneET.getText() != null) ? phoneET.getText().toString().trim() : "";
         String pwd = (pwdET.getText() != null) ? pwdET.getText().toString().trim() : "";
+        String pwdConfirm = (pwdConfirmET.getText() != null) ? pwdConfirmET.getText().toString().trim() : "";
 
         // Validate Email
         if (email.isEmpty()) {
@@ -685,8 +820,18 @@ public class UserInfoFragment extends Fragment {
         if (pwd.isEmpty()) {
             pwdET.setError("Password is required");
             valid = false;
+        } else if (!pwdConfirm.isEmpty()) {
+            if (!pwd.equals(pwdConfirm)) {
+                pwdET.setError("Passwords do not match");
+                pwdConfirmET.setError("Passwords do not match");
+                valid = false;
+            } else {
+                pwdET.setError(null);
+                pwdConfirmET.setError(null);
+            }
         } else {
             pwdET.setError(null);
+            pwdConfirmET.setError(null);
             // Additional password validation (e.g., length or complexity) can be added here.
         }
 
@@ -719,7 +864,11 @@ public class UserInfoFragment extends Fragment {
                         valid = false;
                     }
                     else {
-                        float weight = Float.parseFloat(weightET.getText().toString());
+                        float weight;
+                        if (state.equals(FIRST_LOG.getStateName()))
+                            weight = Float.parseFloat(weightET.getText().toString());
+                        else weight = userInfoHelper.getWeight();
+
                         if (loseWeightRB.isChecked() && targetWeight > weight) {
                             targetWeightET.setError("Target weight must be less than current weight");
                             valid = false;

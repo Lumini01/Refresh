@@ -50,7 +50,7 @@ public class FoodSelectionsAdapter extends RecyclerView.Adapter<FoodSelectionsAd
             int currentPosition = holder.getAdapterPosition();
             if (currentPosition != RecyclerView.NO_POSITION) {
                 fragment.removeFoodFromSelectedFoods(currentPosition);
-                Toast.makeText(v.getContext(), foodSelection.getTitle() + "Removed from the List", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), foodSelection.getTitle() + " Removed from the List", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -10,7 +10,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,14 +29,19 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 
 import com.example.refresh.Database.MealsTable;
+import com.example.refresh.Fragment.DailyProgressFragment;
+import com.example.refresh.Helper.DailySummaryHelper;
 import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Database.FoodsTable;
 import com.example.refresh.Fragment.FoodInfoFragment;
 import com.example.refresh.Fragment.SearchResultsFragment;
 import com.example.refresh.Fragment.SelectedFoodsFragment;
+import com.example.refresh.Helper.UserInfoHelper;
+import com.example.refresh.Model.DaySummary;
 import com.example.refresh.Model.Food;
 import com.example.refresh.Model.ListItem;
 import com.example.refresh.Model.Meal;
+import com.example.refresh.Model.User;
 import com.example.refresh.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.datepicker.CalendarConstraints;
@@ -68,6 +76,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     private EditText searchBarET;
     private ImageButton clearBtn;
     private FragmentContainerView searchResultsContainer;
+    private FragmentContainerView dailyProgressContainer;
     private FragmentContainerView selectedFoodsContainer;
     private FragmentContainerView foodInfoFragmentContainer;
     private SelectedFoodsFragment selectedFoodsFragment;
@@ -97,6 +106,21 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         else {
             initializeEditModeUI();
         }
+
+        final WindowInsetsController controller = getWindow().getInsetsController();
+        if (controller != null) {
+            // hide both status bar & navigation bar
+            controller.hide(WindowInsets.Type.navigationBars());
+            // allow swipe to temporarily reveal
+            controller.setSystemBarsBehavior(
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
+        }
+
+        // hide title text (app name)
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
     }
 
     public void onAddingToSelectedFoods(ListItem<Food> addedFood) {
@@ -110,14 +134,14 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         foodInfoFragment = FoodInfoFragment.newInstance(food);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.food_info_container, foodInfoFragment)
-                .commit();
+                .commitNow();
         foodInfoFragmentContainer.setVisibility(View.VISIBLE);
     }
 
     public void onExitFoodInfoFragment() {
         getSupportFragmentManager().beginTransaction()
                 .remove(foodInfoFragment)
-                .commit();
+                .commitNow();
         foodInfoFragmentContainer.setVisibility(View.GONE);
     }
 
@@ -169,13 +193,14 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             selectedFoodsFragment = newInstance(foodListItems);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.selected_foods_container, selectedFoodsFragment)
-                    .commit();
+                    .commitNow();
         }
     }
 
     private void initializeViews() {
         // Toolbar
         title = findViewById(R.id.toolbar_title_tv);
+        title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f);
 
         // Date & Time views
         mealDateTimeTV = findViewById(R.id.meal_dateTime_tv);
@@ -189,6 +214,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         // Fragments containers and search bar
         searchResultsContainer = findViewById(R.id.search_results_fragment_container);
+        dailyProgressContainer = findViewById(R.id.daily_progress_container);
         selectedFoodsContainer = findViewById(R.id.selected_foods_container);
         foodInfoFragmentContainer = findViewById(R.id.food_info_container);
         searchBarET = findViewById(R.id.search_et);
@@ -238,7 +264,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         selectedFoodsFragment = new SelectedFoodsFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.selected_foods_container, selectedFoodsFragment)
-                .commit();
+                .commitNow();
     }
 
     private void initializeSearchInteraction() {
@@ -280,7 +306,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
                     .toLocalDate();
 
             updateMealDate(localDate);
-            setupTimePickerMenu(LocalDate.now());
+            setupTimePickerMenu(localDate);
         });
     }
 
@@ -368,6 +394,18 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         String timeText = mealTime.withSecond(0).withNano(0).toString();
         String text = mealDate.format(formatter) + "  |  " + timeText;
         mealDateTimeTV.setText(text);
+        refreshDailyProgressFragment();
+    }
+
+    private void refreshDailyProgressFragment() {
+        DailySummaryHelper dailySummaryHelper = new DailySummaryHelper(this);
+        DaySummary daySummary = dailySummaryHelper.getDailySummary(mealDate);
+
+        DailyProgressFragment fragment = DailyProgressFragment.newInstance(daySummary, new UserInfoHelper(this));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.daily_progress_container, fragment)
+                .commitNow();
+        dailyProgressContainer.setVisibility(View.VISIBLE);
     }
 
     private void cancelSearchInteraction() {
@@ -386,7 +424,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.search_results_fragment_container, searchResultsFragment)
-                .commit();
+                .commitNow();
 
         searchResultsContainer.setVisibility(View.VISIBLE);
     }
@@ -594,8 +632,6 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
             return false;
         });
-
-        bottomNavigationView.setSelectedItemId(R.id.nav_log);
     }
 
     private void clearAll() {

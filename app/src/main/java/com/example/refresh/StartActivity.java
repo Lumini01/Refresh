@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.Settings;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -61,6 +63,16 @@ public class StartActivity extends AppCompatActivity {
 
         // Hide action bar temporarily
         hideActionBar();
+
+        final WindowInsetsController controller = getWindow().getInsetsController();
+        if (controller != null) {
+            // hide both status bar & navigation bar
+            controller.hide(WindowInsets.Type.navigationBars());
+            // allow swipe to temporarily reveal
+            controller.setSystemBarsBehavior(
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
+        }
     }
 
     /**
@@ -90,7 +102,15 @@ public class StartActivity extends AppCompatActivity {
             timer.cancel(); // Stop the countdown timer when the user clicks continue
         }
 
-        checkUserStatus(); // Check user status and decide navigation flow
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int loggedUserID = sharedPreferences.getInt(LOGGED_USER_ID_KEY, -1);
+
+        if (loggedUserID != -1) {
+            navigateToHome();
+        }
+        else {
+            navigateToLogin();
+        }
     }
 
     /**
@@ -128,7 +148,8 @@ public class StartActivity extends AppCompatActivity {
 
         if (loggedUserID != -1) {
             navigateToHome();
-        } else {
+        }
+        else {
             startCountdownTimer();
         }
     }
@@ -170,6 +191,7 @@ public class StartActivity extends AppCompatActivity {
         }
 
         startActivity(intent);
+        finish();
     }
 
     /**
@@ -178,6 +200,7 @@ public class StartActivity extends AppCompatActivity {
     private void navigateToLogin() {
         Intent intent = new Intent(StartActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     /**

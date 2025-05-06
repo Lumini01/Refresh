@@ -7,6 +7,7 @@ import com.example.refresh.Database.UsersTable;
 
 public class MyApplication extends android.app.Application {
     private static MyApplication instance;
+    public static SharedPreferences sharedPreferences;
 
     public static final String PREFS_NAME = "AppPreferences";
     public static final String LOGGED_USER_ID_KEY = "loggedUserID";
@@ -17,6 +18,7 @@ public class MyApplication extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         // Initialize shared preferences
         initializeSharedPreferences();
@@ -36,7 +38,7 @@ public class MyApplication extends android.app.Application {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         // Set the first launch flag to true
-        sharedPreferences.edit().putBoolean(FIRST_LAUNCH_KEY, true).apply();
+        // sharedPreferences.edit().putBoolean(FIRST_LAUNCH_KEY, true).apply();
 
         // Set default calorie goal for logged-in user
         SharedPreferences userSP = getSharedPreferences(getLoggedUserSPName(), MODE_PRIVATE);

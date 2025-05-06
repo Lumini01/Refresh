@@ -30,7 +30,7 @@
                     android:id="@+id/personal_info_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
@@ -43,8 +43,8 @@
                     android:id="@+id/name_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -60,7 +60,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -72,10 +72,10 @@
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
                         android:gravity="start"
-                        android:hint="Enter Name..."
+                        android:hint="Enter..."
                         android:inputType="text"
-                        android:maxEms="8"
-                        android:minEms="4"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -86,8 +86,8 @@
                     android:id="@+id/weight_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -103,10 +103,9 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
-
 
                     <EditText
                         android:id="@+id/weight_et"
@@ -114,11 +113,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
-                        android:hint="Enter Weight..."
+                        android:gravity="end"
+                        android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -128,8 +127,8 @@
                     android:id="@+id/height_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -145,7 +144,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -156,11 +155,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
-                        android:hint="Enter Height..."
+                        android:gravity="end"
+                        android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -170,8 +169,8 @@
                     android:id="@+id/date_of_birth_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -181,13 +180,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:padding="@dimen/padding_medium"
-                        android:text="Date of Birth"
+                        android:text="Birthday"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -199,11 +198,11 @@
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
                         android:focusable="false"
-                        android:gravity="center"
-                        android:hint="Click Here..."
+                        android:gravity="end"
+                        android:hint="Click..."
                         android:inputType="date"
                         android:maxEms="6"
-                        android:minEms="4"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -213,8 +212,8 @@
                     android:id="@+id/gender_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -230,7 +229,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -249,6 +248,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
+                        android:gravity="end"
                         android:background="@null"
                         android:padding="@dimen/padding_medium"
                         android:spinnerMode="dropdown"
@@ -269,7 +269,7 @@
                     android:id="@+id/account_details_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
@@ -282,8 +282,8 @@
                     android:id="@+id/email_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -299,7 +299,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -312,10 +312,10 @@
                         android:enabled="false"
                         android:focusable="false"
                         android:gravity="start"
-                        android:hint="Enter Email..."
+                        android:hint="Enter..."
                         android:inputType="textEmailAddress"
-                        android:maxEms="8"
-                        android:minEms="4"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -325,8 +325,8 @@
                     android:id="@+id/phone_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -342,7 +342,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -355,10 +355,10 @@
                         android:enabled="false"
                         android:focusable="false"
                         android:gravity="start"
-                        android:hint="Enter Phone..."
+                        android:hint="Enter..."
                         android:inputType="phone"
-                        android:maxEms="8"
-                        android:minEms="4"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -368,8 +368,8 @@
                     android:id="@+id/pwd_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -385,7 +385,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -396,10 +396,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:gravity="start"
-                        android:hint="Enter Password..."
+                        android:hint="Enter..."
                         android:inputType="textPassword"
-                        android:maxEms="8"
-                        android:minEms="4"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -409,8 +409,8 @@
                     android:id="@+id/pwd_conf_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -426,7 +426,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -437,10 +437,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:gravity="start"
-                        android:hint="Reenter Password..."
+                        android:hint="Reenter..."
                         android:inputType="textPassword"
-                        android:maxEms="8"
-                        android:minEms="4"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -458,7 +458,7 @@
                     android:id="@+id/lifestyle_goal_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
@@ -468,11 +468,11 @@
                     android:textSize="@dimen/text_size_title" />
 
                 <LinearLayout
-                    android:id="@+id/goal_layout"
+                    android:id="@+id/current_weight_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -508,7 +508,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -551,7 +551,7 @@
                             android:id="@+id/gain_muscle_rBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Gain Muscle Mass"
+                            android:text="Gain Muscle"
                             android:textColor="@color/textPrimary"
                             android:textSize="@dimen/text_size_xxlarge" />
 
@@ -563,8 +563,8 @@
                     android:id="@+id/target_weight_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium"
@@ -581,7 +581,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -592,11 +592,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
-                        android:hint="Enter Weight..."
+                        android:gravity="end"
+                        android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -606,8 +606,8 @@
                     android:id="@+id/activity_level_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="vertical"
                     android:padding="@dimen/padding_medium">
@@ -621,16 +621,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|top"
+                            android:gravity="center"
                             android:layout_marginStart="@dimen/margin_large"
                             android:layout_marginTop="@dimen/margin_medium"
                             android:padding="@dimen/padding_medium"
-                            android:text="Activity Level"
+                            android:text="Activity\nLevel"
                             android:textColor="@color/textPrimary"
                             android:textSize="@dimen/text_size_xxxlarge" />
 
                         <View
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="1dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1" />
 
@@ -639,6 +640,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end|center_vertical"
+                            android:gravity="end"
                             android:background="@null"
                             android:padding="@dimen/padding_medium"
                             android:spinnerMode="dropdown"
@@ -665,8 +667,8 @@
                     android:id="@+id/diet_type_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -702,7 +704,7 @@
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -757,7 +759,7 @@
                     android:id="@+id/goal_adjustment_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_xlarge"
+                    android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"
@@ -770,8 +772,8 @@
                     android:id="@+id/adjust_calories_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -781,13 +783,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:padding="@dimen/padding_medium"
-                        android:text="Calorie Goal (kcal)"
+                        android:text="Calories (kcal)"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -798,11 +800,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
+                        android:gravity="end"
                         android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -812,8 +814,8 @@
                     android:id="@+id/adjust_carbs_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -823,13 +825,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:padding="@dimen/padding_medium"
-                        android:text="Carbs Goal (g)"
+                        android:text="Carbs (g)"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -840,11 +842,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
+                        android:gravity="end"
                         android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -854,8 +856,8 @@
                     android:id="@+id/adjust_protein_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -865,13 +867,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:padding="@dimen/padding_medium"
-                        android:text="Protein Goal (g)"
+                        android:text="Protein (g)"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -882,11 +884,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
+                        android:gravity="end"
                         android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -896,8 +898,8 @@
                     android:id="@+id/adjust_fat_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -907,13 +909,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:padding="@dimen/padding_medium"
-                        android:text="Fat Goal (g)"
+                        android:text="Fat (g)"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -924,11 +926,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
+                        android:gravity="end"
                         android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
@@ -938,8 +940,8 @@
                     android:id="@+id/adjust_water_intake_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium_large"
-                    android:layout_marginVertical="@dimen/margin_medium_small"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
@@ -949,13 +951,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:padding="@dimen/padding_medium"
-                        android:text="Water Intake (ml)"
+                        android:text="Water (ml)"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />
 
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1" />
 
@@ -966,11 +968,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:gravity="center"
+                        android:gravity="end"
                         android:hint="Enter..."
                         android:inputType="number"
-                        android:maxEms="7"
-                        android:minEms="2"
+                        android:maxEms="6"
+                        android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_size_xxlarge" />

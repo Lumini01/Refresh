@@ -7,7 +7,9 @@ import com.example.refresh.Model.Meal;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class WaterLogHelper {
@@ -38,13 +40,23 @@ public class WaterLogHelper {
     }
 
     public Meal getMealInstance(int amount, LocalDate date) {
-        return new Meal(date, LocalTime.of(0, 1), "waterIntake", null, (ArrayList<Integer>) List.of(144), (ArrayList<Integer>) List.of(amount));
+        return new Meal(
+                date,
+                LocalTime.of(0, 1),
+                "waterIntake",
+                "",
+                new ArrayList<>(Arrays.asList(144)),
+                new ArrayList<>(Arrays.asList(amount))
+        );
     }
 
     public void editWaterRecord(LocalDate date, Meal waterIntake) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = date.format(formatter);
+
         Meal loggedIntake = dbHelper.getRecord(DatabaseHelper.Tables.MEALS,
                 new Enum<?>[]{MealsTable.Columns.TYPE, MealsTable.Columns.DATE},
-                new String[]{"waterIntake", date.toString()});
+                new String[]{"waterIntake", formattedDate});
 
         if (loggedIntake == null)
         dbHelper.insert(DatabaseHelper.Tables.MEALS, waterIntake);

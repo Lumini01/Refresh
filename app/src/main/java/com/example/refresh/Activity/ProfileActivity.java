@@ -1,27 +1,55 @@
 package com.example.refresh.Activity;
 
+import static com.example.refresh.Fragment.UserInfoFragment.States.*;
+import static com.example.refresh.MyApplication.*;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentContainerView;
 
+import com.example.refresh.Database.UsersTable;
+import com.example.refresh.Fragment.UserInfoFragment;
+import com.example.refresh.Helper.DatabaseHelper;
+import com.example.refresh.Helper.UserInfoHelper;
+import com.example.refresh.MyApplication;
 import com.example.refresh.R;
 
-public class ProfileActivity extends AppCompatActivity {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class ProfileActivity extends AppCompatActivity
+        implements UserInfoFragment.OnUserInfoFragmentListener {
 
     // Toolbar components
-    private ImageView backArrow;
-    private TextView toolbarTitle;
-    private ImageButton settingsButton;
+    private ImageView backBtn;
+    private TextView title;
 
     // Profile Section components
-    private ImageView profilePicture;
-    private TextView profileName, profileAge, currentWeight, weightGoal, dietType;
-    private FragmentContainerView fragmentContainer;
+    private ImageView profilePictureIV;
+    private TextView nameTV;
+    private TextView ageTV;
+    private TextView goalTV;
+    private LinearLayout targetWeightLayout;
+    private TextView targetWeightTV;
+    private TextView startDateTV;
+    private LinearLayout personalInfoLayout;
+    private LinearLayout accountDetailsLayout;
+    private LinearLayout lifestyleGoalLayout;
+    private LinearLayout goalAdjustmentLayout;
+    private FragmentContainerView userInfoContainer;
+    private Button logOutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +61,53 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Set up Toolbar
         setupToolbar();
+
+        setUpListeners();
+
+        loadProfileData();
+
+        final WindowInsetsController controller = getWindow().getInsetsController();
+        if (controller != null) {
+            // hide both status bar & navigation bar
+            controller.hide(WindowInsets.Type.navigationBars());
+            // allow swipe to temporarily reveal
+            controller.setSystemBarsBehavior(
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
+        }
+
+        // hide title text (app name)
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
     }
 
     // Initialize Views
     private void initViews() {
         // Toolbar components
-        backArrow = findViewById(R.id.back_btn);
-        toolbarTitle = findViewById(R.id.toolbar_title_tv);
-        settingsButton = findViewById(R.id.settings_button);
+        title = findViewById(R.id.toolbar_title_tv);
+        backBtn = findViewById(R.id.back_btn);
 
         // Profile Section components
-        profilePicture = findViewById(R.id.profilePicture);
-        profileName = findViewById(R.id.profileName);
-        profileAge = findViewById(R.id.profileAge);
-        currentWeight = findViewById(R.id.currentWeight);
-        weightGoal = findViewById(R.id.weightGoal);
-        dietType = findViewById(R.id.dietType);
+        profilePictureIV = findViewById(R.id.profile_picture_iv);
+        nameTV = findViewById(R.id.name_tv);
+        ageTV = findViewById(R.id.age_tv);
 
-        fragmentContainer = findViewById(R.id.fragment_container);
+        // User Stats
+        goalTV = findViewById(R.id.goal_tv);
+        targetWeightTV = findViewById(R.id.target_weight_tv);
+        startDateTV = findViewById(R.id.start_date_tv);
+
+        // Card Layouts
+        personalInfoLayout = findViewById(R.id.personal_info_layout);
+        accountDetailsLayout = findViewById(R.id.account_details_layout);
+        lifestyleGoalLayout = findViewById(R.id.lifestyle_goal_layout);
+        goalAdjustmentLayout = findViewById(R.id.goal_adjustment_layout);
+
+        // Other Views
+        userInfoContainer = findViewById(R.id.user_info_container);
+        logOutBtn = findViewById(R.id.log_out_btn);
+        targetWeightLayout = findViewById(R.id.target_weight_layout);
     }
 
     // Set up Toolbar
@@ -58,22 +115,93 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Handle back arrow click
-        backArrow.setOnClickListener(v -> finish());
+        title.setText("Profile");
+        backBtn.setOnClickListener(v -> finish());
 
-        // Handle settings button click
+        ImageButton extraBtn = findViewById(R.id.extra_btn);
+        extraBtn.setVisibility(View.GONE);
+    }
+
+    private void setUpListeners() {
+        // Section Layouts Listeners
+        personalInfoLayout.setOnClickListener(v ->
+                onProfileSectionClick(PERSONAL_INFO.getStateName()));
+
+        accountDetailsLayout.setOnClickListener(v ->
+                onProfileSectionClick(ACCOUNT_DETAILS.getStateName()));
+
+        lifestyleGoalLayout.setOnClickListener(v ->
+                onProfileSectionClick(LIFESTYLE_GOAL.getStateName()));
+
+        goalAdjustmentLayout.setOnClickListener(v ->
+                onProfileSectionClick(ADJUST_GOAL.getStateName()));
+
+        // Log Out Listener
+        logOutBtn.setOnClickListener(v -> {
+            SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt(LOGGED_USER_ID_KEY, -1);
+            editor.putString(LOGGED_USER_SP_NAME_KEY, "");
+            editor.apply();
+            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+            finish();
+        });
+    }
+
+    private void onProfileSectionClick(String section) {
+        UserInfoFragment fragment = UserInfoFragment.newInstance(
+                section, MyApplication.getInstance()
+                        .getLoggedUserID());
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.user_info_container, fragment)
+                .commitNow();
+
+        userInfoContainer.setVisibility(View.VISIBLE);
+    }
+
+    public void hideUserInfo() {
+        getSupportFragmentManager().beginTransaction()
+                .remove(getSupportFragmentManager()
+                        .findFragmentById(R.id.user_info_container))
+                .commitNow();
+        userInfoContainer.setVisibility(View.GONE);
+
+        loadProfileData();
     }
 
     // Populate Profile Data
-    private void populateProfileData() {
-        // Simulated data fetching and updating views
-        profileName.setText("John Doe");
-        profileAge.setText("Age: 30");
-        currentWeight.setText("Current Weight: 75kg");
-        weightGoal.setText("Goal: Maintain Weight");
-        dietType.setText("Diet: Vegetarian");
+    private void loadProfileData() {
+        UserInfoHelper userInfoHelper = new UserInfoHelper(this);
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
 
-        // Optionally load profile picture with a library like Glide or Picasso
-        // Glide.with(this).load(profilePictureUrl).into(profilePicture);
+        String name = dbHelper.getFromRecordByValue(
+                DatabaseHelper.Tables.USERS,
+                UsersTable.Columns.NAME,
+                UsersTable.Columns.ID,
+                userInfoHelper.getUserId() + ""
+        );
+
+        nameTV.setText(name);
+        ageTV.setText((String) (userInfoHelper.getAge() + " years old"));
+
+        String goal = userInfoHelper.getGoal();
+
+        if (goal.equalsIgnoreCase("lose") || goal.equalsIgnoreCase("gain")) {
+            targetWeightTV.setText((String) (userInfoHelper.getTargetWeight() + " kg"));
+            targetWeightLayout.setVisibility(View.VISIBLE);
+        }
+        else {
+            targetWeightLayout.setVisibility(View.GONE);
+        }
+
+        if (!goal.equalsIgnoreCase("gain muscle")) {
+            goal += " weight";
+        }
+        goalTV.setText(goal);
+
+        LocalDate startDate = userInfoHelper.getStartDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedStartDate = startDate.format(formatter);
+        startDateTV.setText((String) (formattedStartDate));
     }
 }

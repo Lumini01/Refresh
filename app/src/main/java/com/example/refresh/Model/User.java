@@ -58,7 +58,8 @@ public class User {
     public User(Context context, String email, String pwd) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        setID(dbHelper.getFromRecordByValue(Tables.USERS, Columns.ID, Columns.EMAIL, email));
+        String id = "" + dbHelper.getFromRecordByValue(Tables.USERS, Columns.ID, Columns.EMAIL, email);
+        setID(id != null ? Integer.parseInt(id) : -1);
         setName(dbHelper.getFromRecordByValue(Tables.USERS, Columns.NAME, Columns.EMAIL, email));  // User's name is optional
         setPwd(pwd);
         setEmail(email);

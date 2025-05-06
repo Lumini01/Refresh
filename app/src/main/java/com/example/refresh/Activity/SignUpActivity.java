@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -55,6 +57,16 @@ public class SignUpActivity extends AppCompatActivity {
         // Hide the action bar for a clean UI
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
+        }
+
+        final WindowInsetsController controller = getWindow().getInsetsController();
+        if (controller != null) {
+            // hide both status bar & navigation bar
+            controller.hide(WindowInsets.Type.navigationBars());
+            // allow swipe to temporarily reveal
+            controller.setSystemBarsBehavior(
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
         }
     }
 

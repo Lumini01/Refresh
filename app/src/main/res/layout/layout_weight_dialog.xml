@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="@dimen/margin_xlarge"
-    android:background="@drawable/card_background"
+    android:background="@color/cardBackground"
     android:orientation="vertical"
     android:padding="@dimen/padding_large">
 

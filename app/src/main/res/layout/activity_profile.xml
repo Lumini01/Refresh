@@ -10,53 +10,16 @@
     android:padding="@dimen/padding_medium"
     tools:context=".Activity.ProfileActivity">
 
-    <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_container"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/user_info_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />
 
     <!-- Toolbar -->
-    <androidx.appcompat.widget.Toolbar
+    <include
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:background="@color/colorPrimary"
-        android:elevation="4dp">
-
-        <!-- Back Arrow -->
-        <ImageButton
-            android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="@null"
-            android:contentDescription="Back Arrow"
-            android:padding="@dimen/padding_small"
-            android:src="@drawable/ic_back_arrow" />
-
-        <!-- Title -->
-        <TextView
-            android:id="@+id/toolbar_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Profile"
-            android:textColor="@color/textSecondary"
-            android:textSize="@dimen/text_size_large" />
-
-        <!-- Gear Icon -->
-        <ImageButton
-            android:id="@+id/settings_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@null"
-            android:contentDescription="Settings"
-            android:padding="@dimen/padding_small"
-            android:src="@drawable/ic_settings" />
-    </androidx.appcompat.widget.Toolbar>
+        layout="@layout/layout_navigation_toolbar" />
 
     <!-- Scrollable Content -->
     <ScrollView
@@ -79,272 +42,364 @@
                 android:orientation="vertical">
 
                 <!-- Profile Picture Card -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/padding_small"
+                    android:layout_marginBottom="2dp"
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
-                    android:padding="@dimen/card_view_padding">
+                    android:padding="@dimen/padding_large">
 
                     <!-- Profile Picture -->
                     <ImageView
-                        android:id="@+id/profilePicture"
-                        android:layout_width="@dimen/icon_size_large"
-                        android:layout_height="@dimen/icon_size_large"
+                        android:id="@+id/profile_picture_iv"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
                         android:layout_marginEnd="@dimen/padding_medium"
                         android:contentDescription="Profile Picture"
-                        android:src="@drawable/ic_profile" />
+                        android:src="@drawable/ic_profile"
+                        app:tint="@color/iconTint" />
 
                     <!-- Name and Age -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/profileName"
+                            android:id="@+id/name_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_small"
                             android:text="Name"
-                            android:textColor="@color/textSecondary"
-                            android:textSize="@dimen/text_size_large" />
+                            android:textColor="@color/textPrimary"
+                            android:textSize="@dimen/text_size_xxlarge" />
 
                         <TextView
-                            android:id="@+id/profileAge"
+                            android:id="@+id/age_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Age: 25"
+                            android:text="Age"
                             android:textColor="@color/textSecondary"
-                            android:textSize="@dimen/text_size_small" />
+                            android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Current Weight Card -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/padding_small"
+                    android:layout_marginVertical="2dp"
                     android:background="@drawable/card_background"
-                    android:orientation="vertical"
-                    android:padding="@dimen/card_view_padding">
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium_large"
+                    android:layout_marginHorizontal="@dimen/margin_small">
 
                     <TextView
-                        android:id="@+id/currentWeight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Current Weight: [value]"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_medium" />
+                        android:text="Goal: "
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:layout_marginStart="@dimen/margin_medium"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/goal_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="[goal]"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:layout_marginEnd="@dimen/margin_medium"/>
                 </LinearLayout>
 
-                <!-- Goal Card -->
+                <LinearLayout
+                    android:id="@+id/target_weight_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="2dp"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium_large"
+                    android:layout_marginHorizontal="@dimen/margin_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Target Weight: "
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:layout_marginStart="@dimen/margin_medium"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/target_weight_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="[target weight] kg"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:layout_marginEnd="@dimen/margin_medium" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/padding_small"
+                    android:layout_marginVertical="2dp"
                     android:background="@drawable/card_background"
-                    android:orientation="vertical"
-                    android:padding="@dimen/card_view_padding">
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium_large"
+                    android:layout_marginHorizontal="@dimen/margin_small">
 
                     <TextView
-                        android:id="@+id/weightGoal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Goal: Gain/Lose/Maintain Weight"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_medium" />
-                </LinearLayout>
+                        android:text="Member Since: "
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:layout_marginStart="@dimen/margin_medium"/>
 
-                <!-- Diet Type Card -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/padding_small"
-                    android:background="@drawable/card_background"
-                    android:orientation="vertical"
-                    android:padding="@dimen/card_view_padding">
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/dietType"
+                        android:id="@+id/start_date_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diet: Vegan/Vegetarian/Gluten-Free, etc."
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_medium" />
+                        android:text="[start date]"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:layout_marginEnd="@dimen/margin_medium" />
                 </LinearLayout>
+
             </LinearLayout>
 
-            <!-- Section 1: Account -->
-            <TextView
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                app:dividerColor="@color/dividerColorLight" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:paddingTop="@dimen/padding_medium"
-                android:paddingBottom="@dimen/padding_small"
-                android:text="Customization"
-                android:textColor="@color/textSecondary"
-                android:textSize="@dimen/text_size_xlarge"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/margin_large">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:paddingTop="@dimen/padding_medium"
+                    android:paddingBottom="@dimen/padding_small"
+                    android:text="Info &amp; Customization"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_size_xxlarge"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/personal_info_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:background="@drawable/card_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/card_view_padding">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_large"
+                        android:layout_height="@dimen/icon_size_large"
+                        android:src="@drawable/ic_personal_info"
+                        app:tint="@color/iconTint" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Personal Info"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_xlarge2"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Manage your personal information"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_large" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/account_details_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:background="@drawable/card_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/card_view_padding">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_large"
+                        android:layout_height="@dimen/icon_size_large"
+                        android:src="@drawable/ic_account_details"
+                        app:tint="@color/iconTint" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Account Details"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_xlarge2"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Manage your account details"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_large" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lifestyle_goal_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:background="@drawable/card_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/card_view_padding">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_large"
+                        android:layout_height="@dimen/icon_size_large"
+                        android:src="@drawable/ic_lifestyle_goal"
+                        app:tint="@color/iconTint" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Lifestyle &amp; Goal"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_xlarge2"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Manage lifestyle and goal options"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_large" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/goal_adjustment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:background="@drawable/card_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/card_view_padding">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_large"
+                        android:layout_height="@dimen/icon_size_large"
+                        android:src="@drawable/ic_adjust_goal"
+                        app:tint="@color/iconTint" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Adjust Goal"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_xlarge2"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium_large"
+                            android:text="Adjust your daily goal"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/text_size_large" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                app:dividerColor="@color/dividerColorLight" />
+
+
+            <Button
+                android:id="@+id/log_out_btn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="@dimen/margin_large"
+                android:backgroundTint="#BF0101"
+                android:padding="@dimen/padding_medium_large"
+                android:text="Log Out"
+                android:textColor="@color/buttonText"
+                android:textSize="@dimen/text_size_xxlarge"
                 android:textStyle="bold" />
-
-            <!-- Account Settings -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:background="@drawable/card_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/card_view_padding">
-
-                <ImageView
-                    android:layout_width="@dimen/icon_size_small"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:src="@drawable/ic_placeholder"
-                    app:tint="@color/iconTint" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Personal Info"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_large" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Manage your personal details"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_small" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Change Password -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:background="@drawable/card_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/card_view_padding">
-
-                <ImageView
-                    android:layout_width="@dimen/icon_size_small"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:src="@drawable/ic_placeholder"
-                    app:tint="@color/iconTint" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Diet Recommendations"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_large" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Manage your diet recommendations"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_small" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Manage Linked Accounts -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:background="@drawable/card_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/card_view_padding">
-
-                <ImageView
-                    android:layout_width="@dimen/icon_size_small"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:src="@drawable/ic_placeholder"
-                    app:tint="@color/iconTint" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Dietary Preferences"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_large" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Set your preferences"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_small" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:background="@drawable/card_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/card_view_padding">
-
-                <ImageView
-                    android:layout_width="@dimen/icon_size_small"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:src="@drawable/ic_calendar"
-                    app:tint="@color/iconTint" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Water Habits"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_large" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:text="Set your daily water goals"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/text_size_small" />
-                </LinearLayout>
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

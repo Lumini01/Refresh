@@ -64,15 +64,14 @@
     </ScrollView>
 
     <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <include
+        android:id="@+id/bottom_navigation_layout"
+        layout="@layout/layout_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="@dimen/minimal_margin"
-        android:background="@drawable/card_background"
-        app:itemIconTint="@color/iconTint"
-        app:itemTextColor="@color/textSecondary"
-        app:menu="@menu/menu_bottom_nav" />
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small" />
 
 </LinearLayout>

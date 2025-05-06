@@ -6,19 +6,25 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 
+import com.example.refresh.Fragment.DailyProgressFragment;
 import com.example.refresh.Fragment.UserInfoFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
 import com.example.refresh.Helper.UserInfoHelper;
@@ -54,11 +60,14 @@ public class HomeDashboardActivity extends AppCompatActivity
     private TextView title;
     private ImageButton nextBtn;
     private ImageButton prevBtn;
+    private FragmentContainerView dailyProgressContainer;
     private LinearLayout logWaterBtn;
     private LinearLayout logMealBtn;
     private LinearLayout logWeightBtn;
     private ImageButton profileBtn;
     private ImageButton notificationBtn;
+    private TextView goalIndicator;
+    private ImageView goalIndicatorIcon;
     private TextView weightProgressLabel;
     private TextView weightProgressValue;
 
@@ -84,12 +93,23 @@ public class HomeDashboardActivity extends AppCompatActivity
         initToolbar();
         initBottomNavigation();
         setupUI();
+
+        final WindowInsetsController controller = getWindow().getInsetsController();
+        if (controller != null) {
+            // hide both status bar & navigation bar
+            controller.hide(WindowInsets.Type.navigationBars());
+            // allow swipe to temporarily reveal
+            controller.setSystemBarsBehavior(
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         bottomNavigation.setSelectedItemId(R.id.nav_today);
+        refreshUI();
     }
 
     /**
@@ -97,12 +117,12 @@ public class HomeDashboardActivity extends AppCompatActivity
      */
     private void showUserInfo() {
         int userId = getLoggedUserId();
-        if (userId >= 0) {
+        if (userId >= 0 && getIntent().getBooleanExtra("firstLog", false)) {
             UserInfoFragment fragment = UserInfoFragment.newInstance(
                     UserInfoFragment.States.FIRST_LOG.getStateName(), userId);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.user_info_container, fragment)
-                    .commit();
+                    .commitNow();
             userInfoContainer.setVisibility(View.VISIBLE);
         }
     }
@@ -115,7 +135,7 @@ public class HomeDashboardActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .remove(getSupportFragmentManager()
                         .findFragmentById(R.id.user_info_container))
-                .commit();
+                .commitNow();
         userInfoContainer.setVisibility(View.GONE);
     }
 
@@ -155,6 +175,7 @@ public class HomeDashboardActivity extends AppCompatActivity
      */
     private void initViews() {
         userInfoContainer = findViewById(R.id.user_info_container);
+        dailyProgressContainer = findViewById(R.id.daily_progress_container);
         title = findViewById(R.id.date_title_tv);
         nextBtn = findViewById(R.id.next_summary_btn);
         prevBtn = findViewById(R.id.last_summary_btn);
@@ -165,6 +186,8 @@ public class HomeDashboardActivity extends AppCompatActivity
         notificationBtn = findViewById(R.id.notification_btn);
         weightProgressLabel = findViewById(R.id.gain_lose_weight_tv);
         weightProgressValue = findViewById(R.id.gain_lose_weight_value_tv);
+        goalIndicator = findViewById(R.id.goal_indicator_tv);
+        goalIndicatorIcon = findViewById(R.id.goal_indicator_icon);
     }
 
     /**
@@ -179,10 +202,29 @@ public class HomeDashboardActivity extends AppCompatActivity
             showUserInfo();
         }
 
-        logWaterBtn.setOnClickListener(v -> waterLogHelper.logWaterCup());
+        logWaterBtn.setOnClickListener(v -> {
+            waterLogHelper.logWaterCup(currentDate);
+            refreshUI();
+            showToast("Cup of Water Logged!");
+        });
         logMealBtn.setOnClickListener(v -> launchActivity(MealLogActivity.class));
         logWeightBtn.setOnClickListener(v -> showWeightDialog());
         profileBtn.setOnClickListener(v -> launchActivity(ProfileActivity.class));
+
+        refreshDailyProgressFragment();
+    }
+
+    private void refreshDailyProgressFragment() {
+        DailyProgressFragment fragment = DailyProgressFragment.newInstance(daySummary, userInfoHelper);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.daily_progress_container, fragment)
+                .commitNow();
+
+        dailyProgressContainer.setVisibility(View.VISIBLE);
+        boolean goalReached = daySummary.getTotalCalories() >= userInfoHelper.getCalorieGoal();
+
+        goalIndicator.setText(goalReached ? "Daily Goal Reached!" : "Daily Goal Not Reached");
+        goalIndicatorIcon.setImageResource(goalReached ? R.drawable.ic_check : R.drawable.ic_warning);
     }
 
     /**
@@ -245,19 +287,22 @@ public class HomeDashboardActivity extends AppCompatActivity
         String label;
         String value;
         boolean showValue = true;
+        int delta = currentWeight - startWeight;
 
         switch (goal) {
             case "lose":
                 label = "Using Refresh You've Lost:";
-                value = (startWeight - targetWeight) + " kg";
+                value = (-delta) + " kg";
                 break;
             case "gain":
                 label = "Using Refresh You've Gained:";
-                value = (currentWeight - startWeight) + " kg";
+                value = delta + " kg";
                 break;
             case "maintain":
+                label = "Your weight is " + Math.abs(delta)
+                        + " kg " + (delta >= 0 ? "More" : "Less") + " than when you started";
+                value = "";
             case "gain_muscle":
-                int delta = currentWeight - startWeight;
                 label = "Your weight is " + Math.abs(delta)
                         + " kg " + (delta >= 0 ? "More" : "Less") + " than when you started";
                 value = "";
@@ -280,28 +325,48 @@ public class HomeDashboardActivity extends AppCompatActivity
     private void refreshUI() {
         setTitleForDate();
         updateDaySummary();
-        // TODO: refresh nutrition fragment when implemented
+        refreshDailyProgressFragment();
+        updateWeightProgressUI();
     }
 
     /**
      * Shows a dialog to input custom weight.
      */
     private void showWeightDialog() {
+        // inflate your custom view
         View view = LayoutInflater.from(this)
                 .inflate(R.layout.layout_weight_dialog, null);
         EditText input = view.findViewById(R.id.customEditText);
 
-        new AlertDialog.Builder(this)
-                .setView(view)
-                .setTitle("Enter Your Weight")
+        // build the dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(view)
                 .setPositiveButton("Save", (dialog, which) -> {
                     String text = input.getText().toString().trim();
                     if (!text.isEmpty()) {
                         userInfoHelper.setWeight(Integer.parseInt(text));
                     }
+                    refreshUI();
                 })
-                .setNegativeButton("Cancel", (dialog, which) -> dialog.cancel())
-                .show();
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        // create BEFORE showing so we can request features
+        AlertDialog dialog = builder.create();
+
+        // remove the title bar (no blank gap)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // show the dialog
+        dialog.show();
+
+        // 1) Color the button bar background
+        int panelId = getResources().getIdentifier("buttonPanel", "id", getPackageName());
+        View buttonPanel = dialog.findViewById(panelId);
+        if (buttonPanel != null) {
+            buttonPanel.setBackgroundColor(
+                    ContextCompat.getColor(this, R.color.cardBackground)
+            );
+        }
     }
 
     // ====== Utility methods ======

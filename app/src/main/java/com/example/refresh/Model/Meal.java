@@ -412,7 +412,7 @@ public class Meal implements Serializable {
     }
 
     public static boolean determineIfWaterIntake(Meal meal) {
-        return meal.foodIDs.size() == 1 && meal.foodIDs.get(0) == 144 && meal.time == null;
+        return meal.foodIDs.size() == 1 && meal.foodIDs.get(0) == 144;
     }
 
     public static String getDayOfWeek(LocalDate date) {

@@ -8,7 +8,8 @@
     android:background="@color/colorPrimary"
     android:elevation="4dp"
     android:padding="@dimen/padding_small"
-    app:titleTextColor="@color/textPrimary">
+    app:titleTextColor="@color/textPrimary"
+    app:title="">
 
     <!-- Back Arrow -->
     <ImageButton
@@ -30,7 +31,8 @@
         android:layout_gravity="center"
         android:text="@string/title"
         android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_size_xxxlarge" />
+        android:textSize="@dimen/text_size_xxxlarge"
+        android:layout_marginHorizontal="@dimen/margin_small"/>
 
     <!-- Gear Icon -->
     <ImageButton

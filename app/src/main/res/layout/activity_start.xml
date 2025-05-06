@@ -32,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginVertical="64dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="@dimen/margin_medium"
         android:text="Continue"
         android:textColor="@color/white"
         android:textSize="50sp" />
@@ -42,10 +43,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/default_margin"
+        android:layout_margin="@dimen/margin_large"
+        android:padding="@dimen/padding_small"
         android:gravity="center"
         android:text="Continue in 3 ..."
-        android:textColor="@color/textPrimary"
-        android:textSize="24sp" />
+        android:textColor="@color/textHint"
+        android:textSize="@dimen/text_size_xlarge2" />
 
 </LinearLayout>

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -57,6 +59,16 @@ public class LoginActivity extends AppCompatActivity {
 
         // Hide the action bar for a clean UI
         hideActionBar();
+
+        final WindowInsetsController controller = getWindow().getInsetsController();
+        if (controller != null) {
+            // hide both status bar & navigation bar
+            controller.hide(WindowInsets.Type.navigationBars());
+            // allow swipe to temporarily reveal
+            controller.setSystemBarsBehavior(
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
+        }
     }
 
     /**
@@ -100,6 +112,13 @@ public class LoginActivity extends AppCompatActivity {
         String userEmail = emailET.getText().toString();
         String userPwd = pwdET.getText().toString();
         boolean rememberMe = rememberMeCB.isChecked();
+
+        if (userEmail.isEmpty() || userPwd.isEmpty()) {
+            showToast("Invalid Credentials.");
+            emailET.setError("Enter Email");
+            pwdET.setError("Enter Password");
+            return;
+        }
 
         // Validate login credentials
         User validationUser = new User(this, userEmail, userPwd);

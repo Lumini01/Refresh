@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/start_background_color"
+    android:padding="@dimen/padding_medium"
     android:orientation="vertical"
     tools:context=".Activity.SignUpActivity">
 
@@ -23,106 +24,124 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/default_margin"
+                android:padding="@dimen/padding_medium"
+                android:layout_marginVertical="@dimen/margin_medium"
                 android:gravity="center"
-                android:text="Your Journy Starts Here..."
+                android:text="Your Journey Starts Here..."
                 android:textColor="@color/textPrimary"
-                android:textSize="64sp"
+                android:textSize="56sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/name_sign_up_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/minimal_margin"
-                android:background="@drawable/edit_text_background"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                android:paddingVertical="@dimen/padding_medium"
+                android:paddingHorizontal="@dimen/padding_medium"
+                android:background="@drawable/card_background"
                 android:ems="10"
-                android:hint="Enter Your Full Name"
+                android:hint="Enter Your Name"
                 android:inputType="text"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="32sp" />
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textHint"
+                android:textSize="@dimen/text_size_xxxlarge" />
 
             <EditText
                 android:id="@+id/email_sign_up_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/minimal_margin"
-                android:background="@drawable/edit_text_background"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                android:paddingVertical="@dimen/padding_medium"
+                android:paddingHorizontal="@dimen/padding_medium"
+                android:background="@drawable/card_background"
                 android:ems="10"
-                android:hint="Enter an Email Address"
+                android:hint="Enter Email"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="32sp" />
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textHint"
+                android:textSize="@dimen/text_size_xxxlarge" />
 
             <EditText
                 android:id="@+id/phone_sign_up_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/minimal_margin"
-                android:background="@drawable/edit_text_background"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                android:paddingVertical="@dimen/padding_medium"
+                android:paddingHorizontal="@dimen/padding_medium"
+                android:background="@drawable/card_background"
                 android:ems="10"
-                android:hint="Enter a Phone Number"
+                android:hint="Enter Phone"
                 android:inputType="phone"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="32sp" />
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textHint"
+                android:textSize="@dimen/text_size_xxxlarge" />
 
             <EditText
                 android:id="@+id/pwd_sign_up_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/minimal_margin"
-                android:background="@drawable/edit_text_background"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                android:paddingVertical="@dimen/padding_medium"
+                android:paddingHorizontal="@dimen/padding_medium"
+                android:background="@drawable/card_background"
                 android:ems="10"
-                android:hint="Enter a Password"
+                android:hint="Enter Password"
                 android:inputType="textPassword"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="32sp" />
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textHint"
+                android:textSize="@dimen/text_size_xxxlarge" />
 
             <EditText
                 android:id="@+id/pwd_conf_sign_up_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/minimal_margin"
-                android:background="@drawable/edit_text_background"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:layout_marginHorizontal="@dimen/margin_small"
+                android:paddingVertical="@dimen/padding_medium"
+                android:paddingHorizontal="@dimen/padding_medium"
+                android:background="@drawable/card_background"
                 android:ems="10"
-                android:hint="Confirm Your Password"
+                android:hint="Reenter Password"
                 android:inputType="textPassword"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="32sp" />
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textHint"
+                android:textSize="@dimen/text_size_xxxlarge" />
 
             <Button
                 android:id="@+id/sign_up_btn"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/minimal_margin"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_large"
                 android:text="Sign Up"
                 android:textColor="@color/white"
-                android:textSize="32sp" />
+                android:textSize="@dimen/text_size_title" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_medium"
+                app:srcCompat="@drawable/app_logo_no_bg_second" />
 
             <TextView
                 android:id="@+id/login_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/margin_large"
+                android:layout_margin="@dimen/margin_small"
+                android:padding="@dimen/padding_medium_large"
                 android:gravity="center"
-                android:text="Have An Account? Log In."
-                android:textColor="@color/textPrimary"
-                android:textSize="24sp"
-                android:textStyle="italic" />
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/minimal_margin"
-                app:srcCompat="@drawable/app_logo_no_bg_second" />
+                android:text="Have an Account? Log In."
+                android:textColor="@color/textHint"
+                android:textSize="@dimen/text_size_xlarge2"
+                android:textStyle="italic"/>
 
         </LinearLayout>
 

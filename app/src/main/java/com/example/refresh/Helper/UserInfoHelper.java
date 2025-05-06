@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.refresh.MyApplication;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -16,6 +17,26 @@ public class UserInfoHelper {
     private int userId;
     private final Context context;
     private SharedPreferences userPreferences;
+
+    private static final String KEY_GENDER         = "gender";           // "male" or "female"
+    private static final String KEY_AGE            = "age";              // int, years
+    private static final String KEY_DATE_OF_BIRTH  = "dateOfBirth";      // "dd/MM/yyyy"
+    private static final String KEY_GOAL           = "goal";             // "lose", "maintain", "gain", "gain_muscle"
+    private static final String KEY_ACTIVITY_LEVEL = "activityLevel";   // "low", "medium", "high", "very_high"
+    private static final String KEY_WEIGHT         = "weight";           // float, in kg
+    private static final String KEY_TARGET_WEIGHT  = "targetWeight";     // float, in kg
+    private static final String KEY_HEIGHT         = "height";           // float, in cm
+    private static final String KEY_DIET_TYPE      = "dietType";        // "carnivore", "vegetarian", "vegan"
+    private static final String KEY_START_DATE     = "startDate";        // "dd/MM/yyyy"
+    private static final String KEY_START_WEIGHT   = "startWeight";      // float, in kg
+    private static final String KEY_STREAK         = "streak";           // int, days
+
+    // Output keys
+    private static final String KEY_DAILY_CALORIES = "calorieGoal";
+    private static final String KEY_CARBS          = "carbGoal";       // grams
+    private static final String KEY_PROTEIN        = "proteinGoal";     // grams
+    private static final String KEY_FATS           = "fatGoal";        // grams
+    private static final String KEY_WATER          = "waterIntakeGoal";       // ml
 
     public UserInfoHelper(Context context) {
         this.context = context;
@@ -120,7 +141,7 @@ public class UserInfoHelper {
     }
 
     public boolean setActivityLevel(String activityLevel) {
-        if (activityLevel.equalsIgnoreCase("low") ||
+       if (activityLevel.equalsIgnoreCase("low") ||
                 activityLevel.equalsIgnoreCase("medium") ||
                 activityLevel.equalsIgnoreCase("high") ||
                 activityLevel.equalsIgnoreCase("very high")) {
@@ -159,7 +180,7 @@ public class UserInfoHelper {
     }
 
     public boolean setCalorieGoal(int calorieGoal) {
-        if (calorieGoal > 0 && calorieGoal < 10000) {
+       if (calorieGoal > 0 && calorieGoal < 10000) {
             userPreferences.edit().putInt("calorieGoal", calorieGoal).apply();
             return true;
         } else {
@@ -168,12 +189,12 @@ public class UserInfoHelper {
         }
     }
 
-    public boolean setCarbsGoal(int carbsGoal) {
-        if (carbsGoal > 0 && carbsGoal < 1000) {
-            userPreferences.edit().putInt("carbsGoal", carbsGoal).apply();
+    public boolean setCarbGoal(int carbGoal) {
+        if (carbGoal > 0 && carbGoal < 1000) {
+            userPreferences.edit().putInt("carbGoal", carbGoal).apply();
             return true;
         } else {
-            Toast.makeText(context, "Invalid Carbs Goal.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Invalid Carb Goal.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -208,6 +229,18 @@ public class UserInfoHelper {
         }
     }
 
+    public boolean setStartDate(LocalDate startDate) {
+        if (startDate.isBefore(LocalDate.now().plusDays(1))) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String formattedStartDate = startDate.format(formatter);
+            userPreferences.edit().putString("startDate", formattedStartDate).apply();
+            return true;
+        } else {
+            Toast.makeText(context, "Invalid Start Date.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
     public SharedPreferences getUserPreferences() {
         return userPreferences;
     }
@@ -234,6 +267,19 @@ public class UserInfoHelper {
             }
         }
         return null;
+    }
+
+    public String getParsedDateOfBirth() {
+        LocalDate date = getDateOfBirth();
+        if (date != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            return date.format(formatter);
+        }
+        return "";
+    }
+
+    public int getAge() {
+        return userPreferences.getInt("age", 0);
     }
 
     // Get Height in centimeters
@@ -293,8 +339,8 @@ public class UserInfoHelper {
     }
 
     // Get Carbs Goal
-    public int getCarbsGoal() {
-        return userPreferences.getInt("carbsGoal", 0);
+    public int getCarbGoal() {
+        return userPreferences.getInt("carbGoal", 0);
     }
 
     // Get Protein Goal
@@ -312,11 +358,9 @@ public class UserInfoHelper {
         return userPreferences.getInt("waterIntakeGoal", 0);
     }
 
-    // TODO: Review these methods and add more if needed
-
     // Calculate age from date of birth
     public static int calculateAge(LocalDate dateOfBirth) {
-        return LocalDate.now().getYear() - dateOfBirth.getYear(); // Simple version
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     // Generate a summary string of user info

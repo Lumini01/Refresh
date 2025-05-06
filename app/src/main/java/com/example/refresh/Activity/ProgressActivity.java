@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -100,7 +102,7 @@ public class ProgressActivity extends AppCompatActivity {
         trendGraphFragment = TrendGraphFragment.newInstance(daySummaries, userSP.getInt("calorieGoal", 0));
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.trend_graph_container, trendGraphFragment) // put it in our container
-                .commit();
+                .commitNow();
 
         editMealLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -118,6 +120,21 @@ public class ProgressActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        final WindowInsetsController controller = getWindow().getInsetsController();
+        if (controller != null) {
+            // hide both status bar & navigation bar
+            controller.hide(WindowInsets.Type.navigationBars());
+            // allow swipe to temporarily reveal
+            controller.setSystemBarsBehavior(
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
+        }
+
+        // hide title text (app name)
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
     }
 
     private void initializeUI() {
@@ -145,8 +162,6 @@ public class ProgressActivity extends AppCompatActivity {
             previousWeek();
             updateWeekDates();
             refreshActivity();
-
-            nextWeekBtn.setEnabled(true);
         });
 
         nextWeekBtn.setOnClickListener(v -> {
@@ -157,11 +172,6 @@ public class ProgressActivity extends AppCompatActivity {
             }
             else {
                 Toast.makeText(this, "Cant view future weeks.", Toast.LENGTH_SHORT).show();
-                nextWeekBtn.setEnabled(false);
-
-                new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    nextWeekBtn.setEnabled(true);
-                }, 2000);
             }
         });
     }
@@ -359,6 +369,8 @@ public class ProgressActivity extends AppCompatActivity {
     private void setWeekMeals(LocalDate weekStart, LocalDate weekEnd) {
 
         weekMeals = MealsTable.getMealsInRange(this, weekStart, weekEnd);
+
+        weekMeals.removeIf(Meal::determineIfWaterIntake);
 
         if (weekMeals == null) {
             weekMeals = new ArrayList<>();

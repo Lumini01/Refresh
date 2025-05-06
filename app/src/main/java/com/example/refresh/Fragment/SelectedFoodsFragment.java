@@ -102,8 +102,24 @@ public class SelectedFoodsFragment extends Fragment {
     // Add food to the selected foods list
 
     public void addFoodToSelectedFoods(ListItem<Food> food) {
-        selectedFoods.add(food);  // Update the list in fragment
-        foodsAdapter.addItem(food, selectedFoods.size());  // Notify adapter
+        int foodIndex = -1;
+
+        for (ListItem<Food> foodItem : selectedFoods) {
+            if (foodItem.getModel().getId() == food.getModel().getId()) {
+                foodIndex = selectedFoods.indexOf(foodItem);
+                break;
+            }
+        }
+
+        if (foodIndex == -1) {
+            selectedFoods.add(food);  // Update the list in fragment
+            foodsAdapter.addItem(food, selectedFoods.size());  // Notify adapter
+        }
+        else {
+            selectedFoods.set(foodIndex, food);  // Update the list in fragment
+            foodsAdapter.removeItem(foodIndex);
+            foodsAdapter.addItem(food, selectedFoods.size());  // Notify adapter
+        }
     }
     // Remove food from the selected foods list
 
