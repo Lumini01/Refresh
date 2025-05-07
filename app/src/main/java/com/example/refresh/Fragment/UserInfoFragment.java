@@ -11,6 +11,7 @@ import static com.example.refresh.Fragment.UserInfoFragment.States.PERSONAL_INFO
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.icu.util.Calendar;
+import android.icu.util.TimeZone;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.refresh.Database.UsersTable;
@@ -36,6 +38,7 @@ import com.example.refresh.Helper.GoalHelper;
 import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Model.User;
 import com.example.refresh.R;
+import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -322,33 +325,13 @@ public class UserInfoFragment extends Fragment {
     }
 
     private void assignValuesToViews() {
-        if (state.equals(FIRST_LOG.getStateName())) {
-            backBtn.setVisibility(View.GONE);
-            nameET.setEnabled(false);
-        }
-
         title.setText(R.string.user_info);
-
-        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(requireContext(),
-                R.layout.item_custom_spinner, genderOptions);
-        genderAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
-        genderSpinner.setAdapter(genderAdapter);
-        genderSpinner.setSelection(0); // Set the default selection to the first item
-        activityLevelSpinner.setPopupBackgroundDrawable(null);
-
-        ArrayAdapter<String> activityLevelAdapter = new ArrayAdapter<>(requireContext(),
-                R.layout.item_custom_spinner, activityLevelOptions);
-        activityLevelAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
-        activityLevelSpinner.setAdapter(activityLevelAdapter);
-        activityLevelSpinner.setSelection(0); // Set the default selection to the first item
-        activityLevelSpinner.setPopupBackgroundDrawable(null);
-
-        if (!state.equals(FIRST_LOG.getStateName()))
-            setValuesByState();
+        setValuesByState();
     }
 
     private void setValuesByState() {
         if (state.equals(ALL.getStateName())) setValuesAll();
+        else if (state.equals(FIRST_LOG.getStateName())) setValuesFirstLog();
         else if (state.equals(MULTIPLE.getStateName())) setValuesMultiple();
         else if (state.equals(PERSONAL_INFO.getStateName())) setValuesPersonalInfo();
         else if (state.equals(ACCOUNT_DETAILS.getStateName())) setValuesAccountDetails();
@@ -362,6 +345,26 @@ public class UserInfoFragment extends Fragment {
         setValuesAccountDetails();
         setValuesLifestyleGoal();
         setValuesAdjustGoal();
+    }
+
+    private void setValuesFirstLog() {
+        backBtn.setVisibility(View.GONE);
+        nameET.setText(user.getName());
+        nameET.setEnabled(false);
+
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(requireContext(),
+                R.layout.item_custom_spinner, genderOptions);
+        genderAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
+        genderSpinner.setAdapter(genderAdapter);
+        genderSpinner.setSelection(0); // Set the default selection to the first item
+        activityLevelSpinner.setPopupBackgroundDrawable(null);
+
+        ArrayAdapter<String> activityLevelAdapter = new ArrayAdapter<>(requireContext(),
+                R.layout.item_custom_spinner, activityLevelOptions);
+        activityLevelAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
+        activityLevelSpinner.setAdapter(activityLevelAdapter);
+        activityLevelSpinner.setSelection(activityLevelOptions.indexOf(0)); // Set the default selection to the first item
+        activityLevelSpinner.setPopupBackgroundDrawable(null);
     }
 
     private void setValuesMultiple() {
@@ -387,6 +390,7 @@ public class UserInfoFragment extends Fragment {
 
     private void setValuesPersonalInfo() {
         nameET.setText(user != null ? user.getName() : "");
+        nameET.setEnabled(false);
 
         String weight = userInfoHelper.getWeight() + "";
         weightET.setText(weight);
@@ -398,7 +402,12 @@ public class UserInfoFragment extends Fragment {
         dateOfBirthET.setText(birthday);
 
         String gender = userInfoHelper.getGender();
-        genderSpinner.setSelection(genderOptions.indexOf(gender));
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(requireContext(),
+                R.layout.item_custom_spinner, genderOptions);
+        genderAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
+        genderSpinner.setAdapter(genderAdapter);
+        genderSpinner.setSelection(genderOptions.indexOf(gender)); // Set the default selection to the first item
+        activityLevelSpinner.setPopupBackgroundDrawable(null);
     }
 
     private void setValuesAccountDetails() {
@@ -429,7 +438,12 @@ public class UserInfoFragment extends Fragment {
             targetWeightLayout.setVisibility(View.VISIBLE);
 
         String activityLevel = userInfoHelper.getActivityLevel();
-        activityLevelSpinner.setSelection(activityLevelOptions.indexOf(activityLevel));
+        ArrayAdapter<String> activityLevelAdapter = new ArrayAdapter<>(requireContext(),
+                R.layout.item_custom_spinner, activityLevelOptions);
+        activityLevelAdapter.setDropDownViewResource(R.layout.item_custom_spinner);
+        activityLevelSpinner.setAdapter(activityLevelAdapter);
+        activityLevelSpinner.setSelection(activityLevelOptions.indexOf(activityLevel)); // Set the default selection to the first item
+        activityLevelSpinner.setPopupBackgroundDrawable(null);
 
         int dietTypeId = -1;
         String dietType = userInfoHelper.getDietType();
@@ -492,26 +506,36 @@ public class UserInfoFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        dateOfBirthET.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get the current date for default values
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH); // Note: Month is 0-indexed
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
+        // 1. Add this dependency to your module’s build.gradle if you haven’t already:
+// implementation 'com.google.android.material:material:1.9.0'
 
-                // Create and show the DatePickerDialog
-                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
-                        (dp, y, m, d) -> {
-                            // Format the selected date to dd/MM/yyyy (m+1 to adjust 0-indexed month)
-                            String formattedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", d, m + 1, y);
-                            dateOfBirthET.setText(formattedDate);
-                        }, year, month, day);
+        dateOfBirthET.setOnClickListener(v -> {
+            // 2. Build the MaterialDatePicker
+            MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder
+                    .datePicker()
+                    .setTitleText("Select your birth date")
+                    // optional: set a default selection (today) so the header shows a date
+                    .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                    .build();
 
-                datePickerDialog.show();
-            }
+            // 3. Show it
+            datePicker.show(((AppCompatActivity) requireContext()).getSupportFragmentManager(), "DOB_PICKER");
+
+            // 4. Listen for positive selection
+            datePicker.addOnPositiveButtonClickListener(selection -> {
+                // selection is the UTC milliseconds of the chosen date
+                // convert to Calendar to format as dd/MM/yyyy
+                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Jerusalem"));
+                cal.setTimeInMillis(selection);
+                int year  = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH) + 1; // month is 0-based
+                int day   = cal.get(Calendar.DAY_OF_MONTH);
+
+                String formattedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", day, month, year);
+                dateOfBirthET.setText(formattedDate);
+            });
         });
+
 
         goalRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

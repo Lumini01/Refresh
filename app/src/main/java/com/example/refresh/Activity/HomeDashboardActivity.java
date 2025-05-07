@@ -25,6 +25,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 
 import com.example.refresh.Fragment.DailyProgressFragment;
+import com.example.refresh.Fragment.NotificationSettingsFragment;
 import com.example.refresh.Fragment.UserInfoFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
 import com.example.refresh.Helper.UserInfoHelper;
@@ -41,7 +42,7 @@ import java.time.format.DateTimeFormatter;
  * and navigation shortcuts. Implements user details fragment listener.
  */
 public class HomeDashboardActivity extends AppCompatActivity
-        implements UserInfoFragment.OnUserInfoFragmentListener {
+        implements UserInfoFragment.OnUserInfoFragmentListener, NotificationSettingsFragment.OnNotificationSettingsListener {
 
     // UI containers
     private FragmentContainerView userInfoContainer;
@@ -121,7 +122,7 @@ public class HomeDashboardActivity extends AppCompatActivity
             UserInfoFragment fragment = UserInfoFragment.newInstance(
                     UserInfoFragment.States.FIRST_LOG.getStateName(), userId);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.user_info_container, fragment)
+                    .replace(R.id.fragment_container, fragment)
                     .commitNow();
             userInfoContainer.setVisibility(View.VISIBLE);
         }
@@ -134,7 +135,15 @@ public class HomeDashboardActivity extends AppCompatActivity
     public void hideUserInfo() {
         getSupportFragmentManager().beginTransaction()
                 .remove(getSupportFragmentManager()
-                        .findFragmentById(R.id.user_info_container))
+                        .findFragmentById(R.id.fragment_container))
+                .commitNow();
+        userInfoContainer.setVisibility(View.GONE);
+    }
+
+    public void hideNotificationSettings() {
+        getSupportFragmentManager().beginTransaction()
+                .remove(getSupportFragmentManager()
+                        .findFragmentById(R.id.fragment_container))
                 .commitNow();
         userInfoContainer.setVisibility(View.GONE);
     }
@@ -174,7 +183,7 @@ public class HomeDashboardActivity extends AppCompatActivity
      * Initializes view references.
      */
     private void initViews() {
-        userInfoContainer = findViewById(R.id.user_info_container);
+        userInfoContainer = findViewById(R.id.fragment_container);
         dailyProgressContainer = findViewById(R.id.daily_progress_container);
         title = findViewById(R.id.date_title_tv);
         nextBtn = findViewById(R.id.next_summary_btn);
@@ -210,6 +219,14 @@ public class HomeDashboardActivity extends AppCompatActivity
         logMealBtn.setOnClickListener(v -> launchActivity(MealLogActivity.class));
         logWeightBtn.setOnClickListener(v -> showWeightDialog());
         profileBtn.setOnClickListener(v -> launchActivity(ProfileActivity.class));
+        notificationBtn.setOnClickListener(v -> {
+
+            NotificationSettingsFragment fragment = NotificationSettingsFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commitNow();
+            userInfoContainer.setVisibility(View.VISIBLE);
+        });
 
         refreshDailyProgressFragment();
     }

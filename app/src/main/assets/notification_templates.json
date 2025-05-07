@@ -5,31 +5,31 @@
     "title": "Meal Time!",
     "message": "Don't forget to log your meal!",
     "iconID": "ic_today",
-    "activityClass": "com.example.refresh.StartActivity"
+    "activityClass": "com.example.refresh.MealLogActivity"
   },
   {
     "templateID": 2,
     "category": "reminder",
     "title": "Breakfast Time!",
     "message": "It's breakfast time! Log your meal now.",
-    "iconID": "ic_today",
-    "activityClass": "com.example.refresh.StartActivity"
+    "iconID": "ic_morning",
+    "activityClass": "com.example.refresh.MealLogActivity"
   },
   {
     "templateID": 3,
     "category": "reminder",
     "title": "Lunch Time!",
     "message": "Don't forget to log your lunch!",
-    "iconID": "ic_today",
-    "activityClass": "com.example.refresh.StartActivity"
+    "iconID": "ic_noon",
+    "activityClass": "com.example.refresh.MealLogActivity"
   },
   {
     "templateID": 4,
     "category": "reminder",
     "title": "Dinner Time!",
     "message": "It's dinner time! Log your meal before it's too late.",
-    "iconID": "ic_today",
-    "activityClass": "com.example.refresh.StartActivity"
+    "iconID": "ic_night",
+    "activityClass": "com.example.refresh.MealLogActivity"
   },
   {
     "templateID": 5,

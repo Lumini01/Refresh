@@ -228,7 +228,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name (e.g., "name")
 
-        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), null, null, null, null, null);
+        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), null, null, null, null, "ROWID ASC");
 
         T result = null;
 
@@ -317,7 +317,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String columnName = getEnumColumnName(columnEnum);  // Convert the enum to the column name
 
-        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), null, null, null, null, null);
+        Cursor cursor = db.query(table.getTableName(), toStringArray(columnName), null, null, null, null, "ROWID ASC");
 
         int index = -1;  // Default to -1 (not found)
 

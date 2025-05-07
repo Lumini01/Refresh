@@ -105,7 +105,7 @@ public class ProfileActivity extends AppCompatActivity
         goalAdjustmentLayout = findViewById(R.id.goal_adjustment_layout);
 
         // Other Views
-        userInfoContainer = findViewById(R.id.user_info_container);
+        userInfoContainer = findViewById(R.id.fragment_container);
         logOutBtn = findViewById(R.id.log_out_btn);
         targetWeightLayout = findViewById(R.id.target_weight_layout);
     }
@@ -153,7 +153,7 @@ public class ProfileActivity extends AppCompatActivity
                 section, MyApplication.getInstance()
                         .getLoggedUserID());
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.user_info_container, fragment)
+                .replace(R.id.fragment_container, fragment)
                 .commitNow();
 
         userInfoContainer.setVisibility(View.VISIBLE);
@@ -162,7 +162,7 @@ public class ProfileActivity extends AppCompatActivity
     public void hideUserInfo() {
         getSupportFragmentManager().beginTransaction()
                 .remove(getSupportFragmentManager()
-                        .findFragmentById(R.id.user_info_container))
+                        .findFragmentById(R.id.fragment_container))
                 .commitNow();
         userInfoContainer.setVisibility(View.GONE);
 

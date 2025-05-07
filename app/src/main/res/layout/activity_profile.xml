@@ -11,7 +11,7 @@
     tools:context=".Activity.ProfileActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/user_info_container"
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />

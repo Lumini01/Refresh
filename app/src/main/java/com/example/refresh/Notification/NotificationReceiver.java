@@ -26,7 +26,6 @@ public class NotificationReceiver extends BroadcastReceiver {
             if (intent.getBooleanExtra("TEST_NOTIFICATION", false)) {
                 // If it's a test notification, skip scheduling and remove the notification from the database
                 testCleanup(context, instance);
-                Log.d("NotificationScheduler", "Notification scheduling skipped, and notification removed - test notification");
             }
             else {
                 // If not a test notification, reschedule the notification
