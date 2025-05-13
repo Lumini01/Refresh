@@ -4,9 +4,7 @@
     "name": "",
     "description": "",
     "category": "",
-    "labels": [
-      ""
-    ],
+    "labels": [""],
     "calories": -1,
     "carbs": -1,
     "protein": -1,
@@ -15,13 +13,9 @@
   {
     "id": 1,
     "name": "Apple",
-    "description": "Crisp and mildly sweet; perfect for snacking or pies.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "healthy"
-    ],
+    "labels": ["fresh","vegan","healthy"],
     "calories": 52,
     "carbs": 14,
     "protein": 0,
@@ -30,13 +24,9 @@
   {
     "id": 2,
     "name": "Banana",
-    "description": "Soft, portable energy boost rich in potassium.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "sweet"
-    ],
+    "labels": ["fresh","vegan","sweet"],
     "calories": 89,
     "carbs": 23,
     "protein": 1,
@@ -45,12 +35,9 @@
   {
     "id": 3,
     "name": "Cherry",
-    "description": "Juicy bite-sized stone fruit with a tart-sweet punch.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan"
-    ],
+    "labels": ["fresh","vegan"],
     "calories": 63,
     "carbs": 16,
     "protein": 1,
@@ -59,13 +46,9 @@
   {
     "id": 4,
     "name": "Strawberry",
-    "description": "Bright red berries that shine in desserts and salads.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "summer"
-    ],
+    "labels": ["fresh","vegan","summer"],
     "calories": 33,
     "carbs": 8,
     "protein": 1,
@@ -74,13 +57,9 @@
   {
     "id": 5,
     "name": "Raspberry",
-    "description": "Delicate berry packed with tangy flavor and fiber.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "berry"
-    ],
+    "labels": ["fresh","vegan","berry"],
     "calories": 52,
     "carbs": 12,
     "protein": 1,
@@ -89,13 +68,9 @@
   {
     "id": 6,
     "name": "Blueberry",
-    "description": "Tiny deep-blue gems famed for antioxidant power.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "antioxidant"
-    ],
+    "labels": ["fresh","vegan","antioxidant"],
     "calories": 57,
     "carbs": 14,
     "protein": 1,
@@ -104,13 +79,9 @@
   {
     "id": 7,
     "name": "Blackberry",
-    "description": "Earthy-sweet clusters ideal for jams or cobblers.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "berry"
-    ],
+    "labels": ["fresh","vegan","berry"],
     "calories": 43,
     "carbs": 10,
     "protein": 1,
@@ -119,13 +90,9 @@
   {
     "id": 8,
     "name": "Watermelon",
-    "description": "Summer staple; 90 % water with refreshing sweetness.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "hydrating"
-    ],
+    "labels": ["fresh","vegan","hydrating"],
     "calories": 30,
     "carbs": 8,
     "protein": 1,
@@ -134,13 +101,9 @@
   {
     "id": 9,
     "name": "Cantaloupe",
-    "description": "Fragrant orange melon that sweetens breakfast bowls.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "summer"
-    ],
+    "labels": ["fresh","vegan","summer"],
     "calories": 34,
     "carbs": 8,
     "protein": 1,
@@ -149,13 +112,9 @@
   {
     "id": 10,
     "name": "Honeydew",
-    "description": "Mellow pale-green melon offering gentle sweetness.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "light"
-    ],
+    "labels": ["fresh","vegan","light"],
     "calories": 36,
     "carbs": 9,
     "protein": 1,
@@ -164,13 +123,9 @@
   {
     "id": 11,
     "name": "Grapes",
-    "description": "Snackable clusters also pressed into juices and wine.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "sweet"
-    ],
+    "labels": ["fresh","vegan","sweet"],
     "calories": 69,
     "carbs": 18,
     "protein": 1,
@@ -179,13 +134,9 @@
   {
     "id": 12,
     "name": "Orange",
-    "description": "Zesty citrus loaded with vitamin C in every segment.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "citrus",
-      "vegan"
-    ],
+    "labels": ["fresh","citrus","vegan"],
     "calories": 47,
     "carbs": 12,
     "protein": 1,
@@ -194,13 +145,9 @@
   {
     "id": 13,
     "name": "Mandarin",
-    "description": "Easy-peel citrus that brightens lunchboxes.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "citrus",
-      "vegan"
-    ],
+    "labels": ["fresh","citrus","vegan"],
     "calories": 53,
     "carbs": 13,
     "protein": 1,
@@ -209,13 +156,9 @@
   {
     "id": 14,
     "name": "Grapefruit",
-    "description": "Bittersweet breakfast citrus noted for tangy juice.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "citrus",
-      "vegan"
-    ],
+    "labels": ["fresh","citrus","vegan"],
     "calories": 42,
     "carbs": 11,
     "protein": 1,
@@ -224,13 +167,9 @@
   {
     "id": 15,
     "name": "Lemon",
-    "description": "Sharp, sour citrus that livens marinades and bakes.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "citrus",
-      "vegan"
-    ],
+    "labels": ["fresh","citrus","vegan"],
     "calories": 29,
     "carbs": 9,
     "protein": 1,
@@ -239,13 +178,9 @@
   {
     "id": 16,
     "name": "Lime",
-    "description": "Tart green citrus essential for tacos and cocktails.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "citrus",
-      "vegan"
-    ],
+    "labels": ["fresh","citrus","vegan"],
     "calories": 30,
     "carbs": 11,
     "protein": 0,
@@ -254,13 +189,9 @@
   {
     "id": 17,
     "name": "Pineapple",
-    "description": "Spiky tropical fruit bursting with caramel-like juice.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "tropical",
-      "vegan",
-      "juicy"
-    ],
+    "labels": ["tropical","vegan","juicy"],
     "calories": 50,
     "carbs": 13,
     "protein": 1,
@@ -269,13 +200,9 @@
   {
     "id": 18,
     "name": "Mango",
-    "description": "Creamy golden delicacy known as the king of fruits.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "tropical",
-      "vegan",
-      "sweet"
-    ],
+    "labels": ["tropical","vegan","sweet"],
     "calories": 60,
     "carbs": 15,
     "protein": 1,
@@ -284,13 +211,9 @@
   {
     "id": 19,
     "name": "Papaya",
-    "description": "Soft melon-like flesh studded with peppery seeds.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "tropical",
-      "vegan",
-      "fresh"
-    ],
+    "labels": ["tropical","vegan","fresh"],
     "calories": 43,
     "carbs": 11,
     "protein": 1,
@@ -299,13 +222,9 @@
   {
     "id": 20,
     "name": "Kiwi",
-    "description": "Tangy green interior wrapped in fuzzy brown skin.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "tart"
-    ],
+    "labels": ["fresh","vegan","tart"],
     "calories": 61,
     "carbs": 15,
     "protein": 1,
@@ -314,13 +233,9 @@
   {
     "id": 21,
     "name": "Peach",
-    "description": "Fragrant stone fruit with sunset-orange juicy flesh.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "stone fruit"
-    ],
+    "labels": ["fresh","vegan","stone fruit"],
     "calories": 39,
     "carbs": 10,
     "protein": 1,
@@ -329,13 +244,9 @@
   {
     "id": 22,
     "name": "Plum",
-    "description": "Smooth-skinned stone fruit offering sweet-tart bites.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "stone fruit"
-    ],
+    "labels": ["fresh","vegan","stone fruit"],
     "calories": 46,
     "carbs": 11,
     "protein": 1,
@@ -344,13 +255,9 @@
   {
     "id": 23,
     "name": "Apricot",
-    "description": "Small golden fruit delivering gentle honeyed flavor.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan",
-      "stone fruit"
-    ],
+    "labels": ["fresh","vegan","stone fruit"],
     "calories": 48,
     "carbs": 11,
     "protein": 1,
@@ -359,12 +266,9 @@
   {
     "id": 24,
     "name": "Fig",
-    "description": "Chewy, seed-speckled fruit tasting of sun-dried honey.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "vegan"
-    ],
+    "labels": ["fresh","vegan"],
     "calories": 74,
     "carbs": 19,
     "protein": 1,
@@ -373,13 +277,9 @@
   {
     "id": 25,
     "name": "Date",
-    "description": "Rich, caramel-sweet dried fruit of desert palms.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "vegan",
-      "sweet",
-      "dried"
-    ],
+    "labels": ["vegan","sweet","dried"],
     "calories": 282,
     "carbs": 75,
     "protein": 2,
@@ -388,13 +288,9 @@
   {
     "id": 26,
     "name": "Coconut",
-    "description": "Tropical drupe yielding sweet meat and refreshing water.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "tropical",
-      "vegan",
-      "fresh"
-    ],
+    "labels": ["tropical","vegan","fresh"],
     "calories": 354,
     "carbs": 15,
     "protein": 3,
@@ -403,13 +299,9 @@
   {
     "id": 27,
     "name": "Avocado",
-    "description": "Creamy green fruit celebrated for heart-healthy fats.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "creamy",
-      "vegan",
-      "healthy fats"
-    ],
+    "labels": ["creamy","vegan","healthy fats"],
     "calories": 160,
     "carbs": 9,
     "protein": 2,
@@ -418,13 +310,9 @@
   {
     "id": 28,
     "name": "Tomato",
-    "description": "Versatile red fruit that anchors salads and sauces.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "salad"
-    ],
+    "labels": ["fresh","vegan","salad"],
     "calories": 18,
     "carbs": 4,
     "protein": 1,
@@ -433,13 +321,9 @@
   {
     "id": 29,
     "name": "Cucumber",
-    "description": "Crisp, hydrating salad staple with subtle flavor.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "hydrating"
-    ],
+    "labels": ["fresh","vegan","hydrating"],
     "calories": 15,
     "carbs": 4,
     "protein": 1,
@@ -448,13 +332,9 @@
   {
     "id": 30,
     "name": "Bell Pepper",
-    "description": "Colorful sweet pepper that crunches raw or roasted.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "colorful"
-    ],
+    "labels": ["fresh","vegan","colorful"],
     "calories": 31,
     "carbs": 6,
     "protein": 1,
@@ -463,13 +343,9 @@
   {
     "id": 31,
     "name": "Lettuce",
-    "description": "Crisp leafy green forming the base of fresh salads.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "salad"
-    ],
+    "labels": ["fresh","vegan","salad"],
     "calories": 15,
     "carbs": 3,
     "protein": 1,
@@ -478,13 +354,9 @@
   {
     "id": 32,
     "name": "Spinach",
-    "description": "Nutrient-dense leafy green perfect for salads or sautés.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "leafy green",
-      "vegan",
-      "healthy"
-    ],
+    "labels": ["leafy green","vegan","healthy"],
     "calories": 23,
     "carbs": 4,
     "protein": 3,
@@ -493,13 +365,9 @@
   {
     "id": 33,
     "name": "Kale",
-    "description": "Hearty leaf hailed as a fiber-rich superfood.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "leafy green",
-      "vegan",
-      "superfood"
-    ],
+    "labels": ["leafy green","vegan","superfood"],
     "calories": 35,
     "carbs": 5,
     "protein": 3,
@@ -508,13 +376,9 @@
   {
     "id": 34,
     "name": "Broccoli",
-    "description": "Crunchy crucifer that steams, roasts, or dips well.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "cruciferous",
-      "vegan",
-      "healthy"
-    ],
+    "labels": ["cruciferous","vegan","healthy"],
     "calories": 34,
     "carbs": 7,
     "protein": 3,
@@ -523,13 +387,9 @@
   {
     "id": 35,
     "name": "Cauliflower",
-    "description": "Mild cruciferous veg beloved for low-carb swaps.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "cruciferous",
-      "vegan",
-      "low-carb"
-    ],
+    "labels": ["cruciferous","vegan","low-carb"],
     "calories": 25,
     "carbs": 5,
     "protein": 2,
@@ -538,13 +398,9 @@
   {
     "id": 36,
     "name": "Carrot",
-    "description": "Sweet orange root eaten raw or roasted.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "root"
-    ],
+    "labels": ["fresh","vegan","root"],
     "calories": 41,
     "carbs": 10,
     "protein": 1,
@@ -553,13 +409,9 @@
   {
     "id": 37,
     "name": "Potato",
-    "description": "Starchy tuber starring in mash, fries, and stews.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "root",
-      "vegan",
-      "starchy"
-    ],
+    "labels": ["root","vegan","starchy"],
     "calories": 77,
     "carbs": 17,
     "protein": 2,
@@ -568,13 +420,9 @@
   {
     "id": 38,
     "name": "Sweet Potato",
-    "description": "Orange sweet tuber rich in beta-carotene.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "root",
-      "vegan",
-      "starchy"
-    ],
+    "labels": ["root","vegan","starchy"],
     "calories": 86,
     "carbs": 20,
     "protein": 2,
@@ -583,13 +431,9 @@
   {
     "id": 39,
     "name": "Onion",
-    "description": "Pungent bulb adding savory depth to countless dishes.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "flavorful"
-    ],
+    "labels": ["fresh","vegan","flavorful"],
     "calories": 40,
     "carbs": 9,
     "protein": 1,
@@ -598,13 +442,9 @@
   {
     "id": 40,
     "name": "Garlic",
-    "description": "Aromatic cloves imparting bold flavor and health perks.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "aromatic",
-      "vegan",
-      "flavorful"
-    ],
+    "labels": ["aromatic","vegan","flavorful"],
     "calories": 149,
     "carbs": 33,
     "protein": 6,
@@ -613,13 +453,9 @@
   {
     "id": 41,
     "name": "Ginger",
-    "description": "Spicy rhizome enlivening teas, bakes, and stir-fries.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "aromatic",
-      "vegan",
-      "spicy"
-    ],
+    "labels": ["aromatic","vegan","spicy"],
     "calories": 80,
     "carbs": 18,
     "protein": 2,
@@ -628,13 +464,9 @@
   {
     "id": 42,
     "name": "Eggplant",
-    "description": "Purple vegetable that soaks up seasonings when roasted.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "purple"
-    ],
+    "labels": ["fresh","vegan","purple"],
     "calories": 25,
     "carbs": 6,
     "protein": 1,
@@ -643,13 +475,9 @@
   {
     "id": 43,
     "name": "Zucchini",
-    "description": "Tender summer squash ideal for grilling and zoodles.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "summer squash"
-    ],
+    "labels": ["fresh","vegan","summer squash"],
     "calories": 17,
     "carbs": 3,
     "protein": 1,
@@ -658,13 +486,9 @@
   {
     "id": 44,
     "name": "Pumpkin",
-    "description": "Orange squash puréed into comforting autumn pies.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "fall"
-    ],
+    "labels": ["fresh","vegan","fall"],
     "calories": 26,
     "carbs": 7,
     "protein": 1,
@@ -673,13 +497,9 @@
   {
     "id": 45,
     "name": "Green Beans",
-    "description": "Tender pods that keep their snap when lightly steamed.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "fiber"
-    ],
+    "labels": ["fresh","vegan","fiber"],
     "calories": 31,
     "carbs": 7,
     "protein": 2,
@@ -688,13 +508,9 @@
   {
     "id": 46,
     "name": "Peas",
-    "description": "Sweet green spheres packed with plant protein.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "fiber"
-    ],
+    "labels": ["fresh","vegan","fiber"],
     "calories": 81,
     "carbs": 14,
     "protein": 5,
@@ -703,13 +519,9 @@
   {
     "id": 47,
     "name": "Corn",
-    "description": "Golden kernels delivering sweet crunch on and off the cob.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "starchy",
-      "vegan",
-      "grain-like"
-    ],
+    "labels": ["starchy","vegan","grain-like"],
     "calories": 86,
     "carbs": 19,
     "protein": 3,
@@ -718,13 +530,9 @@
   {
     "id": 48,
     "name": "Mushrooms",
-    "description": "Earthy fungi adding umami to any dish.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "earthy"
-    ],
+    "labels": ["fresh","vegan","earthy"],
     "calories": 22,
     "carbs": 3,
     "protein": 3,
@@ -733,13 +541,9 @@
   {
     "id": 49,
     "name": "Asparagus",
-    "description": "Springtime spear with grassy, subtly sweet flavor.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "spring"
-    ],
+    "labels": ["fresh","vegan","spring"],
     "calories": 20,
     "carbs": 4,
     "protein": 2,
@@ -748,13 +552,9 @@
   {
     "id": 50,
     "name": "Celery",
-    "description": "Crunchy stalks perfect for dips or mirepoix.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "crunchy"
-    ],
+    "labels": ["fresh","vegan","crunchy"],
     "calories": 14,
     "carbs": 3,
     "protein": 1,
@@ -763,13 +563,9 @@
   {
     "id": 51,
     "name": "Beetroot",
-    "description": "Earthy magenta root that stains salads and juices.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "root",
-      "vegan",
-      "colorful"
-    ],
+    "labels": ["root","vegan","colorful"],
     "calories": 43,
     "carbs": 10,
     "protein": 2,
@@ -778,13 +574,9 @@
   {
     "id": 52,
     "name": "Radish",
-    "description": "Peppery, crunchy root that perks up salads.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "spicy"
-    ],
+    "labels": ["fresh","vegan","spicy"],
     "calories": 16,
     "carbs": 3,
     "protein": 1,
@@ -793,12 +585,9 @@
   {
     "id": 53,
     "name": "Turnip",
-    "description": "Mild white root used in hearty stews.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "root",
-      "vegan"
-    ],
+    "labels": ["root","vegan"],
     "calories": 28,
     "carbs": 6,
     "protein": 1,
@@ -807,13 +596,9 @@
   {
     "id": 54,
     "name": "Parsnip",
-    "description": "Sweet pale root lending wintry comfort.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "root",
-      "vegan",
-      "sweet"
-    ],
+    "labels": ["root","vegan","sweet"],
     "calories": 75,
     "carbs": 18,
     "protein": 1,
@@ -822,13 +607,9 @@
   {
     "id": 55,
     "name": "Brussels Sprouts",
-    "description": "Mini cabbages that caramelize beautifully when roasted.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "cruciferous",
-      "vegan",
-      "mini cabbage"
-    ],
+    "labels": ["cruciferous","vegan","mini cabbage"],
     "calories": 43,
     "carbs": 9,
     "protein": 3,
@@ -837,13 +618,9 @@
   {
     "id": 56,
     "name": "Cabbage",
-    "description": "Versatile leafy head shredded for slaw or stir-fry.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "cruciferous",
-      "vegan",
-      "fresh"
-    ],
+    "labels": ["cruciferous","vegan","fresh"],
     "calories": 25,
     "carbs": 6,
     "protein": 1,
@@ -852,13 +629,9 @@
   {
     "id": 57,
     "name": "Seaweed",
-    "description": "Briny marine vegetable renowned for minerals and iodine.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "marine",
-      "vegan",
-      "mineral-rich"
-    ],
+    "labels": ["marine","vegan","mineral-rich"],
     "calories": 45,
     "carbs": 9,
     "protein": 2,
@@ -867,13 +640,9 @@
   {
     "id": 58,
     "name": "Rice (White)",
-    "description": "Fluffy staple grain that pairs with almost anything.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "staple",
-      "grain",
-      "vegan"
-    ],
+    "labels": ["staple","grain","vegan"],
     "calories": 130,
     "carbs": 28,
     "protein": 2,
@@ -882,13 +651,9 @@
   {
     "id": 59,
     "name": "Rice (Brown)",
-    "description": "Nutty whole-grain rice delivering extra fiber.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "whole grain",
-      "vegan",
-      "healthy"
-    ],
+    "labels": ["whole grain","vegan","healthy"],
     "calories": 111,
     "carbs": 23,
     "protein": 3,
@@ -897,13 +662,9 @@
   {
     "id": 60,
     "name": "Quinoa",
-    "description": "Pseudo-grain boasting complete protein profile.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "pseudo-grain",
-      "vegan",
-      "high protein"
-    ],
+    "labels": ["pseudo-grain","vegan","high protein"],
     "calories": 120,
     "carbs": 21,
     "protein": 4,
@@ -912,13 +673,9 @@
   {
     "id": 61,
     "name": "Oats",
-    "description": "Hearty breakfast grain cooked into porridge or granola.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "whole grain",
-      "vegan",
-      "breakfast"
-    ],
+    "labels": ["whole grain","vegan","breakfast"],
     "calories": 389,
     "carbs": 66,
     "protein": 17,
@@ -927,13 +684,9 @@
   {
     "id": 62,
     "name": "Wheat Bread",
-    "description": "Soft loaf made from nutrient-rich whole wheat.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "baked",
-      "whole wheat",
-      "vegan"
-    ],
+    "labels": ["baked","whole wheat","vegan"],
     "calories": 247,
     "carbs": 41,
     "protein": 8,
@@ -942,13 +695,9 @@
   {
     "id": 63,
     "name": "Rye Bread",
-    "description": "Dense, tangy loaf crafted from rye flour.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "baked",
-      "vegan",
-      "whole grain"
-    ],
+    "labels": ["baked","vegan","whole grain"],
     "calories": 259,
     "carbs": 48,
     "protein": 8,
@@ -957,13 +706,9 @@
   {
     "id": 64,
     "name": "Pasta",
-    "description": "Versatile durum-wheat noodles central to Italian fare.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "wheat",
-      "italian",
-      "vegan"
-    ],
+    "labels": ["wheat","italian","vegan"],
     "calories": 131,
     "carbs": 25,
     "protein": 5,
@@ -972,12 +717,9 @@
   {
     "id": 65,
     "name": "Noodles (Egg)",
-    "description": "Springy noodles enriched with egg for richer taste.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "wheat",
-      "egg-based"
-    ],
+    "labels": ["wheat","egg-based"],
     "calories": 138,
     "carbs": 25,
     "protein": 4,
@@ -986,12 +728,9 @@
   {
     "id": 66,
     "name": "Tortilla",
-    "description": "Pliable flatbread that wraps countless fillings.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "flatbread",
-      "vegan"
-    ],
+    "labels": ["flatbread","vegan"],
     "calories": 218,
     "carbs": 45,
     "protein": 6,
@@ -1000,13 +739,9 @@
   {
     "id": 67,
     "name": "Chicken Breast",
-    "description": "Lean, tender poultry cut great for grilling.",
+    "description": "",
     "category": "Poultry",
-    "labels": [
-      "lean protein",
-      "homemade",
-      "healthy"
-    ],
+    "labels": ["lean protein","homemade","healthy"],
     "calories": 165,
     "carbs": 0,
     "protein": 31,
@@ -1015,12 +750,9 @@
   {
     "id": 68,
     "name": "Chicken Thigh",
-    "description": "Juicy dark-meat cut rich in flavor.",
+    "description": "",
     "category": "Poultry",
-    "labels": [
-      "protein",
-      "homemade"
-    ],
+    "labels": ["protein","homemade"],
     "calories": 209,
     "carbs": 0,
     "protein": 26,
@@ -1029,12 +761,9 @@
   {
     "id": 69,
     "name": "Turkey Breast",
-    "description": "Lean white poultry perfect for deli slices.",
+    "description": "",
     "category": "Poultry",
-    "labels": [
-      "lean protein",
-      "healthy"
-    ],
+    "labels": ["lean protein","healthy"],
     "calories": 104,
     "carbs": 0,
     "protein": 17,
@@ -1043,12 +772,9 @@
   {
     "id": 70,
     "name": "Turkey Thigh",
-    "description": "Rich dark-meat turkey suited to slow roasting.",
+    "description": "",
     "category": "Poultry",
-    "labels": [
-      "protein",
-      "homemade"
-    ],
+    "labels": ["protein","homemade"],
     "calories": 130,
     "carbs": 0,
     "protein": 17,
@@ -1057,12 +783,9 @@
   {
     "id": 71,
     "name": "Duck",
-    "description": "Succulent poultry with flavorful, fatty skin.",
+    "description": "",
     "category": "Poultry",
-    "labels": [
-      "rich",
-      "protein"
-    ],
+    "labels": ["rich","protein"],
     "calories": 337,
     "carbs": 0,
     "protein": 19,
@@ -1071,12 +794,9 @@
   {
     "id": 72,
     "name": "Goose",
-    "description": "Gamey bird prized for holiday roasts.",
+    "description": "",
     "category": "Poultry",
-    "labels": [
-      "rich",
-      "protein"
-    ],
+    "labels": ["rich","protein"],
     "calories": 305,
     "carbs": 0,
     "protein": 24,
@@ -1085,12 +805,9 @@
   {
     "id": 73,
     "name": "Pork Chop",
-    "description": "Meaty bone-in pork cut for searing or grilling.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "protein",
-      "homemade"
-    ],
+    "labels": ["protein","homemade"],
     "calories": 231,
     "carbs": 0,
     "protein": 26,
@@ -1099,12 +816,9 @@
   {
     "id": 74,
     "name": "Pork Loin",
-    "description": "Lean pork roast prized for tenderness.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "protein",
-      "lean"
-    ],
+    "labels": ["protein","lean"],
     "calories": 205,
     "carbs": 0,
     "protein": 29,
@@ -1113,13 +827,9 @@
   {
     "id": 75,
     "name": "Bacon",
-    "description": "Smoky cured pork strips that crisp delightfully.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "salty",
-      "fast food",
-      "breakfast"
-    ],
+    "labels": ["salty","fast food","breakfast"],
     "calories": 541,
     "carbs": 1,
     "protein": 37,
@@ -1128,12 +838,9 @@
   {
     "id": 76,
     "name": "Ham",
-    "description": "Salty cured pork leg enjoyed hot or cold.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "salty",
-      "processed"
-    ],
+    "labels": ["salty","processed"],
     "calories": 145,
     "carbs": 1,
     "protein": 20,
@@ -1142,12 +849,9 @@
   {
     "id": 77,
     "name": "Beef Steak",
-    "description": "Juicy grilled beef cut for steak-lovers.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "protein",
-      "grill"
-    ],
+    "labels": ["protein","grill"],
     "calories": 271,
     "carbs": 0,
     "protein": 25,
@@ -1156,13 +860,9 @@
   {
     "id": 78,
     "name": "Ground Beef",
-    "description": "Versatile minced beef starring in burgers and tacos.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "protein",
-      "fast food",
-      "burger"
-    ],
+    "labels": ["protein","fast food","burger"],
     "calories": 254,
     "carbs": 0,
     "protein": 17,
@@ -1171,12 +871,9 @@
   {
     "id": 79,
     "name": "Lamb Chop",
-    "description": "Tender, flavor-packed rib chop of young lamb.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "protein",
-      "rich"
-    ],
+    "labels": ["protein","rich"],
     "calories": 282,
     "carbs": 0,
     "protein": 25,
@@ -1185,12 +882,9 @@
   {
     "id": 80,
     "name": "Lamb Leg",
-    "description": "Robust lamb roast often served at feasts.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "protein",
-      "rich"
-    ],
+    "labels": ["protein","rich"],
     "calories": 206,
     "carbs": 0,
     "protein": 30,
@@ -1199,13 +893,9 @@
   {
     "id": 81,
     "name": "Salmon",
-    "description": "Oily pink fish rich in brain-boosting omega-3 fats.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "oily fish",
-      "healthy",
-      "protein"
-    ],
+    "labels": ["oily fish","healthy","protein"],
     "calories": 208,
     "carbs": 0,
     "protein": 20,
@@ -1214,13 +904,9 @@
   {
     "id": 82,
     "name": "Tuna",
-    "description": "Firm lean fish seared rare or canned.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "lean fish",
-      "protein",
-      "healthy"
-    ],
+    "labels": ["lean fish","protein","healthy"],
     "calories": 132,
     "carbs": 0,
     "protein": 28,
@@ -1229,12 +915,9 @@
   {
     "id": 83,
     "name": "Cod",
-    "description": "Flaky white fish with mild versatile taste.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "lean fish",
-      "protein"
-    ],
+    "labels": ["lean fish","protein"],
     "calories": 105,
     "carbs": 0,
     "protein": 23,
@@ -1243,12 +926,9 @@
   {
     "id": 84,
     "name": "Trout",
-    "description": "Delicate freshwater fish that pan-fries beautifully.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "freshwater fish",
-      "protein"
-    ],
+    "labels": ["freshwater fish","protein"],
     "calories": 141,
     "carbs": 0,
     "protein": 20,
@@ -1257,12 +937,9 @@
   {
     "id": 85,
     "name": "Sardines",
-    "description": "Small oily fish packed with calcium and B-12.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "oily fish",
-      "protein"
-    ],
+    "labels": ["oily fish","protein"],
     "calories": 208,
     "carbs": 0,
     "protein": 25,
@@ -1271,13 +948,9 @@
   {
     "id": 86,
     "name": "Shrimp",
-    "description": "Sweet, quick-cooking shellfish popular worldwide.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "shellfish",
-      "protein",
-      "low fat"
-    ],
+    "labels": ["shellfish","protein","low fat"],
     "calories": 99,
     "carbs": 0,
     "protein": 24,
@@ -1286,12 +959,9 @@
   {
     "id": 87,
     "name": "Crab",
-    "description": "Delicately sweet shellfish meat used in chowders.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "shellfish",
-      "protein"
-    ],
+    "labels": ["shellfish","protein"],
     "calories": 97,
     "carbs": 0,
     "protein": 21,
@@ -1300,13 +970,9 @@
   {
     "id": 88,
     "name": "Lobster",
-    "description": "Luxurious shellfish with rich, buttery texture.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "shellfish",
-      "protein",
-      "luxury"
-    ],
+    "labels": ["shellfish","protein","luxury"],
     "calories": 89,
     "carbs": 1,
     "protein": 19,
@@ -1315,12 +981,9 @@
   {
     "id": 89,
     "name": "Clams",
-    "description": "Briny shellfish frequently steamed or served raw.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "shellfish",
-      "protein"
-    ],
+    "labels": ["shellfish","protein"],
     "calories": 74,
     "carbs": 5,
     "protein": 12,
@@ -1329,12 +992,9 @@
   {
     "id": 90,
     "name": "Scallops",
-    "description": "Sweet sea medallions that caramelize when seared.",
+    "description": "",
     "category": "Seafood",
-    "labels": [
-      "shellfish",
-      "protein"
-    ],
+    "labels": ["shellfish","protein"],
     "calories": 111,
     "carbs": 5,
     "protein": 20,
@@ -1343,12 +1003,9 @@
   {
     "id": 91,
     "name": "Milk (Whole)",
-    "description": "Creamy dairy beverage providing protein and calcium.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "dairy",
-      "creamy"
-    ],
+    "labels": ["dairy","creamy"],
     "calories": 61,
     "carbs": 5,
     "protein": 3,
@@ -1357,13 +1014,9 @@
   {
     "id": 92,
     "name": "Milk (Skim)",
-    "description": "Fat-removed milk offering lighter taste and calories.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "dairy",
-      "low-fat",
-      "healthy"
-    ],
+    "labels": ["dairy","low-fat","healthy"],
     "calories": 34,
     "carbs": 5,
     "protein": 3,
@@ -1372,13 +1025,9 @@
   {
     "id": 93,
     "name": "Cheddar Cheese",
-    "description": "Sharp aged cheese that melts to golden perfection.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "cheese",
-      "rich",
-      "flavorful"
-    ],
+    "labels": ["cheese","rich","flavorful"],
     "calories": 403,
     "carbs": 1,
     "protein": 25,
@@ -1387,12 +1036,9 @@
   {
     "id": 94,
     "name": "Mozzarella Cheese",
-    "description": "Stretchy, mild Italian cheese crowning pizzas.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "cheese",
-      "italian"
-    ],
+    "labels": ["cheese","italian"],
     "calories": 280,
     "carbs": 3,
     "protein": 28,
@@ -1401,12 +1047,9 @@
   {
     "id": 95,
     "name": "Cottage Cheese",
-    "description": "Lumpy fresh cheese hailed for high protein.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "fresh",
-      "low-fat"
-    ],
+    "labels": ["fresh","low-fat"],
     "calories": 98,
     "carbs": 3,
     "protein": 11,
@@ -1415,12 +1058,9 @@
   {
     "id": 96,
     "name": "Yogurt",
-    "description": "Cultured dairy staple with tangy creaminess.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "probiotic",
-      "creamy"
-    ],
+    "labels": ["probiotic","creamy"],
     "calories": 59,
     "carbs": 4,
     "protein": 10,
@@ -1429,12 +1069,9 @@
   {
     "id": 97,
     "name": "Butter",
-    "description": "Rich dairy fat lending flavor to baking.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "spread",
-      "rich"
-    ],
+    "labels": ["spread","rich"],
     "calories": 717,
     "carbs": 1,
     "protein": 1,
@@ -1443,12 +1080,9 @@
   {
     "id": 98,
     "name": "Cream",
-    "description": "Thick dairy used to whip or enrich sauces.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "rich",
-      "whipping"
-    ],
+    "labels": ["rich","whipping"],
     "calories": 340,
     "carbs": 3,
     "protein": 2,
@@ -1457,12 +1091,9 @@
   {
     "id": 99,
     "name": "Sour Cream",
-    "description": "Tangy cultured cream dolloped on tacos and bakes.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "tangy",
-      "creamy"
-    ],
+    "labels": ["tangy","creamy"],
     "calories": 193,
     "carbs": 4,
     "protein": 2,
@@ -1471,12 +1102,9 @@
   {
     "id": 100,
     "name": "Ice Cream",
-    "description": "Frozen sweet dairy treat in endless flavors.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "sweet",
-      "dessert"
-    ],
+    "labels": ["sweet","dessert"],
     "calories": 207,
     "carbs": 24,
     "protein": 4,
@@ -1485,13 +1113,9 @@
   {
     "id": 101,
     "name": "Almond",
-    "description": "Crunchy nut rich in vitamin E and magnesium.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "healthy fat",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["healthy fat","vegan","snack"],
     "calories": 579,
     "carbs": 22,
     "protein": 21,
@@ -1500,13 +1124,9 @@
   {
     "id": 102,
     "name": "Walnut",
-    "description": "Brain-shaped nut delivering earthy flavor and omega-3s.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "healthy fat",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["healthy fat","vegan","snack"],
     "calories": 654,
     "carbs": 14,
     "protein": 15,
@@ -1515,13 +1135,9 @@
   {
     "id": 103,
     "name": "Peanuts",
-    "description": "Versatile legume snack often ground into butter.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "legume",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["legume","vegan","snack"],
     "calories": 567,
     "carbs": 16,
     "protein": 26,
@@ -1530,13 +1146,9 @@
   {
     "id": 104,
     "name": "Peanut Butter",
-    "description": "Creamy spread of roasted peanuts loved globally.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "spread",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["spread","vegan","snack"],
     "calories": 588,
     "carbs": 20,
     "protein": 25,
@@ -1545,13 +1157,9 @@
   {
     "id": 105,
     "name": "Cashew",
-    "description": "Buttery kidney-shaped nut perfect for sauces or snacks.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "creamy",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["creamy","vegan","snack"],
     "calories": 553,
     "carbs": 30,
     "protein": 18,
@@ -1560,13 +1168,9 @@
   {
     "id": 106,
     "name": "Pecan",
-    "description": "Sweet, buttery nut starring in Southern pies.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "buttery",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["buttery","vegan","snack"],
     "calories": 691,
     "carbs": 14,
     "protein": 9,
@@ -1575,13 +1179,9 @@
   {
     "id": 107,
     "name": "Hazelnut",
-    "description": "Aromatic nut paired with chocolate in pralines.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "nutty",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["nutty","vegan","snack"],
     "calories": 628,
     "carbs": 17,
     "protein": 15,
@@ -1590,13 +1190,9 @@
   {
     "id": 108,
     "name": "Pumpkin Seeds",
-    "description": "Toasted green seeds offering a crunchy snack.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "snack",
-      "vegan",
-      "roasted"
-    ],
+    "labels": ["snack","vegan","roasted"],
     "calories": 559,
     "carbs": 11,
     "protein": 30,
@@ -1605,13 +1201,9 @@
   {
     "id": 109,
     "name": "Sunflower Seeds",
-    "description": "Nutty gray seeds tossed on salads and bread.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "snack",
-      "vegan",
-      "roasted"
-    ],
+    "labels": ["snack","vegan","roasted"],
     "calories": 584,
     "carbs": 20,
     "protein": 20,
@@ -1620,13 +1212,9 @@
   {
     "id": 110,
     "name": "Flax Seeds",
-    "description": "Tiny omega-3–rich seeds great in smoothies.",
+    "description": "",
     "category": "Nuts/Seeds",
-    "labels": [
-      "omega-3",
-      "vegan",
-      "healthy"
-    ],
+    "labels": ["omega-3","vegan","healthy"],
     "calories": 534,
     "carbs": 29,
     "protein": 18,
@@ -1635,13 +1223,9 @@
   {
     "id": 111,
     "name": "Lentils",
-    "description": "Quick-cooking pulses high in iron and protein.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "vegan",
-      "protein",
-      "fiber"
-    ],
+    "labels": ["vegan","protein","fiber"],
     "calories": 116,
     "carbs": 20,
     "protein": 9,
@@ -1650,13 +1234,9 @@
   {
     "id": 112,
     "name": "Chickpeas",
-    "description": "Versatile legume puréed into hummus or roasted.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "vegan",
-      "protein",
-      "fiber"
-    ],
+    "labels": ["vegan","protein","fiber"],
     "calories": 164,
     "carbs": 27,
     "protein": 9,
@@ -1665,13 +1245,9 @@
   {
     "id": 113,
     "name": "Black Beans",
-    "description": "Hearty black beans common in Latin dishes.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "vegan",
-      "protein",
-      "fiber"
-    ],
+    "labels": ["vegan","protein","fiber"],
     "calories": 132,
     "carbs": 24,
     "protein": 9,
@@ -1680,13 +1256,9 @@
   {
     "id": 114,
     "name": "Kidney Beans",
-    "description": "Red beans that thicken chilies and stews.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "vegan",
-      "protein",
-      "fiber"
-    ],
+    "labels": ["vegan","protein","fiber"],
     "calories": 127,
     "carbs": 22,
     "protein": 9,
@@ -1695,13 +1267,9 @@
   {
     "id": 115,
     "name": "Soybeans",
-    "description": "Protein-dense legume forming the base of tofu.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "vegan",
-      "protein",
-      "soy"
-    ],
+    "labels": ["vegan","protein","soy"],
     "calories": 173,
     "carbs": 9,
     "protein": 16,
@@ -1710,13 +1278,9 @@
   {
     "id": 116,
     "name": "Tofu",
-    "description": "Mild soy curd that absorbs marinades effortlessly.",
+    "description": "",
     "category": "Alternative Protein",
-    "labels": [
-      "vegan",
-      "soy",
-      "protein"
-    ],
+    "labels": ["vegan","soy","protein"],
     "calories": 76,
     "carbs": 2,
     "protein": 8,
@@ -1725,13 +1289,9 @@
   {
     "id": 117,
     "name": "Tempeh",
-    "description": "Nutty fermented soy cake with firm bite.",
+    "description": "",
     "category": "Alternative Protein",
-    "labels": [
-      "vegan",
-      "soy",
-      "fermented"
-    ],
+    "labels": ["vegan","soy","fermented"],
     "calories": 195,
     "carbs": 9,
     "protein": 19,
@@ -1740,13 +1300,9 @@
   {
     "id": 118,
     "name": "Edamame",
-    "description": "Young soybeans served in salted pods at sushi bars.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "vegan",
-      "soy",
-      "green"
-    ],
+    "labels": ["vegan","soy","green"],
     "calories": 121,
     "carbs": 9,
     "protein": 11,
@@ -1755,12 +1311,9 @@
   {
     "id": 119,
     "name": "Brownie",
-    "description": "Fudgy chocolate square beloved by dessert lovers.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "chocolate",
-      "dessert"
-    ],
+    "labels": ["chocolate","dessert"],
     "calories": 466,
     "carbs": 58,
     "protein": 5,
@@ -1769,12 +1322,9 @@
   {
     "id": 120,
     "name": "Chocolate Chip Cookie",
-    "description": "Classic cookie studded with melty chocolate chips.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "dessert",
-      "sweet"
-    ],
+    "labels": ["dessert","sweet"],
     "calories": 488,
     "carbs": 64,
     "protein": 6,
@@ -1783,12 +1333,9 @@
   {
     "id": 121,
     "name": "Donut",
-    "description": "Fried ring pastry glazed or dusted with sugar.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "fried",
-      "dessert"
-    ],
+    "labels": ["fried","dessert"],
     "calories": 452,
     "carbs": 51,
     "protein": 5,
@@ -1797,13 +1344,9 @@
   {
     "id": 122,
     "name": "Cupcake",
-    "description": "Mini cake crowned with swirled frosting and sprinkles.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "baked",
-      "dessert",
-      "sweet"
-    ],
+    "labels": ["baked","dessert","sweet"],
     "calories": 305,
     "carbs": 45,
     "protein": 4,
@@ -1812,13 +1355,9 @@
   {
     "id": 123,
     "name": "Muffin",
-    "description": "Sweet breakfast quick bread often studded with fruit.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "baked",
-      "sweet",
-      "breakfast"
-    ],
+    "labels": ["baked","sweet","breakfast"],
     "calories": 377,
     "carbs": 50,
     "protein": 6,
@@ -1827,12 +1366,9 @@
   {
     "id": 124,
     "name": "Croissant",
-    "description": "Flaky French pastry with buttery layers.",
+    "description": "",
     "category": "Baked Goods",
-    "labels": [
-      "buttery",
-      "french"
-    ],
+    "labels": ["buttery","french"],
     "calories": 406,
     "carbs": 45,
     "protein": 8,
@@ -1841,12 +1377,9 @@
   {
     "id": 125,
     "name": "Bagel",
-    "description": "Dense chewy ring bread typically toasted.",
+    "description": "",
     "category": "Baked Goods",
-    "labels": [
-      "bread",
-      "breakfast"
-    ],
+    "labels": ["bread","breakfast"],
     "calories": 250,
     "carbs": 49,
     "protein": 9,
@@ -1855,12 +1388,9 @@
   {
     "id": 126,
     "name": "Pita Bread",
-    "description": "Pocket flatbread ready to stuff with fillings.",
+    "description": "",
     "category": "Baked Goods",
-    "labels": [
-      "flatbread",
-      "mediterranean"
-    ],
+    "labels": ["flatbread","mediterranean"],
     "calories": 275,
     "carbs": 55,
     "protein": 9,
@@ -1869,12 +1399,9 @@
   {
     "id": 127,
     "name": "Tortilla Chips",
-    "description": "Crispy corn triangles perfect for dipping in salsa.",
+    "description": "",
     "category": "Snacks",
-    "labels": [
-      "crunchy",
-      "fast food"
-    ],
+    "labels": ["crunchy","fast food"],
     "calories": 488,
     "carbs": 65,
     "protein": 6,
@@ -1883,13 +1410,9 @@
   {
     "id": 128,
     "name": "Potato Chips",
-    "description": "Thin salted fried potato slices, ultimate snack.",
+    "description": "",
     "category": "Snacks",
-    "labels": [
-      "crunchy",
-      "fast food",
-      "salty"
-    ],
+    "labels": ["crunchy","fast food","salty"],
     "calories": 536,
     "carbs": 52,
     "protein": 7,
@@ -1898,13 +1421,9 @@
   {
     "id": 129,
     "name": "Popcorn",
-    "description": "Puffed corn kernels synonymous with movie nights.",
+    "description": "",
     "category": "Snacks",
-    "labels": [
-      "corn",
-      "light",
-      "vegan"
-    ],
+    "labels": ["corn","light","vegan"],
     "calories": 375,
     "carbs": 74,
     "protein": 13,
@@ -1913,13 +1432,9 @@
   {
     "id": 130,
     "name": "Candy Bar",
-    "description": "Portable bar of chocolate, caramel, and nuts.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "chocolate",
-      "sweet",
-      "processed"
-    ],
+    "labels": ["chocolate","sweet","processed"],
     "calories": 500,
     "carbs": 58,
     "protein": 6,
@@ -1928,12 +1443,9 @@
   {
     "id": 131,
     "name": "Chocolate Bar",
-    "description": "Solid slab of chocolate enjoyed plain or melted.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "chocolate",
-      "dessert"
-    ],
+    "labels": ["chocolate","dessert"],
     "calories": 546,
     "carbs": 61,
     "protein": 4,
@@ -1942,13 +1454,9 @@
   {
     "id": 132,
     "name": "Gummy Bears",
-    "description": "Chewy, fruit-flavored gelatin candies shaped like bears.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "candy",
-      "chewy",
-      "sweet"
-    ],
+    "labels": ["candy","chewy","sweet"],
     "calories": 343,
     "carbs": 78,
     "protein": 6,
@@ -1957,13 +1465,9 @@
   {
     "id": 133,
     "name": "Marshmallow",
-    "description": "Soft airy sugar pillows toasted over fires.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "candy",
-      "sweet",
-      "soft"
-    ],
+    "labels": ["candy","sweet","soft"],
     "calories": 318,
     "carbs": 81,
     "protein": 2,
@@ -1972,12 +1476,9 @@
   {
     "id": 134,
     "name": "Gelatin",
-    "description": "Jiggly translucent dessert base molded into shapes.",
+    "description": "",
     "category": "Sweets",
-    "labels": [
-      "dessert",
-      "jiggly"
-    ],
+    "labels": ["dessert","jiggly"],
     "calories": 62,
     "carbs": 14,
     "protein": 1,
@@ -1986,13 +1487,9 @@
   {
     "id": 135,
     "name": "Soda (Cola)",
-    "description": "Fizzy caramel-flavored soft drink high in caffeine.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "soft drink",
-      "sweet",
-      "processed"
-    ],
+    "labels": ["soft drink","sweet","processed"],
     "calories": 42,
     "carbs": 11,
     "protein": 0,
@@ -2001,13 +1498,9 @@
   {
     "id": 136,
     "name": "Soda (Lemon-Lime)",
-    "description": "Citrus-flavored soda offering light bubbly sweetness.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "soft drink",
-      "sweet",
-      "processed"
-    ],
+    "labels": ["soft drink","sweet","processed"],
     "calories": 40,
     "carbs": 11,
     "protein": 0,
@@ -2016,13 +1509,9 @@
   {
     "id": 137,
     "name": "Juice (Apple)",
-    "description": "Sweet pressed apple beverage served chilled.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "fruit juice",
-      "sweet",
-      "vegan"
-    ],
+    "labels": ["fruit juice","sweet","vegan"],
     "calories": 46,
     "carbs": 11,
     "protein": 0,
@@ -2031,13 +1520,9 @@
   {
     "id": 138,
     "name": "Juice (Orange)",
-    "description": "Tangy breakfast juice packed with vitamin C.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "fruit juice",
-      "citrus",
-      "vegan"
-    ],
+    "labels": ["fruit juice","citrus","vegan"],
     "calories": 45,
     "carbs": 10,
     "protein": 1,
@@ -2046,13 +1531,9 @@
   {
     "id": 139,
     "name": "Smoothie (Mixed Berry)",
-    "description": "Blended berries whirled into a creamy beverage.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "vegan",
-      "fruity",
-      "healthy"
-    ],
+    "labels": ["vegan","fruity","healthy"],
     "calories": 50,
     "carbs": 12,
     "protein": 1,
@@ -2061,12 +1542,9 @@
   {
     "id": 140,
     "name": "Coffee (Black)",
-    "description": "Bold brewed caffeine kick with zero calories.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "caffeinated",
-      "zero carb"
-    ],
+    "labels": ["caffeinated","zero carb"],
     "calories": 2,
     "carbs": 0,
     "protein": 0,
@@ -2075,12 +1553,9 @@
   {
     "id": 141,
     "name": "Latte",
-    "description": "Espresso mellowed by steamed milk foam.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "coffee",
-      "milk"
-    ],
+    "labels": ["coffee","milk"],
     "calories": 54,
     "carbs": 5,
     "protein": 3,
@@ -2089,13 +1564,9 @@
   {
     "id": 142,
     "name": "Tea (Green)",
-    "description": "Light, antioxidant-rich brew of green tea leaves.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "caffeinated",
-      "light",
-      "healthy"
-    ],
+    "labels": ["caffeinated","light","healthy"],
     "calories": 0,
     "carbs": 0,
     "protein": 0,
@@ -2104,12 +1575,9 @@
   {
     "id": 143,
     "name": "Tea (Black)",
-    "description": "Robust classic tea delivering warming caffeine.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "caffeinated",
-      "classic"
-    ],
+    "labels": ["caffeinated","classic"],
     "calories": 1,
     "carbs": 0,
     "protein": 0,
@@ -2118,12 +1586,9 @@
   {
     "id": 144,
     "name": "Water",
-    "description": "Pure thirst-quenching hydration, zero everything.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "hydrating",
-      "zero calorie"
-    ],
+    "labels": ["hydrating","zero calorie"],
     "calories": 0,
     "carbs": 0,
     "protein": 0,
@@ -2132,13 +1597,9 @@
   {
     "id": 145,
     "name": "Ketchup",
-    "description": "Sweet tangy tomato condiment for fries and burgers.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "sauce",
-      "tomato",
-      "processed"
-    ],
+    "labels": ["sauce","tomato","processed"],
     "calories": 112,
     "carbs": 26,
     "protein": 1,
@@ -2147,12 +1608,9 @@
   {
     "id": 146,
     "name": "Mustard",
-    "description": "Spicy tangy yellow condiment pairing with pretzels.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "sauce",
-      "spicy"
-    ],
+    "labels": ["sauce","spicy"],
     "calories": 66,
     "carbs": 5,
     "protein": 4,
@@ -2161,13 +1619,9 @@
   {
     "id": 147,
     "name": "Mayonnaise",
-    "description": "Creamy egg-oil emulsion spread for sandwiches.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "emulsion",
-      "creamy",
-      "processed"
-    ],
+    "labels": ["emulsion","creamy","processed"],
     "calories": 680,
     "carbs": 1,
     "protein": 1,
@@ -2176,13 +1630,9 @@
   {
     "id": 148,
     "name": "Barbecue Sauce",
-    "description": "Smoky sweet sauce slathered on grilled meats.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "sauce",
-      "sweet",
-      "processed"
-    ],
+    "labels": ["sauce","sweet","processed"],
     "calories": 129,
     "carbs": 29,
     "protein": 1,
@@ -2191,13 +1641,9 @@
   {
     "id": 149,
     "name": "Soy Sauce",
-    "description": "Salty umami Asian seasoning brewed from soy.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "asian",
-      "salty",
-      "vegan"
-    ],
+    "labels": ["asian","salty","vegan"],
     "calories": 53,
     "carbs": 4,
     "protein": 8,
@@ -2206,13 +1652,9 @@
   {
     "id": 150,
     "name": "Hot Sauce",
-    "description": "Fiery chili-pepper condiment that sparks any dish.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "spicy",
-      "vegan",
-      "processed"
-    ],
+    "labels": ["spicy","vegan","processed"],
     "calories": 29,
     "carbs": 5,
     "protein": 1,
@@ -2221,13 +1663,9 @@
   {
     "id": 151,
     "name": "Vinegar (White)",
-    "description": "Sharp acidic staple for pickling and cleaning.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "acidic",
-      "zero calorie",
-      "vegan"
-    ],
+    "labels": ["acidic","zero calorie","vegan"],
     "calories": 18,
     "carbs": 0,
     "protein": 0,
@@ -2236,13 +1674,9 @@
   {
     "id": 152,
     "name": "Olive Oil",
-    "description": "Fruity Mediterranean oil rich in monounsaturates.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "oil",
-      "healthy fats",
-      "mediterranean"
-    ],
+    "labels": ["oil","healthy fats","mediterranean"],
     "calories": 884,
     "carbs": 0,
     "protein": 0,
@@ -2251,12 +1685,9 @@
   {
     "id": 153,
     "name": "Canola Oil",
-    "description": "Neutral high-heat oil ideal for frying.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "oil",
-      "neutral"
-    ],
+    "labels": ["oil","neutral"],
     "calories": 884,
     "carbs": 0,
     "protein": 0,
@@ -2265,12 +1696,9 @@
   {
     "id": 154,
     "name": "Vegetable Oil",
-    "description": "All-purpose neutral cooking fat from plants.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "oil",
-      "generic"
-    ],
+    "labels": ["oil","generic"],
     "calories": 884,
     "carbs": 0,
     "protein": 0,
@@ -2279,12 +1707,9 @@
   {
     "id": 155,
     "name": "Avocado Oil",
-    "description": "High-smoke-point oil pressed from avocados.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "oil",
-      "healthy fats"
-    ],
+    "labels": ["oil","healthy fats"],
     "calories": 884,
     "carbs": 0,
     "protein": 0,
@@ -2293,13 +1718,9 @@
   {
     "id": 156,
     "name": "Sesame Oil",
-    "description": "Aromatic nutty oil giving depth to Asian dishes.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "oil",
-      "asian",
-      "flavorful"
-    ],
+    "labels": ["oil","asian","flavorful"],
     "calories": 884,
     "carbs": 0,
     "protein": 0,
@@ -2308,12 +1729,9 @@
   {
     "id": 157,
     "name": "Salt",
-    "description": "Essential mineral seasoning enhancing every savory bite.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "seasoning",
-      "mineral"
-    ],
+    "labels": ["seasoning","mineral"],
     "calories": 0,
     "carbs": 0,
     "protein": 0,
@@ -2322,12 +1740,9 @@
   {
     "id": 158,
     "name": "Pepper (Black)",
-    "description": "Pungent spice freshly ground onto dishes.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "spice",
-      "common"
-    ],
+    "labels": ["spice","common"],
     "calories": 255,
     "carbs": 64,
     "protein": 10,
@@ -2336,12 +1751,9 @@
   {
     "id": 159,
     "name": "Cinnamon",
-    "description": "Warm sweet spice starring in baked goods.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "spice",
-      "sweet"
-    ],
+    "labels": ["spice","sweet"],
     "calories": 247,
     "carbs": 81,
     "protein": 4,
@@ -2350,12 +1762,9 @@
   {
     "id": 160,
     "name": "Cumin",
-    "description": "Earthy aromatic spice crucial in many curries.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "spice",
-      "aromatic"
-    ],
+    "labels": ["spice","aromatic"],
     "calories": 375,
     "carbs": 44,
     "protein": 18,
@@ -2364,13 +1773,9 @@
   {
     "id": 161,
     "name": "Paprika",
-    "description": "Sweet smoky red-pepper powder for color and flavor.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "spice",
-      "red",
-      "smoky"
-    ],
+    "labels": ["spice","red","smoky"],
     "calories": 282,
     "carbs": 54,
     "protein": 14,
@@ -2379,13 +1784,9 @@
   {
     "id": 162,
     "name": "Basil",
-    "description": "Fragrant herb that anchors pesto and Caprese salads.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "herb",
-      "italian",
-      "fresh"
-    ],
+    "labels": ["herb","italian","fresh"],
     "calories": 23,
     "carbs": 4,
     "protein": 3,
@@ -2394,13 +1795,9 @@
   {
     "id": 163,
     "name": "Oregano",
-    "description": "Robust Mediterranean herb seasoning pizzas and sauces.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "herb",
-      "mediterranean",
-      "aromatic"
-    ],
+    "labels": ["herb","mediterranean","aromatic"],
     "calories": 265,
     "carbs": 69,
     "protein": 9,
@@ -2409,12 +1806,9 @@
   {
     "id": 164,
     "name": "Thyme",
-    "description": "Woody herb lending subtle lemon-mint notes.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "herb",
-      "aromatic"
-    ],
+    "labels": ["herb","aromatic"],
     "calories": 101,
     "carbs": 24,
     "protein": 6,
@@ -2423,12 +1817,9 @@
   {
     "id": 165,
     "name": "Rosemary",
-    "description": "Piney herb that perfumes roasted meats and potatoes.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "herb",
-      "aromatic"
-    ],
+    "labels": ["herb","aromatic"],
     "calories": 131,
     "carbs": 21,
     "protein": 3,
@@ -2437,12 +1828,9 @@
   {
     "id": 166,
     "name": "Parsley",
-    "description": "Bright green garnish adding freshness to dishes.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "herb",
-      "fresh"
-    ],
+    "labels": ["herb","fresh"],
     "calories": 36,
     "carbs": 6,
     "protein": 3,
@@ -2451,12 +1839,9 @@
   {
     "id": 167,
     "name": "Sage",
-    "description": "Savory herb that pairs wonderfully with poultry.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "herb",
-      "aromatic"
-    ],
+    "labels": ["herb","aromatic"],
     "calories": 315,
     "carbs": 61,
     "protein": 11,
@@ -2465,13 +1850,9 @@
   {
     "id": 168,
     "name": "Coriander",
-    "description": "Citrusy herb (cilantro) polarizing yet essential.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "herb",
-      "fresh",
-      "citrus note"
-    ],
+    "labels": ["herb","fresh","citrus note"],
     "calories": 23,
     "carbs": 4,
     "protein": 2,
@@ -2480,13 +1861,9 @@
   {
     "id": 169,
     "name": "Turmeric",
-    "description": "Golden spice treasured for color and anti-inflammatory trait.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "spice",
-      "yellow",
-      "anti-inflammatory"
-    ],
+    "labels": ["spice","yellow","anti-inflammatory"],
     "calories": 354,
     "carbs": 65,
     "protein": 8,
@@ -2495,12 +1872,9 @@
   {
     "id": 170,
     "name": "Curry Powder",
-    "description": "Blend of spices instantly adding Indian warmth.",
+    "description": "",
     "category": "Herbs/Spices",
-    "labels": [
-      "spice mix",
-      "indian"
-    ],
+    "labels": ["spice mix","indian"],
     "calories": 325,
     "carbs": 58,
     "protein": 14,
@@ -2509,12 +1883,9 @@
   {
     "id": 171,
     "name": "Bread Crumbs",
-    "description": "Ground dried bread that crisps coatings and toppings.",
+    "description": "",
     "category": "Baked Goods",
-    "labels": [
-      "dry",
-      "breading"
-    ],
+    "labels": ["dry","breading"],
     "calories": 395,
     "carbs": 72,
     "protein": 13,
@@ -2523,12 +1894,9 @@
   {
     "id": 172,
     "name": "Pancake",
-    "description": "Fluffy griddlecake soaking up maple syrup.",
+    "description": "",
     "category": "Baked Goods",
-    "labels": [
-      "breakfast",
-      "sweet"
-    ],
+    "labels": ["breakfast","sweet"],
     "calories": 227,
     "carbs": 37,
     "protein": 6,
@@ -2537,12 +1905,9 @@
   {
     "id": 173,
     "name": "Waffle",
-    "description": "Crunchy-grid breakfast treat served with fruit.",
+    "description": "",
     "category": "Baked Goods",
-    "labels": [
-      "breakfast",
-      "sweet"
-    ],
+    "labels": ["breakfast","sweet"],
     "calories": 291,
     "carbs": 33,
     "protein": 8,
@@ -2551,13 +1916,9 @@
   {
     "id": 174,
     "name": "French Fries",
-    "description": "Golden salted potato sticks beloved worldwide.",
+    "description": "",
     "category": "Snacks",
-    "labels": [
-      "fast food",
-      "fried",
-      "salty"
-    ],
+    "labels": ["fast food","fried","salty"],
     "calories": 312,
     "carbs": 41,
     "protein": 3,
@@ -2566,13 +1927,9 @@
   {
     "id": 175,
     "name": "Pizza",
-    "description": "Baked flatbread smothered with sauce and cheese.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "italian",
-      "fast food",
-      "cheesy"
-    ],
+    "labels": ["italian","fast food","cheesy"],
     "calories": 266,
     "carbs": 33,
     "protein": 11,
@@ -2581,13 +1938,9 @@
   {
     "id": 176,
     "name": "Burger",
-    "description": "Sandwich featuring seasoned ground meat patty.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "fast food",
-      "american",
-      "meat"
-    ],
+    "labels": ["fast food","american","meat"],
     "calories": 295,
     "carbs": 30,
     "protein": 17,
@@ -2596,12 +1949,9 @@
   {
     "id": 177,
     "name": "Hot Dog",
-    "description": "Sausage in bun topped with condiments.",
+    "description": "",
     "category": "Fast Food",
-    "labels": [
-      "processed",
-      "american"
-    ],
+    "labels": ["processed","american"],
     "calories": 290,
     "carbs": 23,
     "protein": 11,
@@ -2610,12 +1960,9 @@
   {
     "id": 178,
     "name": "Fried Chicken",
-    "description": "Crispy battered chicken pieces with juicy interior.",
+    "description": "",
     "category": "Fast Food",
-    "labels": [
-      "crispy",
-      "meat"
-    ],
+    "labels": ["crispy","meat"],
     "calories": 320,
     "carbs": 11,
     "protein": 23,
@@ -2624,13 +1971,9 @@
   {
     "id": 179,
     "name": "Fish Sticks",
-    "description": "Breaded fish portions favored by kids.",
+    "description": "",
     "category": "Fast Food",
-    "labels": [
-      "processed",
-      "seafood",
-      "fried"
-    ],
+    "labels": ["processed","seafood","fried"],
     "calories": 277,
     "carbs": 17,
     "protein": 15,
@@ -2639,13 +1982,9 @@
   {
     "id": 180,
     "name": "Nuggets",
-    "description": "Bite-size breaded chicken perfect for dipping.",
+    "description": "",
     "category": "Fast Food",
-    "labels": [
-      "processed",
-      "chicken",
-      "fried"
-    ],
+    "labels": ["processed","chicken","fried"],
     "calories": 296,
     "carbs": 18,
     "protein": 16,
@@ -2654,13 +1993,9 @@
   {
     "id": 181,
     "name": "Tacos",
-    "description": "Folded tortilla brimming with spiced fillings.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "mexican",
-      "fast food",
-      "spicy"
-    ],
+    "labels": ["mexican","fast food","spicy"],
     "calories": 226,
     "carbs": 20,
     "protein": 12,
@@ -2669,12 +2004,9 @@
   {
     "id": 182,
     "name": "Burrito",
-    "description": "Rolled tortilla enclosing hearty beans, rice, and meat.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "mexican",
-      "fast food"
-    ],
+    "labels": ["mexican","fast food"],
     "calories": 206,
     "carbs": 27,
     "protein": 8,
@@ -2683,13 +2015,9 @@
   {
     "id": 183,
     "name": "Falafel",
-    "description": "Spiced chickpea fritters tucked into pita.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "mediterranean",
-      "vegan",
-      "fried"
-    ],
+    "labels": ["mediterranean","vegan","fried"],
     "calories": 333,
     "carbs": 31,
     "protein": 13,
@@ -2698,13 +2026,9 @@
   {
     "id": 184,
     "name": "Hummus",
-    "description": "Creamy chickpea-tahini dip spread on everything.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "mediterranean",
-      "vegan",
-      "dip"
-    ],
+    "labels": ["mediterranean","vegan","dip"],
     "calories": 166,
     "carbs": 14,
     "protein": 8,
@@ -2713,13 +2037,9 @@
   {
     "id": 185,
     "name": "Guacamole",
-    "description": "Mashed avocado dip brightened with lime.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "dip",
-      "vegan",
-      "mexican"
-    ],
+    "labels": ["dip","vegan","mexican"],
     "calories": 160,
     "carbs": 9,
     "protein": 2,
@@ -2728,13 +2048,9 @@
   {
     "id": 186,
     "name": "Sushi",
-    "description": "Vinegared rice rolls wrapped around fresh fillings.",
+    "description": "",
     "category": "Ethnic Dish",
-    "labels": [
-      "japanese",
-      "seafood",
-      "rice"
-    ],
+    "labels": ["japanese","seafood","rice"],
     "calories": 143,
     "carbs": 30,
     "protein": 3,
@@ -2743,13 +2059,9 @@
   {
     "id": 187,
     "name": "Fried Rice",
-    "description": "Wok-tossed rice speckled with veggies and soy.",
+    "description": "",
     "category": "Ethnic Dish",
-    "labels": [
-      "asian",
-      "rice",
-      "fast food"
-    ],
+    "labels": ["asian","rice","fast food"],
     "calories": 168,
     "carbs": 25,
     "protein": 4,
@@ -2758,13 +2070,9 @@
   {
     "id": 188,
     "name": "Stir-Fry Vegetables",
-    "description": "Quick sauté of mixed veggies in savory sauce.",
+    "description": "",
     "category": "Ethnic Dish",
-    "labels": [
-      "asian",
-      "vegan",
-      "healthy"
-    ],
+    "labels": ["asian","vegan","healthy"],
     "calories": 80,
     "carbs": 10,
     "protein": 3,
@@ -2773,13 +2081,9 @@
   {
     "id": 189,
     "name": "Dumplings",
-    "description": "Stuffed dough pockets steamed or pan-fried.",
+    "description": "",
     "category": "Ethnic Dish",
-    "labels": [
-      "asian",
-      "fast food",
-      "filled"
-    ],
+    "labels": ["asian","fast food","filled"],
     "calories": 170,
     "carbs": 25,
     "protein": 6,
@@ -2788,13 +2092,9 @@
   {
     "id": 190,
     "name": "Ramen",
-    "description": "Japanese noodle soup topped with savory fixings.",
+    "description": "",
     "category": "Ethnic Dish",
-    "labels": [
-      "japanese",
-      "noodles",
-      "broth"
-    ],
+    "labels": ["japanese","noodles","broth"],
     "calories": 436,
     "carbs": 63,
     "protein": 10,
@@ -2803,13 +2103,9 @@
   {
     "id": 191,
     "name": "Pho",
-    "description": "Vietnamese aromatic soup of long-simmered broth.",
+    "description": "",
     "category": "Ethnic Dish",
-    "labels": [
-      "vietnamese",
-      "noodles",
-      "broth"
-    ],
+    "labels": ["vietnamese","noodles","broth"],
     "calories": 40,
     "carbs": 5,
     "protein": 3,
@@ -2818,13 +2114,9 @@
   {
     "id": 192,
     "name": "Pad Thai",
-    "description": "Thai street-style noodles in sweet-savory sauce.",
+    "description": "",
     "category": "Ethnic Dish",
-    "labels": [
-      "thai",
-      "noodles",
-      "fast food"
-    ],
+    "labels": ["thai","noodles","fast food"],
     "calories": 200,
     "carbs": 25,
     "protein": 7,
@@ -2833,13 +2125,9 @@
   {
     "id": 193,
     "name": "Fried Eggs",
-    "description": "Sunny-side breakfast classic with runny yolk.",
+    "description": "",
     "category": "Eggs",
-    "labels": [
-      "breakfast",
-      "protein",
-      "homemade"
-    ],
+    "labels": ["breakfast","protein","homemade"],
     "calories": 196,
     "carbs": 1,
     "protein": 13,
@@ -2848,13 +2136,9 @@
   {
     "id": 194,
     "name": "Scrambled Eggs",
-    "description": "Fluffy curds of whisked egg cooked gently.",
+    "description": "",
     "category": "Eggs",
-    "labels": [
-      "breakfast",
-      "protein",
-      "homemade"
-    ],
+    "labels": ["breakfast","protein","homemade"],
     "calories": 148,
     "carbs": 2,
     "protein": 10,
@@ -2863,12 +2147,9 @@
   {
     "id": 195,
     "name": "Hard Boiled Eggs",
-    "description": "Firm whites with creamy yolks, picnic staple.",
+    "description": "",
     "category": "Eggs",
-    "labels": [
-      "breakfast",
-      "protein"
-    ],
+    "labels": ["breakfast","protein"],
     "calories": 155,
     "carbs": 1,
     "protein": 13,
@@ -2877,13 +2158,9 @@
   {
     "id": 196,
     "name": "Omelet",
-    "description": "Folded egg envelope hiding cheese or veggies.",
+    "description": "",
     "category": "Eggs",
-    "labels": [
-      "breakfast",
-      "protein",
-      "cheesy"
-    ],
+    "labels": ["breakfast","protein","cheesy"],
     "calories": 154,
     "carbs": 1,
     "protein": 10,
@@ -2892,12 +2169,9 @@
   {
     "id": 197,
     "name": "Macaroni and Cheese",
-    "description": "Elbow pasta coated in velvety cheese sauce.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "cheesy",
-      "comfort food"
-    ],
+    "labels": ["cheesy","comfort food"],
     "calories": 164,
     "carbs": 24,
     "protein": 7,
@@ -2906,13 +2180,9 @@
   {
     "id": 198,
     "name": "Lasagna",
-    "description": "Layered pasta bake with meat, sauce, and cheese.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "italian",
-      "cheesy",
-      "baked"
-    ],
+    "labels": ["italian","cheesy","baked"],
     "calories": 135,
     "carbs": 16,
     "protein": 9,
@@ -2921,12 +2191,9 @@
   {
     "id": 199,
     "name": "Spaghetti Bolognese",
-    "description": "Pasta topped with hearty meat ragù.",
+    "description": "",
     "category": "Pasta",
-    "labels": [
-      "italian",
-      "meat sauce"
-    ],
+    "labels": ["italian","meat sauce"],
     "calories": 140,
     "carbs": 19,
     "protein": 7,
@@ -2935,13 +2202,9 @@
   {
     "id": 200,
     "name": "Alfredo Pasta",
-    "description": "Rich noodles bathed in buttery Parmesan cream.",
+    "description": "",
     "category": "Pasta",
-    "labels": [
-      "italian",
-      "creamy",
-      "cheesy"
-    ],
+    "labels": ["italian","creamy","cheesy"],
     "calories": 197,
     "carbs": 25,
     "protein": 6,
@@ -2950,13 +2213,9 @@
   {
     "id": 201,
     "name": "Tahini",
-    "description": "Smooth sesame paste key to hummus and dressings.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "middle eastern",
-      "sesame",
-      "vegan"
-    ],
+    "labels": ["middle eastern","sesame","vegan"],
     "calories": 595,
     "carbs": 21,
     "protein": 17,
@@ -2965,13 +2224,9 @@
   {
     "id": 202,
     "name": "Feta Cheese",
-    "description": "Crumbly salty Greek cheese for salads.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "cheese",
-      "greek",
-      "salty"
-    ],
+    "labels": ["cheese","greek","salty"],
     "calories": 265,
     "carbs": 4,
     "protein": 14,
@@ -2980,12 +2235,9 @@
   {
     "id": 203,
     "name": "Brown Sugar",
-    "description": "Molasses-tinged sweet crystals used in baking.",
+    "description": "",
     "category": "Sweeteners",
-    "labels": [
-      "sweet",
-      "processed"
-    ],
+    "labels": ["sweet","processed"],
     "calories": 380,
     "carbs": 98,
     "protein": 0,
@@ -2994,12 +2246,9 @@
   {
     "id": 204,
     "name": "White Sugar",
-    "description": "Refined white granules sweetening coffee and cakes.",
+    "description": "",
     "category": "Sweeteners",
-    "labels": [
-      "sweet",
-      "processed"
-    ],
+    "labels": ["sweet","processed"],
     "calories": 387,
     "carbs": 100,
     "protein": 0,
@@ -3008,12 +2257,9 @@
   {
     "id": 205,
     "name": "Honey",
-    "description": "Viscous amber sweetener produced by bees.",
+    "description": "",
     "category": "Sweeteners",
-    "labels": [
-      "bee product",
-      "sweet"
-    ],
+    "labels": ["bee product","sweet"],
     "calories": 304,
     "carbs": 82,
     "protein": 0,
@@ -3022,13 +2268,9 @@
   {
     "id": 206,
     "name": "Maple Syrup",
-    "description": "Tree-tapped amber syrup crowning pancakes.",
+    "description": "",
     "category": "Sweeteners",
-    "labels": [
-      "sweet",
-      "breakfast",
-      "vegan"
-    ],
+    "labels": ["sweet","breakfast","vegan"],
     "calories": 260,
     "carbs": 67,
     "protein": 0,
@@ -3037,13 +2279,9 @@
   {
     "id": 207,
     "name": "Jam",
-    "description": "Fruit preserve spread on toast or pastries.",
+    "description": "",
     "category": "Sweeteners",
-    "labels": [
-      "fruit-based",
-      "sweet",
-      "spread"
-    ],
+    "labels": ["fruit-based","sweet","spread"],
     "calories": 250,
     "carbs": 63,
     "protein": 0,
@@ -3052,12 +2290,9 @@
   {
     "id": 208,
     "name": "Blue Cheese",
-    "description": "Pungent veined cheese with bold, salty bite.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "cheese",
-      "strong flavor"
-    ],
+    "labels": ["cheese","strong flavor"],
     "calories": 353,
     "carbs": 2,
     "protein": 21,
@@ -3066,13 +2301,9 @@
   {
     "id": 209,
     "name": "White Bread",
-    "description": "Soft refined loaf perfect for toast.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "baked",
-      "refined",
-      "fast food"
-    ],
+    "labels": ["baked","refined","fast food"],
     "calories": 265,
     "carbs": 49,
     "protein": 9,
@@ -3081,13 +2312,9 @@
   {
     "id": 210,
     "name": "Bagged Lettuce",
-    "description": "Pre-washed salad greens for grab-and-go convenience.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "convenient",
-      "salad"
-    ],
+    "labels": ["fresh","convenient","salad"],
     "calories": 15,
     "carbs": 3,
     "protein": 1,
@@ -3096,13 +2323,9 @@
   {
     "id": 211,
     "name": "Rotisserie Chicken",
-    "description": "Ready-to-eat spit-roasted chicken with crispy skin.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "convenient",
-      "protein",
-      "homemade"
-    ],
+    "labels": ["convenient","protein","homemade"],
     "calories": 229,
     "carbs": 0,
     "protein": 27,
@@ -3111,13 +2334,9 @@
   {
     "id": 212,
     "name": "Frozen Pizza",
-    "description": "Freezer-aisle pizza ready in minutes.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "convenient",
-      "processed",
-      "fast food"
-    ],
+    "labels": ["convenient","processed","fast food"],
     "calories": 270,
     "carbs": 34,
     "protein": 11,
@@ -3126,13 +2345,9 @@
   {
     "id": 213,
     "name": "Frozen Vegetables",
-    "description": "Flash-frozen produce retaining nutrients and color.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "convenient",
-      "vegan",
-      "healthy"
-    ],
+    "labels": ["convenient","vegan","healthy"],
     "calories": 40,
     "carbs": 8,
     "protein": 2,
@@ -3141,13 +2356,9 @@
   {
     "id": 214,
     "name": "Dried Cranberries",
-    "description": "Sweet-tart chewy berries dotted in salads or bakes.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "sweet",
-      "dried",
-      "snack"
-    ],
+    "labels": ["sweet","dried","snack"],
     "calories": 308,
     "carbs": 82,
     "protein": 0,
@@ -3156,13 +2367,9 @@
   {
     "id": 215,
     "name": "Raisins",
-    "description": "Sun-dried grapes sweet and naturally sticky.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "dried",
-      "vegan",
-      "snack"
-    ],
+    "labels": ["dried","vegan","snack"],
     "calories": 299,
     "carbs": 79,
     "protein": 3,
@@ -3171,13 +2378,9 @@
   {
     "id": 216,
     "name": "Granola",
-    "description": "Toasted oat clusters laced with nuts and honey.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "breakfast",
-      "sweet",
-      "crunchy"
-    ],
+    "labels": ["breakfast","sweet","crunchy"],
     "calories": 471,
     "carbs": 64,
     "protein": 10,
@@ -3186,12 +2389,9 @@
   {
     "id": 217,
     "name": "Greek Yogurt",
-    "description": "Thick strained yogurt packing extra protein.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "creamy",
-      "high protein"
-    ],
+    "labels": ["creamy","high protein"],
     "calories": 120,
     "carbs": 4,
     "protein": 15,
@@ -3200,13 +2400,9 @@
   {
     "id": 218,
     "name": "Instant Oatmeal",
-    "description": "Quick-cooking flavored oats for busy mornings.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "breakfast",
-      "quick",
-      "vegan"
-    ],
+    "labels": ["breakfast","quick","vegan"],
     "calories": 367,
     "carbs": 68,
     "protein": 11,
@@ -3215,13 +2411,9 @@
   {
     "id": 219,
     "name": "Protein Bar",
-    "description": "Portable snack bar fortified with protein.",
+    "description": "",
     "category": "Snacks",
-    "labels": [
-      "processed",
-      "protein",
-      "convenient"
-    ],
+    "labels": ["processed","protein","convenient"],
     "calories": 350,
     "carbs": 30,
     "protein": 20,
@@ -3230,12 +2422,9 @@
   {
     "id": 220,
     "name": "Chicken Soup",
-    "description": "Comforting broth rich with tender chicken pieces.",
+    "description": "",
     "category": "Soup",
-    "labels": [
-      "comfort food",
-      "homemade"
-    ],
+    "labels": ["comfort food","homemade"],
     "calories": 72,
     "carbs": 8,
     "protein": 5,
@@ -3244,12 +2433,9 @@
   {
     "id": 221,
     "name": "Tomato Soup",
-    "description": "Silky tangy tomato purée served hot.",
+    "description": "",
     "category": "Soup",
-    "labels": [
-      "comfort food",
-      "vegan option"
-    ],
+    "labels": ["comfort food","vegan option"],
     "calories": 74,
     "carbs": 14,
     "protein": 2,
@@ -3258,13 +2444,9 @@
   {
     "id": 222,
     "name": "Miso Soup",
-    "description": "Light broth with fermented soybean paste and tofu.",
+    "description": "",
     "category": "Soup",
-    "labels": [
-      "japanese",
-      "fermented",
-      "light"
-    ],
+    "labels": ["japanese","fermented","light"],
     "calories": 40,
     "carbs": 5,
     "protein": 3,
@@ -3273,13 +2455,9 @@
   {
     "id": 223,
     "name": "Corn Flakes",
-    "description": "Crunchy toasted corn cereal that stays crisp.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "breakfast",
-      "processed",
-      "cereal"
-    ],
+    "labels": ["breakfast","processed","cereal"],
     "calories": 357,
     "carbs": 84,
     "protein": 8,
@@ -3288,13 +2466,9 @@
   {
     "id": 224,
     "name": "Whey Protein Powder",
-    "description": "Powdered dairy protein supplement for shakes.",
+    "description": "",
     "category": "Supplement",
-    "labels": [
-      "protein",
-      "fitness",
-      "processed"
-    ],
+    "labels": ["protein","fitness","processed"],
     "calories": 400,
     "carbs": 15,
     "protein": 70,
@@ -3303,13 +2477,9 @@
   {
     "id": 225,
     "name": "Almond Milk",
-    "description": "Nut-based dairy-free milk with subtle flavor.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "vegan",
-      "dairy alternative",
-      "healthy"
-    ],
+    "labels": ["vegan","dairy alternative","healthy"],
     "calories": 15,
     "carbs": 1,
     "protein": 1,
@@ -3318,13 +2488,9 @@
   {
     "id": 226,
     "name": "Coconut Milk",
-    "description": "Rich tropical milk lending creaminess to curries.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "dairy alternative",
-      "vegan",
-      "tropical"
-    ],
+    "labels": ["dairy alternative","vegan","tropical"],
     "calories": 230,
     "carbs": 6,
     "protein": 2,
@@ -3333,12 +2499,9 @@
   {
     "id": 227,
     "name": "Sparkling Water",
-    "description": "Carbonated water delivering refreshing fizz.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "carbonated",
-      "zero calorie"
-    ],
+    "labels": ["carbonated","zero calorie"],
     "calories": 0,
     "carbs": 0,
     "protein": 0,
@@ -3347,12 +2510,9 @@
   {
     "id": 228,
     "name": "Gatorade",
-    "description": "Electrolyte sports drink aiding rehydration.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "sports drink",
-      "processed"
-    ],
+    "labels": ["sports drink","processed"],
     "calories": 50,
     "carbs": 14,
     "protein": 0,
@@ -3361,13 +2521,9 @@
   {
     "id": 229,
     "name": "Energy Drink",
-    "description": "Caffeinated sweetened beverage providing quick lift.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "caffeinated",
-      "processed",
-      "sweet"
-    ],
+    "labels": ["caffeinated","processed","sweet"],
     "calories": 45,
     "carbs": 11,
     "protein": 0,
@@ -3376,13 +2532,9 @@
   {
     "id": 230,
     "name": "Iced Tea",
-    "description": "Chilled sweetened brewed tea over ice.",
+    "description": "",
     "category": "Beverages",
-    "labels": [
-      "sweet",
-      "tea",
-      "processed"
-    ],
+    "labels": ["sweet","tea","processed"],
     "calories": 27,
     "carbs": 7,
     "protein": 0,
@@ -3391,13 +2543,9 @@
   {
     "id": 231,
     "name": "Fried Plantains",
-    "description": "Caramelized sweet plantain slices with crispy edges.",
+    "description": "",
     "category": "Snacks",
-    "labels": [
-      "caribbean",
-      "fried",
-      "sweet"
-    ],
+    "labels": ["caribbean","fried","sweet"],
     "calories": 250,
     "carbs": 36,
     "protein": 1,
@@ -3406,13 +2554,9 @@
   {
     "id": 232,
     "name": "Baked Beans",
-    "description": "Slow-baked beans in sweet savory sauce.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "canned",
-      "sweet",
-      "processed"
-    ],
+    "labels": ["canned","sweet","processed"],
     "calories": 155,
     "carbs": 29,
     "protein": 6,
@@ -3421,13 +2565,9 @@
   {
     "id": 233,
     "name": "Tabbouleh",
-    "description": "Parsley-bulgur salad brightened with lemon and mint.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "mediterranean",
-      "vegan",
-      "fresh"
-    ],
+    "labels": ["mediterranean","vegan","fresh"],
     "calories": 110,
     "carbs": 18,
     "protein": 3,
@@ -3436,13 +2576,9 @@
   {
     "id": 234,
     "name": "Couscous",
-    "description": "Tiny steamed semolina granules cooking in minutes.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "middle eastern",
-      "vegan",
-      "quick"
-    ],
+    "labels": ["middle eastern","vegan","quick"],
     "calories": 112,
     "carbs": 23,
     "protein": 3,
@@ -3451,13 +2587,9 @@
   {
     "id": 235,
     "name": "Pomegranate",
-    "description": "Ruby red arils bursting with tangy juice.",
+    "description": "",
     "category": "Fruit",
-    "labels": [
-      "fresh",
-      "antioxidants",
-      "vegan"
-    ],
+    "labels": ["fresh","antioxidants","vegan"],
     "calories": 83,
     "carbs": 19,
     "protein": 1,
@@ -3466,13 +2598,9 @@
   {
     "id": 236,
     "name": "Grapeseed Oil",
-    "description": "Light, high-smoke neutral oil great for frying.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "oil",
-      "neutral",
-      "healthy fats"
-    ],
+    "labels": ["oil","neutral","healthy fats"],
     "calories": 884,
     "carbs": 0,
     "protein": 0,
@@ -3481,13 +2609,9 @@
   {
     "id": 237,
     "name": "Whole Wheat Pasta",
-    "description": "Nutty pasta made from whole-wheat flour.",
+    "description": "",
     "category": "Grain",
-    "labels": [
-      "pasta",
-      "whole grain",
-      "healthy"
-    ],
+    "labels": ["pasta","whole grain","healthy"],
     "calories": 124,
     "carbs": 27,
     "protein": 5,
@@ -3496,13 +2620,9 @@
   {
     "id": 238,
     "name": "Biryani",
-    "description": "Fragrant spiced rice dish layered with meat.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "indian",
-      "spiced",
-      "rice"
-    ],
+    "labels": ["indian","spiced","rice"],
     "calories": 290,
     "carbs": 45,
     "protein": 12,
@@ -3511,13 +2631,9 @@
   {
     "id": 239,
     "name": "Chicken Curry",
-    "description": "Chicken simmered in aromatic spiced sauce.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "indian",
-      "spicy",
-      "meat"
-    ],
+    "labels": ["indian","spicy","meat"],
     "calories": 220,
     "carbs": 5,
     "protein": 17,
@@ -3526,13 +2642,9 @@
   {
     "id": 240,
     "name": "Rice Cake (Brown)",
-    "description": "Airy whole-grain disk with subtle nuttiness.",
+    "description": "",
     "category": "Snacks",
-    "labels": [
-      "light",
-      "whole grain",
-      "vegan"
-    ],
+    "labels": ["light","whole grain","vegan"],
     "calories": 35,
     "carbs": 8,
     "protein": 1,
@@ -3541,13 +2653,9 @@
   {
     "id": 241,
     "name": "Pilaf",
-    "description": "Seasoned rice cooked in rich broth.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "grain",
-      "flavored",
-      "healthy"
-    ],
+    "labels": ["grain","flavored","healthy"],
     "calories": 160,
     "carbs": 28,
     "protein": 4,
@@ -3556,13 +2664,9 @@
   {
     "id": 242,
     "name": "Kimchi",
-    "description": "Spicy fermented Korean cabbage condiment.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fermented",
-      "korean",
-      "spicy"
-    ],
+    "labels": ["fermented","korean","spicy"],
     "calories": 15,
     "carbs": 3,
     "protein": 1,
@@ -3571,13 +2675,9 @@
   {
     "id": 243,
     "name": "Tzatziki",
-    "description": "Yogurt-cucumber garlic dip cooling spicy foods.",
+    "description": "",
     "category": "Condiments",
-    "labels": [
-      "greek",
-      "yogurt-based",
-      "dip"
-    ],
+    "labels": ["greek","yogurt-based","dip"],
     "calories": 54,
     "carbs": 3,
     "protein": 3,
@@ -3586,13 +2686,9 @@
   {
     "id": 244,
     "name": "Cottage Pie",
-    "description": "Beef-and-veg pie topped with mashed potatoes.",
+    "description": "",
     "category": "Mixed Dish",
-    "labels": [
-      "british",
-      "meat",
-      "baked"
-    ],
+    "labels": ["british","meat","baked"],
     "calories": 120,
     "carbs": 12,
     "protein": 8,
@@ -3601,13 +2697,9 @@
   {
     "id": 245,
     "name": "Meatballs",
-    "description": "Seasoned minced meat spheres simmered in sauce.",
+    "description": "",
     "category": "Meat",
-    "labels": [
-      "protein",
-      "italian",
-      "baked"
-    ],
+    "labels": ["protein","italian","baked"],
     "calories": 230,
     "carbs": 5,
     "protein": 15,
@@ -3616,13 +2708,9 @@
   {
     "id": 246,
     "name": "Brie Cheese",
-    "description": "Soft-ripened French cheese with creamy interior.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "cheese",
-      "french",
-      "creamy"
-    ],
+    "labels": ["cheese","french","creamy"],
     "calories": 334,
     "carbs": 0,
     "protein": 21,
@@ -3631,13 +2719,9 @@
   {
     "id": 247,
     "name": "Black-Eyed Peas",
-    "description": "Earthy beans traditionally cooked with smoked meat.",
+    "description": "",
     "category": "Legumes",
-    "labels": [
-      "vegan",
-      "protein",
-      "fiber"
-    ],
+    "labels": ["vegan","protein","fiber"],
     "calories": 128,
     "carbs": 23,
     "protein": 8,
@@ -3646,13 +2730,9 @@
   {
     "id": 248,
     "name": "Okra",
-    "description": "Green pods that thicken stews and gumbos.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "fresh",
-      "vegan",
-      "gumbo"
-    ],
+    "labels": ["fresh","vegan","gumbo"],
     "calories": 33,
     "carbs": 7,
     "protein": 2,
@@ -3661,13 +2741,9 @@
   {
     "id": 249,
     "name": "Collard Greens",
-    "description": "Hearty southern leaf cooked low and slow.",
+    "description": "",
     "category": "Vegetable",
-    "labels": [
-      "leafy green",
-      "vegan",
-      "southern"
-    ],
+    "labels": ["leafy green","vegan","southern"],
     "calories": 32,
     "carbs": 6,
     "protein": 3,
@@ -3676,13 +2752,9 @@
   {
     "id": 250,
     "name": "Swiss Cheese",
-    "description": "Nutty Swiss cheese riddled with cartoon holes.",
+    "description": "",
     "category": "Dairy",
-    "labels": [
-      "cheese",
-      "mild",
-      "sandwich"
-    ],
+    "labels": ["cheese","mild","sandwich"],
     "calories": 380,
     "carbs": 5,
     "protein": 27,

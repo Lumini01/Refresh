@@ -3,11 +3,14 @@ package com.example.refresh.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.Gravity;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +35,15 @@ import java.time.format.DateTimeFormatter;
 public class SignUpActivity extends AppCompatActivity {
 
     // UI Elements
-    private EditText nameET, emailET, phoneET, pwdET, pwdConfET;
+    private EditText nameET;
+    private EditText emailET;
+    private EditText phoneET;
+    private EditText pwdET;
+    private EditText pwdConfET;
     private Button signUpBtn;
     private TextView loginBtn;
+    private ImageButton pwdToggleBtn;
+    private ImageButton pwdConfToggleBtn;
 
     // User object and DB helper
     private final User user = new User();
@@ -79,6 +88,8 @@ public class SignUpActivity extends AppCompatActivity {
         pwdConfET = findViewById(R.id.pwd_conf_sign_up_et);
         signUpBtn = findViewById(R.id.sign_up_btn);
         loginBtn = findViewById(R.id.login_tv);
+        pwdToggleBtn = findViewById(R.id.pwd_sign_up_toggle_btn);
+        pwdConfToggleBtn = findViewById(R.id.pwd_conf_sign_up_toggle_btn);
     }
 
     // Window insets for system bars
@@ -104,12 +115,44 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         loginBtn.setOnClickListener(view -> navigateToLogin(false));
+
+        final boolean[] showingPwd = {false};
+        pwdToggleBtn.setOnClickListener(v -> {
+            if (showingPwd[0]) {
+                // show password
+                pwdET.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                pwdToggleBtn.setImageResource(R.drawable.ic_show);
+            } else {
+                // hide password
+                pwdET.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                pwdToggleBtn.setImageResource(R.drawable.ic_hide);
+            }
+            showingPwd[0] = !showingPwd[0];
+            // move cursor to the end
+            pwdET.setSelection(pwdET.getText().length());
+        });
+
+        final boolean[] showingPwdConf = {false};
+        pwdConfToggleBtn.setOnClickListener(v -> {
+            if (showingPwdConf[0]) {
+                // show password
+                pwdConfET.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                pwdConfToggleBtn.setImageResource(R.drawable.ic_show);
+            } else {
+                // hide password
+                pwdConfET.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                pwdConfToggleBtn.setImageResource(R.drawable.ic_hide);
+            }
+            showingPwdConf[0] = !showingPwdConf[0];
+            // move cursor to the end
+            pwdConfET.setSelection(pwdConfET.getText().length());
+        });
     }
 
     // Collect user input from form fields
     private void collectUserInput() {
         user.setName(nameET.getText().toString());
-        user.setEmail(emailET.getText().toString());
+        user.setEmail(emailET.getText().toString().toLowerCase());
         user.setPhone(phoneET.getText().toString());
         user.setPwd(pwdET.getText().toString());
     }
@@ -122,10 +165,11 @@ public class SignUpActivity extends AppCompatActivity {
     // Handle successful sign-up
 
     private void handleSuccessfulSignUp() {
-        if (dbHelper.insert(DatabaseHelper.Tables.USERS, user) != -1) {
+        int id = dbHelper.insert(DatabaseHelper.Tables.USERS, user);
+        if (id != -1) {
             showToast("Signup Successful!");
 
-            // Clear input errors and create user preferences
+            user.setID(id);
             clearInputErrors();
             createUserSP();
             navigateToLogin(true);
@@ -176,8 +220,11 @@ public class SignUpActivity extends AppCompatActivity {
     // Navigate to the Login screen
     private void navigateToLogin(Boolean signedUp) {
         Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-        if (signedUp)
+        if (signedUp) {
             intent.putExtra("firstLog", true);
+            intent.putExtra("userEmail", user.getEmail());
+            intent.putExtra("userPwd", user.getPwd());
+        }
 
         startActivity(intent);
         finish();

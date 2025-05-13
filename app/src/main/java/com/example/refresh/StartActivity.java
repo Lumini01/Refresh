@@ -135,8 +135,6 @@ public class StartActivity extends AppCompatActivity {
         requestNotificationPermission();
         populateNotificationTemplatesTable(getApplicationContext());
         populateFoodsTable(getApplicationContext());
-        setDefaultNotifications();
-        TestingGrounds.test(getApplicationContext());
     }
 
     /**
@@ -219,39 +217,6 @@ public class StartActivity extends AppCompatActivity {
                 Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
                 startActivity(intent);
             }
-        }
-    }
-
-    /**
-     * Sets default notification instances in the app.
-     */
-    private void setDefaultNotifications() {
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        ArrayList<Integer> templateIDs = new ArrayList<>();
-        ArrayList<String> times = new ArrayList<>();
-
-        templateIDs.add(1);
-        templateIDs.add(2);
-        templateIDs.add(3);
-
-        times.add("9:00");
-        times.add("14:00");
-        times.add("19:00");
-
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        boolean defaultNotificationsSet = sharedPreferences.getBoolean("defaultNotificationsSet", false);
-
-        if (defaultNotificationsSet) {
-            ArrayList<Integer> instanceIDs = new ArrayList<>();
-            instanceIDs.add(1);
-            instanceIDs.add(2);
-            instanceIDs.add(3);
-            NotificationScheduler.addDefaultNotifications(this, instanceIDs, templateIDs, times);
-        } else {
-            NotificationScheduler.addNotificationInstances(this, templateIDs, times);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("defaultNotificationsSet", true);
-            editor.apply();
         }
     }
 

@@ -3,6 +3,8 @@ package com.example.refresh.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.Gravity;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
@@ -23,7 +25,6 @@ import com.example.refresh.R;
 import com.example.refresh.Model.User;
 import com.example.refresh.Model.ErrorMessage;
 import com.example.refresh.Helper.ValidationHelper;
-import com.example.refresh.StartActivity;
 
 /**
  * Login Activity - This screen handles user login by allowing them to enter their email
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
     private CheckBox rememberMeCB;
     private TextView signUpBtn;
+    private ImageView toggleBtn;
 
     // Database Helper
     private final DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -91,6 +93,14 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         rememberMeCB = findViewById(R.id.remember_me_cb);
         signUpBtn = findViewById(R.id.sign_up_tv);
+        toggleBtn = findViewById(R.id.pwd_login_toggle_btn);
+
+        String emailExtra = getIntent().getStringExtra("userEmail");
+        String pwdExtra = getIntent().getStringExtra("userPwd");
+        if (emailExtra != null && pwdExtra != null) {
+            emailET.setText(emailExtra);
+            pwdET.setText(pwdExtra);
+        }
     }
 
     /**
@@ -102,6 +112,22 @@ public class LoginActivity extends AppCompatActivity {
 
         // Sign Up button listener
         signUpBtn.setOnClickListener(view -> navigateToSignUp());
+
+        final boolean[] showing = {false};
+        toggleBtn.setOnClickListener(v -> {
+            if (showing[0]) {
+                // show password
+                pwdET.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                toggleBtn.setImageResource(R.drawable.ic_show);
+            } else {
+                // hide password
+                pwdET.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                toggleBtn.setImageResource(R.drawable.ic_hide);
+            }
+            showing[0] = !showing[0];
+            // move cursor to the end
+            pwdET.setSelection(pwdET.getText().length());
+        });
     }
 
     /**
@@ -109,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void handleLogin() {
         // Get user credentials from input fields
-        String userEmail = emailET.getText().toString();
+        String userEmail = emailET.getText().toString().toLowerCase();
         String userPwd = pwdET.getText().toString();
         boolean rememberMe = rememberMeCB.isChecked();
 

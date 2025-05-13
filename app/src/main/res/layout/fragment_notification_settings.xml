@@ -57,25 +57,27 @@
                     android:scaleY="1.25"
                     android:scaleX="1.25"
                     app:thumbTint="@color/my_darker_blue"
-                    app:trackTint="#60016FBF" />
+                    app:trackTint="#60016FBF"
+                    android:checked="true"/>
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:padding="@dimen/padding_small"
+                android:text="Reminder Schedule"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_xxlarge" />
+
             <LinearLayout
+                android:id="@+id/settings_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:padding="@dimen/padding_small"
-                    android:text="Reminder Schedule"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_xxlarge" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -203,51 +205,92 @@
                         android:textSize="@dimen/text_size_xlarge2" />
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginHorizontal="@dimen/margin_small"
-                android:layout_marginVertical="@dimen/margin_large"
-                app:dividerColor="@color/dividerColorLight" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_medium"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:background="@drawable/card_background"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_medium">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center_vertical"
-                    android:padding="@dimen/padding_medium"
-                    android:text="Test Notification"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_xlarge2" />
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Water Reminder"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge2" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
 
 
-                <Button
-                    android:id="@+id/test_btn"
-                    android:layout_width="100dp"
+                    <EditText
+                        android:id="@+id/water_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:focusable="false"
+                        android:gravity="start"
+                        android:hint="Enter..."
+                        android:inputType="text"
+                        android:maxEms="6"
+                        android:minEms="1"
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge2" />
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="@dimen/margin_small"
+                    android:layout_marginVertical="@dimen/margin_large"
+                    app:dividerColor="@color/dividerColorLight" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:gravity="center"
-                    android:text="Send"
-                    android:padding="@dimen/padding_medium"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_xlarge2" />
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:background="@drawable/card_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="@dimen/padding_medium"
+                        android:text="Test Notification"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_xlarge2" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/test_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:gravity="center"
+                        android:text="Send"
+                        android:padding="@dimen/padding_medium"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_xlarge2" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>

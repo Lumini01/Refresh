@@ -23,7 +23,9 @@ public class User {
     /**
      * Default constructor for creating a UserInfo object with no initial values.
      */
-    public User() {}
+    public User() {
+        id = -1;
+    }
 
     /**
      * Constructor to create a UserInfo object with all user details (name, email, phone, and password).

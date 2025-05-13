@@ -37,13 +37,6 @@ public class MyApplication extends android.app.Application {
     private void initializeSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
-        // Set the first launch flag to true
-        // sharedPreferences.edit().putBoolean(FIRST_LAUNCH_KEY, true).apply();
-
-        // Set default calorie goal for logged-in user
-        SharedPreferences userSP = getSharedPreferences(getLoggedUserSPName(), MODE_PRIVATE);
-        userSP.edit().putInt("calorieGoal", 2500).apply();
-
         // If user is logged in, check if they exist in the database
         int loggedUserID = getLoggedUserID();
         if (loggedUserID != -1 && !loggedUserExistsInDB()) {

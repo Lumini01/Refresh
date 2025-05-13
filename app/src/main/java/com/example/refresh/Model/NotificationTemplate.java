@@ -21,7 +21,21 @@ public class NotificationTemplate {
 
     static {
         iconMap.put("ic_placeholder", R.drawable.ic_placeholder);
-        iconMap.put("ic_example", R.drawable.ic_today);
+        iconMap.put("ic_today", R.drawable.ic_today);
+        iconMap.put("ic_morning", R.drawable.ic_morning);
+        iconMap.put("ic_noon", R.drawable.ic_noon);
+        iconMap.put("ic_night", R.drawable.ic_night);
+        iconMap.put("ic_celebration", R.drawable.ic_celebration);
+        iconMap.put("ic_water_cup", R.drawable.ic_water_cup);
+        iconMap.put("ic_steps", R.drawable.ic_steps);
+        iconMap.put("ic_workout", R.drawable.ic_workout);
+        iconMap.put("ic_star", R.drawable.ic_star);
+        iconMap.put("ic_update", R.drawable.ic_update);
+        iconMap.put("ic_chef", R.drawable.ic_chef);
+        iconMap.put("ic_tea", R.drawable.ic_tea);
+        iconMap.put("ic_streak", R.drawable.ic_streak);
+
+
         // Add more mappings as needed
     }
 

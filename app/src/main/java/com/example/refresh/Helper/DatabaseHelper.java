@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import com.example.refresh.Database.FoodsTable;
 import com.example.refresh.Database.MealsTable;
@@ -13,6 +14,7 @@ import com.example.refresh.Database.NotificationTemplatesTable;
 import com.example.refresh.Database.UsersTable;
 import com.example.refresh.Model.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private static final String DATABASE_FILE = "app_database.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 13;
     private final Context context;
 
     public DatabaseHelper(Context context) {
@@ -65,12 +67,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Tables.NOTIFICATION_INSTANCES.getTableName());
         db.execSQL("DROP TABLE IF EXISTS " + Tables.FOODS.getTableName());
         db.execSQL("DROP TABLE IF EXISTS " + Tables.MEALS.getTableName());
+
+        clearAllSharedPrefs(context);
+
         // Add more table drop logic here
+
         onCreate(db);
     }
 
     public Context getContext() {
         return context;
+    }
+
+    public static void clearAllSharedPrefs(Context context) {
+        // 1. Locate the shared_prefs folder
+        File prefsDir = new File(context.getFilesDir().getParent(), "shared_prefs");
+        if (prefsDir.exists() && prefsDir.isDirectory()) {
+            // 2. For each .xml file in there...
+            for (File file : prefsDir.listFiles((dir, name) -> name.endsWith(".xml"))) {
+                // 3. Strip off the “.xml” to get the prefs-name
+                String prefName = file.getName().replaceFirst("\\.xml$", "");
+                // 4a. API-24+ you can delete the file entirely
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    context.deleteSharedPreferences(prefName);
+                } else {
+                    // 4b. Otherwise just clear its contents
+                    context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+                            .edit()
+                            .clear()
+                            .apply();
+                }
+            }
+        }
     }
 
     // CRUD Operations

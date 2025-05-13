@@ -18,8 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -188,7 +186,7 @@ public class FoodsTable {
                 Food food = new Food(
                         jsonObject.getInt("id"),
                         jsonObject.getString("name"),
-                        "",
+                        jsonObject.getString("description"),
                         jsonObject.getString("category"),
                         labelsList,
                         100,

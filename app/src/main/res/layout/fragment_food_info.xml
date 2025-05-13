@@ -71,9 +71,8 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:padding="@dimen/padding_medium"
                 android:text="Food description goes here."
-                android:textColor="@color/textPrimary"
-                android:textSize="@dimen/text_size_xlarge"
-                android:visibility="visible"/>
+                android:textColor="@color/textHint"
+                android:textSize="@dimen/text_size_large" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -109,7 +108,7 @@
                         android:inputType="number"
                         android:padding="@dimen/padding_small"
                         android:text="1"
-                        android:textSize="@dimen/text_size_xxlarge" />
+                        android:textSize="@dimen/text_size_xlarge" />
 
                     <!-- Right View: Dropdown for Serving Options -->
                     <Spinner

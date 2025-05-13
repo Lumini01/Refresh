@@ -309,7 +309,7 @@
                     <ImageView
                         android:layout_width="@dimen/icon_size_large"
                         android:layout_height="@dimen/icon_size_large"
-                        android:src="@drawable/ic_lifestyle_goal"
+                        android:src="@drawable/ic_workout"
                         app:tint="@color/iconTint" />
 
                     <LinearLayout

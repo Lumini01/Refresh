@@ -1,9 +1,12 @@
 package com.example.refresh.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -28,14 +31,19 @@ import com.example.refresh.Fragment.DailyProgressFragment;
 import com.example.refresh.Fragment.NotificationSettingsFragment;
 import com.example.refresh.Fragment.UserInfoFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
+import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Helper.WaterLogHelper;
 import com.example.refresh.Model.DaySummary;
+import com.example.refresh.MyApplication;
+import com.example.refresh.Notification.NotificationScheduler;
 import com.example.refresh.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Main dashboard activity showing daily summaries, water/meal/weight logs,
@@ -209,6 +217,7 @@ public class HomeDashboardActivity extends AppCompatActivity
 
         if (getIntent().getBooleanExtra("firstLog", false)) {
             showUserInfo();
+            setDefaultNotifications();
         }
 
         logWaterBtn.setOnClickListener(v -> {
@@ -383,6 +392,34 @@ public class HomeDashboardActivity extends AppCompatActivity
             buttonPanel.setBackgroundColor(
                     ContextCompat.getColor(this, R.color.cardBackground)
             );
+        }
+    }
+
+    /**
+     * Sets default notification instances in the app.
+     */
+    private void setDefaultNotifications() {
+        ArrayList<Integer> templateIDs = new ArrayList<>();
+        ArrayList<String> times = new ArrayList<>();
+
+        templateIDs.add(2);
+        templateIDs.add(3);
+        templateIDs.add(4);
+        templateIDs.add(6);
+
+        times.add("9:00");
+        times.add("14:30");
+        times.add("19:30");
+        times.add("12:00");
+
+        SharedPreferences userPreferences = getSharedPreferences(MyApplication.getInstance().getLoggedUserSPName(), MODE_PRIVATE);
+        boolean defaultNotificationsSet = userPreferences.getBoolean("defaultNotificationsSet", false);
+
+        if (defaultNotificationsSet) {
+            NotificationScheduler.updateDefaultNotifications(this, templateIDs, times, getLoggedUserId());
+        } else {
+            NotificationScheduler.addNotificationInstances(this, templateIDs, times);
+            userPreferences.edit().putBoolean("defaultNotificationsSet", true).apply();
         }
     }
 

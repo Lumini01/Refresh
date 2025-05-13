@@ -1,5 +1,6 @@
 package com.example.refresh.Notification;
 
+import static android.content.ContentValues.TAG;
 import static com.example.refresh.Helper.DatabaseHelper.Tables.*;
 import static com.example.refresh.Database.NotificationInstancesTable.Columns.*;
 
@@ -16,55 +17,131 @@ import com.example.refresh.Model.NotificationInstance;
 import com.example.refresh.Model.NotificationTemplate;
 import com.example.refresh.R;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 // Notification Scheduler Class which provides methods for scheduling notifications
 public class NotificationScheduler {
     // Declare the table names as constants
-    public static void addDefaultNotifications(Context context, ArrayList<Integer> instanceIDs, ArrayList<Integer> templateIDs, ArrayList<String> times) {
-        DatabaseHelper dbHelper = new DatabaseHelper(context);
+    public static void updateDefaultNotifications(
+            Context context,
+            ArrayList<Integer> templateIDs,
+            ArrayList<String> times,
+            int userID) {
 
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        // 1. Validate inputs
+        if (templateIDs == null
+                || times == null
+                || templateIDs.size() != times.size()
+                || userID <= 0) {
+            return;
+        }
+
+        // 2. Set up helpers
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        AlarmManager alarmManager =
+                (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        // 3. Prepare list of instances to (re-)schedule
         ArrayList<NotificationInstance> instances = new ArrayList<>();
-        // Add validated new times to the set
-        if (templateIDs.size() == times.size() && instanceIDs.size() == times.size()) {
-            for (int i=0 ; i<templateIDs.size() ; i++) {
-                int instanceID = instanceIDs.get(i);
+
+
+        try {
+            // 4. Load existing instance IDs for this user
+            ArrayList<NotificationInstance> oldInstances =
+                    NotificationInstancesTable.getUserDefaultNotifications(context, userID);
+
+            if (oldInstances == null || oldInstances.size() != times.size())
+                return;
+
+            // 5. Loop through each template/time pair
+            for (int i = 0; i < templateIDs.size(); i++) {
                 int templateID = templateIDs.get(i);
                 String time = times.get(i);
 
-                if (time != null && time.matches("\\d{1,2}:\\d{2}") && dbHelper.existsInDB(NOTIFICATION_TEMPLATES, NotificationTemplatesTable.Columns.TEMPLATE_ID, String.valueOf(templateID)) != -1) {
-                    NotificationInstance instance = new NotificationInstance(instanceID, templateID, time);
-                    instances.add(instance);
+                // 5a. Validate time format and template exists
+                boolean validTime;
+                try {
+                    LocalTime localTime = LocalTime.parse(time, DateTimeFormatter.ofPattern("H:mm"));
 
-                    if (dbHelper.existsInDB(NOTIFICATION_INSTANCES, INSTANCE_ID, String.valueOf(instanceID)) != -1) {
-                        NotificationInstance oldInstance = dbHelper.getRecord(NOTIFICATION_INSTANCES, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+                    validTime = time != null;
+                } catch (DateTimeParseException e) {
+                    return;
+                }
 
+                boolean templateExists = dbHelper.existsInDB(
+                        NOTIFICATION_TEMPLATES,
+                        NotificationTemplatesTable.Columns.TEMPLATE_ID,
+                        String.valueOf(templateID)
+                ) != -1;
 
-                        dbHelper.editRecord(NOTIFICATION_INSTANCES, instance, INSTANCE_ID, new String[]{String.valueOf(instanceID)});
+                if (!validTime || !templateExists) {
+                    continue;
+                }
 
-                        Intent intent = createNotificationIntent(context, oldInstance);
-                        PendingIntent pendingIntent = createPendingIntent(context, oldInstance, intent);
-                        if (alarmManager != null) {
-                            alarmManager.cancel(pendingIntent);
-                        }
-                    }
-                    else {
-                        dbHelper.insert(NOTIFICATION_INSTANCES, instance);
+                // 5b. Build new instance object
+                int instanceID = oldInstances.get(i).getInstanceID();
+                NotificationInstance newInstance =
+                        new NotificationInstance(
+                                instanceID, templateID,
+                                oldInstances.get(i).getUserID(),
+                                time
+                        );
+
+                // 5c. If this instance already exists, edit it and cancel old alarm
+                boolean instanceExists = dbHelper.existsInDB(
+                        NOTIFICATION_INSTANCES,
+                        INSTANCE_ID,
+                        String.valueOf(instanceID)
+                ) != -1;
+
+                if (instanceExists) {
+                    // Fetch old values so we can cancel its pending intent
+                    NotificationInstance oldInstance = oldInstances.get(i);
+
+                    // Update DB
+                    dbHelper.editRecord(
+                            NOTIFICATION_INSTANCES,
+                            newInstance,
+                            INSTANCE_ID,
+                            new String[]{ String.valueOf(instanceID) }
+                    );
+
+                    // Cancel previous alarm
+                    Intent intent = createNotificationIntent(context, oldInstance);
+                    PendingIntent pendingIntent =
+                            createPendingIntent(context, oldInstance, intent);
+
+                    if (alarmManager != null) {
+                        alarmManager.cancel(pendingIntent);
                     }
                 }
-            }
+                else {
+                    // Otherwise insert as new
+                    dbHelper.insert(NOTIFICATION_INSTANCES, newInstance);
+                }
 
-            dbHelper.close();
-
-
-            if (!instances.isEmpty()) {
-                // Schedule notifications again
-                NotificationScheduler.scheduleDailyNotifications(context, instances);
+                // 5d. Collect for scheduling
+                instances.add(newInstance);
             }
         }
+        catch (Exception e) {
+            Log.e(TAG, "Failed to sync notifications", e);
+            return;
+        }
+        finally {
+            dbHelper.close();
+        }
+
+        // 7. Schedule any valid instances
+        if (!instances.isEmpty()) {
+            NotificationScheduler.scheduleDailyNotifications(context, instances);
+        }
     }
+
 
     // Method to add new notifications
     public static void addNotificationInstances(Context context, ArrayList<Integer> templateIDs, ArrayList<String> times) {

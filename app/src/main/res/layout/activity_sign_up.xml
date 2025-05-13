@@ -80,37 +80,75 @@
                 android:textColorHint="@color/textHint"
                 android:textSize="@dimen/text_size_xxxlarge" />
 
-            <EditText
-                android:id="@+id/pwd_sign_up_et"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/margin_medium"
-                android:layout_marginHorizontal="@dimen/margin_small"
-                android:paddingVertical="@dimen/padding_medium"
-                android:paddingHorizontal="@dimen/padding_medium"
-                android:background="@drawable/card_background"
-                android:ems="10"
-                android:hint="Enter Password"
-                android:inputType="textPassword"
-                android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textHint"
-                android:textSize="@dimen/text_size_xxxlarge" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/pwd_conf_sign_up_et"
+                <EditText
+                    android:id="@+id/pwd_sign_up_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_medium"
+                    android:layout_marginHorizontal="@dimen/margin_small"
+                    android:paddingVertical="@dimen/padding_medium"
+                    android:paddingHorizontal="@dimen/padding_medium"
+                    android:background="@drawable/card_background"
+                    android:ems="10"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textPrimary"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="@dimen/text_size_xxxlarge" />
+
+                <ImageButton
+                    android:id="@+id/pwd_sign_up_toggle_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:padding="@dimen/padding_medium_large"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:background="@null"
+                    android:scaleX="1.4"
+                    android:scaleY="1.4"
+                    android:src="@drawable/ic_show"
+                    app:tint="@color/iconTint" />
+
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/margin_medium"
-                android:layout_marginHorizontal="@dimen/margin_small"
-                android:paddingVertical="@dimen/padding_medium"
-                android:paddingHorizontal="@dimen/padding_medium"
-                android:background="@drawable/card_background"
-                android:ems="10"
-                android:hint="Reenter Password"
-                android:inputType="textPassword"
-                android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textHint"
-                android:textSize="@dimen/text_size_xxxlarge" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/pwd_conf_sign_up_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_medium"
+                    android:layout_marginHorizontal="@dimen/margin_small"
+                    android:paddingVertical="@dimen/padding_medium"
+                    android:paddingHorizontal="@dimen/padding_medium"
+                    android:background="@drawable/card_background"
+                    android:ems="10"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textPrimary"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="@dimen/text_size_xxxlarge" />
+
+                <ImageButton
+                    android:id="@+id/pwd_conf_sign_up_toggle_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:padding="@dimen/padding_medium_large"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:background="@null"
+                    android:scaleX="1.4"
+                    android:scaleY="1.4"
+                    android:src="@drawable/ic_show"
+                    app:tint="@color/iconTint" />
+
+            </FrameLayout>
 
             <Button
                 android:id="@+id/sign_up_btn"
