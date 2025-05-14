@@ -39,7 +39,7 @@ public class WaterLogHelper {
         logWater(250, date);
     }
 
-    public Meal getMealInstance(int amount, LocalDate date) {
+    private Meal getMealInstance(int amount, LocalDate date) {
         return new Meal(
                 date,
                 LocalTime.of(0, 1),
@@ -50,7 +50,7 @@ public class WaterLogHelper {
         );
     }
 
-    public void editWaterRecord(LocalDate date, Meal waterIntake) {
+    private void editWaterRecord(LocalDate date, Meal waterIntake) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedDate = date.format(formatter);
 

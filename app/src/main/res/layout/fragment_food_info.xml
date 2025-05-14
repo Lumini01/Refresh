@@ -72,7 +72,7 @@
                 android:padding="@dimen/padding_medium"
                 android:text="Food description goes here."
                 android:textColor="@color/textHint"
-                android:textSize="@dimen/text_size_large" />
+                android:textSize="@dimen/text_size_medium" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                             android:padding="@dimen/padding_xsmall"
                             android:text="Carbs: Xg"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xlarge" />
+                            android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
 
                     <!-- Second Column (e.g. Protein) -->
@@ -252,7 +252,7 @@
                             android:padding="@dimen/padding_xsmall"
                             android:text="Protein: Xg"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xlarge" />
+                            android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
 
                     <!-- Third Column (e.g. Carbs or Fat) -->
@@ -313,7 +313,7 @@
                             android:padding="@dimen/padding_xsmall"
                             android:text="Fat: Xg"
                             android:textColor="@color/textPrimary"
-                            android:textSize="@dimen/text_size_xlarge" />
+                            android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -335,7 +335,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/margin_medium"
                             android:layout_marginBottom="@dimen/margin_small"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:padding="@dimen/padding_medium_large"
                             android:text="Calories:"
                             android:textColor="@color/textPrimary"
@@ -348,7 +348,8 @@
                             android:layout_marginHorizontal="@dimen/margin_medium"
                             android:layout_marginBottom="@dimen/margin_small"
                             android:layout_weight="2"
-                            android:gravity="center"
+                            android:gravity="end"
+                            android:layout_gravity="end"
                             android:padding="@dimen/padding_medium_large"
                             android:text="X kcal"
                             android:textColor="@color/textPrimary"

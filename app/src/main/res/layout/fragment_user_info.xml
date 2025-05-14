@@ -74,7 +74,7 @@
                         android:gravity="start"
                         android:hint="Enter..."
                         android:inputType="text"
-                        android:maxEms="6"
+                        android:maxEms="9"
                         android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
@@ -314,11 +314,11 @@
                         android:gravity="start"
                         android:hint="Enter..."
                         android:inputType="textEmailAddress"
-                        android:maxEms="6"
+                        android:maxEms="8"
                         android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge" />
+                        android:textSize="@dimen/text_size_xlarge" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -357,11 +357,11 @@
                         android:gravity="start"
                         android:hint="Enter..."
                         android:inputType="phone"
-                        android:maxEms="6"
+                        android:maxEms="8"
                         android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge" />
+                        android:textSize="@dimen/text_size_xlarge" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -398,11 +398,11 @@
                         android:gravity="start"
                         android:hint="Enter..."
                         android:inputType="textPassword"
-                        android:maxEms="6"
+                        android:maxEms="8"
                         android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge" />
+                        android:textSize="@dimen/text_size_xlarge" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -439,11 +439,11 @@
                         android:gravity="start"
                         android:hint="Reenter..."
                         android:inputType="textPassword"
-                        android:maxEms="6"
+                        android:maxEms="8"
                         android:minEms="1"
                         android:padding="@dimen/padding_medium"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge" />
+                        android:textSize="@dimen/text_size_xlarge" />
                 </LinearLayout>
 
             </LinearLayout>

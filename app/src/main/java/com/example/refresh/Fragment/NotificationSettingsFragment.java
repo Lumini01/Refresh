@@ -101,7 +101,7 @@ public class NotificationSettingsFragment extends Fragment {
                                 enableNotifications();
                             }
                             else {
-                                showToast("Cannot enable notifications without permission");
+                                showToast("Cannot Enable Notifications Without Permissions.");
                                 revertSwitchOff();
                             }
                         }

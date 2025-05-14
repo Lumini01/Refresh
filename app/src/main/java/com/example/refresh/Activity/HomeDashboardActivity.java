@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -31,7 +29,6 @@ import com.example.refresh.Fragment.DailyProgressFragment;
 import com.example.refresh.Fragment.NotificationSettingsFragment;
 import com.example.refresh.Fragment.UserInfoFragment;
 import com.example.refresh.Helper.DailySummaryHelper;
-import com.example.refresh.Helper.DatabaseHelper;
 import com.example.refresh.Helper.UserInfoHelper;
 import com.example.refresh.Helper.WaterLogHelper;
 import com.example.refresh.Model.DaySummary;
@@ -43,7 +40,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Main dashboard activity showing daily summaries, water/meal/weight logs,
@@ -53,7 +49,7 @@ public class HomeDashboardActivity extends AppCompatActivity
         implements UserInfoFragment.OnUserInfoFragmentListener, NotificationSettingsFragment.OnNotificationSettingsListener {
 
     // UI containers
-    private FragmentContainerView userInfoContainer;
+    private FragmentContainerView fragmentContainer;
     private BottomNavigationView bottomNavigation;
 
     // Date and summary
@@ -132,7 +128,7 @@ public class HomeDashboardActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commitNow();
-            userInfoContainer.setVisibility(View.VISIBLE);
+            fragmentContainer.setVisibility(View.VISIBLE);
         }
     }
 
@@ -145,7 +141,7 @@ public class HomeDashboardActivity extends AppCompatActivity
                 .remove(getSupportFragmentManager()
                         .findFragmentById(R.id.fragment_container))
                 .commitNow();
-        userInfoContainer.setVisibility(View.GONE);
+        fragmentContainer.setVisibility(View.GONE);
     }
 
     public void hideNotificationSettings() {
@@ -153,7 +149,7 @@ public class HomeDashboardActivity extends AppCompatActivity
                 .remove(getSupportFragmentManager()
                         .findFragmentById(R.id.fragment_container))
                 .commitNow();
-        userInfoContainer.setVisibility(View.GONE);
+        fragmentContainer.setVisibility(View.GONE);
     }
 
     // ====== Initialization helpers ======
@@ -191,7 +187,7 @@ public class HomeDashboardActivity extends AppCompatActivity
      * Initializes view references.
      */
     private void initViews() {
-        userInfoContainer = findViewById(R.id.fragment_container);
+        fragmentContainer = findViewById(R.id.fragment_container);
         dailyProgressContainer = findViewById(R.id.daily_progress_container);
         title = findViewById(R.id.date_title_tv);
         nextBtn = findViewById(R.id.next_summary_btn);
@@ -234,7 +230,7 @@ public class HomeDashboardActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commitNow();
-            userInfoContainer.setVisibility(View.VISIBLE);
+            fragmentContainer.setVisibility(View.VISIBLE);
         });
 
         refreshDailyProgressFragment();

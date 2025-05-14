@@ -99,7 +99,7 @@ public class DailyProgressFragment extends Fragment {
     }
 
     // Update the progress bars and text
-    public void updateMacros() {
+    private void updateMacros() {
         caloriesProgress.setMax(calorieGoal);
         caloriesProgress.setProgress(totalCalories);
         caloriesText.setText(totalCalories + "/" + calorieGoal + " kcal");

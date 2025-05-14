@@ -1,27 +1,24 @@
 package com.example.refresh.Helper;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-
-import androidx.preference.PreferenceManager;
 
 public class GoalHelper {
-    private final UserInfoHelper helper;
+    private final UserInfoHelper userInfoHelper;
 
     public GoalHelper(Context context) {
-        this.helper = new UserInfoHelper(context);
+        this.userInfoHelper = new UserInfoHelper(context);
     }
 
     /** Main entry: read inputs, compute all targets, and save them. */
     public void calculateDailyNutritionGoals() {
         // 1. Load raw inputs
-        String gender        = helper.getGender();
-        int    age           = helper.getAge();
-        String goal          = helper.getGoal();
-        String activityLevel = helper.getActivityLevel();
-        float  weight        = helper.getWeight();
-        float  height        = helper.getHeight();
-        String dietType      = helper.getDietType();
+        String gender        = userInfoHelper.getGender();
+        int    age           = userInfoHelper.getAge();
+        String goal          = userInfoHelper.getGoal();
+        String activityLevel = userInfoHelper.getActivityLevel();
+        float  weight        = userInfoHelper.getWeight();
+        float  height        = userInfoHelper.getHeight();
+        String dietType      = userInfoHelper.getDietType();
 
         // 2. Calculate BMR & TDEE
         double bmr  = calculateBMR(gender, weight, height, age);
@@ -41,11 +38,11 @@ public class GoalHelper {
         double waterMl = weight * 35;
 
         // 6. Save results
-        helper.setCalorieGoal((int) calories);
-        helper.setCarbGoal((int) carbs);
-        helper.setProteinGoal((int) protein);
-        helper.setFatGoal((int) fats);
-        helper.setWaterIntakeGoal((int) waterMl);
+        userInfoHelper.setCalorieGoal((int) calories);
+        userInfoHelper.setCarbGoal((int) carbs);
+        userInfoHelper.setProteinGoal((int) protein);
+        userInfoHelper.setFatGoal((int) fats);
+        userInfoHelper.setWaterIntakeGoal((int) waterMl);
     }
 
     /** Mifflin–St Jeor BMR formula */

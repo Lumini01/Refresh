@@ -88,7 +88,6 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     // State flag
     private boolean inEditMode;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -447,14 +446,14 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         searchResultsContainer.setVisibility(View.GONE);
 
         if (query.length == 0 || rawQuery.isEmpty()) {
-            Toast.makeText(this, "You didn't search for anything", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You Didn't Search For Anything", Toast.LENGTH_SHORT).show();
             return;
         }
 
         ArrayList<Food> foodResults = dbHelper.getRecordsLike(DatabaseHelper.Tables.FOODS, FoodsTable.Columns.NAME, query);
 
         if ( foodResults == null || foodResults.isEmpty()) {
-            Toast.makeText(this, "No results found for: " + rawQuery, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Results Found For: " + rawQuery, Toast.LENGTH_SHORT).show();
         } else {
             showSearchResultsFragment(foodResults);
         }

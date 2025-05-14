@@ -11,7 +11,7 @@ import android.view.WindowInsetsController;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
     private CheckBox rememberMeCB;
     private TextView signUpBtn;
-    private ImageView toggleBtn;
+    private ImageButton toggleBtn;
 
     // Database Helper
     private final DatabaseHelper dbHelper = new DatabaseHelper(this);

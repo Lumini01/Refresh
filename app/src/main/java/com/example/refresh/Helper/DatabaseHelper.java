@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return context;
     }
 
-    public static void clearAllSharedPrefs(Context context) {
+    private static void clearAllSharedPrefs(Context context) {
         // 1. Locate the shared_prefs folder
         File prefsDir = new File(context.getFilesDir().getParent(), "shared_prefs");
         if (prefsDir.exists() && prefsDir.isDirectory()) {
