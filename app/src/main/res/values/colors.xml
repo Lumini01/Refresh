@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="my_blue">#2196F3</color>
+    <color name="my_darker_blue">#016FBF</color>
 
     <!-- Original Categories -->
     <color name="white">#FFFFFF</color>
@@ -13,7 +14,7 @@
     <color name="iconTint">#0f0e0c</color>
     <color name="cardBackground">#fcfbf7</color>
     <color name="borderColor">#f2efea</color>
-    <color name="colorAccent">#FF0000</color>
+    <color name="colorAccent">#402196F3</color>
 
     <!-- Additional Color Categories -->
 
@@ -80,7 +81,6 @@
     <!-- Light/Dark Mode Specific Colors -->
     <color name="lightModeBackground">#FFFFFF</color> <!-- Background for light mode -->
     <color name="darkModeBackground">#121212</color>
-    <color name="my_darker_blue">#016FBF</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
     <color name="light_blue_A200">#FF40C4FF</color>
@@ -91,5 +91,17 @@
     <color name="protein_progress_color">#a87afa</color>
     <color name="carbs_progress_color">#FF5722</color>
     <color name="calorie_progress_color">#4CB944</color>
-    <color name="start_background_color">#EFE5DB</color> <!-- Background for dark mode -->
+    <color name="start_background_color">#EFE5DB</color>
+    <color name="log_out_red">#BF0101</color>
+    <color name="success_color">#1EC500</color>
+    <color name="fail_color">#C5001E</color>
+    <color name="info_icon_color">#4A9DA6</color>
+    <color name="info_text_color">#3C7E89</color>
+    <color name="account_icon_color">#D4A017</color>
+    <color name="account_text_color">#A17C0F</color>
+    <color name="lifestyle_icon_color">#E17D6A</color>
+    <color name="lifestyle_text_color">#B55F4F</color>
+    <color name="goal_icon_color">#A77FBF</color>
+    <color name="goal_text_color">#7F5B95</color>
+    <color name="toolbar_tint">#041F48</color>
 </resources>

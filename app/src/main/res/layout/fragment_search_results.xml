@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:itemCount="10"
-        tools:listitem="@layout/item_search_result" />
+        tools:listitem="@layout/item_search_result"
+        android:theme="@style/AppTheme"/>
 
     <!-- Optional: TextView for No Results -->
     <TextView

@@ -102,6 +102,7 @@ public class NotificationSettingsFragment extends Fragment {
                             }
                             else {
                                 showToast("Cannot Enable Notifications Without Permissions.");
+                                showToast("Allow Notifications Via Settings and Try Again.");
                                 revertSwitchOff();
                             }
                         }
@@ -156,6 +157,7 @@ public class NotificationSettingsFragment extends Fragment {
             userPreferences.edit().putBoolean("notificationsEnabled", true).apply();
         }
 
+        setOpacity();
 
         notificationSchedules = NotificationInstancesTable.getUserDefaultNotificationTimes(
                 requireContext(),

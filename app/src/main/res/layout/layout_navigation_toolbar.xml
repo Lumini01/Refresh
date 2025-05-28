@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin_small"
-    android:background="@color/colorPrimary"
+    android:background="#36E8F1F2"
     android:elevation="4dp"
     android:padding="@dimen/padding_small"
     app:titleTextColor="@color/textPrimary"
@@ -21,7 +21,7 @@
         android:contentDescription="@string/back_arrow"
         android:padding="@dimen/padding_medium"
         android:src="@drawable/ic_back_arrow"
-        app:tint="@color/iconTint" />
+        app:tint="#BF0F0E0C" />
 
     <!-- Title -->
     <TextView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/title"
-        android:textColor="@color/textSecondary"
+        android:textColor="@color/toolbar_tint"
         android:textSize="@dimen/text_size_xxxlarge"
         android:layout_marginHorizontal="@dimen/margin_small"/>
 
@@ -45,5 +45,5 @@
         android:contentDescription="Button"
         android:padding="@dimen/padding_medium"
         android:src="@drawable/ic_placeholder"
-        app:tint="@color/iconTint" />
+        app:tint="#C00F0E0C" />
 </androidx.appcompat.widget.Toolbar>

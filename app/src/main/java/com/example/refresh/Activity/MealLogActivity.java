@@ -123,8 +123,8 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
     }
 
     public void onAddingToSelectedFoods(ListItem<Food> addedFood) {
-        cancelSearchInteraction();
         addFoodToSelectedFoods(addedFood);
+        cancelSearchInteraction();
     }
 
     public void onNavigateToFoodInfo(Food food) {
@@ -274,13 +274,27 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
-                performSearch();
+                // Show the clear button only if the text is not empty
+                if (!(searchBarET.getText() + "").isEmpty()) {
+                    performSearch();
+                    clearBtn.setVisibility(View.VISIBLE);
+                }
+                else {
+                    clearBtn.setVisibility(View.GONE);
+                }
             }
         });
+
+        searchBarET.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus)
+                cancelSearchInteraction();
+        });
+
         clearBtn.setOnClickListener(v -> cancelSearchInteraction());
     }
 
@@ -297,6 +311,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
         datePickerBtn.setOnClickListener(v -> {
             datePicker.show(getSupportFragmentManager(), "DATE_PICKER");
+            cancelSearchInteraction();
         });
 
         datePicker.addOnPositiveButtonClickListener(selection -> {
@@ -409,6 +424,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
 
     private void cancelSearchInteraction() {
         clearBtn.setVisibility(View.GONE);
+        searchBarET.setText("");
         hideSearchResults();
         hideKeyboard(searchBarET);
     }

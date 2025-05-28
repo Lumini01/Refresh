@@ -66,10 +66,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="@dimen/margin_large"
-            android:paddingBottom="@dimen/margin_medium">
+            android:paddingBottom="@dimen/margin_medium"
+            android:weightSum="3">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -77,8 +78,12 @@
                 android:textColor="@color/textPrimary"
                 android:textSize="@dimen/text_size_medium" />
 
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -86,8 +91,12 @@
                 android:textColor="@color/textPrimary"
                 android:textSize="@dimen/text_size_medium" />
 
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -121,7 +130,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="@dimen/minimal_margin"
+                android:layout_width="8dp"
                 android:layout_height="8dp" />
 
             <LinearLayout
@@ -168,21 +177,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="@dimen/margin_medium">
+            android:paddingTop="@dimen/margin_medium"
+            android:weightSum="3">
 
             <TextView
                 android:id="@+id/carbs_text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/x_total"
                 android:textColor="@color/textPrimary"
                 android:textSize="@dimen/text_size_small" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp" />
 
             <TextView
                 android:id="@+id/protein_text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -190,9 +204,13 @@
                 android:textColor="@color/textPrimary"
                 android:textSize="@dimen/text_size_small" />
 
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp" />
+
             <TextView
                 android:id="@+id/fat_text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"

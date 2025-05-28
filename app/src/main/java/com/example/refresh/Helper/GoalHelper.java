@@ -35,7 +35,7 @@ public class GoalHelper {
         double  fats    = (calories * ratios.fatsRatio)    / 9; // 9 kcal per gram fat
 
         // 5. Water intake: 35 ml per kg body weight
-        double waterMl = weight * 35;
+        double waterMl = weight * 40;
 
         // 6. Save results
         userInfoHelper.setCalorieGoal((int) calories);

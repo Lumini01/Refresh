@@ -120,7 +120,12 @@
                         android:layout_weight="1"
                         android:padding="@dimen/padding_small"
                         android:spinnerMode="dialog"
-                        tools:listitem="@layout/item_custom_spinner" />
+                        android:background="@null"
+                        android:popupBackground="@android:color/transparent"
+                        android:dropDownSelector="@android:color/transparent"
+                        android:listSelector="@android:color/transparent"
+                        tools:listitem="@layout/item_custom_spinner"
+                        app:popupTheme="@style/TransparentSpaceSpinnerDialog" />
 
                 </LinearLayout>
 

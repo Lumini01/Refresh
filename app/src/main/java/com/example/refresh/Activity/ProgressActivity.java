@@ -86,14 +86,15 @@ public class ProgressActivity extends AppCompatActivity {
                         .getString("loggedUserSPName", null),
                 MODE_PRIVATE);
 
+        currentWeekStart = LocalDate.now().with(java.time.DayOfWeek.MONDAY);
+        daySummaries = dailySummaryHelper.getSummariesBetween(currentWeekStart, getCurrentWeekEnd());
+
         initializeUI();
         setupUI();
 
         // Set up the toolbar
         setSupportActionBar(toolbar);
 
-        currentWeekStart = LocalDate.now().with(java.time.DayOfWeek.MONDAY);
-        daySummaries = dailySummaryHelper.getSummariesBetween(currentWeekStart, getCurrentWeekEnd());
 
         setupBottomNavigationMenu();
         setupRecyclerView();
@@ -151,8 +152,11 @@ public class ProgressActivity extends AppCompatActivity {
 
     private void setupUI() {
         refreshBtn.setImageResource(R.drawable.ic_refresh);
+        refreshBtn.setVisibility(View.GONE);
         ExtraBtn.setVisibility(View.GONE);
         title.setText("Progress");
+
+        updateWeekDates();
 
         refreshBtn.setOnClickListener(v -> {
             refreshActivity();
@@ -467,6 +471,7 @@ public class ProgressActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bottomNavigation.setSelectedItemId(R.id.nav_progress);
+        refreshActivity();
     }
 }
 

@@ -2,6 +2,7 @@ package com.example.refresh.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -247,6 +248,9 @@ public class HomeDashboardActivity extends AppCompatActivity
 
         goalIndicator.setText(goalReached ? "Daily Goal Reached!" : "Daily Goal Not Reached");
         goalIndicatorIcon.setImageResource(goalReached ? R.drawable.ic_check : R.drawable.ic_warning);
+        int tintColor1 = ContextCompat.getColor(this, R.color.success_color);
+        int tintColor2 = ContextCompat.getColor(this, R.color.fail_color);
+        goalIndicatorIcon.setImageTintList(ColorStateList.valueOf(goalReached ? tintColor1 : tintColor2));
     }
 
     /**

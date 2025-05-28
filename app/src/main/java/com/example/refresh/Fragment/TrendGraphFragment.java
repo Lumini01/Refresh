@@ -94,7 +94,7 @@ public class TrendGraphFragment extends Fragment {
 
         // 2. Create a dataset and configure styling
         BarDataSet dataSet = new BarDataSet(entries, "Weekly Data");
-        dataSet.setColor(Color.BLUE); // Modern flat color
+        dataSet.setColor(Color.parseColor("#016FBF")); // Modern flat color
         dataSet.setFormLineWidth(4f);
         dataSet.setDrawValues(false);
 

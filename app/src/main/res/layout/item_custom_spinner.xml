@@ -3,11 +3,11 @@
     android:id="@+id/spinner_item_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/margin_medium"
+    android:layout_marginVertical="@dimen/margin_small"
     android:background="@drawable/custom_spinner_background"
     android:ellipsize="end"
-    android:gravity="center_vertical"
+    android:gravity="center"
     android:maxLines="1"
-    android:padding="12dp"
+    android:padding="10dp"
     android:textColor="@color/textPrimary"
-    android:textSize="@dimen/text_size_xlarge" />
+    android:textSize="@dimen/text_size_xxlarge" />

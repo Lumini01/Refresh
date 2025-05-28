@@ -59,7 +59,7 @@
                         android:layout_marginEnd="@dimen/padding_medium"
                         android:contentDescription="Profile Picture"
                         android:src="@drawable/ic_profile"
-                        app:tint="@color/iconTint" />
+                        app:tint="#0963BD" />
 
                     <!-- Name and Age -->
                     <LinearLayout
@@ -74,7 +74,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/margin_small"
                             android:text="Name"
-                            android:textColor="@color/textPrimary"
+                            android:textColor="#0F0E2C"
                             android:textSize="@dimen/text_size_xxlarge" />
 
                         <TextView
@@ -82,7 +82,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Age"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="#0F0E2C"
                             android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
                 </LinearLayout>
@@ -228,7 +228,7 @@
                         android:layout_width="@dimen/icon_size_large"
                         android:layout_height="@dimen/icon_size_large"
                         android:src="@drawable/ic_personal_info"
-                        app:tint="@color/iconTint" />
+                        app:tint="@color/info_icon_color" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -241,7 +241,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Personal Info"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/info_text_color"
                             android:textSize="@dimen/text_size_xlarge2"
                             android:layout_marginBottom="@dimen/margin_small"/>
 
@@ -250,7 +250,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Manage your personal information"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/info_text_color"
                             android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
                 </LinearLayout>
@@ -269,7 +269,7 @@
                         android:layout_width="@dimen/icon_size_large"
                         android:layout_height="@dimen/icon_size_large"
                         android:src="@drawable/ic_account_details"
-                        app:tint="@color/iconTint" />
+                        app:tint="@color/account_icon_color" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -282,7 +282,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Account Details"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/account_text_color"
                             android:textSize="@dimen/text_size_xlarge2"
                             android:layout_marginBottom="@dimen/margin_small"/>
 
@@ -291,7 +291,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Manage your account details"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/account_text_color"
                             android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
                 </LinearLayout>
@@ -310,7 +310,7 @@
                         android:layout_width="@dimen/icon_size_large"
                         android:layout_height="@dimen/icon_size_large"
                         android:src="@drawable/ic_workout"
-                        app:tint="@color/iconTint" />
+                        app:tint="@color/lifestyle_icon_color" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -323,7 +323,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Lifestyle &amp; Goal"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/lifestyle_text_color"
                             android:textSize="@dimen/text_size_xlarge2"
                             android:layout_marginBottom="@dimen/margin_small"/>
 
@@ -332,7 +332,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Manage lifestyle and goal options"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/lifestyle_text_color"
                             android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
                 </LinearLayout>
@@ -351,7 +351,7 @@
                         android:layout_width="@dimen/icon_size_large"
                         android:layout_height="@dimen/icon_size_large"
                         android:src="@drawable/ic_adjust_goal"
-                        app:tint="@color/iconTint" />
+                        app:tint="@color/goal_icon_color" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -364,7 +364,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Adjust Goal"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/goal_text_color"
                             android:textSize="@dimen/text_size_xlarge2"
                             android:layout_marginBottom="@dimen/margin_small"/>
 
@@ -373,7 +373,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/padding_medium_large"
                             android:text="Adjust your daily goal"
-                            android:textColor="@color/textSecondary"
+                            android:textColor="@color/goal_text_color"
                             android:textSize="@dimen/text_size_large" />
                     </LinearLayout>
                 </LinearLayout>
@@ -393,8 +393,8 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginTop="@dimen/margin_large"
-                android:backgroundTint="#BF0101"
+                android:layout_marginVertical="@dimen/margin_large"
+                android:backgroundTint="@color/log_out_red"
                 android:padding="@dimen/padding_medium_large"
                 android:text="Log Out"
                 android:textColor="@color/buttonText"

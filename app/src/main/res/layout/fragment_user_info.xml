@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
@@ -26,18 +27,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/personal_info_title"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:padding="@dimen/padding_small"
-                    android:text="Personal Information"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title" />
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_large"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/info_icon_color"/>
+
+                    <TextView
+                        android:id="@+id/personal_info_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:padding="@dimen/padding_small"
+                        android:text="Personal Information"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_title" />
+
+                </LinearLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/name_layout"
@@ -247,14 +265,17 @@
                         android:id="@+id/gender_spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end|center_vertical"
+                        android:layout_gravity="center_vertical"
                         android:gravity="end"
+                        android:layout_marginEnd="@dimen/margin_small"
                         android:background="@null"
-                        android:padding="@dimen/padding_medium"
                         android:spinnerMode="dropdown"
                         android:textColor="@color/textPrimary"
-                        android:textSize="@dimen/text_size_xxlarge"
-                        tools:listitem="@layout/item_custom_spinner" />
+                        tools:listitem="@layout/item_custom_spinner"
+                        android:popupBackground="@android:color/transparent"
+                        android:dropDownSelector="@android:color/transparent"
+                        android:listSelector="@android:color/transparent"
+                        android:dropDownVerticalOffset="58dp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -265,18 +286,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/account_details_title"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_large"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:padding="@dimen/padding_small"
-                    android:text="Account Details"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/margin_medium">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_large"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/account_icon_color"/>
+
+                    <TextView
+                        android:id="@+id/account_details_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:padding="@dimen/padding_small"
+                        android:text="Account Details"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_title" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/email_layout"
@@ -454,18 +491,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/lifestyle_goal_title"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_large"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:padding="@dimen/padding_small"
-                    android:text="Lifestyle &amp; Goal"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/margin_medium">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_large"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/lifestyle_icon_color"/>
+
+                    <TextView
+                        android:id="@+id/lifestyle_goal_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:padding="@dimen/padding_small"
+                        android:text="Lifestyle &amp; Goal"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_title" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/current_weight_layout"
@@ -639,14 +692,17 @@
                             android:id="@+id/activity_level_spinner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end|center_vertical"
                             android:gravity="end"
+                            android:layout_gravity="center_vertical"
                             android:background="@null"
-                            android:padding="@dimen/padding_medium"
                             android:spinnerMode="dropdown"
                             android:textColor="@color/textPrimary"
                             android:textSize="@dimen/text_size_xxlarge"
-                            tools:listitem="@layout/item_custom_spinner" />
+                            tools:listitem="@layout/item_custom_spinner"
+                            android:popupBackground="@android:color/transparent"
+                            android:dropDownSelector="@android:color/transparent"
+                            android:listSelector="@android:color/transparent"
+                            android:dropDownVerticalOffset="58dp" />
                     </LinearLayout>
 
 
@@ -755,18 +811,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/goal_adjustment_title"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_large"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:padding="@dimen/padding_small"
-                    android:text="Adjust Daily Goal"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_size_title" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/margin_medium">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_large"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/goal_icon_color"/>
+
+                    <TextView
+                        android:id="@+id/goal_adjustment_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:padding="@dimen/padding_small"
+                        android:text="Adjust Daily Goal"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_size_title" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/adjust_calories_layout"
@@ -777,6 +849,13 @@
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
+
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_small"
+                        android:layout_marginVertical="@dimen/margin_medium_small"
+                        android:background="#B34CB944"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -820,6 +899,13 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
 
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_small"
+                        android:layout_marginVertical="@dimen/margin_medium_small"
+                        android:background="#B3FF5722"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -861,6 +947,13 @@
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
+
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_small"
+                        android:layout_marginVertical="@dimen/margin_medium_small"
+                        android:background="#B3A87AFA"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -904,6 +997,13 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
 
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_small"
+                        android:layout_marginVertical="@dimen/margin_medium_small"
+                        android:background="#B3FFC107"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -945,6 +1045,13 @@
                     android:background="@drawable/card_background"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
+
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_medium_small"
+                        android:layout_marginVertical="@dimen/margin_medium_small"
+                        android:background="#B32196F3"/>
 
                     <TextView
                         android:layout_width="wrap_content"

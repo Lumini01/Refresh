@@ -51,7 +51,7 @@
             android:scaleX="1.25"
             android:scaleY="1.25"
             android:src="@drawable/ic_profile"
-            app:tint="@color/iconTint" />
+            app:tint="#BF0F0E0C" />
 
         <ImageButton
             android:id="@+id/notification_btn"
@@ -64,7 +64,7 @@
             android:scaleX="1.25"
             android:scaleY="1.25"
             android:src="@drawable/ic_notifications"
-            app:tint="@color/iconTint" />
+            app:tint="#BF0F0E0C" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -154,16 +154,18 @@
                     android:id="@+id/goal_indicator_icon"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_margin="@dimen/padding_small"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:layout_marginStart="@dimen/margin_medium_large"
                     android:contentDescription="Calendar Icon"
                     android:src="@drawable/ic_warning"
-                    app:tint="@color/iconTint" />
+                    app:tint="@color/fail_color" />
 
                 <TextView
                     android:id="@+id/goal_indicator_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
                     android:gravity="center"
                     android:text="Daily Goal Not Reached"
                     android:textColor="@color/textSecondary"

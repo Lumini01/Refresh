@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -220,11 +221,30 @@ public class FoodInfoFragment extends Fragment {
         setNutrientProgressBars();
 
         // 4. Spinner for Serving Options
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
-                R.layout.item_custom_spinner, food.isLiquid() ? liquidServingOptions : solidServingOptions);
-        adapter.setDropDownViewResource(R.layout.item_custom_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                requireContext(),
+                R.layout.item_custom_spinner,
+                food.isLiquid() ? liquidServingOptions : solidServingOptions) {
+            @NonNull @Override
+            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+                // “closed” view shown on the Spinner
+                View v = super.getView(position, convertView, parent);
+                TextView tv = v.findViewById(R.id.spinner_item_text);
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);  // e.g. 18sp
+                return v;
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
+                // each row in the dropdown
+                View v = super.getDropDownView(position, convertView, parent);
+                TextView tv = v.findViewById(R.id.spinner_item_text);
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);  // e.g. 16sp
+                return v;
+            }
+        };
         servingOptionSpinner.setAdapter(adapter);
-        servingOptionSpinner.setSelection(0); // Set the default selection to the first item
+        servingOptionSpinner.setSelection(0); // Set the default selection to the first item\
     }
 
     private void updateNutritionalValues() {

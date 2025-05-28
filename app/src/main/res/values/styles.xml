@@ -16,6 +16,8 @@
         <!-- Background Color -->
         <item name="android:windowBackground">@color/backgroundColor</item>
         <item name="android:statusBarColor">@color/statusBarColor</item>
+
+        <item name="android:listDivider">@drawable/divider</item>
     </style>
 
     <!-- TextView Styles -->
@@ -173,6 +175,17 @@
     <style name="App.Custom.BottomNav.ActiveIndicator"
         parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">#302196F3</item>
+    </style>
+
+    <!-- res/values/styles.xml -->
+    <style name="TransparentSpaceSpinnerDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <!-- keep the dialog window itself transparent if you like -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <!-- transparent divider between items -->
+        <item name="android:listDivider">@android:color/transparent</item>
+        <!-- height = the “gap” you want -->
+        <item name="android:dividerHeight">2dp</item>
     </style>
 
 </resources>
