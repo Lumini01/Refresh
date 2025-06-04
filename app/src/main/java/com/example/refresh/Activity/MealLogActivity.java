@@ -509,7 +509,7 @@ public class MealLogActivity extends AppCompatActivity implements SearchResultsF
         int servingSize = existsInSelectedFoods(parsedFood.getModel().getId());
         if (servingSize != -1) {
             selectedFoodsFragment.removeFoodFromSelectedFoodsByFoodID(parsedFood.getModel().getId());
-            parsedFood.getModel().setServingSize(parsedFood.getModel().getServingSize() + servingSize);
+            parsedFood.getModel().setServingSize(parsedFood.getModel().getServingSize());
         }
 
         selectedFoodsFragment.addFoodToSelectedFoods(parsedFood);

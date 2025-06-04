@@ -350,7 +350,7 @@ public class UserInfoFragment extends Fragment {
     private void setValuesFirstLog() {
         backBtn.setVisibility(View.GONE);
         nameET.setText(user.getName());
-        nameET.setEnabled(false);
+        nameET.setEnabled(true);
 
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(requireContext(),
                 R.layout.item_custom_spinner, genderOptions);

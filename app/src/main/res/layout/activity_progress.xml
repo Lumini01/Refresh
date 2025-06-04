@@ -52,13 +52,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/meals_rv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clipToPadding="false"
                 android:padding="@dimen/padding_medium"
                 android:scrollbars="vertical"
                 tools:itemCount="9"
-                tools:listitem="@layout/item_logged_meal" />
+                tools:listitem="@layout/item_logged_meal"
+                android:nestedScrollingEnabled="true"/>
 
         </LinearLayout>
     </ScrollView>

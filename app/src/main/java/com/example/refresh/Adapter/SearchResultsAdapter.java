@@ -49,7 +49,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         // Add click listener to navigate to the correct screen
         holder.addBtn.setOnClickListener(v -> {
             fragment.addFoodToSelectedFoods(result);
-            Toast.makeText(v.getContext(), result.getTitle() + "Added to the List", Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), result.getTitle() + " Added to the List", Toast.LENGTH_SHORT).show();
         });
 
         holder.itemContainer.setOnClickListener(v -> {

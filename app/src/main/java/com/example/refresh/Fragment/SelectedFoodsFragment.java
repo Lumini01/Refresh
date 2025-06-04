@@ -113,12 +113,12 @@ public class SelectedFoodsFragment extends Fragment {
 
         if (foodIndex == -1) {
             selectedFoods.add(food);  // Update the list in fragment
-            foodsAdapter.addItem(food, selectedFoods.size());  // Notify adapter
+            foodsAdapter.addItem(food, selectedFoods.size() - 1);  // Notify adapter
         }
         else {
             selectedFoods.set(foodIndex, food);  // Update the list in fragment
             foodsAdapter.removeItem(foodIndex);
-            foodsAdapter.addItem(food, selectedFoods.size());  // Notify adapter
+            foodsAdapter.addItem(food, selectedFoods.size() - 1);  // Notify adapter
         }
     }
     // Remove food from the selected foods list
